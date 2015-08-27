@@ -1,4 +1,4 @@
-# ParseUI
+# Step1
 ## Overview
 This project contains the `ParseLoginUI` library for building login and signup flows with the Parse Android SDK.
 You can easily configure the look and feel of the login screens by either specifying XML configurations or constructing an Intent in code.
@@ -62,6 +62,7 @@ To run our sample apps, you need to import this repo as a standalone Gradle proj
 
 For an example of setting up Facebook and Twitter integrations, please see `AndroidManfest.xml` and `res/values/strings.xml` in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic).
 
+# Step2
 ## Documentation
 For complete details about this library project, please see our [documentation](https://www.parse.com/docs/android/guide#user-interface-parseloginui) on the Parse website.
 We'll discuss some highlights here.
@@ -83,9 +84,11 @@ meta-data in `AndroidManifest.xml`.
 
 Please see the [Parse website](https://www.parse.com/docs/android/guide#user-interface-parseloginui) for additional documentation.
 
+# Step3
 ## Contributing
 See the CONTRIBUTING file for how to help out.
 
+# Step4
 ## License
 Copyright (c) 2014, Parse, LLC. All rights reserved.
 
