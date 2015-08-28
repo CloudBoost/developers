@@ -6,15 +6,15 @@ In this section you'll learn how to create your new App (we call it CloudApp) an
 
 If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering `App Name` and the `App ID`.
 
-{<1>}![Your CloudBoost Dashboard](https://blog.cloudboost.io/content/images/2015/08/Screen1.PNG)
+![Your CloudBoost Dashboard](https://blog.cloudboost.io/content/images/2015/08/Screen1.PNG)
 
-{<6>}![Create your first CloudApp](https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG)
+![Create your first CloudApp](https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG)
 
 >Info: **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any `string` which you want. 
 
 >Info: **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any `string` which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
 
-{<7>}![CloudApp Created](https://blog.cloudboost.io/content/images/2015/08/Screen3.PNG)
+![CloudApp Created](https://blog.cloudboost.io/content/images/2015/08/Screen3.PNG)
 
 After you enter your App ID and App Name, your new CloudApp is created. Now, you can create a new table in your app. 
 
@@ -65,9 +65,9 @@ Once you have imported and linked the CloudBoost SDK to your project. We need to
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
 
-{<8>}![App Keys on an App](https://blog.cloudboost.io/content/images/2015/08/AppKey.PNG)
+![App Keys on an App](https://blog.cloudboost.io/content/images/2015/08/AppKey.PNG)
 
-{<5>}![App ID, Master Key and Client Key]()
+![App ID, Master Key and Client Key]()
 
 You will see two **keys** : **Master Key** and **Client Key**
 
