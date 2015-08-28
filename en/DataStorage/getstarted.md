@@ -1,255 +1,162 @@
-# Step1
-## Overview
-This project contains the `ParseLoginUI` library for building login and signup flows with the Parse Android SDK.
-You can easily configure the look and feel of the login screens by either specifying XML configurations or constructing an Intent in code.
-To use this project with your app, you should import it as a library project in Android Studio.
+#####In this section
 
-![sample screens](http://parseui-android.parseapp.com/images/parse_login_sample_screens.png)
+In this section you'll learn how to create your new App (we call it CloudApp) and create your fist Table (CloudTable). You will also learn about default columns in CloudBoost and how to create few of your own columns in your table. Finally we'll link the CloudBoost SDK to your project, save few objects (CloudObjects) in the table you have created and query it with a simple query (CloudQuery). 
 
-### Getting Started
-We built several sample apps demonstrating how to use the `ParseLoginUI` library.  Before importing
-this library into your app, we recommend that you run these sample apps to become familiar with its
-functionality and customizations.  In this section, we describe Android Studio instructions for
-running the sample apps (as a standalone project), and importing the `ParseLoginUI` library into
-your own app.  These instructions were last tested on Android Studio 1.1.0.
+#Create your first App.
 
-#### Running Sample Projects
-To run our sample apps, you need to import this repo as a standalone Gradle project:
+If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering `App Name` and the `App ID`.
 
-1. Clone this repository onto your machine.
-2. Import this repository's project with Android Studio (File > Import Project > `ParseUI-Android` folder). The project has Maven dependencies on the Facebook SDK and the Bolts framework.  Android Studio automatically resolves these via Gradle.
-3. Specify the following in `res/values/strings.xml` of each sample project:
-    * <code>parse_app_id</code> and <code>parse_client_key</code>
-    * <code>facebook_app_id</code>
-    * <code>twitter_consumer_key</code> and <code>twitter_consumer_secret</code>
-4. Build (Tools > Android > Sync Project with Gradle Files) and run the sample apps using Android Studio.
+{<1>}![Your CloudBoost Dashboard](/content/images/2015/08/Screen1.PNG)
 
-#### Importing into Your App
-1. Clone this repository onto your machine.
-2. Configure Parse SDK by following this [tutorial](https://www.parse.com/apps/quickstart#parse_data/mobile/android/native/existing).
-3. Import `ParseLoginUI` as a module into your app's Android Studio Project
-    * File > Import Module in Android Studio
-    * In the New Module pop-up, set the source directory to the `ParseUI-Android/ParseLoginUI` folder within the cloned repo.
-    
-4. Add the following to the `dependencies` section of your app's build.gradle.
+{<2>}![Create your first CloudApp](/content/images/2015/08/Screen2.PNG)
 
-        // Module dependency on ParseLoginUI library sources
-        compile project(':ParseLoginUI')
+>Info: **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any `string` which you want. 
 
-        // Uncomment if using Facebook Login (optional Maven dependency)
-        // compile 'com.facebook.android:facebook-android-sdk:4.0.1'
-        // compile files('YOUR_PROJECT_LIBS_PATH/ParseFacebookUtilsV4-1.10.0.jar')
+>Info: **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any `string` which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
 
-5. Add the following to your `AndroidManifest.xml` within the `<application></application>` section.  You can see a complete example in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic/src/main/AndroidManifest.xml).
+{<3>}![CloudApp Created](/content/images/2015/08/Screen3.PNG)
 
-        <activity
-            android:name="com.parse.ui.ParseLoginActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop">
-            <!-- For more options, see https://www.parse.com/docs/android_guide#ui-login -->
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
-                android:value="true"/>
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
-                android:value="true"/>
-        </activity>
+After you enter your App ID and App Name, your new CloudApp is created. Now, you can create a new table in your app. 
 
-6. Specify the following in `res/values/strings.xml` of your app
+#Creating a new table
 
-        <string name="parse_app_id">YOUR_PARSE_APP_ID</string>
-        <string name="parse_client_key">YOUR_PARSE_CLIENT_KEY</string>
+To create a new table click on `Tables` when you're on your App Screen and then click on `Add new table`. 
 
-For an example of setting up Facebook and Twitter integrations, please see `AndroidManfest.xml` and `res/values/strings.xml` in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic).
+!(Tables button in App Screen)[]
 
-# Step2
-## Overview
-This project contains the `ParseLoginUI` library for building login and signup flows with the Parse Android SDK.
-You can easily configure the look and feel of the login screens by either specifying XML configurations or constructing an Intent in code.
-To use this project with your app, you should import it as a library project in Android Studio.
+!(Add new table)[]
 
-![sample screens](http://parseui-android.parseapp.com/images/parse_login_sample_screens.png)
+>Info: User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you dont need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
 
-### Getting Started
-We built several sample apps demonstrating how to use the `ParseLoginUI` library.  Before importing
-this library into your app, we recommend that you run these sample apps to become familiar with its
-functionality and customizations.  In this section, we describe Android Studio instructions for
-running the sample apps (as a standalone project), and importing the `ParseLoginUI` library into
-your own app.  These instructions were last tested on Android Studio 1.1.0.
+>Info: Table names cannot start with a number and cannot contain any special characters. Table name should not be same as any other tables of the same app. 
 
-#### Running Sample Projects
-To run our sample apps, you need to import this repo as a standalone Gradle project:
+After you create a new table. Click on it which will take you to a screen where you can create new columns.
 
-1. Clone this repository onto your machine.
-2. Import this repository's project with Android Studio (File > Import Project > `ParseUI-Android` folder). The project has Maven dependencies on the Facebook SDK and the Bolts framework.  Android Studio automatically resolves these via Gradle.
-3. Specify the following in `res/values/strings.xml` of each sample project:
-    * <code>parse_app_id</code> and <code>parse_client_key</code>
-    * <code>facebook_app_id</code>
-    * <code>twitter_consumer_key</code> and <code>twitter_consumer_secret</code>
-4. Build (Tools > Android > Sync Project with Gradle Files) and run the sample apps using Android Studio.
+#Create Columns
 
-#### Importing into Your App
-1. Clone this repository onto your machine.
-2. Configure Parse SDK by following this [tutorial](https://www.parse.com/apps/quickstart#parse_data/mobile/android/native/existing).
-3. Import `ParseLoginUI` as a module into your app's Android Studio Project
-    * File > Import Module in Android Studio
-    * In the New Module pop-up, set the source directory to the `ParseUI-Android/ParseLoginUI` folder within the cloned repo.
-    
-4. Add the following to the `dependencies` section of your app's build.gradle.
+To create a new columns click on `+` button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select `unique` if the data in the column is supposed to be unique for every object that is saved, and select `required` if you dont want `null` values to be saved in that column.
 
-        // Module dependency on ParseLoginUI library sources
-        compile project(':ParseLoginUI')
+!(+ Icon on tables)[]
 
-        // Uncomment if using Facebook Login (optional Maven dependency)
-        // compile 'com.facebook.android:facebook-android-sdk:4.0.1'
-        // compile files('YOUR_PROJECT_LIBS_PATH/ParseFacebookUtilsV4-1.10.0.jar')
+!(Add new table)[]
 
-5. Add the following to your `AndroidManifest.xml` within the `<application></application>` section.  You can see a complete example in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic/src/main/AndroidManifest.xml).
+>Important : Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
-        <activity
-            android:name="com.parse.ui.ParseLoginActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop">
-            <!-- For more options, see https://www.parse.com/docs/android_guide#ui-login -->
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
-                android:value="true"/>
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
-                android:value="true"/>
-        </activity>
+After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called `name` which is of type `text`. (To check other out CloudBoost Data Types, Click here.)
 
-6. Specify the following in `res/values/strings.xml` of your app
 
-        <string name="parse_app_id">YOUR_PARSE_APP_ID</string>
-        <string name="parse_client_key">YOUR_PARSE_CLIENT_KEY</string>
+#Initialize your app
 
-For an example of setting up Facebook and Twitter integrations, please see `AndroidManfest.xml` and `res/values/strings.xml` in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic).
+Before you initialize your app, You need to import or link the CloudBoost SDK in your project. 
 
-# Step3
-## Overview
-This project contains the `ParseLoginUI` library for building login and signup flows with the Parse Android SDK.
-You can easily configure the look and feel of the login screens by either specifying XML configurations or constructing an Intent in code.
-To use this project with your app, you should import it as a library project in Android Studio.
+==JavaScript==
+```
+<script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
+```
 
-![sample screens](http://parseui-android.parseapp.com/images/parse_login_sample_screens.png)
+==NodeJS==
+```
+npm install cloudboost
 
-### Getting Started
-We built several sample apps demonstrating how to use the `ParseLoginUI` library.  Before importing
-this library into your app, we recommend that you run these sample apps to become familiar with its
-functionality and customizations.  In this section, we describe Android Studio instructions for
-running the sample apps (as a standalone project), and importing the `ParseLoginUI` library into
-your own app.  These instructions were last tested on Android Studio 1.1.0.
+var CB = require('cloudboost');
+```
 
-#### Running Sample Projects
-To run our sample apps, you need to import this repo as a standalone Gradle project:
+Once you have imported and linked the CloudBoost SDK to your project. We need to initialize your new CloudApp. 
 
-1. Clone this repository onto your machine.
-2. Import this repository's project with Android Studio (File > Import Project > `ParseUI-Android` folder). The project has Maven dependencies on the Facebook SDK and the Bolts framework.  Android Studio automatically resolves these via Gradle.
-3. Specify the following in `res/values/strings.xml` of each sample project:
-    * <code>parse_app_id</code> and <code>parse_client_key</code>
-    * <code>facebook_app_id</code>
-    * <code>twitter_consumer_key</code> and <code>twitter_consumer_secret</code>
-4. Build (Tools > Android > Sync Project with Gradle Files) and run the sample apps using Android Studio.
+To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
 
-#### Importing into Your App
-1. Clone this repository onto your machine.
-2. Configure Parse SDK by following this [tutorial](https://www.parse.com/apps/quickstart#parse_data/mobile/android/native/existing).
-3. Import `ParseLoginUI` as a module into your app's Android Studio Project
-    * File > Import Module in Android Studio
-    * In the New Module pop-up, set the source directory to the `ParseUI-Android/ParseLoginUI` folder within the cloned repo.
-    
-4. Add the following to the `dependencies` section of your app's build.gradle.
+{<4>}![App Keys on an App](/content/images/2015/08/AppKey.PNG)
 
-        // Module dependency on ParseLoginUI library sources
-        compile project(':ParseLoginUI')
+{<5>}![App ID, Master Key and Client Key]()
 
-        // Uncomment if using Facebook Login (optional Maven dependency)
-        // compile 'com.facebook.android:facebook-android-sdk:4.0.1'
-        // compile files('YOUR_PROJECT_LIBS_PATH/ParseFacebookUtilsV4-1.10.0.jar')
+You will see two **keys** : **Master Key** and **Client Key**
 
-5. Add the following to your `AndroidManifest.xml` within the `<application></application>` section.  You can see a complete example in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic/src/main/AndroidManifest.xml).
+>Info: **Master Key** : Master key is the most important key and it is essential that you keep it **private** at all costs. Masket key will help you ignore all the Security Rules which CloudBoost sets for you by default. Please see Security for more information. Master Key will also help you to dynamically Create, Edit, Delete Tables and Columns from the SDK. We recommend you **Never expose your master key in any of your clients, but use master key only on your server**
 
-        <activity
-            android:name="com.parse.ui.ParseLoginActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop">
-            <!-- For more options, see https://www.parse.com/docs/android_guide#ui-login -->
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
-                android:value="true"/>
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
-                android:value="true"/>
-        </activity>
+>Info: **Client Key** : Client key is the public key and can be used on your client. Client key can be exposed to your clients, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules which CloudBoost sets for you by default.
 
-6. Specify the following in `res/values/strings.xml` of your app
+>Important : Never expose your master key on your clients. Master key can only be used on the server. 
 
-        <string name="parse_app_id">YOUR_PARSE_APP_ID</string>
-        <string name="parse_client_key">YOUR_PARSE_CLIENT_KEY</string>
+Now you know your AppID and Keys, You can now proceed to initialize your App. 
 
-For an example of setting up Facebook and Twitter integrations, please see `AndroidManfest.xml` and `res/values/strings.xml` in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic).
 
-# Step4
-## Overview
-This project contains the `ParseLoginUI` library for building login and signup flows with the Parse Android SDK.
-You can easily configure the look and feel of the login screens by either specifying XML configurations or constructing an Intent in code.
-To use this project with your app, you should import it as a library project in Android Studio.
+==JavaScript==
+```
+CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
+```
 
-![sample screens](http://parseui-android.parseapp.com/images/parse_login_sample_screens.png)
+==NodeJS==
+```
+CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
+```
 
-### Getting Started
-We built several sample apps demonstrating how to use the `ParseLoginUI` library.  Before importing
-this library into your app, we recommend that you run these sample apps to become familiar with its
-functionality and customizations.  In this section, we describe Android Studio instructions for
-running the sample apps (as a standalone project), and importing the `ParseLoginUI` library into
-your own app.  These instructions were last tested on Android Studio 1.1.0.
+After your app is initialized. You can proceed to the next step which is saving data. 
 
-#### Running Sample Projects
-To run our sample apps, you need to import this repo as a standalone Gradle project:
+#Saving data
 
-1. Clone this repository onto your machine.
-2. Import this repository's project with Android Studio (File > Import Project > `ParseUI-Android` folder). The project has Maven dependencies on the Facebook SDK and the Bolts framework.  Android Studio automatically resolves these via Gradle.
-3. Specify the following in `res/values/strings.xml` of each sample project:
-    * <code>parse_app_id</code> and <code>parse_client_key</code>
-    * <code>facebook_app_id</code>
-    * <code>twitter_consumer_key</code> and <code>twitter_consumer_secret</code>
-4. Build (Tools > Android > Sync Project with Gradle Files) and run the sample apps using Android Studio.
+To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a `CloudObject`, set data to it and call save function / method. 
 
-#### Importing into Your App
-1. Clone this repository onto your machine.
-2. Configure Parse SDK by following this [tutorial](https://www.parse.com/apps/quickstart#parse_data/mobile/android/native/existing).
-3. Import `ParseLoginUI` as a module into your app's Android Studio Project
-    * File > Import Module in Android Studio
-    * In the New Module pop-up, set the source directory to the `ParseUI-Android/ParseLoginUI` folder within the cloned repo.
-    
-4. Add the following to the `dependencies` section of your app's build.gradle.
+==JavaScript==
+```
+var obj = new CB.CloudObject('TableName');
+obj.set('ColumnName', data);
+obj.save({
+    success : function(obj){
+        //obj saved. 
+    },error : fucntion(error){
+        //error
+    }
+});
+```
 
-        // Module dependency on ParseLoginUI library sources
-        compile project(':ParseLoginUI')
+==NodeJS==
+```
+var obj = new CB.CloudObject('TableName');
+obj.set('ColumnName', data);
+obj.save({
+    success : function(obj){
+        //obj saved. 
+    },error : fucntion(error){
+        //error
+    }
+});
+```
 
-        // Uncomment if using Facebook Login (optional Maven dependency)
-        // compile 'com.facebook.android:facebook-android-sdk:4.0.1'
-        // compile files('YOUR_PROJECT_LIBS_PATH/ParseFacebookUtilsV4-1.10.0.jar')
+If you want to learn more about CloudObjects and Data Storage, Click here. 
 
-5. Add the following to your `AndroidManifest.xml` within the `<application></application>` section.  You can see a complete example in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic/src/main/AndroidManifest.xml).
+#Querying data
 
-        <activity
-            android:name="com.parse.ui.ParseLoginActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop">
-            <!-- For more options, see https://www.parse.com/docs/android_guide#ui-login -->
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
-                android:value="true"/>
-            <meta-data
-                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
-                android:value="true"/>
-        </activity>
+To query records from your table. You first need to create a `CloudQuery` object, set your query and then call the `find` function/method.
 
-6. Specify the following in `res/values/strings.xml` of your app
+==JavaScript==
+```
+var query = new CB.CloudQuery('TableName');
+query.equalTo('ColumnName', data);
+query.find({
+    success : function(list){
+        //list is an array of CloudObjects
+    },error : fucntion(error){
+        //error
+    }
+});
+```
 
-        <string name="parse_app_id">YOUR_PARSE_APP_ID</string>
-        <string name="parse_client_key">YOUR_PARSE_CLIENT_KEY</string>
+==NodeJS==
+```
+var query = new CB.CloudQuery('TableName');
+query.equalTo('ColumnName', data);
+query.find({
+    success : function(list){
+        //list is an array of CloudObjects
+    },error : fucntion(error){
+        //error
+    }
+});
+```
 
-For an example of setting up Facebook and Twitter integrations, please see `AndroidManfest.xml` and `res/values/strings.xml` in our [sample app](https://github.com/ParsePlatform/ParseUI-Android/blob/master/ParseLoginSampleBasic).
+If you want to learn more about Queries, Check out the query section here. 
+
+#####What's next?
+TODO : [Add a link to the next post.]
+
+
