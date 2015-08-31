@@ -4,16 +4,16 @@ In this section you'll learn how to create your new App (we call it CloudApp) an
 
 #Create your first App.
 
-If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span>App Name</span> and the <span>App ID</span>.
+If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span class="tut-snippet">App Name</span> and the <span class="tut-snippet">App ID</span>.
 
 <img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2015/08/Screen1.PNG">
 
 <img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG">
 
-><span class="tut-info">Info</span> **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any `string` which you want. 
+><span class="tut-info">Info</span> **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any <span class="tut-snippet">string</span> which you want. 
 
 <p>&nbsp;</p>
->Info: **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any `string` which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
+>Info: **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any <span class="tut-snippet">string</span> which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
 
 ![CloudApp Created](https://blog.cloudboost.io/content/images/2015/08/Screen3.PNG)
 
@@ -21,7 +21,7 @@ After you enter your App ID and App Name, your new CloudApp is created. Now, you
 
 #Creating a new table
 
-To create a new table click on `Tables` when you're on your App Screen and then click on `Add new table`. 
+To create a new table click on <span class="tut-snippet">Tables</span> when you're on your App Screen and then click on <span class="tut-snippet">Add new table</span>. 
 
 !(Tables button in App Screen)[]
 
@@ -35,7 +35,7 @@ After you create a new table. Click on it which will take you to a screen where 
 
 #Create Columns
 
-To create a new columns click on `+` button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select `unique` if the data in the column is supposed to be unique for every object that is saved, and select `required` if you dont want `null` values to be saved in that column.
+To create a new columns click on <span class="tut-snippet">+</span> button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you dont want <span class="tut-snippet">null</span> values to be saved in that column.
 
 !(+ Icon on tables)[]
 
@@ -43,7 +43,7 @@ To create a new columns click on `+` button on the table header when you're in D
 
 >Important : Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
-After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called `name` which is of type `text`. (To check other out CloudBoost Data Types, Click here.)
+After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click here.)
 
 
 #Initialize your app
@@ -95,7 +95,7 @@ After your app is initialized. You can proceed to the next step which is saving 
 
 #Saving data
 
-To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a `CloudObject`, set data to it and call save function / method. 
+To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a <span class="tut-snippet">CloudObject</span>, set data to it and call save function / method. 
 
 ==JavaScript==
 ```
@@ -127,7 +127,7 @@ If you want to learn more about CloudObjects and Data Storage, Click here.
 
 #Querying data
 
-To query records from your table. You first need to create a `CloudQuery` object, set your query and then call the `find` function/method.
+To query records from your table. You first need to create a <span class="tut-snippet">CloudQuery</span> object, set your query and then call the <span class="tut-snippet">find</span> function/method.
 
 ==JavaScript==
 ```
