@@ -56,12 +56,13 @@ Before you initialize your app, You need to import or link the CloudBoost SDK in
 ```
 
 <p class="nodejs-lines widget-end">==NodeJS==</p>
+<p>
 ```
 npm install cloudboost
 
 var CB = require('cloudboost');
 ```
-
+</p>
 Once you have imported and linked the CloudBoost SDK to your project. We need to initialize your new CloudApp. 
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
