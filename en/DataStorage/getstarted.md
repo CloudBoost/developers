@@ -1,4 +1,4 @@
-#####In this section
+#####In this section {#testid}
 
 In this section you'll learn how to create your new App (we call it CloudApp) and create your fist Table (CloudTable). You will also learn about default columns in CloudBoost and how to create few of your own columns in your table. Finally we'll link the CloudBoost SDK to your project, save few objects (CloudObjects) in the table you have created and query it with a simple query (CloudQuery). 
 
