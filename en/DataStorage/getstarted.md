@@ -52,6 +52,12 @@ Before you initialize your app, You need to import or link the CloudBoost SDK in
 
 ==JavaScript==
 
+<code>
+
+<script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
+
+</code>
+
 
 ==NodeJS==
 <pre class="nodejs-lines">
