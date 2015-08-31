@@ -11,8 +11,7 @@ If you haven't signed up on CloudBoost yet, this is the right time for you to cr
 <img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG">
 
 >Info: **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any `string` which you want. 
->
-t     
+t  
 >Info: **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any `string` which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
 
 ![CloudApp Created](https://blog.cloudboost.io/content/images/2015/08/Screen3.PNG)
