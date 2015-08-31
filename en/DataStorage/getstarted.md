@@ -56,6 +56,7 @@ Before you initialize your app, You need to import or link the CloudBoost SDK in
 ```
 
 <p class="nodejs-lines widget-end">==NodeJS==</p>
+<pre>
 <code class="nodejs-lines">
 
 npm install cloudboost
@@ -63,6 +64,7 @@ npm install cloudboost
 var CB = require('cloudboost');
 
 </code>
+</pre>
 
 Once you have imported and linked the CloudBoost SDK to your project. We need to initialize your new CloudApp. 
 
