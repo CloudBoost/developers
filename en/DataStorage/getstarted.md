@@ -50,19 +50,18 @@ After you create a new column. You can begin integrating CloudBoost with your pr
 
 Before you initialize your app, You need to import or link the CloudBoost SDK in your project. 
 
-<p class="js-lines widget-start">==JavaScript==</p>
-```
+==JavaScript==
+<pre class="js-lines">
+<code>
 <script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
-```
+</code>
+</pre>
 
-<p class="nodejs-lines widget-end">==NodeJS==</p>
-<pre>
-<code class="nodejs-lines">
-
+==NodeJS==
+<pre class="nodejs-lines">
+<code>
 npm install cloudboost
-
 var CB = require('cloudboost');
-
 </code>
 </pre>
 
