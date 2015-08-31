@@ -4,7 +4,7 @@ In this section you'll learn how to create your new App (we call it CloudApp) an
 
 #Create your first App.
 
-If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering `App Name` and the `App ID`.
+If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span>App Name</span> and the <span>App ID</span>.
 
 <img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2015/08/Screen1.PNG">
 
@@ -51,11 +51,9 @@ After you create a new column. You can begin integrating CloudBoost with your pr
 Before you initialize your app, You need to import or link the CloudBoost SDK in your project. 
 
 ==JavaScript==
-<code class="tut-code">
-
+```
 <script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
-
-</code>
+```
 
 ==NodeJS==
 ```
