@@ -52,7 +52,9 @@ Before you initialize your app, You need to import or link the CloudBoost SDK in
 
 ==JavaScript==
 <code class="tut-code">
-sdsd
+
+<script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
+
 </code>
 
 ==NodeJS==
