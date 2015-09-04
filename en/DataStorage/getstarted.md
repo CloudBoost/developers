@@ -141,6 +141,7 @@ If you want to learn more about CloudObjects and Data Storage, Click here.
 To query records from your table. You first need to create a <span class="tut-snippet">CloudQuery</span> object, set your query and then call the <span class="tut-snippet">find</span> function/method.
 
 ==JavaScript==
+<span class="js-lines">
 ```
 var query = new CB.CloudQuery('TableName');
 query.equalTo('ColumnName', data);
@@ -152,8 +153,10 @@ query.find({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines">
 ```
 var query = new CB.CloudQuery('TableName');
 query.equalTo('ColumnName', data);
@@ -165,6 +168,7 @@ query.find({
     }
 });
 ```
+</span>
 
 If you want to learn more about Queries, Check out the query section here. 
 
