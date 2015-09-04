@@ -173,6 +173,6 @@ query.find({
 If you want to learn more about Queries, Check out the query section here. 
 
 #####What's next?
-TODO : [Add a link to the next post.]
+TODO : [Add a link to the next post]
 
 
