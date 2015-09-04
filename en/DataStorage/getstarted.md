@@ -85,14 +85,18 @@ Now you know your AppID and Keys, You can now proceed to initialize your App.
 
 
 ==JavaScript==
+<span class="js-lines">
 ```
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ```
+</span>
 
+<span class="nodejs-lines">
 ==NodeJS==
 ```
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ```
+</span>
 
 After your app is initialized. You can proceed to the next step which is saving data. 
 
@@ -101,6 +105,7 @@ After your app is initialized. You can proceed to the next step which is saving 
 To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a <span class="tut-snippet">CloudObject</span>, set data to it and call save function / method. 
 
 ==JavaScript==
+<span class="js-lines">
 ```
 var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
@@ -112,8 +117,10 @@ obj.save({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines">
 ```
 var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
@@ -125,6 +132,7 @@ obj.save({
     }
 });
 ```
+</span>
 
 If you want to learn more about CloudObjects and Data Storage, Click here. 
 
