@@ -13,7 +13,7 @@ If you haven't signed up on CloudBoost yet, this is the right time for you to cr
 ><span class="tut-info">Info</span> **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any <span class="tut-snippet">string</span> which you want. 
 
 <p>&nbsp;</p>
->Info: **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any <span class="tut-snippet">string</span> which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
+><span class="tut-info">Info</span> **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any <span class="tut-snippet">string</span> which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
 
 ![CloudApp Created](https://blog.cloudboost.io/content/images/2015/08/Screen3.PNG)
 
@@ -27,9 +27,10 @@ To create a new table click on <span class="tut-snippet">Tables</span> when you'
 
 !(Add new table)[]
 
->Info: User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you dont need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
+><span class="tut-info">Info</span> User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you dont need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
 
->Info: Table names cannot start with a number and cannot contain any special characters. Table name should not be same as any other tables of the same app. 
+<p>&nbsp;</p>
+><span class="tut-info">Info</span> Table names cannot start with a number and cannot contain any special characters. Table name should not be same as any other tables of the same app. 
 
 After you create a new table. Click on it which will take you to a screen where you can create new columns.
 
