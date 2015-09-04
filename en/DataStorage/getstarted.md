@@ -76,9 +76,10 @@ To initialize your new CloudApp, You need to go back to your CloudBoost App Page
 
 You will see two **keys** : **Master Key** and **Client Key**
 
->Info: **Master Key** : Master key is the most important key and it is essential that you keep it **private** at all costs. Masket key will help you ignore all the Security Rules which CloudBoost sets for you by default. Please see Security for more information. Master Key will also help you to dynamically Create, Edit, Delete Tables and Columns from the SDK. We recommend you **Never expose your master key in any of your clients, but use master key only on your server**
+><span class="tut-info">Info</span> **Master Key** : Master key is the most important key and it is essential that you keep it **private** at all costs. Masket key will help you ignore all the Security Rules which CloudBoost sets for you by default. Please see Security for more information. Master Key will also help you to dynamically Create, Edit, Delete Tables and Columns from the SDK. We recommend you **Never expose your master key in any of your clients, but use master key only on your server**
 
->Info: **Client Key** : Client key is the public key and can be used on your client. Client key can be exposed to your clients, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules which CloudBoost sets for you by default.
+<p>&nbsp;</p>
+><span class="tut-info">Info</span> **Client Key** : Client key is the public key and can be used on your client. Client key can be exposed to your clients, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules which CloudBoost sets for you by default.
 
 >Important : Never expose your master key on your clients. Master key can only be used on the server. 
 
