@@ -51,14 +51,14 @@ After you create a new column. You can begin integrating CloudBoost with your pr
 Before you initialize your app, You need to import or link the CloudBoost SDK in your project. 
 
 ==JavaScript==
-<span class="js-lines">
+<span class="js-lines" data-query="link">
 ```
 <script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
 ```
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines">
+<span class="nodejs-lines" data-query="link">
 ```
 npm install cloudboost
 var CB = require('cloudboost');
@@ -85,13 +85,13 @@ Now you know your AppID and Keys, You can now proceed to initialize your App.
 
 
 ==JavaScript==
-<span class="js-lines">
+<span class="js-lines" data-query="init">
 ```
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
 
-<span class="nodejs-lines">
+<span class="nodejs-lines" data-query="init">
 ==NodeJS==
 ```
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
@@ -105,7 +105,7 @@ After your app is initialized. You can proceed to the next step which is saving 
 To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a <span class="tut-snippet">CloudObject</span>, set data to it and call save function / method. 
 
 ==JavaScript==
-<span class="js-lines">
+<span class="js-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
@@ -120,7 +120,7 @@ obj.save({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines">
+<span class="nodejs-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
@@ -141,7 +141,7 @@ If you want to learn more about CloudObjects and Data Storage, Click here.
 To query records from your table. You first need to create a <span class="tut-snippet">CloudQuery</span> object, set your query and then call the <span class="tut-snippet">find</span> function/method.
 
 ==JavaScript==
-<span class="js-lines">
+<span class="js-lines" data-query="query">
 ```
 var query = new CB.CloudQuery('TableName');
 query.equalTo('ColumnName', data);
@@ -156,7 +156,7 @@ query.find({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines">
+<span class="nodejs-lines" data-query="query">
 ```
 var query = new CB.CloudQuery('TableName');
 query.equalTo('ColumnName', data);
