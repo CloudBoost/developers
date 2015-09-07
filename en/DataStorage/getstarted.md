@@ -42,7 +42,7 @@ To create a new columns click on <span class="tut-snippet">+</span> button on th
 
 !(Add new table)[]
 
->Important : Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
+><span class="tut-imp">Inportant:</span> Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
 After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click here.)
 
