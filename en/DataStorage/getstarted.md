@@ -42,7 +42,7 @@ To create a new columns click on <span class="tut-snippet">+</span> button on th
 
 !(Add new table)[]
 
-><span class="tut-imp">Inportant:</span> Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
+><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
 After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click here.)
 
@@ -81,7 +81,7 @@ You will see two **keys** : **Master Key** and **Client Key**
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> **Client Key** : Client key is the public key and can be used on your client. Client key can be exposed to your clients, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules which CloudBoost sets for you by default.
 
->Important : Never expose your master key on your clients. Master key can only be used on the server. 
+><span class="tut-imp">Important:</span> Never expose your master key on your clients. Master key can only be used on the server. 
 
 Now you know your AppID and Keys, You can now proceed to initialize your App. 
 
