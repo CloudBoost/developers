@@ -4,7 +4,7 @@ In this section you'll learn how to create an Object (we call it CloudObject) an
 
 #Saving Objects
 
-If you haven't created a new app and a table yet. Please take a look into [Getting Started]: http://google.com/        "Google" section. To create a new object you need to initialize a new variable with the type CloudObject.
+If you haven't created a new app and a table yet. Please take a look into [Getting Started]: http://google.com/  section. To create a new object you need to initialize a new variable with the type CloudObject.
 
 ==JavaScript==
 <span class="js-lines" data-query="create">
