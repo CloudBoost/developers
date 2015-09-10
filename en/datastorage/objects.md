@@ -7,7 +7,7 @@ In this section you'll learn how to create an Object (we call it CloudObject) an
 If you haven't created a new app and a table yet. Please take a look into [Getting Started]() section. To create a new object you need to initialize a new variable with the type CloudObject.
 
 ==JavaScript==
-<span class="js-lines" data-query="saving">
+<span class="js-lines" data-query="create">
 ```
 var obj = new CB.CloudObject('TableName');
 ```
@@ -15,7 +15,7 @@ var obj = new CB.CloudObject('TableName');
 
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="saving">
+<span class="nodejs-lines" data-query="create">
 ```
 var obj = new CB.CloudObject('TableName');
 ```
@@ -42,7 +42,7 @@ To know more about what data types CloudBoost supports. Please check this [Data 
 To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable. 
 
 ==JavaScript==
-<span class="js-lines" data-query="setsave">
+<span class="js-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
 
@@ -60,7 +60,7 @@ obj.save({
 
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="setsave">
+<span class="nodejs-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
 
