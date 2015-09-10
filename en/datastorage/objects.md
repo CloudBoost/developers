@@ -55,6 +55,7 @@ obj.save({
         //object failed to save.  
     }
 });
+
 ```
 </span>
 
@@ -73,6 +74,7 @@ obj.save({
         //object failed to save.  
     }
 });
+
 ```
 </span>
 
@@ -215,6 +217,7 @@ obj.save({
         //object failed to save.  
     }
 });
+
 ```
 </span>
 
@@ -230,6 +233,7 @@ obj.save({
         //object failed to save.  
     }
 });
+
 ```
 </span>
 
@@ -247,6 +251,7 @@ obj.fetch({
         
     }
 });
+
 ```
 </span>
 
@@ -260,6 +265,7 @@ obj.fetch({
           
     }
 });
+
 ```
 </span>
 
@@ -290,6 +296,7 @@ obj.delete({
         
     }
 });
+
 ```
 </span>
 
