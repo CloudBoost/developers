@@ -42,7 +42,7 @@ To know more about what data types CloudBoost supports. Please check this [Data 
 To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable. 
 
 ==JavaScript==
-<span class="js-lines" data-query="save">
+<span class="js-lines" data-query="setsave">
 ```
 var obj = new CB.CloudObject('TableName');
 
@@ -60,7 +60,7 @@ obj.save({
 
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="save">
+<span class="nodejs-lines" data-query="setsave">
 ```
 var obj = new CB.CloudObject('TableName');
 
