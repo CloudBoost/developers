@@ -21,7 +21,7 @@ var obj = new CB.CloudObject('TableName');
 ```
 </span>
 
-To set data into the objects, You can use the `set` function / method of CloudObject class. 
+To set data into the objects, You can use the <span class="tut-snippet">set</span> function / method of CloudObject class. 
 
 ==JavaScript==
 <span class="js-lines" data-query="set">
@@ -111,7 +111,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 * **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations. 
 
->Info: CloudBoost is schema-mix database. For all your schema-full data, use the columns with respective datatypes, for schema-less data use the data-type called `Object` and you can store any type of data in it. 
+>Info: CloudBoost is schema-mix database. For all your schema-full data, use the columns with respective datatypes, for schema-less data use the data-type called <span class="tut-snippet">Object</span> and you can store any type of data in it. 
 
 
 #Default Properties
@@ -169,7 +169,7 @@ obj.updatedAt;
 </span>
 
 
-* **Expires** : [DateTime] `null` by default. You can set `expires` to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
+* **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
 
 ==JavaScript==
 <span class="js-lines" data-query="viewexpires">
