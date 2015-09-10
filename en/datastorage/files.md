@@ -11,13 +11,12 @@ To save a file in CloudBoost, you basically need to pass in the file object as a
 To save a file from your local file system, You need to : 
 
 ==JavaScript==
+<span class="js-lines" data-query="savefile">
 ```
 var fileUploadControl = $("#profilePhotoFileUpload")[0];
-
 if (fileUploadControl.files.length > 0) {
   var file = fileUploadControl.files[0];
   var name = "photo.jpg";
-
   var cloudFile = new CB.CloudFile(name, file);
   cloudFile.save({
   	success : fucntion(cloudFile){
@@ -28,13 +27,14 @@ if (fileUploadControl.files.length > 0) {
   })
 }
 ```
-
+</span>
 
 ###From Blob
 
 To save a file by creating a blob, You need to : 
 
 ==JavaScript==
+<span class="js-lines" data-query="saveblob">
 ```
 var documentFile = new Blob([
   'This is the content of by document blob'
@@ -50,12 +50,14 @@ file.save({
   }
 });
 ```
+</span>
 
 #Delete a file
 
 To delete a file, You need to : 
 
 ==JavaScript==
+<span class="js-lines" data-query="deletefile">
 ```
 file.delete({
   success: function(file) {
@@ -65,8 +67,10 @@ file.delete({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="deletefile">
 ```
 file.delete({
   success: function(file) {
@@ -76,3 +80,4 @@ file.delete({
   }
 });
 ```
+</span>
