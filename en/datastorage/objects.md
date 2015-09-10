@@ -121,71 +121,92 @@ Every CloudObject when created has default properties attached to it. Here is al
 * **Id** : [Text] A unique ID of a CloudObject is assigned as soon as the Object is saved. **You cannot assign a user-defined ID to a CloudObject**.
 
 ==JavaScript==
+<span class="js-lines" data-query="viewid">
 ```
 //Id is null when you create the object but gets assigned to an Object as soon as you save it. 
 console.log(obj.id);
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewid">
 ```
 //Id is null when you create the object but gets assigned to an Object as soon as you save it. 
 console.log(obj.id);
 ```
+</span>
 
 * **CreatedAt** : [DateTime] A DateTime stamp of when the Object is created. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
+<span class="js-lines" data-query="viewcreateat">
 ```
 obj.createdAt;
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewcreateat">
 ```
 obj.createdAt;
 ```
+</span>
 
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
+<span class="js-lines" data-query="viewupdateat">
 ```
 obj.updatedAt;
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewupdateat">
 ```
 obj.updatedAt;
 ```
+</span>
 
 
 * **Expires** : [DateTime] `null` by default. You can set `expires` to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
 
 ==JavaScript==
+<span class="js-lines" data-query="viewexpires">
 ```
 obj.expires;
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewexpires">
 ```
 obj.expires;
 ```
+</span>
 
 * **ACL** : [CB.ACL] ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]() section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]()
 
 ==JavaScript==
+<span class="js-lines" data-query="viewacl">
 ```
 obj.ACL;
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewacl">
 ```
 obj.ACL;
 ```
+</span>
 
 #Updating Objects
 
 To update a CloudObject you can set any column you like to any data and call the save function/method again.
 
 ==JavaScript==
+<span class="js-lines" data-query="update">
 ```
 obj.set('ColumnName', newData);
 
@@ -197,8 +218,10 @@ obj.save({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="update">
 ```
 obj.set('ColumnName', newData);
 
@@ -210,12 +233,14 @@ obj.save({
     }
 });
 ```
+</span>
 
 #Fetching Objects
 
 If you have an old or a stale copy of CloudObject and you want to refresh / fetch a updated one from the server then you can use the fetch method / function of CloudObject. 
 
 ==JavaScript==
+<span class="js-lines" data-query="fetch">
 ```
 obj.fetch({
     success : function(obj){
@@ -225,8 +250,10 @@ obj.fetch({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="fetch">
 ```
 obj.fetch({
     success : function(obj){
@@ -236,12 +263,14 @@ obj.fetch({
     }
 });
 ```
+</span>
 
 #Deleting Objects
 
 If you want to delete an object form the database then you need to call the delete function / method of CloudObject. 
 
 ==JavaScript==
+<span class="js-lines" data-query="delete">
 ```
 obj.delete({
     success : function(obj){
@@ -251,8 +280,10 @@ obj.delete({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="delete">
 ```
 obj.delete({
     success : function(obj){
@@ -262,6 +293,7 @@ obj.delete({
     }
 });
 ```
+</span>
 
 #####What's next?
 
