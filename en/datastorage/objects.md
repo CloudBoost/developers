@@ -24,20 +24,25 @@ var obj = new CB.CloudObject('TableName');
 To set data into the objects, You can use the `set` function / method of CloudObject class. 
 
 ==JavaScript==
+<span class="js-lines" data-query="set">
 ```
 obj.set('ColumnName',data);
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="set">
 ```
 obj.set('ColumnName',data);
 ```
+</span>
 
 To know more about what data types CloudBoost supports. Please check this [Data Types]() section.
 
 To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable. 
 
 ==JavaScript==
+<span class="js-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
 
@@ -51,8 +56,10 @@ obj.save({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
 
@@ -66,6 +73,7 @@ obj.save({
     }
 });
 ```
+</span>
 
 #Data-types
 
