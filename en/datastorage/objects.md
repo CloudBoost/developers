@@ -111,7 +111,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 * **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations. 
 
->Info: CloudBoost is schema-mix database. For all your schema-full data, use the columns with respective datatypes, for schema-less data use the data-type called <span class="tut-snippet">Object</span> and you can store any type of data in it. 
+><span class="tut-info">Info:</span> CloudBoost is schema-mix database. For all your schema-full data, use the columns with respective datatypes, for schema-less data use the data-type called <span class="tut-snippet">Object</span> and you can store any type of data in it. 
 
 
 #Default Properties
