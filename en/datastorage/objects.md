@@ -2,7 +2,7 @@
 
 In this section you'll learn how to create an Object (we call it CloudObject) and and save it into your CloudTable. You will also learn about default properties in objects. Finally we'll also learn to update, delete and refresh / fetch CloudObjects and look into various data-types CloudBoost supports. 
 
-#Saving Objects.
+#Saving Objects
 
 If you haven't created a new app and a table yet. Please take a look into [Getting Started]() section. To create a new object you need to initialize a new variable with the type CloudObject.
 
@@ -88,7 +88,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 * **Encrypted Text** : Used to store important text like Password, etc. 
 
-####Relational Data-types.
+####Relational Data-types
 
 * **Relation** : Used as a relation to any other [CB.CloudObject]() of the same or any other table.
 
@@ -164,7 +164,7 @@ obj.ACL;
 obj.ACL;
 ```
 
-#Updating Objects.
+#Updating Objects
 
 To update a CloudObject you can set any column you like to any data and call the save function/method again.
 
@@ -194,7 +194,7 @@ obj.save({
 });
 ```
 
-#Fetching Objects.
+#Fetching Objects
 
 If you have an old or a stale copy of CloudObject and you want to refresh / fetch a updated one from the server then you can use the fetch method / function of CloudObject. 
 
@@ -220,7 +220,7 @@ obj.fetch({
 });
 ```
 
-#Deleting Objects.
+#Deleting Objects
 
 If you want to delete an object form the database then you need to call the delete function / method of CloudObject. 
 
