@@ -7,14 +7,19 @@ In this section you'll learn how to create an Object (we call it CloudObject) an
 If you haven't created a new app and a table yet. Please take a look into [Getting Started]() section. To create a new object you need to initialize a new variable with the type CloudObject.
 
 ==JavaScript==
+<span class="js-lines" data-query="saving">
 ```
 var obj = new CB.CloudObject('TableName');
 ```
+</span>
+
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="saving">
 ```
 var obj = new CB.CloudObject('TableName');
 ```
+</span>
 
 To set data into the objects, You can use the `set` function / method of CloudObject class. 
 
