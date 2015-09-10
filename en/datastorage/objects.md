@@ -203,7 +203,6 @@ To update a CloudObject you can set any column you like to any data and call the
 <span class="js-lines" data-query="update">
 ```
 obj.set('ColumnName', newData);
-
 obj.save({
     success : function(obj){
         console.log(obj.id); //id is the same.  
@@ -211,7 +210,6 @@ obj.save({
         //object failed to save.  
     }
 });
-
 ```
 </span>
 
@@ -219,7 +217,6 @@ obj.save({
 <span class="nodejs-lines" data-query="update">
 ```
 obj.set('ColumnName', newData);
-
 obj.save({
     success : function(obj){
         console.log(obj.id); //id is the same.  
@@ -227,7 +224,6 @@ obj.save({
         //object failed to save.  
     }
 });
-
 ```
 </span>
 
@@ -242,10 +238,8 @@ obj.fetch({
     success : function(obj){
         //an updated of object is fetched from the server.  
     },error : fucntion(error){
-        
     }
 });
-
 ```
 </span>
 
@@ -256,10 +250,8 @@ obj.fetch({
     success : function(obj){
         //an updated of object is fetched from the server.  
     },error : fucntion(error){
-          
     }
 });
-
 ```
 </span>
 
@@ -274,7 +266,6 @@ obj.delete({
     success : function(obj){
         //an object is deleted from the server
     },error : fucntion(error){
-        
     }
 });
 ```
@@ -287,7 +278,6 @@ obj.delete({
     success : function(obj){
         //an object is deleted from the server
     },error : fucntion(error){
-        
     }
 });
 
