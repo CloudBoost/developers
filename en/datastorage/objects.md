@@ -112,7 +112,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 Every CloudObject when created has default properties attached to it. Here is alist of all the default properties attached to CloudObjects when you initialize them. 
 
-* **Id** : [Text] A unique ID of a CloudObject is assigned as soon as the Object is saved. **You cannot assign a user-defined ID to a CloudObject**.
+* **Id** : [Txt] A unique ID of a CloudObject is assigned as soon as the Object is saved. **You cannot assign a user-defined ID to a CloudObject**.
 
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
