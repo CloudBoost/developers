@@ -45,9 +45,7 @@ To save your CloudObject, you can call the save function/method and it will save
 <span class="js-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
-
 obj.set('ColumnName', data);
-
 obj.save({
     success : function(obj){
         console.log(obj.id); //a new id is automatically generated. 
@@ -55,7 +53,6 @@ obj.save({
         //object failed to save.  
     }
 });
-
 ```
 </span>
 
@@ -64,9 +61,7 @@ obj.save({
 <span class="nodejs-lines" data-query="save">
 ```
 var obj = new CB.CloudObject('TableName');
-
 obj.set('ColumnName', data);
-
 obj.save({
     success : function(obj){
         console.log(obj.id); //a new id is automatically generated. 
@@ -74,7 +69,6 @@ obj.save({
         //object failed to save.  
     }
 });
-
 ```
 </span>
 
