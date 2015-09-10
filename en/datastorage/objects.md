@@ -91,7 +91,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 * **Date Time** : Used to a date time. 
 
-* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint]() Object instance. 
+* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint](https://docs.cloudboost.io/#CloudGeoPoint) Object instance. 
 
 * **Object** : Used to store a JSON object.
 
@@ -101,7 +101,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 ####Relational Data-types
 
-* **Relation** : Used as a relation to any other [CB.CloudObject]() of the same or any other table.
+* **Relation** : Used as a relation to any other [CB.CloudObject](https://docs.cloudboost.io/#CloudObject) of the same or any other table.
 
 * **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations. 
 
