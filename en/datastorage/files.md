@@ -4,7 +4,7 @@ In this section you'll learn about how to save a file from your local file syste
 
 #Saving a file 
 
-To save a file in CloudBoost, you basically need to pass in the file object as a parameter and call the save function of the CB.CloudFile class. You can save files of any size in CloudBoost, but you will be charged for the storage units according to [Pricing]() Page.
+To save a file in CloudBoost, you basically need to pass in the file object as a parameter and call the save function of the CB.CloudFile class. You can save files of any size in CloudBoost, but you will be charged for the storage units according to [Pricing](https://cloudboost.io/pricing) Page.
 
 ###From Local File System
 
