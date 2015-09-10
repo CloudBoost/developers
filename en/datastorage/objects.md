@@ -43,6 +43,7 @@ To save your CloudObject, you can call the save function/method and it will save
 
 ==JavaScript==
 <span class="js-lines" data-query="save">
+
 ```
 var obj = new CB.CloudObject('TableName');
 
@@ -61,6 +62,7 @@ obj.save({
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="save">
+
 ```
 var obj = new CB.CloudObject('TableName');
 
@@ -75,6 +77,7 @@ obj.save({
 });
 ```
 </span>
+
 
 #Data-types
 
