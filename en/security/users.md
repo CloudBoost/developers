@@ -11,6 +11,7 @@ CloudUser is inherited from CloudObject class, which means everything that Cloud
 To sign up a new user you need to initialize a new variable with the type CloudUser, assign it username and password and call the sign-up fucntion. 
 
 ==JavaScript==
+<span class="js-lines" data-query="signup">
 ```
 var user = new CB.CloudUser();
 user.set('username','my_username');
@@ -25,11 +26,14 @@ user.signUp({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="signup">
 ```
 //Sign up function will not work on NodeJS. If you want to create a new user on the server. You can use save() function of CloudUser instead. 
 ```
+</span>
 
 After the CloudUser is signed-up a new session is automatically created for you and the user is logged-in unless you call log-out function of CloudUser object. 
 
@@ -37,43 +41,55 @@ After the CloudUser is signed-up a new session is automatically created for you 
 
 Every CloudUser when created has default properties attached to it. Here is alist of all the default properties attached to CloudUser when you initialize them. 
 
-* **All of the CloudObject default properties are available in CloudUser, as CloudUser is inherited from CloudObjects. To see what default properties are available in CloudObject, Please click [here]()**
+* **All of the CloudObject default properties are available in CloudUser, as CloudUser is inherited from CloudObjects. To see what default properties are available in CloudObject, Please click [here](?lang=en&category=datastorage&subcategory=objects)**
 
 * **Username** : [Text] A unique username of a CloudUser
 
 ==JavaScript==
+<span class="js-lines" data-query="viewusername">
 ```
 console.log(user.username);
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewusername">
 ```
 console.log(user.username);
 ```
+</span>
 
 * **Password** : [Encrypted Text] Password of the ClousUser Object
 
 ==JavaScript==
+<span class="js-lines" data-query="viewpass">
 ```
 console.log(user.password);
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewpass">
 ```
 console.log(user.password);
 ```
+</span>
 
 * **Email** : [Email] An email of the CloudUser object
 
 ==JavaScript==
+<span class="js-lines" data-query="viewemail">
 ```
 console.log(user.email);
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewemail">
 ```
 console.log(user.email);
 ```
+</span>
 
 
 #Log in
@@ -81,6 +97,7 @@ console.log(user.email);
 To login a CloudUser you can set the username and password and call the login fucntion / method. 
 
 ==JavaScript==
+<span class="js-lines" data-query="login">
 ```
 var user = new CB.CloudUser();
 user.set('username', 'my_username');
@@ -94,8 +111,10 @@ user.logIn({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="login">
 ```
 var user = new CB.CloudUser();
 user.set('username', 'my_username');
@@ -109,24 +128,30 @@ user.logIn({
   }
 });
 ```
+</span>
 
 Once the user us login you can access the current logged in user by 
 
 ==JavaScript==
+<span class="js-lines" data-query="viewcurrent">
 ```
 CB.CloudUser.current
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewcurrent">
 ```
 CB.CloudUser.current
 ```
+</span>
 
 #Log out
 
 If you want to flush the sesison out and log out the user, then you can do this by
 
 ==JavaScript==
+<span class="js-lines" data-query="logout">
 ```
 CB.CloudUser.current.logOut({
 	success : function(user){
@@ -136,8 +161,10 @@ CB.CloudUser.current.logOut({
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="logout">
 ```
 CB.CloudUser.current.logOut({
 	success : function(user){
@@ -147,6 +174,7 @@ CB.CloudUser.current.logOut({
     }
 });
 ```
+</span>
 
 #####What's next?
 
