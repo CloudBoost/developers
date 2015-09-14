@@ -12,32 +12,40 @@ Just to recap, CloudBoost.io supports two types of real-time notifications which
 Real-time database notification happens when you want to listen to a specific event from the database. For example : If you're building a social networking app, you might want the feeds to be appear on your page when your friends posts something. In this case, if we have an object that is created and inserted into that table, we want listen to that particular event and auto update the page when that notification happens
 
 ==JavaScript==
-<span class="js-lines" data-query="">
+<span class="js-lines" data-query="create">
 ```
 CB.CloudObject.on('TableName', 'created', function(obj){ 
 });
 ```
 </span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="create">
 ```
 CB.CloudObject.on('TableName', 'created', function(obj){ 
 });
 ```
+</span>
 
 Event can be of three types : **created**, **updated** and **deleted**. You can listen to any or all of the events on any table you like. 
 
 You can even add events as an array. For example : 
 
 ==JavaScript==
+<span class="js-lines" data-query="createupdate">
 ```
 CB.CloudObject.on('TableName', ['created','updated'], function(obj){ 
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="createupdate">
 ```
 CB.CloudObject.on('TableName', ['created','updated'], function(obj){ 
 });
 ```
+</span>
 
 >Info: CloudObject Notifications are only fired when that particular client has a read access to that object. Please read a section on [ACL]() for more information. 
 
@@ -49,23 +57,28 @@ You also can have queries over notifications, and can listen to obly those objec
 For example : 
 
 ==JavaScript==
+<span class="js-lines" data-query="query">
 ```
 var query = new CB.CloudQuery('Student');
 query.equalTo('age',10);
-
+//
 CB.CloudObject.on('Student', 'created', query, function(obj){ 
 	//only fires when age is equalTo 10.
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="query">
 ```
 var query = new CB.CloudQuery('Student');
 query.equalTo('age',10);
-
+//
 CB.CloudObject.on('Student', 'created', query, function(obj){ 
 	//only fires when age is equalTo 10.
 });
 ```
+</span>
 
 #Stop listening
 
@@ -74,13 +87,18 @@ To stop lisening. You can call the `off` method/function of CloudObject class an
 For example : 
 
 ==JavaScript==
+<span class="js-lines" data-query="off">
 ```
 CB.CloudObject.off('Student', 'created');
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="off">
 ```
 CB.CloudObject.off('Student', 'created');
 ```
+</span>
 
 #####What's next? 
 
