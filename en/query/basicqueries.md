@@ -20,7 +20,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -36,7 +35,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -54,7 +52,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -70,7 +67,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -88,7 +84,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -104,7 +99,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -122,7 +116,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -138,7 +131,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -156,7 +148,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -172,7 +163,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -190,7 +180,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -206,7 +195,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -226,7 +214,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
@@ -242,7 +229,6 @@ query.find({
   	//list is an array of CloudObjects
   },
   error: function(error) {
-  
   }
 });
 ```
