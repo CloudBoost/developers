@@ -4,7 +4,7 @@ In this section you'll learn how to create an Object (we call it CloudObject) an
 
 #Saving Objects
 
-If you haven't created a new app and a table yet. Please take a look into [Getting Started]() section. To create a new object you need to initialize a new variable with the type CloudObject.
+If you haven't created a new app and a table yet. Please take a look into [Getting Started](/?lang=en&category=gettingstarted&subcategory=yourfirstapp)  section. To create a new object you need to initialize a new variable with the type CloudObject.
 
 ==JavaScript==
 <span class="js-lines" data-query="create">
@@ -37,7 +37,7 @@ obj.set('ColumnName',data);
 ```
 </span>
 
-To know more about what data types CloudBoost supports. Please check this [Data Types]() section.
+To know more about what data types CloudBoost supports. Please check this [Data Types](#Data-types) section.
 
 To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable. 
 
@@ -91,7 +91,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 * **Date Time** : Used to a date time. 
 
-* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint]() Object instance. 
+* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint](https://docs.cloudboost.io/#CloudGeoPoint) Object instance. 
 
 * **Object** : Used to store a JSON object.
 
@@ -101,7 +101,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 ####Relational Data-types
 
-* **Relation** : Used as a relation to any other [CB.CloudObject]() of the same or any other table.
+* **Relation** : Used as a relation to any other [CB.CloudObject](https://docs.cloudboost.io/#CloudObject) of the same or any other table.
 
 * **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations. 
 
