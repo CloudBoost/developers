@@ -21,6 +21,7 @@ Each one of these user can have any number of users.
 To create a new role you need to initialize a new variable with the type CloudRole, assign it a name and call save function / method.
 
 ==JavaScript==
+<span class="js-lines" data-query="create">
 ```
 var role = new CB.CloudRole("Student");
 role.save({
@@ -32,8 +33,10 @@ role.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="create">
 ```
 var role = new CB.CloudRole("Student");
 role.save({
@@ -45,6 +48,7 @@ role.save({
   }
 });
 ```
+</span>
 
 After the CloudRole is created you can start signing-up users to role.
 
@@ -57,20 +61,25 @@ Every CloudUser when created has default properties attached to it. Here is alis
 * **Name** : [Text] A name of the role. 
 
 ==JavaScript==
+<span class="js-lines" data-query="viewname">
 ```
 console.log(role.name);
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="viewname">
 ```
 console.log(role.name);
 ```
+</span>
 
 #Add user to role. 
 
 Here is the sample code to add a CloudUser to the CloudRole. 
 
 ==JavaScript==
+<span class="js-lines" data-query="add">
 ```
 //user is an instance of CloudUser and role is an instance of CloudRole
 user.addToRole(role, {
@@ -82,8 +91,10 @@ user.addToRole(role, {
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="add">
 ```
 //user is an instance of CloudUser and role is an instance of CloudRole
 user.addToRole(role, {
@@ -95,7 +106,7 @@ user.addToRole(role, {
   }
 });
 ```
-
+</span>
 
 
 #Check if if the user is in a role.
@@ -103,36 +114,45 @@ user.addToRole(role, {
 If you want to check if the user is in the role then you can do this by 
 
 ==JavaScript==
+<span class="js-lines" data-query="check">
 ```
 var isInRole = user.isInRole(role); 
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="check">
 ```
 var isInRole = user.isInRole(role); 
 ```
+</span>
 
 #Get all roles from a user.
 
 If you want to get all the roles a user belongs to, then you need to do something like : 
 
 ==JavaScript==
+<span class="js-lines" data-query="get">
 ```
 //roles is an array of CloudRole
 var roles = user.get('roles'); 
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="get">
 ```
 //roles is an array of CloudRole
 var roles = user.get('roles'); 
 ```
+</span>
 
 #Remove a role from a user.
 
 If you want to remove a particular role, then you need to do something like : 
 
 ==JavaScript==
+<span class="js-lines" data-query="remove">
 ```
 user.removeFromRole(role, {
   success : function(user){
@@ -143,8 +163,10 @@ user.removeFromRole(role, {
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="remove">
 ```
 user.removeFromRole(role, {
   success : function(user){
@@ -155,6 +177,7 @@ user.removeFromRole(role, {
   }
 });
 ```
+</span>
 
 #####What's next?
 
