@@ -13,7 +13,7 @@ We will look at each of these types of relations and how to model them.
 Before we begin, Let's have a look at this ER Diagram below. 
 
 
-<img src="https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG" class="full-length-img">
+<img src="https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG" class="full-length-img" alt="One-to-One">
 
 * Here Student and Address tables share one-to-ine relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table. 
 
@@ -146,7 +146,7 @@ If you're choosing a <span class="tut-snippet">Relations</span> option, then you
 
 In this example, we're connecting Student and Courses tables. You basically create a new table called StudentCourses and have two columns (student and course) which is a <span class="tut-snippet">Relation</span> DataType to each of these two tables respectively. 
 
-<img src="https://blog.cloudboost.io/content/images/2015/09/Capture123-1.PNG" class="full-length-img">
+<img src="https://blog.cloudboost.io/content/images/2015/09/Capture123-1.PNG" class="full-length-img" alt="Many-to-many">
 
 ==JavaScript==
 <span class="js-lines" data-query="relation">
@@ -200,9 +200,9 @@ If you're choosing a <span class="tut-snippet">List</span> option, then you woul
 
 In this example, we're connecting Student and Courses tables. You basically create a new column called Students in Course Table and have a column which if of <span class="tut-snippet">List</span> type.
 
-<img src="https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG" class="full-length-img">
+<img src="https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG" class="full-length-img" alt="List">
 
->Info: You can do this other way around too. Instead of having a column in the course table you can also have a column in Student table which would be a List of Relations to Course. The decision depends on how will you query it. To learn more about queries, Please click [here]().
+><span class="tut-info">Info:</span> You can do this other way around too. Instead of having a column in the course table you can also have a column in Student table which would be a List of Relations to Course. The decision depends on how will you query it. To learn more about queries, Please click [here](?lang=en&category=query&subcategory=basicqueries).
 
 
 ==JavaScript==
@@ -252,4 +252,4 @@ course.save({
 
 #####What's next? 
 
-This section was more about saving relations in CloudObjects. To know more about how to query relations, Please click [here](), or if you'd like to know more about how to save files. You can click [here]()
+This section was more about saving relations in CloudObjects. To know more about how to query relations, Please click [here](?lang=en&category=query&subcategory=relationalqueries), or if you'd like to know more about how to save files. You can click [here](?lang=en&category=datastorage&subcategory=objects)
