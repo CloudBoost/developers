@@ -309,6 +309,7 @@ query.find({
 </span>
 
 ###Contains All
+
 ==JavaScript==
 <span class="js-lines" data-query="containsall">
 ```
@@ -469,7 +470,7 @@ query.skip(10);
 
 #Select Column
 
-You can return only the specified column data in an object by using `selectColumn` function. You can also choose NOT to return the data from that column by using the `doNotSelectColumn` function.
+You can return only the specified column data in an object by using <span class="tut-snippet">selectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">doNotSelectColumn</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="selectcol">
@@ -685,7 +686,7 @@ query.find({
 
 **Solution :**
 
-To solve this, you need to call the `include` function of CB.CloudQuery Object and pass in the ColumnName. 
+To solve this, you need to call the <span class="tut-snippet">include</span> function of CB.CloudQuery Object and pass in the ColumnName. 
 
 ==JavaScript==
 <span class="js-lines" data-query="include">
@@ -747,7 +748,7 @@ query.include('course.teacher');
 
 ###Near
 
-Queries for objects which are within range given by the query.It gives result in the order of nearest to farthest. You basically pass in the `ColumnName` to the first parameter, second parameter takes in a `CB.CloudGeoPoint`, and third takes in the radius in meters. 
+Queries for objects which are within range given by the query.It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> to the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters. 
 
 ==JavaScript==
 <span class="js-lines" data-query="near">
