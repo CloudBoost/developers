@@ -4,7 +4,7 @@ In the previous section we've learnt how to build real-time apps on your own cus
 
 Just to recap, CloudBoost.io supports two types of real-time notifications which will make your life as a developer a lot easier :
 
-* Custom Realtime Notification which we have seen in the [previous]() section.
+* Custom Realtime Notification which we have seen in the [previous](?lang=en&category=realtime&subcategory=customnotifications) section.
 * CloudObject Notifications which we will see here.
 
 #CloudObject Notifications
@@ -82,7 +82,7 @@ CB.CloudObject.on('Student', 'created', query, function(obj){
 
 #Stop listening
 
-To stop lisening. You can call the `off` method/function of CloudObject class and pass the event as a second parameter which you want to stop listening to. 
+To stop lisening. You can call the <span class="tut-snippet"> off</span> method/function of CloudObject class and pass the event as a second parameter which you want to stop listening to. 
 
 For example : 
 
