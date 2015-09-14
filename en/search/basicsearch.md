@@ -176,7 +176,7 @@ cs.searchQuery.phrase('name','John Smith');
 
 ###Or
 
-To OR a search query you can use the `or` function.
+To OR a search query you can use the <span class="tut-snippet">or</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="or">
@@ -203,7 +203,7 @@ cs.searchQuery.or(searchQuery1);
 
 ###And
 
-To AND a search query you can use the `and` function.
+To AND a search query you can use the <span class="tut-snippet">and</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="and">
@@ -229,7 +229,7 @@ cs.searchQuery.and(searchQuery1);
 
 ###Not
 
-To NOT a search query you can use the `not` function.
+To NOT a search query you can use the <span class="tut-snippet">not</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="not">
@@ -258,7 +258,7 @@ cs.searchQuery.not(searchQuery1);
 
 ###Equal To
 
-To have an equalTo constraint over a search filter you can use the `equalTo` function.
+To have an equalTo constraint over a search filter you can use the <span class="tut-snippet">equalTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="equal">
@@ -276,7 +276,7 @@ cs.searchFilter.equalTo("name","John");
 
 ###Not Equal To
 
-To have an notEqualTo constraint over a search filter you can use the `notEqualTo` function.
+To have an notEqualTo constraint over a search filter you can use the <span class="tut-snippet">notEqualTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="notequal">
@@ -294,7 +294,7 @@ cs.searchFilter.notEqualTo("name","John");
 
 ###Greater Than
 
-To have an greaterThan constraint over a search filter you can use the `greaterThan` function.
+To have an greaterThan constraint over a search filter you can use the <span class="tut-snippet">greaterThan</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="greaterthan">
@@ -312,7 +312,7 @@ cs.searchFilter.greaterThan("age",10);
 
 ###Less than
 
-To have an lessThan constraint over a search filter you can use the `lessThan` function.
+To have an lessThan constraint over a search filter you can use the <span class="tut-snippet">lessThan</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="lessthan">
@@ -331,7 +331,7 @@ cs.searchFilter.lessThan("age",10);
 ###Greater Than Or Equal To
 
 
-To have an greaterThanEqualTo constraint over a search filter you can use the `greaterThanEqualTo` function.
+To have an greaterThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">greaterThanEqualTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="greaterequal">
@@ -350,7 +350,7 @@ cs.searchFilter.greaterThanEqualTo("age",10);
 ###Less Than Or Equal To
 
 
-To have an lessThanEqualTo constraint over a search filter you can use the `lessThanEqualTo` function.
+To have an lessThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">lessThanEqualTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="lessequal">
@@ -369,7 +369,7 @@ cs.searchFilter.lessThanEqualTo("age",10);
 ###Exists
 
 
-To have a constraint over a search filter where a column cannot be null. You can use the `exists` function.
+To have a constraint over a search filter where a column cannot be null. You can use the <span class="tut-snippet">exists</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="exists">
@@ -388,7 +388,7 @@ cs.searchFilter.exists("name");
 
 ###Does not exists
 
-To have a constraint over a search filter where a column is null. You can use the `doesNotExists` function.
+To have a constraint over a search filter where a column is null. You can use the <span class="tut-snippet">doesNotExists</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="notexists">
@@ -406,7 +406,7 @@ cs.searchFilter.doesNotExists("name");
 
 ###Or
 
-To OR a search filter you can use the `or` function.
+To OR a search filter you can use the <span class="tut-snippet">or</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="filteror">
@@ -433,7 +433,7 @@ cs.searchFilter.or(searchFilter1);
 
 ###And
 
-To AND a search filter you can use the `and` function.
+To AND a search filter you can use the <span class="tut-snippet">and</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="filterand">
@@ -459,7 +459,7 @@ cs.searchFilter.and(searchFilter1);
 
 ###Not
 
-To NOT a search filter you can use the `not` function.
+To NOT a search filter you can use the <span class="tut-snippet">not</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="filternot">
