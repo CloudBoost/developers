@@ -202,7 +202,7 @@ query.find({
 
 ###Starts With
 
->Info: Starts with only works with `Text` type. 
+>Info: Starts with only works with <span class="tut-snippet">Text</span> type. 
 
 ==JavaScript==
 <span class="js-lines" data-query="startwith">
