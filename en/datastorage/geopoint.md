@@ -109,7 +109,7 @@ var distance = loc1.distanceInRadians(loc2);
 
 ###Near
 
-Queries for objects which are within range given by the query.It gives result in the order of nearest to farthest. You basically pass in the `ColumnName` to the first parameter, second parameter takes in a `CB.CloudGeoPoint`, and third takes in the radius in meters. 
+Queries for objects which are within range given by the query.It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> to the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters. 
 
 ==JavaScript==
 <span class="js-lines" data-query="query-near">
