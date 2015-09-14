@@ -85,7 +85,7 @@ cs.search({
 
 There are two queries in CloudSearch, One is **SearchQuery** and the other is **SearchFilter**. When you run the CloudSearch query, Your data is filtered first by using the FilteredQuery and then, the filtered data is then searched using the SearchQuery and the results are then returned. 
 
-{<1>}![CloudBoost Search Pipeline](/content/images/2015/09/Capture.PNG)
+<img src="https://blog.cloudboost.io/content/images/2015/09/Capture.PNG" alt="CloudBoost Search Pipeline" class="full-length-img">
 
 To create a new SearchQuery and SearchFilter you can : 
 
