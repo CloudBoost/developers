@@ -16,7 +16,7 @@ If you're building a School Management System for a School, then there might be 
 
 Each one of these user can have any number of users. 
 
-#Create a Role.
+#Create a Role
 
 To create a new role you need to initialize a new variable with the type CloudRole, assign it a name and call save function / method.
 
@@ -74,7 +74,7 @@ console.log(role.name);
 ```
 </span>
 
-#Add user to role. 
+#Add user to role
 
 Here is the sample code to add a CloudUser to the CloudRole. 
 
@@ -109,7 +109,7 @@ user.addToRole(role, {
 </span>
 
 
-#Check if if the user is in a role.
+#Check if if the user is in a role
 
 If you want to check if the user is in the role then you can do this by 
 
@@ -127,7 +127,7 @@ var isInRole = user.isInRole(role);
 ```
 </span>
 
-#Get all roles from a user.
+#Get all roles from a user
 
 If you want to get all the roles a user belongs to, then you need to do something like : 
 
@@ -147,7 +147,7 @@ var roles = user.get('roles');
 ```
 </span>
 
-#Remove a role from a user.
+#Remove a role from a user
 
 If you want to remove a particular role, then you need to do something like : 
 
