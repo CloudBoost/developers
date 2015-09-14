@@ -23,18 +23,22 @@ Data is delivered to you in something we call as channels. Channels are basicall
 To listen to a channel, you basically need to attach a callback to the "on" function of CloudNotification object. 
 
 ==JavaScript==
+<span class="js-lines" data-query="on">
 ```
 `CB.CloudNotification.on('ChannelName',function(data){
 		//data can be anything you publish to a channel. Can be a string, number, object etc. 
 }});`
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="on">
 ```
 `CB.CloudNotification.on('ChannelName',function(data){
 		//data can be anything you publish to a channel. Can be a string, number, object etc. 
 }});`
 ```
+</span>
 
 
 ##Publishing messages to channels
@@ -42,29 +46,36 @@ To listen to a channel, you basically need to attach a callback to the "on" func
 Now as we're listening to channel form one side and we can publish messages to those channels to fire the callback which was attached to the event. 
 
 ==JavaScript==
+<span class="js-lines" data-query="publish">
 ```
 `CB.CloudNotification.publish('ChannelName','data');`
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="publish">
 ```
 `CB.CloudNotification.publish('ChannelName','data');`
 ```
+</span>
 
 ##Stop listening
 
 To stop listening to notifications from Channels you need to call the `off` method/fucntion of CloudNotifications class.
 
 ==JavaScript==
+<span class="js-lines" data-query="off">
 ```
 `CB.CloudNotification.off('ChannelName');`
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="off">
 ```
 `CB.CloudNotification.off('ChannelName');`
 ```
-
+</span>
 
 #####What's next?
 
