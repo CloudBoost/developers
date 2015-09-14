@@ -14,7 +14,7 @@ Before we begin, Let's have a look at this ER Diagram below.
 
 {<1>}![School Management System](/content/images/2015/09/StudentManagementSystem.PNG)
 
-* Here Student and Address tables share one-to-ine relation since student can ONLY have one address.  An address column from the Student table is `related` to Address Table. 
+* Here Student and Address tables share one-to-ine relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table. 
 
 * Student and Course share a many to many relationship since any number of students can be in one course and one student can take any number of courses. 
 
@@ -24,7 +24,7 @@ CloudBoost can help you model these type of relations with ease.
 
 Here we're modelling a one-to-one relationship between Student and Address tables. 
 
-To model one-to-one relationship, we create an `address` column in our `Student` table and choose the data-type of the column as `Relation`. Pick `Address` Table form the second dropdown and as it is a one-to-one relation, make sure you check the `unique` checkbox of the address column which will make sure no two student has the same address.
+To model one-to-one relationship, we create an <span class="tut-snippet">address</span> column in our <span class="tut-snippet">Student</span> table and choose the data-type of the column as <span class="tut-snippet">Relation</span>. Pick <span class="tut-snippet">Address</span> Table form the second dropdown and as it is a one-to-one relation, make sure you check the <span class="tut-snippet">unique</span> checkbox of the address column which will make sure no two student has the same address.
 
 
 To save an object with one-to-one relation. Here is the code which you need to write : 
@@ -75,11 +75,11 @@ student.save({
 
 
 
->Info: For one-to-one relations, you need to set `unique` constraint on a column when you're designing your table. 
+>Info: For one-to-one relations, you need to set <span class="tut-snippet">unique</span> constraint on a column when you're designing your table. 
 
 #One to many
 
-This is exactly the same as One-to-one but with one simple difference. You **dont** need to set `unique` property on a column and doing this would allow a CloudObject to be related to any number of Objects. 
+This is exactly the same as One-to-one but with one simple difference. You **dont** need to set <span class="tut-snippet">unique</span> property on a column and doing this would allow a CloudObject to be related to any number of Objects. 
 
 The code for one to many would look exactly the same. In this instance, One Address can belong to any number of students. 
 
@@ -127,23 +127,23 @@ student.save({
 ```
 </span>
 
->Info: For one-to-many relations, you **don't** have to set a `unique` constraint on a column when you're designing your table. 
+>Info: For one-to-many relations, you **don't** have to set a <span class="tut-snippet">unique</span> constraint on a column when you're designing your table. 
 
 
 #Many to many
 
 Many-to-many relationships can be modelled in two ways. 
 
-* With a `Relation` DataType.
-* With a `List` DataType. 
+* With a <span class="tut-snippet">Relation</span> DataType.
+* With a <span class="tut-snippet">List</span> DataType. 
 
 
 
 ###With Relations
 
-If you're choosing a `Relations` option, then you would basically create a new table that would store relations of two tables you want to connect to. This is very similar to creating a many-to-many relations in any Relational Database. 
+If you're choosing a <span class="tut-snippet">Relations</span> option, then you would basically create a new table that would store relations of two tables you want to connect to. This is very similar to creating a many-to-many relations in any Relational Database. 
 
-In this example, we're connecting Student and Courses tables. You basically create a new table called StudentCourses and have two columns (student and course) which is a `Relation` DataType to each of these two tables respectively. 
+In this example, we're connecting Student and Courses tables. You basically create a new table called StudentCourses and have two columns (student and course) which is a <span class="tut-snippet">Relation</span> DataType to each of these two tables respectively. 
 
 {<2>}![](/content/images/2015/09/Capture123-1.PNG)
 
@@ -195,9 +195,9 @@ studentCourses.save({
 
 ###With List
 
-If you're choosing a `List` option, then you would basically create a column with `List` DataType adn select the table you want to connect to. Think of List as Array of Related Objects. 
+If you're choosing a <span class="tut-snippet">List</span> option, then you would basically create a column with <span class="tut-snippet">List</span> DataType adn select the table you want to connect to. Think of List as Array of Related Objects. 
 
-In this example, we're connecting Student and Courses tables. You basically create a new column called Students in Course Table and have a column which if of `List` type.
+In this example, we're connecting Student and Courses tables. You basically create a new column called Students in Course Table and have a column which if of <span class="tut-snippet">List</span> type.
 
 {<3>}![](/content/images/2015/09/StudentManagementSystem.PNG)
 
