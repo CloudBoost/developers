@@ -4,44 +4,47 @@ In this section you'll learn how to create an Table (we call it CloudTable) and 
 
 #Saving a new table.
 
-If you haven't created a new app and a table yet. Please take a look into [Getting Started]() section. To create a new table you need to initialize a new variable with the type CloudTable.
+If you haven't created a new app and a table yet. Please take a look into [Getting Started](?lang=en&category=gettingstarted&subcategory=yourfirstapp) section. To create a new table you need to initialize a new variable with the type CloudTable.
 
 ==JavaScript==
+<span class="js-lines" data-query="create">
 ```
 var table = new CB.CloudTable('TableName');
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="create">
 ```
 var table = new CB.CloudTable('TableName');
 ```
+</span>
 
 To add columns, You need to create a new `Column` Object and assign it to the CloudColumn class. You can use the `addColumn` function / method of CloudTable class
 
 ==JavaScript==
+<span class="js-lines" data-query="savecol">
 ```
 var table = new CB.CloudTable('Student');
 var column = new CB.Column('Name', 'Text');
 table.addColumn(column);
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="js-lines" data-query="savecol">
 ```
 var table = new CB.CloudTable('Student');
 var column = new CB.Column('Name', 'Text');
 table.addColumn(column);
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
@@ -66,48 +69,52 @@ Before you add columns to the CloudTable you need to instantiate new column obje
 
 
 ==JavaScript==
+<span class="js-lines" data-query="createcol">
 ```
 var column = new CB.Column('Name');
 column.required = true;
 column.unique = false;
 column.dataType = 'Text';
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="createcol">
 ```
 var column = new CB.Column('Name');
 column.required = true;
 column.unique = false;
 column.dataType = 'Text';
 ```
+</span>
 
 You need to add the new column object to the CloudTable object.
 
 ==JavaScript==
+<span class="nodejs-lines" data-query="addcoltable">
 ```
 var table = new CB.CloudTable('Student');
 table.addColumn(column1);
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 })
 ```
+/span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="addcoltable">
 ```
 var table = new CB.CloudTable('Student');
 table.addColumn(column1);
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 #Data-types
 
@@ -146,17 +153,22 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 Here's the sample code which will help you add a list column : 
 
 ==JavaScript==
+<span class="js-lines" data-query="listcol">
 ```
 var column = new CB.Column('Name');
 column.dataType = 'List';
 column.listDataType = 'Text';
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="listcol">
 ```
 var column = new CB.Column('Name');
 column.dataType = 'List';
 column.listDataType = 'Text';
 ```
+</span>
 
 #Adding Relational Columns
 
@@ -168,90 +180,109 @@ There are two types of DataTypes which are considered when you're relating table
 Here's the sample code which will help you add a relation column
 
 ==JavaScript==
+<span class="js-lines" data-query="relcol">
 ```
 var column = new CB.Column('Name');
 column.dataType = 'Relation';
 column.relatedTo = 'TableName';
 ```
-==NodeJS==
-```
-var column = new CB.Column('Name');
-column.dataType = 'Relation';
-column.relatedTo = 'TableName';
-```
+</span>
 
+==NodeJS==
+<span class="nodejs-lines" data-query="relcol">
+```
+var column = new CB.Column('Name');
+column.dataType = 'Relation';
+column.relatedTo = 'TableName';
+```
+</span>
 
 If you want to add a list relational column, then : 
 
 ==JavaScript==
+<span class="js-lines" data-query="listrelcol">
 ```
 var column = new CB.Column('Name');
 column.dataType = 'List';
 column.relatedTo = 'TableName';
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="listrelcol">
 ```
 var column = new CB.Column('Name');
 column.dataType = 'List';
 column.relatedTo = 'TableName';
 ```
+</span>
 
 #Getting Columns
 
 To get columns from a CloudTable, You can, 
 
 ==JavaScript==
+<span class="js-lines" data-query="getcols">
 ```
 var columns = table.columns; //array of CB.Column Objects 
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="getcols">
 ```
 var columns = table.columns; //array of CB.Column Objects 
 ```
+</span>
 
 You can even get columns using : 
 
 
 ==JavaScript==
+<span class="js-lines" data-query="getcolsalt">
 ```
 var column = table.getColumn('name'); //CB.Column Object
 ```
-==NodeJS==
-```
-var column = table.getColumn('name'); //CB.Column Object
-```
+</span>
 
+==NodeJS==
+<span class="nodejs-lines" data-query="getcolsalt">
+```
+var column = table.getColumn('name'); //CB.Column Object
+```
+</span>
 
 #Editing Columns
 
 To edit columns from a CloudTable, You can, 
 
 ==JavaScript==
+<span class="js-lines" data-query="editcol">
 ```
 var column = table.getColumn('Name');
 column.required = true; 
 table.updateColumn(column);
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="editcol">
 ```
 var column = table.getColumn('Name');
 column.required = true; 
 table.updateColumn(column);
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 >Info: You cannot edit the ColumnName and DataType after its saved. You can only change `required` and `unique` properties of a column.
 
@@ -260,100 +291,108 @@ table.save({
 To delete columns from a CloudTable, You can, 
 
 ==JavaScript==
+<span class="js-lines" data-query="delcol">
 ```
 table.deleteColumn('ColumnName');
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="delcol">
 ```
 table.deleteColumn('ColumnName');
 table.save({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 #Deleting Table
 
 To delete tables from a CloudApp, You can, 
 
 ==JavaScript==
+<span class="js-lines" data-query="deltable">
 ```
 table.delete({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="deltable">
 ```
 table.delete({
-	success : function(table){
-    
+    success : function(table){
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 #Getting Tables
 
 To get all the tables from a CloudApp, You can, 
 
 ==JavaScript==
+<span class="js-lines" data-query="getalltabs">
 ```
 CB.CloudTable.getAll({
 	success : function(tables){
     	//tables is an array of CB.CloudTable
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="getalltabs">
 ```
 CB.CloudTable.getAll({
 	success : function(tables){
     	//tables is an array of CB.CloudTable
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 To get a particular table from a CloudApp, You can, 
 
 ==JavaScript==
+<span class="js-lines" data-query="gettabname">
 ```
 CB.CloudTable.get('TableName', {
-	success : function(tables){
+    success : function(tables){
     	//tables is an array of CB.CloudTable
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="gettabname">
 ```
 CB.CloudTable.get('TableName', {
-	success : function(tables){
+    success : function(tables){
     	//tables is an array of CB.CloudTable
     }, error : fucntion(error){
-    
     }
 });
 ```
+</span>
 
 
 
