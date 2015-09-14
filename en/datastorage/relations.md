@@ -30,17 +30,16 @@ To model one-to-one relationship, we create an `address` column in our `Student`
 To save an object with one-to-one relation. Here is the code which you need to write : 
 
 ==JavaScript==
+<span class="js-lines" data-query="oneone">
 ```
 //create the address object. 
 var address = new CB.CloudObject('Address');
 address.set('StreetName','Manhattan');
 address.set('Country','United States');
-
 //create the student object and set address object inside it. 
 var student = new CB.CloudObject('Student');
 student.set('name', 'John Smith');
 student.set('address', address);
-
 //save
 student.save({
 	success : function(student){
@@ -50,18 +49,19 @@ student.save({
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="oneone">
 ```
 //create the address object. 
 var address = new CB.CloudObject('Address');
 address.set('StreetName','Manhattan');
 address.set('Country','United States');
-
 //create the student object and set address object inside it.  
 var student = new CB.CloudObject('Student');
 student.set('name', 'John Smith');
 student.set('address', address);
-
 //save
 student.save({
 	success : function(student){
@@ -71,6 +71,7 @@ student.save({
     }
 });
 ```
+</span>
 
 
 
@@ -83,17 +84,16 @@ This is exactly the same as One-to-one but with one simple difference. You **don
 The code for one to many would look exactly the same. In this instance, One Address can belong to any number of students. 
 
 ==JavaScript==
+<span class="js-lines" data-query="onemany">
 ```
 //create the address object. 
 var address = new CB.CloudObject('Address');
 address.set('StreetName','Manhattan');
 address.set('Country','United States');
-
 //create the student object and set address object inside it. 
 var student = new CB.CloudObject('Student');
 student.set('name', 'John Smith');
 student.set('address', address);
-
 //save
 student.save({
 	success : function(student){
@@ -103,18 +103,19 @@ student.save({
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="onemany">
 ```
 //create the address object. 
 var address = new CB.CloudObject('Address');
 address.set('StreetName','Manhattan');
 address.set('Country','United States');
-
 //create the student object and set address object inside it.  
 var student = new CB.CloudObject('Student');
 student.set('name', 'John Smith');
 student.set('address', address);
-
 //save
 student.save({
 	success : function(student){
@@ -124,6 +125,7 @@ student.save({
     }
 });
 ```
+</span>
 
 >Info: For one-to-many relations, you **don't** have to set a `unique` constraint on a column when you're designing your table. 
 
@@ -146,20 +148,18 @@ In this example, we're connecting Student and Courses tables. You basically crea
 {<2>}![](/content/images/2015/09/Capture123-1.PNG)
 
 ==JavaScript==
+<span class="js-lines" data-query="relation">
 ```
 //create the course object. 
 var course = new CB.CloudObject('Course');
 course.set('name','JavaScript');
-
 //create the student object 
 var student = new CB.CloudObject('Student');
 student.set('name', 'John Smith');
-
 //assign student and course to studentCourses
 var studentCourses = new CB.CloudObject('StudentCourses');
 studentCourses.set('student', student);
 studentCourses.set('course',course);
-
 //save
 studentCourses.save({
 	success : function(studentCourses){
@@ -170,20 +170,18 @@ studentCourses.save({
 });
 ```
 ==NodeJS==
+<span class="nodejs-lines" data-query="relation">
 ```
 //create the course object. 
 var course = new CB.CloudObject('Course');
 course.set('name','JavaScript');
-
 //create the student object 
 var student = new CB.CloudObject('Student');
 student.set('name', 'John Smith');
-
 //assign student and course to studentCourses
 var studentCourses = new CB.CloudObject('StudentCourses');
 studentCourses.set('student', student);
 studentCourses.set('course',course);
-
 //save
 studentCourses.save({
 	success : function(studentCourses){
@@ -193,6 +191,7 @@ studentCourses.save({
     }
 });
 ```
+</span>
 
 ###With List
 
@@ -206,20 +205,16 @@ In this example, we're connecting Student and Courses tables. You basically crea
 
 
 ==JavaScript==
+<span class="js-lines" data-query="list">
 ```
-
 //create the student object 
 var student1 = new CB.CloudObject('Student');
 student1.set('name', 'John Smith');
-
 var student2 = new CB.CloudObject('Student');
 student2.set('name', 'Jack Danielle');
-
 var course = new CB.CloudObject('Course');
 course.set('Name', 'Java');
 course.set('Students',[student1,student2]);
-
-
 //save
 course.save({
 	success : function(student){
@@ -229,21 +224,19 @@ course.save({
     }
 });
 ```
+</span>
+
 ==NodeJS==
+<span class="nodejs-lines" data-query="list">
 ```
-
 //create the student object 
 var student1 = new CB.CloudObject('Student');
 student1.set('name', 'John Smith');
-
 var student2 = new CB.CloudObject('Student');
 student2.set('name', 'Jack Danielle');
-
 var course = new CB.CloudObject('Course');
 course.set('Name', 'Java');
 course.set('Students',[student1,student2]);
-
-
 //save
 course.save({
 	success : function(student){
@@ -253,7 +246,7 @@ course.save({
     }
 });
 ```
-
+</span>
 
 
 #####What's next? 
