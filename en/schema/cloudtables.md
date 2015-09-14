@@ -2,7 +2,7 @@
 
 In this section you'll learn how to create an Table (we call it CloudTable) and and save it into your CloudBoost App. You will also learn about default columns in tables. Finally we'll also learn to add, delete and update columns in a CloudTable. 
 
-#Saving a new table.
+#Saving a new table
 
 If you haven't created a new app and a table yet. Please take a look into [Getting Started](?lang=en&category=gettingstarted&subcategory=yourfirstapp) section. To create a new table you need to initialize a new variable with the type CloudTable.
 
@@ -284,7 +284,7 @@ table.save({
 ```
 </span>
 
->Info: You cannot edit the ColumnName and DataType after its saved. You can only change `required` and `unique` properties of a column.
+>Info: You cannot edit the ColumnName and DataType after its saved. You can only change <span class="tut-snippet">required</span> and <span class="tut-snippet">unique</span> properties of a column.
 
 #Deleting Columns
 
