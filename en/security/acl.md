@@ -15,6 +15,7 @@ ACL's are basically a column on every CloudObject, CloudUser and CloudRole and t
 To have a user read access on a CloudObject, You can : 
 
 ==JavaScript==
+<span class="js-lines" data-query="read">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -28,8 +29,10 @@ obj.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="read">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -43,6 +46,7 @@ obj.save({
   }
 });
 ```
+</span>
 
 In this case, Only that particular user will be able to read that object from the database. 
 
@@ -52,6 +56,7 @@ In this case, Only that particular user will be able to read that object from th
 To have a user write access on a CloudObject, You can : 
 
 ==JavaScript==
+<span class="js-lines" data-query="write">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -65,8 +70,10 @@ obj.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="write">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -80,6 +87,7 @@ obj.save({
   }
 });
 ```
+</span>
 
 In this case, Only that particular user will be able to write that object to the database.
 
@@ -90,6 +98,7 @@ In this case, Only that particular user will be able to write that object to the
 To have all the users in that role have a read access on a CloudObject, You can : 
 
 ==JavaScript==
+<span class="js-lines" data-query="roleread">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -103,8 +112,10 @@ obj.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="roleread">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -118,6 +129,7 @@ obj.save({
   }
 });
 ```
+</span>
 
 In this case, All of the users which belong to that role will be able to read that object from the database. 
 
@@ -127,6 +139,7 @@ In this case, All of the users which belong to that role will be able to read th
 To have all the users in that role have a write access on a CloudObject, You can : 
 
 ==JavaScript==
+<span class="js-lines" data-query="rolewrite">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -140,8 +153,10 @@ obj.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="rolewrite">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -155,6 +170,7 @@ obj.save({
   }
 });
 ```
+</span>
 
 In this case, All of the users which belong to that role will be able to write that object from the database. 
 
@@ -165,6 +181,7 @@ In this case, All of the users which belong to that role will be able to write t
 To have all the users in in your app have a read access on a CloudObject, You can : 
 
 ==JavaScript==
+<span class="js-lines" data-query="publicread">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -178,8 +195,10 @@ obj.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="publicread">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -193,6 +212,7 @@ obj.save({
   }
 });
 ```
+</span>
 
 In this case, All of the users in your app will be able to read that object from the database. 
 
@@ -202,6 +222,7 @@ In this case, All of the users in your app will be able to read that object from
 To have all the users in your app have a read access on a CloudObject, You can : 
 
 ==JavaScript==
+<span class="js-lines" data-query="publciwrite">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -215,8 +236,10 @@ obj.save({
   }
 });
 ```
+</span>
 
 ==NodeJS==
+<span class="nodejs-lines" data-query="publicwrite">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -230,5 +253,6 @@ obj.save({
   }
 });
 ```
+</span>
 
 In this case, All of the users in your app will be able to write that object from the database. 
