@@ -12,7 +12,7 @@ We will look at each of these types of relations and how to model them.
 
 Before we begin, Let's have a look at this ER Diagram below. 
 
-{<1>}![School Management System](/content/images/2015/09/StudentManagementSystem.PNG)
+{<1>}![School Management System](https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG)
 
 * Here Student and Address tables share one-to-ine relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table. 
 
