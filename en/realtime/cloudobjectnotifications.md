@@ -12,10 +12,12 @@ Just to recap, CloudBoost.io supports two types of real-time notifications which
 Real-time database notification happens when you want to listen to a specific event from the database. For example : If you're building a social networking app, you might want the feeds to be appear on your page when your friends posts something. In this case, if we have an object that is created and inserted into that table, we want listen to that particular event and auto update the page when that notification happens
 
 ==JavaScript==
+<span class="js-lines" data-query="">
 ```
 CB.CloudObject.on('TableName', 'created', function(obj){ 
 });
 ```
+</span>
 ==NodeJS==
 ```
 CB.CloudObject.on('TableName', 'created', function(obj){ 
