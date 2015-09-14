@@ -14,6 +14,8 @@ Before we begin, Let's have a look at this ER Diagram below.
 
 {<1>}![School Management System](https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG)
 
+<img src="https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG" class="full-length-img">
+
 * Here Student and Address tables share one-to-ine relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table. 
 
 * Student and Course share a many to many relationship since any number of students can be in one course and one student can take any number of courses. 
