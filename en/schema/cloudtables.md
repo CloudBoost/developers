@@ -37,7 +37,7 @@ table.save({
 </span>
 
 ==NodeJS==
-<span class="js-lines" data-query="savecol">
+<span class="nodejs-lines" data-query="savecol">
 ```
 var table = new CB.CloudTable('Student');
 var column = new CB.Column('Name', 'Text');
@@ -91,7 +91,7 @@ column.dataType = 'Text';
 You need to add the new column object to the CloudTable object.
 
 ==JavaScript==
-<span class="nodejs-lines" data-query="addcoltable">
+<span class="js-lines" data-query="addcoltable">
 ```
 var table = new CB.CloudTable('Student');
 table.addColumn(column1);
