@@ -20,7 +20,7 @@ var table = new CB.CloudTable('TableName');
 ```
 </span>
 
-To add columns, You need to create a new `Column` Object and assign it to the CloudColumn class. You can use the `addColumn` function / method of CloudTable class
+To add columns, You need to create a new <span class="tut-snippet"> Column</span> Object and assign it to the CloudColumn class. You can use the <span class="tut-snippet">addColumn</span> function / method of CloudTable class
 
 ==JavaScript==
 <span class="js-lines" data-query="savecol">
@@ -59,9 +59,9 @@ Every CloudTable when created has default columns attached to it. Here is a list
 
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. 
 
-* **Expires** : [DateTime] `null` by default. You can set `expires` to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
+* **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
 
-* **ACL** : [CB.ACL] ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]() section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]()
+* **ACL** : [CB.ACL] ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security](?lang=en&category=security&subcategory=acl) section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here](?lang=en&category=security&subcategory=acl)
 
 #Adding new columns
 
