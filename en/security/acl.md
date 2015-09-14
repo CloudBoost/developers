@@ -4,7 +4,7 @@ In this section you'll learn what ACL's are and how to add security and access c
 
 #Before we begin
 
-ACL's are basically Access Control Lists and they're used to give read or write privelages to Users and Roles. Please read what [users]() and [roles]() are before you continue reading this section.
+ACL's are basically Access Control Lists and they're used to give read or write privelages to Users and Roles. Please read what [users](?lang=en&category=security&subcategory=users) and [roles](?lang=en&category=security&subcategory=roles) are before you continue reading this section.
 
 ACL's are basically a column on every CloudObject, CloudUser and CloudRole and they basically define the security of that particular object. **By default CloudObject are publically readable and writeable.** and you can change this to give read and write privelages to any user or any role. 
 
