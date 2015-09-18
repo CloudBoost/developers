@@ -4,11 +4,11 @@ In this section you'll learn about how to save a file from your local file syste
 
 #Saving a file 
 
-To save a file in CloudBoost, you basically need to pass in the file object as a parameter and call the save function of the CB.CloudFile class. You can save files of any size in CloudBoost, but you will be charged for the storage units according to [Pricing](https://cloudboost.io/pricing) Page.
+To save a file in CloudBoost, you basically need to pass in the file object as a parameter and call the save function of the [CB.CloudFile](https://docs.cloudboost.io/#CloudFile) class. You can save files of any size in CloudBoost, but you will be charged for the storage units according to [Pricing](https://cloudboost.io/pricing) Page.
 
 ###From Local File System
 
-To save a file from your local file system, You need to : 
+To save a file from your local file system, you need to: 
 
 ==JavaScript==
 <span class="js-lines" data-query="savefile">
@@ -19,10 +19,10 @@ if (fileUploadControl.files.length > 0) {
   var name = "photo.jpg";
   var cloudFile = new CB.CloudFile(name, file);
   cloudFile.save({
-  	success : fucntion(cloudFile){
-    	console.log(cloudFile.URL);
+    success : function(cloudFile){
+      console.log(cloudFile.URL);
     }, error: function(error){
-    	//error
+      //error
     }
   })
 }
@@ -31,7 +31,7 @@ if (fileUploadControl.files.length > 0) {
 
 ###From Blob
 
-To save a file by creating a blob, You need to : 
+To save a file by creating a blob, you need to: 
 
 ==JavaScript==
 <span class="js-lines" data-query="saveblob">
@@ -54,7 +54,7 @@ file.save({
 
 #Delete a file
 
-To delete a file, You need to : 
+To delete a file, you need to: 
 
 ==JavaScript==
 <span class="js-lines" data-query="deletefile">

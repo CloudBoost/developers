@@ -1,8 +1,8 @@
 #####In this section
 
-In this section you'll learn how relationsips work in CloudBoost and how to model your data leveraging relationship features in CloudBoost. 
+In this section you'll learn how relationships work in CloudBoost and how to model your data leveraging relationship features in CloudBoost. 
 
-There are usually three types of relationships :
+There are usually three types of relationships:
 
 * One to One
 * One to many
@@ -10,12 +10,12 @@ There are usually three types of relationships :
 
 We will look at each of these types of relations and how to model them. 
 
-Before we begin, Let's have a look at this ER Diagram below. 
+Before we begin, let's have a look at this ER Diagram below. 
 
 
 <img src="https://blog.cloudboost.io/content/images/2015/09/StudentManagementSystem.PNG" class="full-length-img" alt="One-to-One">
 
-* Here Student and Address tables share one-to-ine relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table. 
+* Here Student and Address tables share one-to-one relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table. 
 
 * Student and Course share a many to many relationship since any number of students can be in one course and one student can take any number of courses. 
 
@@ -28,7 +28,7 @@ Here we're modelling a one-to-one relationship between Student and Address table
 To model one-to-one relationship, we create an <span class="tut-snippet">address</span> column in our <span class="tut-snippet">Student</span> table and choose the data-type of the column as <span class="tut-snippet">Relation</span>. Pick <span class="tut-snippet">Address</span> Table form the second dropdown and as it is a one-to-one relation, make sure you check the <span class="tut-snippet">unique</span> checkbox of the address column which will make sure no two student has the same address.
 
 
-To save an object with one-to-one relation. Here is the code which you need to write : 
+To save an object with one-to-one relation. Here is the code which you need to write: 
 
 ==JavaScript==
 <span class="js-lines" data-query="oneone">
@@ -43,10 +43,10 @@ student.set('name', 'John Smith');
 student.set('address', address);
 //save
 student.save({
-	success : function(student){
-    	//saved successfully. 
+    success : function(student){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -65,10 +65,10 @@ student.set('name', 'John Smith');
 student.set('address', address);
 //save
 student.save({
-	success : function(student){
-    	//saved successfully. 
+    success : function(student){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -80,7 +80,7 @@ student.save({
 
 #One to many
 
-This is exactly the same as One-to-one but with one simple difference. You **dont** need to set <span class="tut-snippet">unique</span> property on a column and doing this would allow a CloudObject to be related to any number of Objects. 
+This is exactly the same as One-to-one but with one simple difference. You **don’t** need to set <span class="tut-snippet">unique</span> property on a column and doing this would allow a CloudObject to be related to any number of Objects. 
 
 The code for one to many would look exactly the same. In this instance, One Address can belong to any number of students. 
 
@@ -97,10 +97,10 @@ student.set('name', 'John Smith');
 student.set('address', address);
 //save
 student.save({
-	success : function(student){
-    	//saved successfully. 
+    success : function(student){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -119,10 +119,10 @@ student.set('name', 'John Smith');
 student.set('address', address);
 //save
 student.save({
-	success : function(student){
-    	//saved successfully. 
+    success : function(student){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -163,10 +163,10 @@ studentCourses.set('student', student);
 studentCourses.set('course',course);
 //save
 studentCourses.save({
-	success : function(studentCourses){
-    	//saved successfully. 
+    success : function(studentCourses){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -185,10 +185,10 @@ studentCourses.set('student', student);
 studentCourses.set('course',course);
 //save
 studentCourses.save({
-	success : function(studentCourses){
-    	//saved successfully. 
+    success : function(studentCourses){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -196,7 +196,7 @@ studentCourses.save({
 
 ###With List
 
-If you're choosing a <span class="tut-snippet">List</span> option, then you would basically create a column with <span class="tut-snippet">List</span> DataType adn select the table you want to connect to. Think of List as Array of Related Objects. 
+If you're choosing a <span class="tut-snippet">List</span> option, then you would basically create a column with <span class="tut-snippet">List</span> DataType and select the table you want to connect to. Think of List as Array of Related Objects. 
 
 In this example, we're connecting Student and Courses tables. You basically create a new column called Students in Course Table and have a column which if of <span class="tut-snippet">List</span> type.
 
@@ -218,10 +218,10 @@ course.set('Name', 'Java');
 course.set('Students',[student1,student2]);
 //save
 course.save({
-	success : function(student){
-    	//saved successfully. 
+    success : function(student){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -240,10 +240,10 @@ course.set('Name', 'Java');
 course.set('Students',[student1,student2]);
 //save
 course.save({
-	success : function(student){
-    	//saved successfully. 
+    success : function(student){
+        //saved successfully. 
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```

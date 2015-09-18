@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create an Object (we call it CloudObject) and and save it into your CloudTable. You will also learn about default properties in objects. Finally we'll also learn to update, delete and refresh / fetch CloudObjects and look into various data-types CloudBoost supports. 
+In this section you'll learn how to create an Object (we call it [CloudObject]( https://docs.cloudboost.io/#CloudObject)) and save it into your [CloudTable]( https://docs.cloudboost.io/#CloudTable). You will also learn about default properties in objects. Finally we'll also learn to update, delete and refresh / fetch CloudObjects and look into various data-types CloudBoost supports. 
 
 #Saving Objects
 
@@ -49,7 +49,7 @@ obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
         console.log(obj.id); //a new id is automatically generated. 
-    },error : fucntion(error){
+    },error : function(error){
         //object failed to save.  
     }
 });
@@ -65,7 +65,7 @@ obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
         console.log(obj.id); //a new id is automatically generated. 
-    },error : fucntion(error){
+    },error : function(error){
         //object failed to save.  
     }
 });
@@ -95,7 +95,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 * **Object** : Used to store a JSON object.
 
-* **Files** : Used to store the file of any size. 
+* **Files** : Used to store a [CloudFile]( https://docs.cloudboost.io/#CloudFile) of any size. 
 
 * **Encrypted Text** : Used to store important text like Password, etc. 
 
@@ -110,7 +110,7 @@ CloudBoost has data-types to support various forms of data. All the way from Tex
 
 #Default Properties
 
-Every CloudObject when created has default properties attached to it. Here is alist of all the default properties attached to CloudObjects when you initialize them. 
+Every CloudObject when created has default properties attached to it. Here is a list of all the default properties attached to CloudObjects when you initialize them. 
 
 * **Id** : [Txt] A unique ID of a CloudObject is assigned as soon as the Object is saved. **You cannot assign a user-defined ID to a CloudObject**.
 
@@ -179,7 +179,7 @@ obj.expires;
 ```
 </span>
 
-* **ACL** : [CB.ACL] ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]() section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]()
+* **ACL** : [CB.ACL]( https://docs.cloudboost.io/#ACL) ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]( /?lang=en&category=security&subcategory=acl) section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]( https://docs.cloudboost.io/#ACL)
 
 ==JavaScript==
 <span class="js-lines" data-query="viewacl">
@@ -206,7 +206,7 @@ obj.set('ColumnName', newData);
 obj.save({
     success : function(obj){
         console.log(obj.id); //id is the same.  
-    },error : fucntion(error){
+    },error : function(error){
         //object failed to save.  
     }
 });
@@ -220,7 +220,7 @@ obj.set('ColumnName', newData);
 obj.save({
     success : function(obj){
         console.log(obj.id); //id is the same.  
-    },error : fucntion(error){
+    },error : function(error){
         //object failed to save.  
     }
 });
@@ -229,7 +229,7 @@ obj.save({
 
 #Fetching Objects
 
-If you have an old or a stale copy of CloudObject and you want to refresh / fetch a updated one from the server then you can use the fetch method / function of CloudObject. 
+If you have an old or a stale copy of CloudObject and you want to refresh / fetch the updated one from the server then you can use the fetch method / function of CloudObject. 
 
 ==JavaScript==
 <span class="js-lines" data-query="fetch">
@@ -237,7 +237,7 @@ If you have an old or a stale copy of CloudObject and you want to refresh / fetc
 obj.fetch({
     success : function(obj){
         //an updated of object is fetched from the server.  
-    },error : fucntion(error){
+    },error : function(error){
     }
 });
 ```
@@ -249,7 +249,7 @@ obj.fetch({
 obj.fetch({
     success : function(obj){
         //an updated of object is fetched from the server.  
-    },error : fucntion(error){
+    },error : function(error){
     }
 });
 ```
@@ -265,7 +265,7 @@ If you want to delete an object form the database then you need to call the dele
 obj.delete({
     success : function(obj){
         //an object is deleted from the server
-    },error : fucntion(error){
+    },error : function(error){
     }
 });
 ```
@@ -277,7 +277,7 @@ obj.delete({
 obj.delete({
     success : function(obj){
         //an object is deleted from the server
-    },error : fucntion(error){
+    },error : function(error){
     }
 });
 ```
@@ -285,7 +285,7 @@ obj.delete({
 
 #####What's next?
 
-In the next section you'll learn how to create relations between CloudObjects, and save them to the database. Click [here]() to go to the relations documentation.
+In the next section you'll learn how to create relations between CloudObjects, and save them to the database. Click [here]( /?lang=en&category=datastorage&subcategory=relations) to go to the relations documentation.
 
 
 

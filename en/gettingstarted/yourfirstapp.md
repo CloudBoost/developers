@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create your new App (we call it CloudApp) and create your fist Table (CloudTable). You will also learn about default columns in CloudBoost and how to create few of your own columns in your table. Finally we'll link the CloudBoost SDK to your project, save few objects (CloudObjects) in the table you have created and query it with a simple query (CloudQuery). 
+In this section you'll learn how to create your new App (we call it [CloudApp]( https://docs.cloudboost.io/#CloudApp)) and create your fist Table ([CloudTable]( https://docs.cloudboost.io/#CloudTable)). You will also learn about default columns in CloudBoost and how to create few of your own columns in your table. Finally we'll link the CloudBoost SDK to your project, save few objects ([CloudObjects]( https://docs.cloudboost.io/#CloudObject)) in the table you have created and query it with a simple query ([CloudQuery]( https://docs.cloudboost.io/#CloudQuery)). 
 
 #Create your first App
 
@@ -27,7 +27,7 @@ To create a new table click on <span class="tut-snippet">Tables</span> when you'
 
 !(Add new table)[]
 
-><span class="tut-info">Info</span> User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you dont need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
+><span class="tut-info">Info</span> User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> Table names cannot start with a number and cannot contain any special characters. Table name should not be same as any other tables of the same app. 
@@ -36,20 +36,20 @@ After you create a new table. Click on it which will take you to a screen where 
 
 #Create Columns
 
-To create a new columns click on <span class="tut-snippet">+</span> button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you dont want <span class="tut-snippet">null</span> values to be saved in that column.
+To create a new columns click on <span class="tut-snippet">+</span> button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you don’t want <span class="tut-snippet">null</span> values to be saved in that column.
 
-!(+ Icon on tables)[]
+!(+ Icon on tables)[http://blog.cloudboost.io/content/images/2015/09/Untitled-1.png]
 
-!(Add new table)[]
+!(Add new table)[http://blog.cloudboost.io/content/images/2015/09/Untitled-1.png]
 
 ><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
-After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click here.)
+After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click [here]( ?lang=en&category=datastorage&subcategory=objects#Data-types).)
 
 
 #Initialize your app
 
-Before you initialize your app, You need to import or link the CloudBoost SDK in your project. 
+Before you initialize your app, you need to import or link the CloudBoost SDK in your project. 
 
 ==JavaScript==
 <span class="js-lines" data-query="link">
@@ -70,20 +70,20 @@ Once you have imported and linked the CloudBoost SDK to your project. We need to
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
 
-![App Keys on an App](https://blog.cloudboost.io/content/images/2015/08/AppKey.PNG)
+![App Keys on an App](https://blog.cloudboost.io/content/images/2015/09/Untitled.png)
 
-![App ID, Master Key and Client Key]()
+![App ID, Master Key and Client Key](https://blog.cloudboost.io/content/images/2015/09/Capture-1.PNG)
 
 You will see two **keys** : **Master Key** and **Client Key**
 
-><span class="tut-info">Info</span> **Master Key** : Master key is the most important key and it is essential that you keep it **private** at all costs. Masket key will help you ignore all the Security Rules which CloudBoost sets for you by default. Please see Security for more information. Master Key will also help you to dynamically Create, Edit, Delete Tables and Columns from the SDK. We recommend you **Never expose your master key in any of your clients, but use master key only on your server**
+><span class="tut-info">Info</span> **Master Key** : Master key is the most important key and it is essential that you keep it **private** at all costs. Master key will help you ignore all the Security Rules which CloudBoost sets for you by default. Please see Security for more information. Master Key will also help you to dynamically Create, Edit, Delete Tables and Columns from the SDK. We recommend you **Never expose your master key in any of your clients, but use master key only on your server**
 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> **Client Key** : Client key is the public key and can be used on your client. Client key can be exposed to your clients, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules which CloudBoost sets for you by default.
 
 ><span class="tut-imp">Important:</span> Never expose your master key on your clients. Master key can only be used on the server. 
 
-Now you know your AppID and Keys, You can now proceed to initialize your App. 
+Now you know your App ID and Keys, You can now proceed to initialize your App. 
 
 
 ==JavaScript==
@@ -136,7 +136,7 @@ obj.save({
 ```
 </span>
 
-If you want to learn more about CloudObjects and Data Storage, Click here. 
+If you want to learn more about CloudObjects and Data Storage, Click [here]( ?lang=en&category=datastorage&subcategory=objects). 
 
 #Querying data
 
@@ -172,9 +172,7 @@ query.find({
 ```
 </span>
 
-If you want to learn more about Queries, Check out the query section here. 
+If you want to learn more about Queries, Check out the query section [here](?lang=en&category=query&subcategory=basicqueries). 
 
-#####What's next?
-TODO : [Add a link to the next post]
 
 
