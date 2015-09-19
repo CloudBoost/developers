@@ -4,7 +4,7 @@ In this section you'll learn what roles are and how to add users to the Role. Fi
 
 #Before we begin
 
-CloudRole is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudRole and that includes default properties like Id, createdAt, updatedAt, etc. and all of the fucntions like save, delete etc. 
+CloudRole is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudRole and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc. 
 
 CloudRole is basically a group of Users. For example : 
 
@@ -26,10 +26,10 @@ To create a new role you need to initialize a new variable with the type CloudRo
 var role = new CB.CloudRole("Student");
 role.save({
   success: function(role) {
-  	//Registration successfull
+    //Registration successfull
   },
   error: function(error) {
-  	//Error in user registration.
+    //Error in user registration.
   }
 });
 ```
@@ -41,10 +41,10 @@ role.save({
 var role = new CB.CloudRole("Student");
 role.save({
   success: function(role) {
-  	//Registration successfull
+    //Registration successfull
   },
   error: function(error) {
-  	//Error in user registration.
+    //Error in user registration.
   }
 });
 ```
@@ -54,7 +54,7 @@ After the CloudRole is created you can start signing-up users to role.
 
 #Default Properties
 
-Every CloudUser when created has default properties attached to it. Here is alist of all the default properties attached to CloudUser when you initialize them. 
+Every CloudUser when created has default properties attached to it. Here is a list of all the default properties attached to CloudUser when you initialize them. 
 
 * **All of the CloudObject default properties are available in CloudUser, as CloudUser is inherited from CloudObjects. To see what default properties are available in CloudObject, Please click [here](?lang=en&category=datastorage&subcategory=objects)**
 
@@ -84,10 +84,10 @@ Here is the sample code to add a CloudUser to the CloudRole.
 //user is an instance of CloudUser and role is an instance of CloudRole
 user.addToRole(role, {
   success: function(user) {
-  	//added to role successfull
+    //added to role successfull
   },
   error: function(err) {
-  	//Error occured in adding to role.
+    //Error occured in adding to role.
   }
 });
 ```
@@ -99,10 +99,10 @@ user.addToRole(role, {
 //user is an instance of CloudUser and role is an instance of CloudRole
 user.addToRole(role, {
   success: function(user) {
-  	//added to role successfull
+    //added to role successfull
   },
   error: function(err) {
-  	//Error occured in adding to role.
+    //Error occured in adding to role.
   }
 });
 ```
@@ -156,10 +156,10 @@ If you want to remove a particular role, then you need to do something like :
 ```
 user.removeFromRole(role, {
   success : function(user){
-  	//get the updated user
+    //get the updated user
   },
   error : function(error){
-  	//erorr if something goes wrong.
+    //erorr if something goes wrong.
   }
 });
 ```
@@ -170,15 +170,13 @@ user.removeFromRole(role, {
 ```
 user.removeFromRole(role, {
   success : function(user){
-  	//get the updated user
+    //get the updated user
   },
   error : function(error){
-  	//erorr if something goes wrong.
+    //erorr if something goes wrong.
   }
 });
 ```
 </span>
 
-#####What's next?
 
-In the next section you'll learn what what ACL's are in CloudBoost and how to secure your data with ACL's
