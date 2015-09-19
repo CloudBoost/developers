@@ -2,7 +2,7 @@
 
 In this section you'll learn about how to search your data and CloudObjects in CloudBoost. You will also learn few important search queries like SearchOn, Phrase and much more. 
 
-In some cases, You need a powerful way to search data and have search boxes in your apps and when the query is executed CloudBoost will return only reveant results from the database. CB.CloudSearch offers different ways to search the data you need. 
+In some cases, you need a powerful way to search data and have search boxes in your apps and when the query is executed CloudBoost will return only relevant results from the database. CB.CloudSearch offers different ways to search the data you need. 
 
 The general pattern is to create a CB.CloudSearch object, attach it with CB.SearchQuery and a CB.SearchFilter, write conditions on it, and then retrieve an Array of matching CB.CloudObject using search function / method. 
 
@@ -58,10 +58,10 @@ Search.
 ```
 cs.search({
   success: function(list) {
-  	//list is an array of relevant CloudObjects
+    //list is an array of relevant CloudObjects
   },
   error: function(error) {
-  	//error
+    //error
   }
 });
 ```
@@ -72,10 +72,10 @@ cs.search({
 ```
 cs.search({
   success: function(list) {
-  	//list is an array of relevant CloudObjects
+    //list is an array of relevant CloudObjects
   },
   error: function(error) {
-  	//error
+    //error
   }
 });
 ```
@@ -102,10 +102,10 @@ cs.searchQuery = new CB.SearchQuery();
 //
 cs.search({
   success: function(list) {
-  	//list is an array of relevant CloudObjects
+    //list is an array of relevant CloudObjects
   },
   error: function(error) {
-  	//error
+    //error
   }
 });
 ```
@@ -124,10 +124,10 @@ cs.searchQuery = new CB.SearchQuery();
 //
 cs.search({
   success: function(list) {
-  	//list is an array of relevant CloudObjects
+    //list is an array of relevant CloudObjects
   },
   error: function(error) {
-  	//error
+    //error
   }
 });
 ```
@@ -276,7 +276,7 @@ cs.searchFilter.equalTo("name","John");
 
 ###Not Equal To
 
-To have an notEqualTo constraint over a search filter you can use the <span class="tut-snippet">notEqualTo</span> function.
+To have a notEqualTo constraint over a search filter you can use the <span class="tut-snippet">notEqualTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="notequal">
@@ -294,7 +294,7 @@ cs.searchFilter.notEqualTo("name","John");
 
 ###Greater Than
 
-To have an greaterThan constraint over a search filter you can use the <span class="tut-snippet">greaterThan</span> function.
+To have a greaterThan constraint over a search filter you can use the <span class="tut-snippet">greaterThan</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="greaterthan">
@@ -312,7 +312,7 @@ cs.searchFilter.greaterThan("age",10);
 
 ###Less than
 
-To have an lessThan constraint over a search filter you can use the <span class="tut-snippet">lessThan</span> function.
+To have a lessThan constraint over a search filter you can use the <span class="tut-snippet">lessThan</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="lessthan">
@@ -331,7 +331,7 @@ cs.searchFilter.lessThan("age",10);
 ###Greater Than Or Equal To
 
 
-To have an greaterThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">greaterThanEqualTo</span> function.
+To have a greaterThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">greaterThanEqualTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="greaterequal">
@@ -350,7 +350,7 @@ cs.searchFilter.greaterThanEqualTo("age",10);
 ###Less Than Or Equal To
 
 
-To have an lessThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">lessThanEqualTo</span> function.
+To have a lessThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">lessThanEqualTo</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="lessequal">
@@ -498,10 +498,10 @@ cs.orderByDesc('age');
 //
 cs.search({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(err) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -518,10 +518,10 @@ cs.orderByDesc('age');
 //
 cs.search({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(err) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -542,10 +542,10 @@ cs.skip(5);
 //
 cs.search({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(err) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -562,13 +562,13 @@ cs.skip(5);
 //
 cs.search({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(err) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
 </span>
 
-#####What's next? 
+

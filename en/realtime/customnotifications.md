@@ -1,15 +1,15 @@
 #####In this section
 
-CloudBoost makes it a lot easier to build real-time apps, and gives you features out of the box that helps you implement web-socket notifications to make your apps realtime and feature rich. 
+CloudBoost makes it a lot easier to build real-time apps, and gives you features out of the box that helps you implement web-socket notifications to make your apps real time and feature rich. 
 
-CloudBoost.io supports two types of real-time notifications which will make your life as a developer a lot easier : 
+CloudBoost.io supports two types of real-time notifications which will make your life as a developer a lot easier: 
 
 * Custom Realtime Notification which we will see here. 
 * CloudObject Notifications which we will see in the [next](?lang=en&category=realtime&subcategory=cloudobjectnotifications) section.
 
 #Custom Real-time Notifications 
 
-Custom Realtime Notifications will be useful if you're sending any custom data. For example : You're building a chat application where user can chat with one another in which they're sending custom messages. This is a perfect example of this type of scenario.  
+Custom Real time Notifications will be useful if you're sending any custom data. For example: You're building a chat application where user can chat with one another in which they're sending custom messages. This is a perfect example of this type of scenario.  
 
 To build this you we need two things
 
@@ -61,7 +61,7 @@ CB.CloudNotification.publish('ChannelName','data');
 
 ##Stop listening
 
-To stop listening to notifications from Channels you need to call the <span class="tut-snippet"> off</span> method/fucntion of CloudNotifications class.
+To stop listening to notifications from Channels you need to call the <span class="tut-snippet"> off</span> method/function of CloudNotifications class.
 
 ==JavaScript==
 <span class="js-lines" data-query="off">
@@ -79,4 +79,4 @@ CB.CloudNotification.off('ChannelName');
 
 #####What's next?
 
-In the next section we will basically fire event notifications when the CloudObject is created, updated or deleted. We can also have queries over notifications which will help you add extra level of flexibility to your code.
+In the [next section](?lang=en&category=realtime&subcategory=cloudobjectnotifications) we will basically fire event notifications when the CloudObject is created, updated or deleted. We can also have queries over notifications which will help you add extra level of flexibility to your code.

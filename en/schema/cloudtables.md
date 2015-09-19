@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create an Table (we call it CloudTable) and and save it into your CloudBoost App. You will also learn about default columns in tables. Finally we'll also learn to add, delete and update columns in a CloudTable. 
+In this section you'll learn how to create a Table (we call it [CloudTable]( https://docs.cloudboost.io/#CloudTable)) and save it into your CloudBoost App. You will also learn about default columns in tables. Finally we'll also learn to add, delete and update columns in a CloudTable. 
 
 #Saving a new table
 
@@ -20,7 +20,7 @@ var table = new CB.CloudTable('TableName');
 ```
 </span>
 
-To add columns, You need to create a new <span class="tut-snippet"> Column</span> Object and assign it to the CloudColumn class. You can use the <span class="tut-snippet">addColumn</span> function / method of CloudTable class
+To add columns, you need to create a new <span class="tut-snippet"> Column</span> Object and assign it to the CloudColumn class. You can use the <span class="tut-snippet">addColumn</span> function / method of CloudTable class
 
 ==JavaScript==
 <span class="js-lines" data-query="savecol">
@@ -197,7 +197,7 @@ column.relatedTo = 'TableName';
 ```
 </span>
 
-If you want to add a list relational column, then : 
+If you want to add a list relational column, then: 
 
 ==JavaScript==
 <span class="js-lines" data-query="listrelcol">
@@ -235,7 +235,7 @@ var columns = table.columns; //array of CB.Column Objects
 ```
 </span>
 
-You can even get columns using : 
+You can even get columns using: 
 
 
 ==JavaScript==
@@ -288,7 +288,7 @@ table.save({
 
 #Deleting Columns
 
-To delete columns from a CloudTable, You can, 
+To delete columns from a CloudTable, you can, 
 
 ==JavaScript==
 <span class="js-lines" data-query="delcol">
@@ -316,7 +316,7 @@ table.save({
 
 #Deleting Table
 
-To delete tables from a CloudApp, You can, 
+To delete tables from a CloudApp, you can, 
 
 ==JavaScript==
 <span class="js-lines" data-query="deltable">
@@ -348,8 +348,8 @@ To get all the tables from a CloudApp, You can,
 <span class="js-lines" data-query="getalltabs">
 ```
 CB.CloudTable.getAll({
-	success : function(tables){
-    	//tables is an array of CB.CloudTable
+    success : function(tables){
+        //tables is an array of CB.CloudTable
     }, error : fucntion(error){
     }
 });
@@ -360,8 +360,8 @@ CB.CloudTable.getAll({
 <span class="nodejs-lines" data-query="getalltabs">
 ```
 CB.CloudTable.getAll({
-	success : function(tables){
-    	//tables is an array of CB.CloudTable
+    success : function(tables){
+        //tables is an array of CB.CloudTable
     }, error : fucntion(error){
     }
 });
@@ -375,7 +375,7 @@ To get a particular table from a CloudApp, You can,
 ```
 CB.CloudTable.get('TableName', {
     success : function(tables){
-    	//tables is an array of CB.CloudTable
+        //tables is an array of CB.CloudTable
     }, error : fucntion(error){
     }
 });
@@ -387,15 +387,12 @@ CB.CloudTable.get('TableName', {
 ```
 CB.CloudTable.get('TableName', {
     success : function(tables){
-    	//tables is an array of CB.CloudTable
+        //tables is an array of CB.CloudTable
     }, error : fucntion(error){
     }
 });
 ```
 </span>
-
-
-
 
 
 

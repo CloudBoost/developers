@@ -1,10 +1,10 @@
 #####In this section
 
-In this section you'll learn about how to query CloudObjects from the database. You will also learn few important queries like Distinct, queries on Geo-points and much more. 
+In this section you'll learn about how to query [CloudObjects]( https://docs.cloudboost.io/#CloudObject) from the database. You will also learn few important queries like Distinct, queries on Geo-points and much more. 
 
-In many cases, You need a powerful way to query data in your database and specify which objects you want to retrieve. CB.CloudQuery offers different ways to retrieve a list of objects you need. 
+In many cases, you need a powerful way to query data in your database and specify which objects you want to retrieve. [CB.CloudQuery](https://docs.cloudboost.io/#CloudQuery) offers different ways to retrieve a list of objects you need. 
 
-The general pattern is to create a CB.CloudQuery, put conditions on it, and then retrieve an Array of matching CB.CloudObject using find. 
+The general pattern is to create a [CB.CloudQuery](https://docs.cloudboost.io/#CloudQuery), put conditions on it, and then retrieve an Array of matching [CB.CloudObject]( https://docs.cloudboost.io/#CloudObject) using find. 
 
 #Basic Query Constraints
 
@@ -17,7 +17,7 @@ var query = new CB.CloudQuery("Student");
 query.equalTo('name','John');
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -32,7 +32,7 @@ var query = new CB.CloudQuery("Student");
 query.equalTo('name','John');
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -49,7 +49,7 @@ var query = new CB.CloudQuery("Student");
 query.notEqualTo('name','John');
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -64,7 +64,7 @@ var query = new CB.CloudQuery("Student");
 query.notEqualTo('name','John');
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -81,7 +81,7 @@ var query = new CB.CloudQuery("Student");
 query.greaterThan('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -96,7 +96,7 @@ var query = new CB.CloudQuery("Student");
 query.greaterThan('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -113,7 +113,7 @@ var query = new CB.CloudQuery("Student");
 query.lessThan('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -128,7 +128,7 @@ var query = new CB.CloudQuery("Student");
 query.lessThan('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -145,7 +145,7 @@ var query = new CB.CloudQuery("Student");
 query.greaterThanEqualTo('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -160,7 +160,7 @@ var query = new CB.CloudQuery("Student");
 query.greaterThanEqualTo('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -177,7 +177,7 @@ var query = new CB.CloudQuery("Student");
 query.lessThanEqualTo('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -192,7 +192,7 @@ var query = new CB.CloudQuery("Student");
 query.lessThanEqualTo('age',15);
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -211,7 +211,7 @@ var query = new CB.CloudQuery("Student");
 query.startsWith('name','J');
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -226,7 +226,7 @@ var query = new CB.CloudQuery("Student");
 query.startsWith('name','J');
 query.find({
   success: function(list) {
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
   }
@@ -246,10 +246,10 @@ var query = new CB.CloudQuery("Student");
 query.containedIn('courses', ['JavaScript', 'C#']);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -263,10 +263,10 @@ var query = new CB.CloudQuery("Student");
 query.containedIn('courses', ['JavaScript', 'C#']);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -282,10 +282,10 @@ var query = new CB.CloudQuery("Student");
 query.notContainedIn('courses', ['JavaScript', 'C#']);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -299,10 +299,10 @@ var query = new CB.CloudQuery("Student");
 query.notContainedIn('courses', ['JavaScript', 'C#']);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -318,10 +318,10 @@ var query = new CB.CloudQuery("Student");
 query.containsAll('courses', ['JavaScript', 'C#']);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -335,10 +335,10 @@ var query = new CB.CloudQuery("Student");
 query.containsAll('courses', ['JavaScript', 'C#']);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -346,7 +346,7 @@ query.find({
 
 #AND and OR
 
-By adding two or more constraints on a single query object will AND it by default. For example : 
+By adding two or more constraints on a single query object will AND it by default. For example: 
 
 ==JavaScript==
 <span class="js-lines" data-query="and">
@@ -356,10 +356,10 @@ query.equalTo('name', 'John');
 query.greaterThan('age', 10);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -373,16 +373,16 @@ query.equalTo('name', 'John');
 query.greaterThan('age', 10);
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
 </span>
 
-If you want to **OR** a query, You can : 
+If you want to **OR** a query, you can: 
 
 ==JavaScript==
 <span class="js-lines" data-query="or">
@@ -394,10 +394,10 @@ query2.greaterThan('age', 10);
 var query = CB.CloudQuery.or(query1,query2); //OR it. 
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -413,10 +413,10 @@ query2.greaterThan('age', 10);
 var query = CB.CloudQuery.or(query1,query2); //OR it. 
 query.find({
   success: function(list){
-  	//list is an array of CloudObjects
+    //list is an array of CloudObjects
   },
   error: function(error) {
-  	//Error in retrieving the data.
+    //Error in retrieving the data.
   }
 });
 ```
@@ -446,7 +446,7 @@ query.orderByDesc('name');
 
 #Limit & Skip
 
-Limit returns only the specified number of objects from the database. Skip inturn skips the specified number of objects from the database and returns the rest of the objects. 
+Limit returns only the specified number of objects from the database. Skip in turn skips the specified number of objects from the database and returns the rest of the objects. 
 
 ==JavaScript==
 <span class="js-lines" data-query="limitskip">
@@ -470,7 +470,7 @@ query.skip(10);
 
 #Select Column
 
-You can return only the specified column data in an object by using <span class="tut-snippet">selectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">doNotSelectColumn</span> function.
+You can return only the specified column data in an object by using <span class="tut-snippet">SelectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">DoNotSelectColumn</span> function.
 
 ==JavaScript==
 <span class="js-lines" data-query="selectcol">
@@ -494,16 +494,16 @@ query.doNotSelectColumn('age');
 
 #Find, Find one, Find by ID. 
 
-Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit fucntion of the CloudQuery. 
+Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery. 
 
 ==JavaScript==
 <span class="js-lines" data-query="query">
 ```
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects
+  success : function(list){
+      //list is an array of CloudObjects
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -513,10 +513,10 @@ query.find({
 <span class="nodejs-lines" data-query="query">
 ```
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects
+  success : function(list){
+      //list is an array of CloudObjects
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -528,10 +528,10 @@ FindOne only returns the top object thatis matched by the query. It returns a Cl
 <span class="js-lines" data-query="findone">
 ```
 query.findOne({
-	success : function(obj){
-    	//obj is CloudObject
+  success : function(obj){
+      //obj is CloudObject
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -541,10 +541,10 @@ query.findOne({
 <span class="nodejs-lines" data-query="findone">
 ```
 query.findOne({
-	success : function(obj){
-    	//obj is CloudObject
+  success : function(obj){
+      //obj is CloudObject
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -556,10 +556,10 @@ FindById return the object by its objectId.
 <span class="js-lines" data-query="findid">
 ```
 query.findById('id', {
-	success : function(obj){
-    	//obj is CloudObject
+  success : function(obj){
+      //obj is CloudObject
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -569,10 +569,10 @@ query.findById('id', {
 <span class="nodejs-lines" data-query="findid">
 ```
 query.findById('id', {
-	success : function(obj){
-    	//obj is CloudObject
+  success : function(obj){
+      //obj is CloudObject
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -586,9 +586,9 @@ Counts the number of object that satisfies the query.
 <span class="js-lines" data-query="count">
 ```
 query.count({
-	success : function(number){
+  success : function(number){
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -598,9 +598,9 @@ query.count({
 <span class="nodejs-lines" data-query="count">
 ```
 query.count({
-	success : function(number){
+  success : function(number){
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -614,11 +614,11 @@ Distinct query returns the distinct values of a specified column.
 <span class="js-lines" data-query="distinct">
 ```
 query.distinct('age',{
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
         //list has all the objects with distinct age. 
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -628,11 +628,11 @@ query.distinct('age',{
 <span class="nodejs-lines" data-query="distinct">
 ```
 query.distinct('age',{
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
         //list has all the objects with distinct age. 
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -644,7 +644,7 @@ query.distinct('age',{
 
 When CloudObjects are related by the Relation or List of Relations data type and you query those CloudObject from the database,. By default, the data of related CloudObject will not return in the results. 
 
-For example, If a Student table has a column called courses which is a relation to Course table then, 
+For example, if a Student table has a column called courses which is a relation to Course table then, 
 
 If you query students and get the course property,
 
@@ -655,13 +655,13 @@ If you query students and get the course property,
 ```
 var query = new CB.CloudQuery('Student');
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
         var student = list[0];
         var course = student.get('course');
-		var courseName = course.get('name'); //this will be null.
+    var courseName = course.get('name'); //this will be null.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -672,13 +672,13 @@ query.find({
 ```
 var query = new CB.CloudQuery('Student');
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
         var student = list[0];
         var course = student.get('course');
-		var courseName = course.get('name'); //this will be null.
+    var courseName = course.get('name'); //this will be null.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -694,13 +694,13 @@ To solve this, you need to call the <span class="tut-snippet">include</span> fun
 var query = new CB.CloudQuery('Student');
 query.include('course');
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
         var student = list[0];
         var course = student.get('course');
-		var courseName = course.get('name'); // you will get the related object and all the data
+    var courseName = course.get('name'); // you will get the related object and all the data
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -712,13 +712,13 @@ query.find({
 var query = new CB.CloudQuery('Student');
 query.include('course');
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
         var student = list[0];
         var course = student.get('course');
-		var courseName = course.get('name'); // you will get the related object and all the data
+    var courseName = course.get('name'); // you will get the related object and all the data
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -748,7 +748,7 @@ query.include('course.teacher');
 
 ###Near
 
-Queries for objects which are within range given by the query.It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> to the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters. 
+Queries for objects which are within range given by the query. It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> to the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters. 
 
 ==JavaScript==
 <span class="js-lines" data-query="near">
@@ -758,10 +758,10 @@ var query = new CB.CloudQuery('Custom');
 //third parameter is the radius to check in meters. 
 query.near("location", loc, 100000); 
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -775,10 +775,10 @@ var query = new CB.CloudQuery('Custom');
 //third parameter is the radius to check in meters. 
 query.near("location", loc, 100000); 
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -786,9 +786,9 @@ query.find({
 
 ###Geo Within
 
-Gets all the objects if the point specified by column name lie inside of the specied set of points given. 
+Gets all the objects if the point specified by column name lie inside of the specified set of points given. 
 
-Geo Within atleast requires 3 points to be passed to the query. 
+Geo Within at least requires 3 points to be passed to the query. 
 
 ==JavaScript==
 <span class="js-lines" data-query="geowithin">
@@ -801,10 +801,10 @@ var query = new CB.CloudQuery('Sample');
 //
 query.geoWithin("location", [loc1, loc2, loc3]);
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -821,15 +821,13 @@ var query = new CB.CloudQuery('Sample');
 //
 query.geoWithin("location", [loc1, loc2, loc3]);
 query.find({
-	success : function(list){
-    	//list is an array of CloudObjects.
+  success : function(list){
+      //list is an array of CloudObjects.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
 </span>
 
-#####What's next? 
 
-In the next section you'll learn about how to query on relations and explore the graph / advanced relational features of CloudBoost and how you can leverage them in your queries to mak quering data in CloudBoost even easier. 

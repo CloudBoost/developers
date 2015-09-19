@@ -4,11 +4,11 @@ In this section you'll learn how to sign-up and log in a User (we call it CloudU
 
 #Before we begin
 
-CloudUser is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudUser and that includes default properties like Id, createdAt, updatedAt, etc. and all of the fucntions like save, delete etc. 
+CloudUser is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudUser and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc. 
 
 #Sign up.
 
-To sign up a new user you need to initialize a new variable with the type CloudUser, assign it username and password and call the sign-up fucntion. 
+To sign up a new user you need to initialize a new variable with the type CloudUser, assign it username and password and call the sign-up function. 
 
 ==JavaScript==
 <span class="js-lines" data-query="signup">
@@ -19,10 +19,10 @@ user.set('password', 'my_solid_password');
 user.set('email', 'email@sample.com');
 user.signUp({
   success: function(user) {
-  	//Registration successfull
+    //Registration successfull
   },
   error: function(error) {
-  	//Error in user registration.
+    //Error in user registration.
   }
 });
 ```
@@ -39,7 +39,7 @@ After the CloudUser is signed-up a new session is automatically created for you 
 
 #Default Properties
 
-Every CloudUser when created has default properties attached to it. Here is alist of all the default properties attached to CloudUser when you initialize them. 
+Every CloudUser when created has default properties attached to it. Here is a list of all the default properties attached to CloudUser when you initialize them. 
 
 * **All of the CloudObject default properties are available in CloudUser, as CloudUser is inherited from CloudObjects. To see what default properties are available in CloudObject, Please click [here](?lang=en&category=datastorage&subcategory=objects)**
 
@@ -59,7 +59,7 @@ console.log(user.username);
 ```
 </span>
 
-* **Password** : [Encrypted Text] Password of the ClousUser Object
+* **Password** : [Encrypted Text] Password of the CloudUser Object
 
 ==JavaScript==
 <span class="js-lines" data-query="viewpass">
@@ -94,7 +94,7 @@ console.log(user.email);
 
 #Log in
 
-To login a CloudUser you can set the username and password and call the login fucntion / method. 
+To login a CloudUser you can set the username and password and call the login function / method. 
 
 ==JavaScript==
 <span class="js-lines" data-query="login">
@@ -104,10 +104,10 @@ user.set('username', 'my_username');
 user.set('password', 'my_solid_password');
 user.logIn({
   success: function(user) {
-  	//Login successfull
+    //Login successfull
   },
   error: function(error) {
-  	//Error.
+    //Error.
   }
 });
 ```
@@ -121,10 +121,10 @@ user.set('username', 'my_username');
 user.set('password', 'my_solid_password');
 user.logIn({
   success: function(user) {
-  	//Login successfull
+    //Login successfull
   },
   error: function(error) {
-  	//Error.
+    //Error.
   }
 });
 ```
@@ -148,16 +148,16 @@ CB.CloudUser.current
 
 #Log out
 
-If you want to flush the sesison out and log out the user, then you can do this by
+If you want to flush the session out and log out the user, then you can do this by
 
 ==JavaScript==
 <span class="js-lines" data-query="logout">
 ```
 CB.CloudUser.current.logOut({
-	success : function(user){
-    	//user logged out.
+  success : function(user){
+      //user logged out.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
@@ -167,18 +167,14 @@ CB.CloudUser.current.logOut({
 <span class="nodejs-lines" data-query="logout">
 ```
 CB.CloudUser.current.logOut({
-	success : function(user){
-    	//user logged out.
+  success : function(user){
+      //user logged out.
     }, error : function(error){
-    	//error
+      //error
     }
 });
 ```
 </span>
-
-#####What's next?
-
-In the next section you'll learn what roles are, how to add users to roles and security of data on CloudBoost.
 
 
 
