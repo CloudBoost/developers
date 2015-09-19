@@ -38,9 +38,9 @@ After you create a new table. Click on it which will take you to a screen where 
 
 To create a new columns click on <span class="tut-snippet">+</span> button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you don’t want <span class="tut-snippet">null</span> values to be saved in that column.
 
-!(+ Icon on tables)[http://blog.cloudboost.io/content/images/2015/09/Untitled-1.png]
+![+ Icon on tables](http://blog.cloudboost.io/content/images/2015/09/Untitled-1.png)
 
-!(Add new table)[http://blog.cloudboost.io/content/images/2015/09/Untitled-1.png]
+![Add new table](http://blog.cloudboost.io/content/images/2015/09/Untitled-1.png)
 
 ><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
