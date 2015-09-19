@@ -25,7 +25,7 @@ To create a new table click on <span class="tut-snippet">Tables</span> when you'
 
 ![Tables button in App Screen](https://blog.cloudboost.io/content/images/2015/09/Untitled-1.png)
 
-![Add new table](https://blog.cloudboost.io/content/images/2015/09/Capture-2.PNG))
+![Add new table](https://blog.cloudboost.io/content/images/2015/09/Capture-2.PNG)
 
 ><span class="tut-info">Info</span> User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
 
