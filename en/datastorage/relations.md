@@ -248,8 +248,3 @@ course.save({
 });
 ```
 </span>
-
-
-#####What's next? 
-
-This section was more about saving relations in CloudObjects. To know more about how to query relations, Please click [here](?lang=en&category=query&subcategory=relationalqueries), or if you'd like to know more about how to save files. You can click [here](?lang=en&category=datastorage&subcategory=objects)
