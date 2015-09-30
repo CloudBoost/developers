@@ -71,7 +71,6 @@ obj.set('file',file);
 obj.save({
   success: function(res) {
       //res will have File Object
-      console.log(file.URL);
   }, error: function(err) {
       //error in uploading File
   }
@@ -79,7 +78,7 @@ obj.save({
 ```
 </span>
 
-><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with url do a fetch over it. Otherwise while querying over Objects with files do an Include over file to get the file object back.
+><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with url do a fetch over it. 
 
 #Default Properties
 
