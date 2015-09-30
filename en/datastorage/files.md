@@ -47,7 +47,7 @@ file.save({
   success: function(file) {
       console.log(file.URL);
   }, error: function(err) {
-      //error in uploading file
+      //error in uploading File
   }
 });
 ```
@@ -155,9 +155,9 @@ To delete a file, you need to:
 ```
 file.delete({
   success: function(file) {
-     //file deleted
+     //File deleted
   }, error: function(err) {
-      //error in deleting file
+      //error in deleting File
   }
 });
 ```
@@ -168,9 +168,9 @@ file.delete({
 ```
 file.delete({
   success: function(file) {
-     //file deleted
+     //File deleted
   }, error: function(err) {
-      //error in deleting file
+      //error in deleting File
   }
 });
 ```
@@ -187,7 +187,7 @@ var query = new CB.CloudQuery("Custom");
 query.include("file");
 query.find({
     success: function(res){
-        //Gets the res which has the file object inside it.
+        //Gets the res which has the File Object inside it.
     }, error: function(err){
         //error while querying
     });
@@ -204,9 +204,9 @@ To fetch a file, from the File object obtained by querying over CloudBoost datab
 ```
 file.fetch({
   success: function(file) {
-     //file deleted
+     //received File Object
   }, error: function(err) {
-      //error in deleting file
+      //error in getting File Object
   }
 });
 ```
@@ -221,9 +221,9 @@ To get the file contents from the File object, you need to:
 ```
 file.getFileContent({
   success: function(file) {
-     //file contents
+     //received File Contents
   }, error: function(err) {
-      //error in getting file Contents
+      //error in getting File Contents
   }
 });
 ```
