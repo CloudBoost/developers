@@ -78,7 +78,7 @@ obj.save({
 ```
 </span>
 
-><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with url do a fetch over it. 
+><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
 
 #Default Properties
 
