@@ -57,7 +57,7 @@ file.save({
 
 Every CloudFile when created has default properties attached to it. Here is a list of all the default properties attached to CloudFiles when you initialize them.
 
-* **Id** : [Txt] A unique ID of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined ID to a CloudFile**.
+* **Id** : [Text] A unique ID of a CloudFile is assigned as soon as the file is saved. **You cannot assign a user-defined ID to a CloudFile**.
 
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
@@ -75,7 +75,7 @@ console.log(file.id);
 ```
 </span>
 
-* **Url** : [Txt] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
+* **Url** : [URL] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
 
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
@@ -93,7 +93,7 @@ console.log(file.url);
 ```
 </span>
 
-* **Name** : [Txt] Name of the CloudFile to be assigned by the user.
+* **Name** : [Text] Name of the CloudFile to be assigned by the user.
 
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
@@ -184,7 +184,7 @@ To get a File from CloudBoost,you need to query over the CloudTable which has th
 <span class="nodejs-lines" data-query="deletefile">
 ```
 var query = new CB.CloudQuery("Custom");
-query.include("file");
+query.include("file"); //this will include the file in CloudObjects
 query.find({
     success: function(res){
         //Gets the res which has the File Object inside it.
@@ -197,16 +197,16 @@ query.find({
 
 #Fetch a File
 
-To fetch a file, from the File object obtained by querying over CloudBoost database. You need to:
+Fetch will refresh the object with updated content from the database. To fetch a file, from the file object obtained by querying over CloudBoost database. You need to:
 
 ==JavaScript==
 <span class="js-lines" data-query="fetchfile">
 ```
 file.fetch({
   success: function(file) {
-     //received File Object
+     //received file Object
   }, error: function(err) {
-      //error in getting File Object
+      //error in getting file Object
   }
 });
 ```
@@ -220,7 +220,7 @@ To get the file contents from the File object, you need to:
 <span class="js-lines" data-query="fetchfile">
 ```
 file.getFileContent({
-  success: function(file) {
+  success: function(content) {
      //received File Contents
   }, error: function(err) {
       //error in getting File Contents
