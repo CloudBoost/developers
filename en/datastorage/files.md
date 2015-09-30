@@ -53,6 +53,34 @@ file.save({
 ```
 </span>
 
+###Save File In CloudObject
+
+To save the file in CloudObject, you need to:
+
+==JavaScript==
+<span class="js-lines" data-query="savefile">
+```
+var documentFile = new Blob([
+  'This is the content of by document blob'
+  ], {
+  type : 'text/plain'
+});
+var file = new CB.CloudFile(documentFile);
+var obj = new CB.CloudObject('Custom');
+obj.set('file',file);
+obj.save({
+  success: function(res) {
+      //res will have File Object
+      console.log(file.URL);
+  }, error: function(err) {
+      //error in uploading File
+  }
+});
+```
+</span>
+
+><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with url do a fetch over it. Otherwise while querying over Objects with files do an Include over file to get the file object back.
+
 #Default Properties
 
 Every CloudFile when created has default properties attached to it. Here is a list of all the default properties attached to CloudFiles when you initialize them.
