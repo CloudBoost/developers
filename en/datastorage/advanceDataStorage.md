@@ -1,10 +1,10 @@
 #####In this section
 
-In this section you'll learn about how to save and delete more than one CloudObject at a Time.
+In this section you'll learn about how to save and delete more than one CloudObject at a Time. You'll learn about the Bulk API for Save and Delete in CloudBoost. 
 
-#Saving Multiple Objects
+#Saving Multiple CloudObjects
 
-To save multiple number of CloudObjects pass an array of CloudObjects to the Bulk Save Function. In this way:
+To save multiple CloudObjects, you need to pass an array of CloudObjects to the bulk save function. Here's a quick example:
 
 ==JavaScript==
 <span class="js-lines" data-query="bulksave">
@@ -17,28 +17,24 @@ CB.CloudObject.saveAll([obj1,obj2],{
     success: function(res){
         //res has the array of saved CloudObjects.
     },error: function(err){
-        // error in saving array of CloudObjects.
+        // if there is an error, then err will be an array fo error messages respective to the array of CloudObjects
 });
 
 ```
 </span>
 
-#Deleting Multiple Objects
+#Deleting Multiple CloudObjects
 
-To delete multiple number of CloudObjects pass an array of CloudObjects to the Bulk Delete Function. In this way:
+To delete multiple objects pass an array of CloudObjects to the bulk delete function. For example:
 
 ==JavaScript==
 <span class="js-lines" data-query="bulkdelete">
 ```
-var obj1 = new CB.CloudObject('Custom');
-obj1.set('name','abcd');
-var obj2 = new CB.CloudObject('Custom');
-obj2.set('name','pqrs');
 CB.CloudObject.deleteAll([obj1,obj2],{
     success: function(res){
         //successfully delete CloudObjects.
     },error: function(err){
-        // error while deleting CloudObjects
+        // error while deleting CloudObjects. err is an array of error objects. 
     });
 
 ```
