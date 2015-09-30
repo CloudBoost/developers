@@ -205,7 +205,7 @@ file.delete({
 
 #Get a File
 
-To get a File from CloudBoost,you need to query over the CloudTable which has the Object.
+To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it. 
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="deletefile">
@@ -239,7 +239,7 @@ file.fetch({
 ```
 </span>
 
-#Fetch file Contents
+#Fetch file contents
 
 To get the file contents from the File object, you need to:
 
