@@ -80,7 +80,7 @@ console.log(file.id);
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
 ```
-//Id is null when you create the file but gets assigned to an file as soon as you save it.
+//Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
 ```
 </span>
@@ -88,7 +88,7 @@ console.log(file.url);
 ==NodeJS==
 <span class="nodejs-lines" data-query="viewid">
 ```
-//Id is null when you create the file but gets assigned to an file as soon as you save it.
+//Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
 ```
 </span>
@@ -189,6 +189,7 @@ query.find({
     success: function(res){
         //Gets the res which has the file object inside it.
     }, error: function(err){
+        //error while querying
     });
 ```
 </span>
