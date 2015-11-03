@@ -22,7 +22,7 @@ var queue = new CB.CloudQueue('QueueName');
 
 #Pushing data into the queue
 
-To push data into the Queue, you need to call the push method of the `CB.CloudQueue` instance. `Push` function takes in data as the first parameter.
+To push data into the Queue, you need to call the push method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">Push</span> function takes in data as the first parameter.
 
 ==JavaScript==
 <span class="js-lines" data-query="pushqueue">
@@ -56,7 +56,7 @@ queue.push('sample', {
 
 #Pulling data from the queue.
 
-To pull data into the Queue, you need to call the pull method of the `CB.CloudQueue` instance.
+To pull data into the Queue, you need to call the pull method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
 <span class="js-lines" data-query="pullqueues">
@@ -90,7 +90,7 @@ queue.pull({
 
 #Deleting a message
 
-To delete a message from the Queue, you need to call the deleteMessage method of the `CB.CloudQueue` instance.
+To delete a message from the Queue, you need to call the deleteMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
 <span class="js-lines" data-query="delete">
