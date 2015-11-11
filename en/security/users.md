@@ -34,6 +34,24 @@ user.signUp({
 //Sign up function will not work on NodeJS. If you want to create a new user on the server. You can use save() function of CloudUser instead. 
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="signup">
+```
+				CloudUser obj = new CloudUser();
+				obj.setUserName(username);
+				obj.setPassword(passwd);
+				obj.setEmail("hello@abc.com");
+				obj.signUp(new CloudUserCallback(){
+					@Override
+					public void done(CloudUser object, CloudException e)	throws CloudException {
+						if(e != null){
+						}
+						if(object != null){
+						}
+					}
+				});
+```
+</span>
 
 After the CloudUser is signed-up a new session is automatically created for you and the user is logged-in unless you call log-out function of CloudUser object. 
 
@@ -58,6 +76,12 @@ console.log(user.username);
 console.log(user.username);
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="viewusername">
+```
+System.out.print(user.getUsername());
+```
+</span>
 
 * **Password** : [Encrypted Text] Password of the CloudUser Object
 
@@ -74,7 +98,12 @@ console.log(user.password);
 console.log(user.password);
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="viewpass">
+```
+System.out.print(user.getPassword());
+```
+</span>
 * **Email** : [Email] An email of the CloudUser object
 
 ==JavaScript==
@@ -90,7 +119,12 @@ console.log(user.email);
 console.log(user.email);
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="viewemail">
+```
+System.out.print(user.getEmail());
+```
+</span>
 
 #Log in
 
@@ -129,7 +163,26 @@ user.logIn({
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="login">
+```
+CloudUser user = new CloudUser();
+			user.setUserName(username);
+			user.setPassword(passwd);
+			user.logIn(new CloudUserCallback(){
 
+				@Override
+				public void done(CloudUser object, CloudException e)throws CloudException {
+					if(e != null){
+					}
+					
+					if(object != null){
+					
+					}
+				}
+			});
+```
+</span>
 Once the user us login you can access the current logged in user by 
 
 ==JavaScript==
@@ -145,7 +198,12 @@ CB.CloudUser.current
 CB.CloudUser.current
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="viewcurrent">
+```
+CloudUser.current;
+```
+</span>
 #Log out
 
 If you want to flush the session out and log out the user, then you can do this by
@@ -175,6 +233,19 @@ CB.CloudUser.current.logOut({
 });
 ```
 </span>
+			
 
+==Java==
+<span class="java-lines" data-query="logout">
+```
+	CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
+					@Override
+					public void done(CloudUser x, CloudException t)	throws CloudException {
+						
+					}
 
+		
+				});
+```
+</span>
 

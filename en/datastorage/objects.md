@@ -20,6 +20,12 @@ var obj = new CB.CloudObject('TableName');
 var obj = new CB.CloudObject('TableName');
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="create">
+```
+CloudObject obj = new CloudObject('TableName');
+```
+</span>
 
 To set data into the objects, You can use the <span class="tut-snippet">set</span> function / method of CloudObject class. 
 
@@ -32,6 +38,12 @@ obj.set('ColumnName',data);
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="set">
+```
+obj.set('ColumnName',data);
+```
+</span>
+==Java==
+<span class="java-lines" data-query="set">
 ```
 obj.set('ColumnName',data);
 ```
@@ -71,7 +83,21 @@ obj.save({
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="save">
+```
+CloudObject obj = new CloudObject('TableName');
+obj.set('ColumnName', data);
+obj.save(new CloudObjectCallback(){
 
+					@Override
+					public void done(CloudObject x, CloudException e)throws CloudException {
+							if(e != null){
+							}
+					}
+				});
+```
+</span>
 
 #Data-types
 
@@ -129,6 +155,13 @@ console.log(obj.id);
 console.log(obj.id);
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="viewid">
+```
+//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+System.out.print(obj.getId());
+```
+</span>
 
 * **CreatedAt** : [DateTime] A DateTime stamp of when the Object is created. This property is automatically assigned by CloudBoost.  
 
@@ -145,7 +178,12 @@ obj.createdAt;
 obj.createdAt;
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="viewcreateat">
+```
+obj.getCreatedAt();
+```
+</span>
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -161,7 +199,12 @@ obj.updatedAt;
 obj.updatedAt;
 ```
 </span>
-
+==Java==
+<span class="nodejs-lines" data-query="viewupdateat">
+```
+obj.getUpdatedAt();
+```
+</span>
 
 * **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
 
@@ -178,6 +221,12 @@ obj.expires;
 obj.expires;
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="viewexpires">
+```
+obj.getExpires();
+```
+</span>
 
 * **ACL** : [CB.ACL]( https://docs.cloudboost.io/#ACL) ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]( /?lang=en&category=security&subcategory=acl) section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]( https://docs.cloudboost.io/#ACL)
 
@@ -192,6 +241,12 @@ obj.ACL;
 <span class="nodejs-lines" data-query="viewacl">
 ```
 obj.ACL;
+```
+</span>
+==Java==
+<span class="java-lines" data-query="viewacl">
+```
+obj.getACL();
 ```
 </span>
 
@@ -226,6 +281,23 @@ obj.save({
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="update">
+```
+obj.set('ColumnName', newData);
+obj.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				//
+				}
+				if(t != null){
+					//"Failed to save data"
+				}
+			}
+		});
+```
+</span>
 
 #Fetching Objects
 
@@ -252,6 +324,22 @@ obj.fetch({
     },error : function(error){
     }
 });
+```
+</span>
+==Java==
+<span class="java-lines" data-query="fetch">
+```
+obj.fetch(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				//
+				}
+				if(t != null){
+					//"Failed to fetch data"
+				}
+			}
+		});
 ```
 </span>
 
@@ -283,6 +371,22 @@ obj.delete({
 ```
 </span>
 
+==Java==
+<span class="java-lines" data-query="delete">
+```
+obj.delete(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				//
+				}
+				if(t != null){
+					//
+				}
+			}
+		});
+```
+</span>
 #####What's next?
 
 In the next section you'll learn how to create relations between CloudObjects, and save them to the database. Click [here]( /?lang=en&category=datastorage&subcategory=relations) to go to the relations documentation.

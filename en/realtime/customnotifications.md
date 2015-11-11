@@ -39,7 +39,14 @@ CB.CloudNotification.on('ChannelName',function(data){
 }});
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="on">
+```
+CloudNotification.on('ChannelName',new CloudNotificationCallback(){
+		//data can be anything you publish to a channel. Can be a string, number, object etc. 
+}});
+```
+</span>
 
 ##Publishing messages to channels
 
@@ -58,6 +65,12 @@ CB.CloudNotification.publish('ChannelName','data');
 CB.CloudNotification.publish('ChannelName','data');
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="publish">
+```
+CloudNotification.publish('ChannelName','data');
+```
+</span>
 
 ##Stop listening
 
@@ -74,6 +87,12 @@ CB.CloudNotification.off('ChannelName');
 <span class="nodejs-lines" data-query="off">
 ```
 CB.CloudNotification.off('ChannelName');
+```
+</span>
+==Java==
+<span class="java-lines" data-query="off">
+```
+CloudNotification.off('ChannelName');
 ```
 </span>
 

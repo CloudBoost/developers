@@ -28,6 +28,21 @@ if (fileUploadControl.files.length > 0) {
   })
 }
 ```
+==Java==
+</span>
+<span class="java-lines" data-query="savefile">
+```
+		CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
+		file.save(new CloudStringCallback(){
+			@Override
+			public void done(String x, CloudException e) throws CloudException {
+				if(e != null){
+					//error
+				}
+				System.out.println(x);
+			}
+		});
+```
 </span>
 
 ###From Blob
@@ -52,7 +67,23 @@ file.save({
 });
 ```
 </span>
-
+==Java==
+</span>
+<span class="java-lines" data-query="savefile">
+```
+		Blob blob=new Blob();//create blob in any of numerous ways
+		CloudFile file = new CloudFile(blob);
+		file.save(new CloudStringCallback(){
+			@Override
+			public void done(String x, CloudException e) throws CloudException {
+				if(e != null){
+					//error
+				}
+				System.out.println(x);
+			}
+		});
+```
+</span>
 ###Save File In CloudObject
 
 To save the file in CloudObject, you need to:
@@ -77,7 +108,26 @@ obj.save({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="savefile">
+```
+CloudObject obj=new CloudObject('Custom');
+CloudFile file = new CloudFile(documentFile);
+obj.set('file',file);
+obj.save(obj,new CloudObjectCallback() {
+@Override
+public void done(CloudObject x,
+					CloudException t)
+					throws CloudException {
+									if(t!=null)
+										// if there is an error
+									else if(x!=null)
+										//x has File Object
+									}
+									
+});
+```
+</span>
 ><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
 
 #Default Properties
@@ -119,6 +169,13 @@ console.log(file.url);
 console.log(file.url);
 ```
 </span>
+==NodeJS==
+<span class="java-lines" data-query="viewid">
+```
+//Url is null when you create the file but gets assigned to an file as soon as you save it.
+System.out.print(file.getFileUrl());
+```
+</span>
 
 * **Name** : [Text] Name of the CloudFile to be assigned by the user.
 
@@ -139,7 +196,14 @@ file.set('name','abc.txt');
 console.log(file.name);
 ```
 </span>
+==NodeJS==
+<span class="java-lines" data-query="viewid">
+```
 
+file.setFileName('name','abc.txt');
+System.out.print(file.getFileName());
+```
+</span>
 
 * **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudFile will automatically be deleted at that time.
 
@@ -154,6 +218,12 @@ file.expires;
 <span class="nodejs-lines" data-query="viewexpires">
 ```
 file.expires;
+```
+</span>
+==Java==
+<span class="java-lines" data-query="viewexpires">
+```
+file.getExpires();
 ```
 </span>
 
@@ -172,7 +242,12 @@ file.ACL;
 file.ACL;
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="viewacl">
+```
+file.getACL();
+```
+</span>
 #Delete a file
 
 To delete a file, you need to: 
@@ -202,7 +277,21 @@ file.delete({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="deletefile">
+```
+file.save(new CloudStringCallback() {
+@Override
+public void done(String x,
+					CloudException t)
+					throws CloudException {
+									if(t!=null)
+										// if there is an error
+									else if(x!=null)
+										//x is File URL
+									}
+									
+});
 #Get a File
 
 To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it. 
@@ -220,7 +309,23 @@ query.find({
     });
 ```
 </span>
+==NodeJS==
+<span class="java-lines" data-query="deletefile">
+```
+CloudQuery query = new CloudQuery("Custom");
+query.include("file"); //this will include the file in CloudObjects
+query.find(new CloudObjectCallback(){
+			@Override
+						public void done(CloudObject obj, CloudException t)throws CloudException {
+								if(t != null){
+								}
+								//obj contains file object
+								
+						}
 
+});
+```
+</span>
 
 #Fetch a File
 

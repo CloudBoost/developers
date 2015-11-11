@@ -26,6 +26,20 @@ CB.CloudObject.on('TableName', 'created', function(obj){
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="create">
+```
+CloudObject.on('TableName', 'created', new CloudObjectCallback(){
+@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+});
+```
+</span>
 
 Event can be of three types: **created**, **updated** and **deleted**. You can listen to any or all of the events on any table you like. 
 
@@ -43,6 +57,20 @@ CB.CloudObject.on('TableName', ['created','updated'], function(obj){
 <span class="nodejs-lines" data-query="createupdate">
 ```
 CB.CloudObject.on('TableName', ['created','updated'], function(obj){ 
+});
+```
+</span>
+==Java==
+<span class="java-lines" data-query="createupdate">
+```
+CloudObject.on('TableName', new String[]{'created','updated'}, new CloudObjectCallback(){
+@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
 });
 ```
 </span>
@@ -79,6 +107,24 @@ CB.CloudObject.on('Student', 'created', query, function(obj){
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="query">
+```
+CloudQuery query = new CloudQuery('Student');
+query.equalTo('age',10);
+//
+CloudObject.on('Student', 'created', query, new CloudObjectCallback(){
+@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				//
+				}
+				if(t != null){
+				}
+			}
+});
+```
+</span>
 
 #Stop listening
 
@@ -97,6 +143,12 @@ CB.CloudObject.off('Student', 'created');
 <span class="nodejs-lines" data-query="off">
 ```
 CB.CloudObject.off('Student', 'created');
+```
+</span>
+==Java==
+<span class="java-lines" data-query="off">
+```
+CloudObject.off('Student', 'created');
 ```
 </span>
 

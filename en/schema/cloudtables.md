@@ -19,6 +19,12 @@ var table = new CB.CloudTable('TableName');
 var table = new CB.CloudTable('TableName');
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="create">
+```
+CloudTable table = new CloudTable('TableName');
+```
+</span>
 
 To add columns, you need to create a new <span class="tut-snippet"> Column</span> Object and assign it to the CloudColumn class. You can use the <span class="tut-snippet">addColumn</span> function / method of CloudTable class
 
@@ -48,7 +54,24 @@ table.save({
     }
 });
 ```
-
+</span>
+==Java==
+<span class="java-lines" data-query="savecol">
+```
+CloudTable table = new CloudTable('Student');
+Column column = new Column('Name', 'Text');
+table.addColumn(column);
+table.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
+```
+</span>
 #Default Columns
 
 Every CloudTable when created has default columns attached to it. Here is a list of all the default columns attached to CloudTable when you initialize them. **All of the default columns are not editable or deleteable.**
@@ -87,6 +110,15 @@ column.unique = false;
 column.dataType = 'Text';
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="createcol">
+```
+Column column = new Column('Name');
+column.required = true;
+column.unique = false;
+column.dataType = 'Text';
+```
+</span>
 
 You need to add the new column object to the CloudTable object.
 
@@ -115,7 +147,22 @@ table.save({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="addcoltable">
+```
+CloudTable table = new CloudTable('Student');
+table.addColumn(column1);
+table.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
+```
+</span>
 #Data-types
 
 CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports. 
@@ -169,7 +216,14 @@ column.dataType = 'List';
 column.listDataType = 'Text';
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="listcol">
+```
+Column column = new Column('Name');
+column.dataType = 'List';
+column.listDataType = 'Text';
+```
+</span>
 #Adding Relational Columns
 
 There are two types of DataTypes which are considered when you're relating tables. 
@@ -196,7 +250,14 @@ column.dataType = 'Relation';
 column.relatedTo = 'TableName';
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="relcol">
+```
+Column column = new Column('Name');
+column.dataType = 'Relation';
+column.relatedTo = 'TableName';
+```
+</span>
 If you want to add a list relational column, then: 
 
 ==JavaScript==
@@ -216,7 +277,14 @@ column.dataType = 'List';
 column.relatedTo = 'TableName';
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="listrelcol">
+```
+Column column = new Column('Name');
+column.dataType = 'List';
+column.relatedTo = 'TableName';
+```
+</span>
 #Getting Columns
 
 To get columns from a CloudTable, You can, 
@@ -234,7 +302,12 @@ var columns = table.columns; //array of CB.Column Objects
 var columns = table.columns; //array of CB.Column Objects 
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="getcols">
+```
+Column[] columns = table.columns; //array of Column Objects 
+```
+</span>
 You can even get columns using: 
 
 
@@ -251,7 +324,12 @@ var column = table.getColumn('name'); //CB.Column Object
 var column = table.getColumn('name'); //CB.Column Object
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="getcolsalt">
+```
+Column column = table.getColumn('name'); //Column Object
+```
+</span>
 #Editing Columns
 
 To edit columns from a CloudTable, You can, 
@@ -283,7 +361,23 @@ table.save({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="editcol">
+```
+Column column = table.getColumn('Name');
+column.required = true; 
+table.updateColumn(column);
+table.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
+```
+</span>
 >Info: You cannot edit the ColumnName and DataType after its saved. You can only change <span class="tut-snippet">required</span> and <span class="tut-snippet">unique</span> properties of a column.
 
 #Deleting Columns
@@ -313,6 +407,21 @@ table.save({
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="delcol">
+```
+table.deleteColumn('ColumnName');
+table.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
+```
+</span>
 
 #Deleting Table
 
@@ -337,6 +446,20 @@ table.delete({
     }, error : fucntion(error){
     }
 });
+```
+</span>
+==Java==
+<span class="java-lines" data-query="deltable">
+```
+table.delete(new CloudTableCallback(){
+			@Override
+			public void done(CloudTable x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
 ```
 </span>
 
@@ -367,7 +490,20 @@ CB.CloudTable.getAll({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="getalltabs">
+```
+CloudTable.getAll(new CloudTableArrayCallback(){
+			@Override
+			public void done(CloudTable[] x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
+```
+</span>
 To get a particular table from a CloudApp, You can, 
 
 ==JavaScript==
@@ -390,6 +526,20 @@ CB.CloudTable.get('TableName', {
         //tables is an array of CB.CloudTable
     }, error : fucntion(error){
     }
+});
+```
+</span>
+==Java==
+<span class="java-lines" data-query="gettabname">
+```
+CloudTable.get('TableName', new CloudTableCallback(){
+@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
 });
 ```
 </span>

@@ -65,6 +65,12 @@ npm install cloudboost
 var CB = require('cloudboost');
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="link">
+```
+import io.cloudboost.*;
+```
+</span>
 
 Once you have imported and linked the CloudBoost SDK to your project. We need to initialize your new CloudApp. 
 
@@ -99,7 +105,12 @@ CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="init">
+```
+CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
+```
+</span>
 After your app is initialized. You can proceed to the next step which is saving data. 
 
 #Saving data
@@ -133,6 +144,22 @@ obj.save({
         //error
     }
 });
+```
+</span>
+==Java==
+<span class="java-lines" data-query="save">
+```
+CloudObject obj = new CloudObject('TableName');
+obj.set('ColumnName', data);
+obj.save(new CloudObjectCallback(){
+			@Override
+			public void done(CloudObject x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
 ```
 </span>
 
@@ -169,6 +196,22 @@ query.find({
         //error
     }
 });
+```
+</span>
+==Java==
+<span class="java-lines" data-query="query">
+```
+CloudQuery query = new CloudQuery('TableName');
+query.equalTo('ColumnName', data);
+query.find(new CloudObjectArrayCallback(){
+			@Override
+			public void done(CloudObject[] x, CloudException t) {	
+				if(x != null){
+				}
+				if(t != null){
+				}
+			}
+		});
 ```
 </span>
 

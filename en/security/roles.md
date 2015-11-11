@@ -49,7 +49,21 @@ role.save({
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="create">
+```
+CloudRole role = new CloudRole("Student");
+role.save(new CloudRoleCallback(){
 
+					@Override
+					public void done(CloudRole roleObj, CloudException e)throws CloudException {
+							if(e != null){
+							}
+							if(roleObj == null){
+							}
+							});
+```
+</span>
 After the CloudRole is created you can start signing-up users to role.
 
 #Default Properties
@@ -71,6 +85,12 @@ console.log(role.name);
 <span class="nodejs-lines" data-query="viewname">
 ```
 console.log(role.name);
+```
+</span>
+==Java==
+<span class="java-lines" data-query="viewname">
+```
+System.out.print(role.getName());
 ```
 </span>
 
@@ -107,7 +127,6 @@ user.addToRole(role, {
 });
 ```
 </span>
-
 
 #Check if if the user is in a role
 
