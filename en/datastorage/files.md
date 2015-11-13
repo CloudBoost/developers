@@ -33,12 +33,12 @@ if (fileUploadControl.files.length > 0) {
 <span class="java-lines" data-query="savefile">
 ```
 CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
-	file.save(new CloudStringCallback(){
-	@Override
-	public void done(String x, CloudException e) throws CloudException {
-		if(e != null)
-			//error
-		if(x!=null)		
+file.save(new CloudStringCallback(){
+@Override
+public void done(String x, CloudException e) throws CloudException {
+	if(e != null)
+		//error
+	if(x!=null)		
 		System.out.println(x);
 	}
 });
@@ -72,14 +72,14 @@ file.save({
 <span class="java-lines" data-query="savefile">
 ```
 Blob blob=new Blob();//create blob in any of numerous ways
-	CloudFile file = new CloudFile(blob);
-	file.save(new CloudStringCallback(){
-	@Override
-	public void done(String x, CloudException e) throws CloudException {
-		if(e != null)
-			//error
-		if(x!=null)
-			System.out.println(x);
+CloudFile file = new CloudFile(blob);
+file.save(new CloudStringCallback(){
+@Override
+public void done(String x, CloudException e) throws CloudException {
+	if(e != null)
+		//error
+	if(x!=null)
+		System.out.println(x);
 	}
 });
 ```
