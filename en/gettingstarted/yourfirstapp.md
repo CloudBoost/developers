@@ -65,6 +65,7 @@ npm install cloudboost
 var CB = require('cloudboost');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="link">
 ```
