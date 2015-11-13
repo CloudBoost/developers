@@ -106,6 +106,7 @@ CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="init">
 ```
@@ -147,6 +148,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="save">
 ```
@@ -199,6 +201,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query">
 ```
