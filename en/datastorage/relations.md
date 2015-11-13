@@ -73,6 +73,7 @@ student.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="oneone">
 ```
@@ -150,6 +151,7 @@ student.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="onemany">
 ```
@@ -216,6 +218,7 @@ studentCourses.save({
 });
 ```
 </span>
+
 ==NodeJS==
 <span class="nodejs-lines" data-query="relation">
 ```
@@ -239,6 +242,7 @@ studentCourses.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="relation">
 ```
@@ -319,6 +323,7 @@ course.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="list">
 ```
