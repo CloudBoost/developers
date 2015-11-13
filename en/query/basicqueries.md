@@ -39,6 +39,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="basic">
 ```
@@ -55,6 +56,7 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+
 ###Not Equal To
 
 ==JavaScript==
@@ -86,6 +88,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="notequal">
 ```
@@ -102,6 +105,7 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+
 ###Greater Than
 
 ==JavaScript==
@@ -133,6 +137,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="greaterthan">
 ```
@@ -149,6 +154,7 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+
 ###Less Than
 
 ==JavaScript==
@@ -180,6 +186,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="lessthan">
 ```
@@ -196,6 +203,7 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+
 ###Greater Than and Equal To
 
 ==JavaScript==
@@ -227,6 +235,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="greaterequal">
 ```
@@ -243,6 +252,7 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+
 ###Less Than and Equal To
 
 ==JavaScript==
@@ -274,6 +284,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="lessequal">
 ```
@@ -285,11 +296,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-			
+		//	
 	}
 });
 ```
 </span>
+
 ###Starts With
 
 >Info: Starts with only works with <span class="tut-snippet">Text</span> type. 
@@ -323,6 +335,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="startwith">
 ```
@@ -334,11 +347,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-				
+		//		
 	}
 });
 ```
 </span
+
 #Queries on Lists
 
 ###Contained In
@@ -376,6 +390,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="containedin">
 ```
@@ -388,11 +403,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-				
+		//		
 	}
 });
 ```
 </span>
+
 ###Does not contain
 
 ==JavaScript==
@@ -428,6 +444,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="notcontained">
 ```
@@ -440,11 +457,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-				
+		//		
 	}
 });
 ```
 </span>
+
 ###Contains All
 
 ==JavaScript==
@@ -480,6 +498,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="containsall">
 ```
@@ -491,13 +510,13 @@ query.find(new CloudObjectArrayCallback(){
 	public void done(CloudObject[] list, CloudException t) {	
 		if(list != null)
 			//list is an array of CloudObjects
-				
 		if(t != null)
-				
+		//		
 	}
 });
 ```
 </span>
+
 #AND and OR
 
 By adding two or more constraints on a single query object will AND it by default. For example: 
@@ -535,6 +554,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="and">
 ```
@@ -547,11 +567,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-			
+		//	
 	}
 });
 ```
 </span>
+
 If you want to **OR** a query, you can: 
 
 ==JavaScript==
@@ -591,6 +612,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="or">
 ```
@@ -605,11 +627,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-			
+		//	
 	}
 });
 ```
 </span>
+
 #Order By
 
 ==JavaScript==
@@ -631,6 +654,7 @@ query.orderByAsc('name');
 query.orderByDesc('name');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="orderby">
 ```
@@ -640,6 +664,7 @@ query.orderByAsc('name');
 query.orderByDesc('name');
 ```
 </span>
+
 #Limit & Skip
 
 Limit returns only the specified number of objects from the database. Skip in turn skips the specified number of objects from the database and returns the rest of the objects. 
@@ -663,6 +688,7 @@ query.limit(10);
 query.skip(10);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="limitskip">
 ```
@@ -672,6 +698,7 @@ query.limit(10);
 query.skip(10);
 ```
 </span>
+
 #Select Column
 
 You can return only the specified column data in an object by using <span class="tut-snippet">SelectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">DoNotSelectColumn</span> function.
@@ -695,6 +722,7 @@ query.selectColumn('name');
 query.doNotSelectColumn('age');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="selectcol">
 ```
@@ -704,6 +732,7 @@ query.selectColumn('name');
 query.doNotSelectColumn('age');
 ```
 </span>
+
 #Find, Find one, Find by ID. 
 
 Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery. 
@@ -733,6 +762,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query">
 ```
@@ -742,11 +772,12 @@ query.find(new CloudObjectArrayCallback(){
 		if(x != null)
 			//list is an array of CloudObjects
 		if(t != null)
-			
+		//	
 	}
 });
 ```
 </span>
+
 FindOne only returns the top object thatis matched by the query. It returns a CloudObjects / CloudUser / CloudRole.
 
 ==JavaScript==
@@ -774,6 +805,7 @@ query.findOne({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="findone">
 ```
@@ -787,6 +819,7 @@ query.findOne(new CloudObjectCallback(){
 });
 ```
 </span>
+
 FindById return the object by its objectId.
 
 ==JavaScript==
@@ -814,6 +847,7 @@ query.findById('id', {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="findid">
 ```
@@ -823,11 +857,12 @@ query.findById('id', new CloudObjectCallback(){
 		if(x != null)
 			 //obj is CloudObject
 		if(t != null)
-				
+		//		
 	}
 });
 ```
 </span>
+
 #Count
 
 Counts the number of object that satisfies the query.
@@ -855,6 +890,7 @@ query.count({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="count">
 ```
@@ -862,9 +898,9 @@ query.count(new CloudIntegerCallback(){
 @Override
 public void done(int x, CloudException t) {	
 	if(x != null)
-				
+	//			
 	if(t != null)
-				
+	//			
 	}
 });
 ```
@@ -901,6 +937,7 @@ query.distinct('age',{
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="distinct">
 ```
@@ -908,9 +945,9 @@ query.distinct('age',new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
 		if(t != null)
-					
+		//			
 		if(list!=null)
-						
+		//				
 	}
 });
 ```
@@ -961,6 +998,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="simplejoin">
 ```
@@ -969,13 +1007,14 @@ query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
 		if(t != null)
-						
+		//				
 		if(list.length > 0)
-							
+		//					
 	}			
 });
 ```
 </span>
+
 **Solution :**
 
 To solve this, you need to call the <span class="tut-snippet">include</span> function of CB.CloudQuery Object and pass in the ColumnName. 
@@ -1015,6 +1054,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="include">
 ```
@@ -1034,6 +1074,7 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+
 ###Multi level joins
 
 You can also do multi-level join on your CloudObject. 
@@ -1053,12 +1094,14 @@ query.include('course.teacher');
 query.include('course.teacher'); 
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="multijoin">
 ```
 query.include('course.teacher'); 
 ```
 </span>
+
 #Queries on Geo-points
 
 ###Near
@@ -1098,6 +1141,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="near">
 ```
@@ -1109,13 +1153,14 @@ query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
 		if(t != null)
-						
+		//				
 		if(list.length > 0)
-							
+		//					
 	}			
 });
 ```
 </span>
+
 ###Geo Within
 
 Gets all the objects if the point specified by column name lie inside of the specified set of points given. 
@@ -1161,6 +1206,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="geowithin">
 ```
@@ -1175,7 +1221,7 @@ query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
 		if(t != null)
-					
+		//			
 		if(list.length > 0)
 		// list is an array of CloudObjects.
 	}						
