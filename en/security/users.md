@@ -181,7 +181,7 @@ user.logIn(new CloudUserCallback(){
 		if(e != null){
 		}				
 		if(object != null){
-					
+		//			
 		}
 	}
 });
@@ -247,7 +247,7 @@ CB.CloudUser.current.logOut({
 CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
 	@Override
 	public void done(CloudUser x, CloudException t)	throws CloudException {
-						
+	//					
 	}		
 });
 ```
