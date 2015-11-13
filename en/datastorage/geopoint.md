@@ -35,6 +35,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="saving">
 ```
@@ -50,6 +51,7 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+
 #Calculating Distance 
 
 ###In Kilometres
@@ -73,6 +75,7 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInKMs(loc2);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="calc-kilo">
 ```
@@ -81,6 +84,7 @@ CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInKMs(loc2);
 ```
 </span>
+
 ###In Miles
 
 To calculate the distance in Miles's
@@ -102,6 +106,7 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInMiles(loc2);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="calc-miles">
 ```
@@ -110,6 +115,7 @@ CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInMiles(loc2);
 ```
 </span>
+
 ###In Radians
 
 To calculate the distance in Radians
@@ -131,6 +137,7 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInRadians(loc2);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="calc-radians">
 ```
@@ -179,6 +186,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query-near">
 ```
@@ -239,6 +247,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query-geo">
 ```
