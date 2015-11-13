@@ -47,6 +47,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="read">
 ```
@@ -64,6 +65,7 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+
 In this case, only that particular user will be able to read that object from the database. 
 
 
@@ -104,6 +106,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="write">
 ```
@@ -121,6 +124,7 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+
 In this case, Only that particular user will be able to write that object to the database.
 
 #Role Permissions
@@ -162,6 +166,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="roleread">
 ```
@@ -220,6 +225,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="rolewrite">
 ```
@@ -237,6 +243,7 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+
 In this case, all of the users which belong to that role will be able to write that object from the database. 
 
 #Public Permissions
@@ -278,6 +285,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="publicread">
 ```
@@ -295,6 +303,7 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+
 In this case, all of the users in your app will be able to read that object from the database. 
 
 
@@ -335,6 +344,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="publicwrite">
 ```
