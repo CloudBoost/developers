@@ -308,6 +308,20 @@ public void done(String x,CloudException t) throws CloudException {
 
 To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it
 
+==Javascript==
+<span class="js-lines" data-query="includefile">
+```
+var query = new CB.CloudQuery("Custom");
+query.include("file"); //this will include the file in CloudObjects
+query.find({
+    success: function(res){
+        //Gets the res which has the File Object inside it.
+    }, error: function(err){
+        //error while querying
+    });
+```
+</span>
+
 ==NodeJS==
 <span class="nodejs-lines" data-query="includefile">
 ```
