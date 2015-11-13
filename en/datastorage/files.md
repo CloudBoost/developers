@@ -324,7 +324,6 @@ query.find({
 
 ==Java==
 <span class="java-lines" data-query="includefile">
-
 ```
 CloudQuery query = new CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
