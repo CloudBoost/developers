@@ -28,8 +28,9 @@ if (fileUploadControl.files.length > 0) {
   })
 }
 ```
-==Java==
 </span>
+
+==Java==
 <span class="java-lines" data-query="savefile">
 ```
 CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
@@ -67,6 +68,7 @@ file.save({
 });
 ```
 </span>
+
 ==Java==
 </span>
 <span class="java-lines" data-query="savefile">
@@ -84,6 +86,7 @@ Blob blob=new Blob();//create blob in any of numerous ways
 });
 ```
 </span>
+
 ###Save File In CloudObject
 
 To save the file in CloudObject, you need to:
@@ -108,6 +111,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="savefile">
 ```
@@ -125,6 +129,7 @@ public void done(CloudObject x,CloudException t)throws CloudException {
 });
 ```
 </span>
+
 ><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
 
 #Default Properties
@@ -148,6 +153,7 @@ console.log(file.id);
 console.log(file.id);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
@@ -173,6 +179,7 @@ console.log(file.url);
 console.log(file.url);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
@@ -186,7 +193,6 @@ System.out.print(file.getFileUrl());
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
 ```
-
 file.set('name','abc.txt');
 console.log(file.name);
 ```
@@ -195,15 +201,14 @@ console.log(file.name);
 ==NodeJS==
 <span class="nodejs-lines" data-query="viewid">
 ```
-
 file.set('name','abc.txt');
 console.log(file.name);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
-
 file.setFileName('name','abc.txt');
 System.out.print(file.getFileName());
 ```
@@ -224,6 +229,7 @@ file.expires;
 file.expires;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewexpires">
 ```
@@ -246,6 +252,7 @@ file.ACL;
 file.ACL;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewacl">
 ```
@@ -281,6 +288,7 @@ file.delete({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="deletefile">
 ```
@@ -293,12 +301,15 @@ public void done(String x,CloudException t) throws CloudException {
 		//x is File URL
 	}									
 });
+```
+</span>
+
 #Get a File
 
 To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it. 
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="deletefile">
+<span class="nodejs-lines" data-query="includefile">
 ```
 var query = new CB.CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
@@ -310,8 +321,9 @@ query.find({
     });
 ```
 </span>
+
 ==Java==
-<span class="java-lines" data-query="deletefile">
+<span class="java-lines" data-query="includefile">
 ```
 CloudQuery query = new CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
