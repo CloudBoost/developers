@@ -49,19 +49,20 @@ role.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
 CloudRole role = new CloudRole("Student");
 role.save(new CloudRoleCallback(){
-
-					@Override
-					public void done(CloudRole roleObj, CloudException e)throws CloudException {
-							if(e != null){
-							}
-							if(roleObj == null){
-							}
-							});
+	@Override
+	public void done(CloudRole roleObj, CloudException e)throws CloudException {
+		if(e != null){
+		}
+		if(roleObj == null){
+		}
+	}
+});
 ```
 </span>
 After the CloudRole is created you can start signing-up users to role.
@@ -87,6 +88,7 @@ console.log(role.name);
 console.log(role.name);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewname">
 ```
@@ -128,7 +130,7 @@ user.addToRole(role, {
 ```
 </span>
 
-#Check if if the user is in a role
+#Check if the user is in a role
 
 If you want to check if the user is in the role then you can do this by 
 

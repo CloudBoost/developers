@@ -47,6 +47,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="read">
 ```
@@ -54,16 +55,17 @@ CloudObject obj = new CloudObject("Student");
 obj.ACL = new ACL();
 obj.ACL.setUserReadAccess(user.id,true);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
+
 In this case, only that particular user will be able to read that object from the database. 
 
 
@@ -104,6 +106,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="write">
 ```
@@ -111,16 +114,17 @@ CloudObject obj = new CloudObject("Student");
 obj.ACL = new ACL();
 obj.ACL.setUserWriteAccess(user.id,true);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
+
 In this case, Only that particular user will be able to write that object to the database.
 
 #Role Permissions
@@ -162,6 +166,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="roleread">
 ```
@@ -169,14 +174,14 @@ CloudObject obj = new CloudObject("Student");
 obj.ACL = new ACL();
 obj.ACL.setRoleReadAccess(user.id,true);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 
@@ -220,6 +225,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="rolewrite">
 ```
@@ -227,16 +233,17 @@ CloudObject obj = new CloudObject("Student");
 obj.ACL = new ACL();
 obj.ACL.setRoleWriteAccess(role.id,true);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
+
 In this case, all of the users which belong to that role will be able to write that object from the database. 
 
 #Public Permissions
@@ -278,6 +285,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="publicread">
 ```
@@ -285,16 +293,17 @@ CloudObject obj = new CloudObject("Student");
 obj.ACL = new ACL();
 obj.ACL.setPublicReadAccess(true);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
+
 In this case, all of the users in your app will be able to read that object from the database. 
 
 
@@ -335,6 +344,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="publicwrite">
 ```
@@ -342,14 +352,14 @@ CloudObject obj = new CloudObject("Student");
 obj.ACL = new ACL();
 obj.ACL.setPublicWriteAccess(true);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 

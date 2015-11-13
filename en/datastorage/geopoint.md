@@ -35,6 +35,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="saving">
 ```
@@ -42,16 +43,15 @@ CloudGeoPoint location = new CloudGeoPoint(80.3,17.7);
 CloudObject obj = new CloudObject('Student'); 
 obj.set('location',location);
 obj.save(new CloudObjectCallback(){
-
-					@Override
-					public void done(CloudObject x, CloudException e)throws CloudException {
-							if(e != null){
-								//error
-							}
-					}
-				});
+	@Override
+	public void done(CloudObject x, CloudException e)throws CloudException {
+		if(e != null)
+			//error							
+	}
+});
 ```
 </span>
+
 #Calculating Distance 
 
 ###In Kilometres
@@ -75,6 +75,7 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInKMs(loc2);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="calc-kilo">
 ```
@@ -83,6 +84,7 @@ CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInKMs(loc2);
 ```
 </span>
+
 ###In Miles
 
 To calculate the distance in Miles's
@@ -104,6 +106,7 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInMiles(loc2);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="calc-miles">
 ```
@@ -112,6 +115,7 @@ CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInMiles(loc2);
 ```
 </span>
+
 ###In Radians
 
 To calculate the distance in Radians
@@ -133,6 +137,7 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInRadians(loc2);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="calc-radians">
 ```
@@ -181,6 +186,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query-near">
 ```
@@ -188,15 +194,14 @@ CloudGeoPoint loc = new CloudGeoPoint(80.3,17.7);
 CloudGeoPoint query = new CloudQuery('Custom');
 //third parameter is the radius to check in meters. 
 query.near("location", loc, 100000,50000); 
-query.find(new CloudObjectArrayCallback(){
-	
-					@Override
-					public void done(CloudObject[] x, CloudException e)throws CloudException {
-							if(e != null){
-								
-							}
-							//
-					}
+query.find(new CloudObjectArrayCallback(){	
+	@Override
+	public void done(CloudObject[] x, CloudException e)throws CloudException {
+		if(e != null)
+		//						
+		if(x!=null)
+		//x is a list of CloudObjects							
+	}
 });
 ```
 </span>
@@ -210,9 +215,9 @@ Geo Within at least requires 3 points to be passed to the query.
 ==JavaScript==
 <span class="js-lines" data-query="query-geo">
 ```
-CloudGeoPoint loc1 = new CB.CloudGeoPoint(78.9,18.4);
-CloudGeoPoint loc2 = new CB.CloudGeoPoint(78.4,17.4);
-CloudGeoPoint loc3 = new CB.CloudGeoPoint(80.4,17.7);
+var loc1 = new CB.CloudGeoPoint(78.9,18.4);
+var loc2 = new CB.CloudGeoPoint(78.4,17.4);
+var loc3 = new CB.CloudGeoPoint(80.4,17.7);
 var query = new CB.CloudQuery('Sample');
 query.geoWithin("location", [loc1, loc2, loc3]);
 query.find({
@@ -242,6 +247,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query-geo">
 ```
@@ -250,15 +256,14 @@ CloudGeoPoint loc2 = new CloudGeoPoint(78.4,17.4);
 CloudGeoPoint loc3 = new CloudGeoPoint(80.4,17.7);
 CloudQuery query = new CloudQuery('Sample');
 query.geoWithin("location", [loc1, loc2, loc3]);
-query.find(new CloudObjectArrayCallback(){
-	
-					@Override
-					public void done(CloudObject[] x, CloudException e)throws CloudException {
-							if(e != null){
-								
-							}
-							//
-					}
+query.find(new CloudObjectArrayCallback(){	
+	@Override
+	public void done(CloudObject[] x, CloudException e)throws CloudException {
+		if(e != null)
+			//error				
+		if(x!=null)	
+			//x is a list of CloudObjects
+	}
 });
 ```
 </span>

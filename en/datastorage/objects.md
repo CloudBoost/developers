@@ -13,13 +13,13 @@ var obj = new CB.CloudObject('TableName');
 ```
 </span>
 
-
 ==NodeJS==
 <span class="nodejs-lines" data-query="create">
 ```
 var obj = new CB.CloudObject('TableName');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
@@ -42,6 +42,7 @@ obj.set('ColumnName',data);
 obj.set('ColumnName',data);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="set">
 ```
@@ -68,7 +69,6 @@ obj.save({
 ```
 </span>
 
-
 ==NodeJS==
 <span class="nodejs-lines" data-query="save">
 ```
@@ -83,19 +83,21 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="save">
 ```
 CloudObject obj = new CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save(new CloudObjectCallback(){
-
-					@Override
-					public void done(CloudObject x, CloudException e)throws CloudException {
-							if(e != null){
-							}
-					}
-				});
+	@Override
+	public void done(CloudObject x, CloudException e)throws CloudException {
+		if(e != null)
+			//error
+		if(x!=null)
+			//cloudObject
+	}
+});
 ```
 </span>
 
@@ -155,6 +157,7 @@ console.log(obj.id);
 console.log(obj.id);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
@@ -178,12 +181,14 @@ obj.createdAt;
 obj.createdAt;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewcreateat">
 ```
 obj.getCreatedAt();
 ```
 </span>
+
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -199,8 +204,9 @@ obj.updatedAt;
 obj.updatedAt;
 ```
 </span>
+
 ==Java==
-<span class="nodejs-lines" data-query="viewupdateat">
+<span class="java-lines" data-query="viewupdateat">
 ```
 obj.getUpdatedAt();
 ```
@@ -221,6 +227,7 @@ obj.expires;
 obj.expires;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewexpires">
 ```
@@ -243,6 +250,7 @@ obj.ACL;
 obj.ACL;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewacl">
 ```
@@ -281,21 +289,22 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="update">
 ```
 obj.set('ColumnName', newData);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				//
-				}
-				if(t != null){
-					//"Failed to save data"
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+			//
+		}
+		if(t != null){
+			//"Failed to save data"
+		}
+	}
+});
 ```
 </span>
 
@@ -326,20 +335,21 @@ obj.fetch({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="fetch">
 ```
 obj.fetch(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				//
-				}
-				if(t != null){
-					//"Failed to fetch data"
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+			//
+		}
+		if(t != null){
+			//"Failed to fetch data"
+		}
+	}
+});
 ```
 </span>
 
@@ -375,18 +385,19 @@ obj.delete({
 <span class="java-lines" data-query="delete">
 ```
 obj.delete(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				//
-				}
-				if(t != null){
-					//
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+			//
+		}
+		if(t != null){
+			//
+		}
+	}
+});
 ```
 </span>
+
 #####What's next?
 
 In the next section you'll learn how to create relations between CloudObjects, and save them to the database. Click [here]( /?lang=en&category=datastorage&subcategory=relations) to go to the relations documentation.
