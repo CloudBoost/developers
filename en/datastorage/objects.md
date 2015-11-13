@@ -13,13 +13,13 @@ var obj = new CB.CloudObject('TableName');
 ```
 </span>
 
-
 ==NodeJS==
 <span class="nodejs-lines" data-query="create">
 ```
 var obj = new CB.CloudObject('TableName');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
@@ -42,6 +42,7 @@ obj.set('ColumnName',data);
 obj.set('ColumnName',data);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="set">
 ```
@@ -68,7 +69,6 @@ obj.save({
 ```
 </span>
 
-
 ==NodeJS==
 <span class="nodejs-lines" data-query="save">
 ```
@@ -83,6 +83,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="save">
 ```
@@ -156,6 +157,7 @@ console.log(obj.id);
 console.log(obj.id);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
@@ -179,12 +181,14 @@ obj.createdAt;
 obj.createdAt;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewcreateat">
 ```
 obj.getCreatedAt();
 ```
 </span>
+
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -200,6 +204,7 @@ obj.updatedAt;
 obj.updatedAt;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewupdateat">
 ```
@@ -222,6 +227,7 @@ obj.expires;
 obj.expires;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewexpires">
 ```
@@ -244,6 +250,7 @@ obj.ACL;
 obj.ACL;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewacl">
 ```
@@ -282,6 +289,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="update">
 ```
@@ -327,6 +335,7 @@ obj.fetch({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="fetch">
 ```
@@ -388,6 +397,7 @@ obj.delete(new CloudObjectCallback(){
 });
 ```
 </span>
+
 #####What's next?
 
 In the next section you'll learn how to create relations between CloudObjects, and save them to the database. Click [here]( /?lang=en&category=datastorage&subcategory=relations) to go to the relations documentation.
