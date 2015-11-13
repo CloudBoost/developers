@@ -306,7 +306,7 @@ public void done(String x,CloudException t) throws CloudException {
 
 #Get a File
 
-To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it. 
+To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="includefile">
