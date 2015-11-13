@@ -292,7 +292,7 @@ file.delete({
 ==Java==
 <span class="java-lines" data-query="deletefile">
 ```
-file.save(new CloudStringCallback() {
+file.delete(new CloudStringCallback() {
 @Override
 public void done(String x,CloudException t) throws CloudException {
 	if(t!=null)
@@ -324,6 +324,7 @@ query.find({
 
 ==Java==
 <span class="java-lines" data-query="includefile">
+
 ```
 CloudQuery query = new CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
