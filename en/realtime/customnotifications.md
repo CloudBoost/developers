@@ -39,6 +39,7 @@ CB.CloudNotification.on('ChannelName',function(data){
 }});
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="on">
 ```
@@ -65,6 +66,7 @@ CB.CloudNotification.publish('ChannelName','data');
 CB.CloudNotification.publish('ChannelName','data');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="publish">
 ```
@@ -89,6 +91,7 @@ CB.CloudNotification.off('ChannelName');
 CB.CloudNotification.off('ChannelName');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="off">
 ```
