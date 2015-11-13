@@ -820,7 +820,7 @@ query.findOne(new CloudObjectCallback(){
 ```
 </span>
 
-FindById return the object by its objectId.
+FindById return the object by its objectId
 
 ==JavaScript==
 <span class="js-lines" data-query="findid">
@@ -1064,7 +1064,7 @@ query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
 		if(t != null)
-					
+		//			
 		if(list.length > 0){
 			CloudObject obj=list[0];
 			JSONObject course=obj.get('course');
@@ -1228,5 +1228,3 @@ query.find(new CloudObjectArrayCallback(){
 });
 ```
 </span>
-
-
