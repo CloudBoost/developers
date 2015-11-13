@@ -267,6 +267,7 @@ column.dataType = 'Relation';
 column.relatedTo = 'TableName';
 ```
 </span>
+
 If you want to add a list relational column, then: 
 
 ==JavaScript==
