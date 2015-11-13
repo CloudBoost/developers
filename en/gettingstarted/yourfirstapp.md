@@ -152,14 +152,14 @@ obj.save({
 CloudObject obj = new CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 
@@ -204,14 +204,14 @@ query.find({
 CloudQuery query = new CloudQuery('TableName');
 query.equalTo('ColumnName', data);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 

@@ -48,15 +48,12 @@ CloudObject obj=new CloudObject('Custom');
 CloudObject[] arr={obj1,obj2};
 obj.saveAll(arr,new CloudObjectArrayCallback() {
 @Override
-public void done(CloudObject[] x,
-					CloudException t)
-					throws CloudException {
-									if(t!=null)
-										// if there is an error, then err will be an array fo error messages respective to the array of CloudObjects
-									else if(x!=null)
-										//x has the array of saved CloudObjects.
-									}
-									
+public void done(CloudObject[] x,CloudException t)throws CloudException {
+	if(t!=null)
+		// if there is an error, then err will be an array fo error messages respective to the array of CloudObjects
+	else if(x!=null)
+		//x has the array of saved CloudObjects.
+	}									
 });
 ```
 </span>
@@ -93,14 +90,12 @@ CB.CloudObject.deleteAll([obj1,obj2],{
 CloudObject obj=new CloudObject('Custom');
 obj.deleteAll([obj1,obj2],new CloudObjectArrayCallback() {
 @Override
-public void done(CloudObject[] x,
-					CloudException t)
-					throws CloudException {
-									if(t!=null)
-										// if there is an error, then err will be an array fo error messages respective to the array of CloudObjects
-									else if(x!=null)
-										//x has the array of saved CloudObjects.
-									}
+public void done(CloudObject[] x,CloudException t) throws CloudException {
+	if(t!=null)
+		// if there is an error, then err will be an array fo error messages respective to the array of CloudObjects
+	else if(x!=null)
+		//x has the array of saved CloudObjects.
+	}
 									
 });
 ```

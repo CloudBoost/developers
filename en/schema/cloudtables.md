@@ -62,14 +62,14 @@ CloudTable table = new CloudTable('Student');
 Column column = new Column('Name', 'Text');
 table.addColumn(column);
 table.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 #Default Columns
@@ -153,14 +153,14 @@ table.save({
 CloudTable table = new CloudTable('Student');
 table.addColumn(column1);
 table.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 #Data-types
@@ -368,14 +368,14 @@ Column column = table.getColumn('Name');
 column.required = true; 
 table.updateColumn(column);
 table.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 >Info: You cannot edit the ColumnName and DataType after its saved. You can only change <span class="tut-snippet">required</span> and <span class="tut-snippet">unique</span> properties of a column.
@@ -412,14 +412,14 @@ table.save({
 ```
 table.deleteColumn('ColumnName');
 table.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 
@@ -452,14 +452,14 @@ table.delete({
 <span class="java-lines" data-query="deltable">
 ```
 table.delete(new CloudTableCallback(){
-			@Override
-			public void done(CloudTable x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudTable x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 
@@ -494,14 +494,14 @@ CB.CloudTable.getAll({
 <span class="java-lines" data-query="getalltabs">
 ```
 CloudTable.getAll(new CloudTableArrayCallback(){
-			@Override
-			public void done(CloudTable[] x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudTable[] x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 To get a particular table from a CloudApp, You can, 
@@ -533,13 +533,13 @@ CB.CloudTable.get('TableName', {
 <span class="java-lines" data-query="gettabname">
 ```
 CloudTable.get('TableName', new CloudTableCallback(){
-@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
 });
 ```
 </span>

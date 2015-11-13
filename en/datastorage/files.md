@@ -32,16 +32,16 @@ if (fileUploadControl.files.length > 0) {
 </span>
 <span class="java-lines" data-query="savefile">
 ```
-		CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
-		file.save(new CloudStringCallback(){
-			@Override
-			public void done(String x, CloudException e) throws CloudException {
-				if(e != null){
-					//error
-				}
-				System.out.println(x);
-			}
-		});
+CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
+	file.save(new CloudStringCallback(){
+	@Override
+	public void done(String x, CloudException e) throws CloudException {
+		if(e != null)
+			//error
+		if(x!=null)		
+		System.out.println(x);
+	}
+});
 ```
 </span>
 
@@ -71,17 +71,17 @@ file.save({
 </span>
 <span class="java-lines" data-query="savefile">
 ```
-		Blob blob=new Blob();//create blob in any of numerous ways
-		CloudFile file = new CloudFile(blob);
-		file.save(new CloudStringCallback(){
-			@Override
-			public void done(String x, CloudException e) throws CloudException {
-				if(e != null){
-					//error
-				}
-				System.out.println(x);
-			}
-		});
+Blob blob=new Blob();//create blob in any of numerous ways
+	CloudFile file = new CloudFile(blob);
+	file.save(new CloudStringCallback(){
+	@Override
+	public void done(String x, CloudException e) throws CloudException {
+		if(e != null)
+			//error
+		if(x!=null)
+			System.out.println(x);
+	}
+});
 ```
 </span>
 ###Save File In CloudObject
@@ -116,15 +116,12 @@ CloudFile file = new CloudFile(documentFile);
 obj.set('file',file);
 obj.save(obj,new CloudObjectCallback() {
 @Override
-public void done(CloudObject x,
-					CloudException t)
-					throws CloudException {
-									if(t!=null)
-										// if there is an error
-									else if(x!=null)
-										//x has File Object
-									}
-									
+public void done(CloudObject x,CloudException t)throws CloudException {
+	if(t!=null)
+		// if there is an error
+	else if(x!=null)
+		//x has File Object
+	}
 });
 ```
 </span>
@@ -151,6 +148,13 @@ console.log(file.id);
 console.log(file.id);
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="viewid">
+```
+//Id is null when you create the file but gets assigned to an file as soon as you save it.
+System.out.print(file.id);
+```
+</span>
 
 * **Url** : [URL] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
 
@@ -169,7 +173,7 @@ console.log(file.url);
 console.log(file.url);
 ```
 </span>
-==NodeJS==
+==Java==
 <span class="java-lines" data-query="viewid">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
@@ -196,7 +200,7 @@ file.set('name','abc.txt');
 console.log(file.name);
 ```
 </span>
-==NodeJS==
+==Java==
 <span class="java-lines" data-query="viewid">
 ```
 
@@ -282,15 +286,12 @@ file.delete({
 ```
 file.save(new CloudStringCallback() {
 @Override
-public void done(String x,
-					CloudException t)
-					throws CloudException {
-									if(t!=null)
-										// if there is an error
-									else if(x!=null)
-										//x is File URL
-									}
-									
+public void done(String x,CloudException t) throws CloudException {
+	if(t!=null)
+		// if there is an error
+	else if(x!=null)
+		//x is File URL
+	}									
 });
 #Get a File
 
@@ -309,20 +310,18 @@ query.find({
     });
 ```
 </span>
-==NodeJS==
+==Java==
 <span class="java-lines" data-query="deletefile">
 ```
 CloudQuery query = new CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
 query.find(new CloudObjectCallback(){
-			@Override
-						public void done(CloudObject obj, CloudException t)throws CloudException {
-								if(t != null){
-								}
-								//obj contains file object
+	@Override
+	public void done(CloudObject obj, CloudException t)throws CloudException {
+		if(t != null)								
+			//obj contains file object
 								
-						}
-
+	}
 });
 ```
 </span>

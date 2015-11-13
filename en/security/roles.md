@@ -54,14 +54,14 @@ role.save({
 ```
 CloudRole role = new CloudRole("Student");
 role.save(new CloudRoleCallback(){
-
-					@Override
-					public void done(CloudRole roleObj, CloudException e)throws CloudException {
-							if(e != null){
-							}
-							if(roleObj == null){
-							}
-							});
+	@Override
+	public void done(CloudRole roleObj, CloudException e)throws CloudException {
+		if(e != null){
+		}
+		if(roleObj == null){
+		}
+	}
+});
 ```
 </span>
 After the CloudRole is created you can start signing-up users to role.

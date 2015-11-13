@@ -42,14 +42,12 @@ CloudGeoPoint location = new CloudGeoPoint(80.3,17.7);
 CloudObject obj = new CloudObject('Student'); 
 obj.set('location',location);
 obj.save(new CloudObjectCallback(){
-
-					@Override
-					public void done(CloudObject x, CloudException e)throws CloudException {
-							if(e != null){
-								//error
-							}
-					}
-				});
+	@Override
+	public void done(CloudObject x, CloudException e)throws CloudException {
+		if(e != null)
+			//error							
+	}
+});
 ```
 </span>
 #Calculating Distance 
@@ -188,15 +186,14 @@ CloudGeoPoint loc = new CloudGeoPoint(80.3,17.7);
 CloudGeoPoint query = new CloudQuery('Custom');
 //third parameter is the radius to check in meters. 
 query.near("location", loc, 100000,50000); 
-query.find(new CloudObjectArrayCallback(){
-	
-					@Override
-					public void done(CloudObject[] x, CloudException e)throws CloudException {
-							if(e != null){
+query.find(new CloudObjectArrayCallback(){	
+	@Override
+	public void done(CloudObject[] x, CloudException e)throws CloudException {
+		if(e != null)
 								
-							}
-							//
-					}
+		if(x!=null)
+		//x is a list of CloudObjects							
+	}
 });
 ```
 </span>
@@ -250,15 +247,14 @@ CloudGeoPoint loc2 = new CloudGeoPoint(78.4,17.4);
 CloudGeoPoint loc3 = new CloudGeoPoint(80.4,17.7);
 CloudQuery query = new CloudQuery('Sample');
 query.geoWithin("location", [loc1, loc2, loc3]);
-query.find(new CloudObjectArrayCallback(){
-	
-					@Override
-					public void done(CloudObject[] x, CloudException e)throws CloudException {
-							if(e != null){
-								
-							}
-							//
-					}
+query.find(new CloudObjectArrayCallback(){	
+	@Override
+	public void done(CloudObject[] x, CloudException e)throws CloudException {
+		if(e != null)
+			//error				
+		if(x!=null)	
+			//x is a list of CloudObjects
+	}
 });
 ```
 </span>

@@ -95,14 +95,14 @@ cs.search({
 <span class="java-lines" data-query="search">
 ```
 cs.search(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] x, CloudException t)	throws CloudException {
-				if( t != null){
-				}
-				if(x!=null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] x, CloudException t)	throws CloudException {
+		if( t != null){
+		}
+		if(x!=null){
+		}
+	}
+});
 ```
 </span>
 #Search Query and Search Filters
@@ -168,14 +168,14 @@ SearchFilter searchFilter = new SearchFilter();
 SearchQuery searchQuery = new SearchQuery();
 //
 cs.search(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] x, CloudException t)	throws CloudException {
-				if( t != null){
-				}
-				if(x!=null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] x, CloudException t)	throws CloudException {
+		if( t != null){
+		}
+		if(x!=null){
+		}
+	}
+});
 ```
 </span>
 #Basic Search Query
@@ -686,14 +686,14 @@ cs.orderByAsc('age');
 cs.orderByDesc('age'); 
 //
 cs.search(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] x, CloudException t)	throws CloudException {
-				if( t != null){
-				}
-				if(x.length <0){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] x, CloudException t)	throws CloudException {
+		if( t != null){
+		}
+		if(x.length <0){
+		}
+	}
+});
 ```
 </span>
 #Limit and Skip
@@ -750,13 +750,13 @@ cs.limit(10);
 cs.skip(5); 
 //
 cs.search(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] x, CloudException t)	throws CloudException {
-				if( t != null){
-				}
-				if(x!=null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] x, CloudException t)	throws CloudException {
+		if( t != null){
+		}
+		if(x!=null){
+		}
+	}
+});
 ```
 </span>

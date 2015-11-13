@@ -89,13 +89,14 @@ obj.save({
 CloudObject obj = new CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save(new CloudObjectCallback(){
-
-					@Override
-					public void done(CloudObject x, CloudException e)throws CloudException {
-							if(e != null){
-							}
-					}
-				});
+	@Override
+	public void done(CloudObject x, CloudException e)throws CloudException {
+		if(e != null)
+			//error
+		if(x!=null)
+			//cloudObject
+	}
+});
 ```
 </span>
 
@@ -200,7 +201,7 @@ obj.updatedAt;
 ```
 </span>
 ==Java==
-<span class="nodejs-lines" data-query="viewupdateat">
+<span class="java-lines" data-query="viewupdateat">
 ```
 obj.getUpdatedAt();
 ```
@@ -286,16 +287,16 @@ obj.save({
 ```
 obj.set('ColumnName', newData);
 obj.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				//
-				}
-				if(t != null){
-					//"Failed to save data"
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+			//
+		}
+		if(t != null){
+			//"Failed to save data"
+		}
+	}
+});
 ```
 </span>
 
@@ -330,16 +331,16 @@ obj.fetch({
 <span class="java-lines" data-query="fetch">
 ```
 obj.fetch(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				//
-				}
-				if(t != null){
-					//"Failed to fetch data"
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+			//
+		}
+		if(t != null){
+			//"Failed to fetch data"
+		}
+	}
+});
 ```
 </span>
 
@@ -375,16 +376,16 @@ obj.delete({
 <span class="java-lines" data-query="delete">
 ```
 obj.delete(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				//
-				}
-				if(t != null){
-					//
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+			//
+		}
+		if(t != null){
+			//
+		}
+	}
+});
 ```
 </span>
 #####What's next?

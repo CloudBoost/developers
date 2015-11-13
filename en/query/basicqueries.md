@@ -45,14 +45,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.equalTo('name','John');
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] x, CloudException t) {	
+		if(x != null)
+			//x is an array of CloudObjects
+		if(t != null)
+			//process error
+	}
+});
 ```
 </span>
 ###Not Equal To
@@ -92,14 +92,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.notEqualTo('name','John');
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(x != null)
+			//x  is an array of CloudObjects
+		if(t != null)
+			//process the exception
+	}
+});
 ```
 </span>
 ###Greater Than
@@ -139,14 +139,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.greaterThan('age',15);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			//
+	}
+});
 ```
 </span>
 ###Less Than
@@ -186,14 +186,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.lessThan('age',15);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			//error
+	}
+});
 ```
 </span>
 ###Greater Than and Equal To
@@ -233,14 +233,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.greaterThanEqualTo('age',15);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			//error
+	}
+});
 ```
 </span>
 ###Less Than and Equal To
@@ -280,14 +280,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.lessThanEqualTo('age',15);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			
+	}
+});
 ```
 </span>
 ###Starts With
@@ -329,14 +329,14 @@ query.find({
 CloudQuery query = new CloudQuery("Student");
 query.startsWith('name','J');
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+				
+	}
+});
 ```
 </span
 #Queries on Lists
@@ -383,14 +383,14 @@ CloudQuery query = new CloudQuery("Student");
 //find Students who are in JavaScript OR C# course
 query.containedIn('courses', ['JavaScript', 'C#']);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+				
+	}
+});
 ```
 </span>
 ###Does not contain
@@ -435,14 +435,14 @@ CloudQuery query = new CloudQuery("Student");
 //find Students who are in NOT in JavaScript AND C# course
 query.notContainedIn('courses', ['JavaScript', 'C#']);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+				
+	}
+});
 ```
 </span>
 ###Contains All
@@ -487,14 +487,15 @@ CloudQuery query = new CloudQuery("Student");
 //find Students who are in JavaScript AND C# course
 query.containsAll('courses', ['JavaScript', 'C#']);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+				
+		if(t != null)
+				
+	}
+});
 ```
 </span>
 #AND and OR
@@ -541,14 +542,14 @@ CloudQuery query = new CloudQuery("Student");
 query.equalTo('name', 'John');
 query.greaterThan('age', 10);
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			
+	}
+});
 ```
 </span>
 If you want to **OR** a query, you can: 
@@ -599,14 +600,14 @@ CloudQuery query2 = new CloudQuery("Student");
 query2.greaterThan('age', 10);
 CloudQuery query = CB.CloudQuery.or(query1,query2); //OR it. 
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(list != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(list != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			
+	}
+});
 ```
 </span>
 #Order By
@@ -736,14 +737,14 @@ query.find({
 <span class="java-lines" data-query="query">
 ```
 query.find(new CloudObjectArrayCallback(){
-			@Override
-			public void done(CloudObject[] list, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject[] list, CloudException t) {	
+		if(x != null)
+			//list is an array of CloudObjects
+		if(t != null)
+			
+	}
+});
 ```
 </span>
 FindOne only returns the top object thatis matched by the query. It returns a CloudObjects / CloudUser / CloudRole.
@@ -777,14 +778,13 @@ query.findOne({
 <span class="java-lines" data-query="findone">
 ```
 query.findOne(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null)
+			//x is a CloudObject
+		if(t != null)
+	}
+});
 ```
 </span>
 FindById return the object by its objectId.
@@ -818,14 +818,14 @@ query.findById('id', {
 <span class="java-lines" data-query="findid">
 ```
 query.findById('id', new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject obj, CloudException t) {	
+		if(x != null)
+			 //obj is CloudObject
+		if(t != null)
+				
+	}
+});
 ```
 </span>
 #Count
@@ -861,11 +861,11 @@ query.count({
 query.count(new CloudIntegerCallback(){
 @Override
 public void done(int x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
+	if(x != null)
+				
+	if(t != null)
+				
+	}
 });
 ```
 </span>
@@ -905,14 +905,14 @@ query.distinct('age',{
 <span class="java-lines" data-query="distinct">
 ```
 query.distinct('age',new CloudObjectArrayCallback(){
-				@Override
-				public void done(CloudObject[] list, CloudException t)throws CloudException {
-						if(t != null){
-						}
-						if(list!=null){
-						}
-				}
-			});
+	@Override
+	public void done(CloudObject[] list, CloudException t)throws CloudException {
+		if(t != null)
+					
+		if(list!=null)
+						
+	}
+});
 ```
 </span>
 
@@ -966,14 +966,14 @@ query.find({
 ```
 CloudQuery query = new CloudQuery('Student');
 query.find(new CloudObjectArrayCallback(){
-				@Override
-				public void done(CloudObject[] list, CloudException t)throws CloudException {
-						if(t != null){
-						}
-						if(list.length > 0){
+	@Override
+	public void done(CloudObject[] list, CloudException t)throws CloudException {
+		if(t != null)
+						
+		if(list.length > 0)
 							
-				}
-			});
+	}			
+});
 ```
 </span>
 **Solution :**
@@ -1021,14 +1021,17 @@ query.find({
 CloudQuery query = new CloudQuery('Student');
 query.include('course');
 query.find(new CloudObjectArrayCallback(){
-				@Override
-				public void done(CloudObject[] list, CloudException t)throws CloudException {
-						if(t != null){
-						}
-						if(list.length > 0){
-							
-				}
-			});
+	@Override
+	public void done(CloudObject[] list, CloudException t)throws CloudException {
+		if(t != null)
+					
+		if(list.length > 0){
+			CloudObject obj=list[0];
+			JSONObject course=obj.get('course');
+			String courseName=course.get('name');// you will get the related object and all the data
+		}				
+	}			
+});
 ```
 </span>
 ###Multi level joins
@@ -1096,21 +1099,21 @@ query.find({
 ```
 </span>
 ==Java==
-<span class="nodejs-lines" data-query="near">
+<span class="java-lines" data-query="near">
 ```
 CloudGeoPoint loc = new CloudGeoPoint(17.7,80.3);
 CloudQuery query = new CloudQuery('Custom');
 //third parameter is the radius to check in meters. 
 query.near("location", loc, 100000); 
 query.find(new CloudObjectArrayCallback(){
-				@Override
-				public void done(CloudObject[] list, CloudException t)throws CloudException {
-						if(t != null){
-						}
-						if(list.length > 0){
+	@Override
+	public void done(CloudObject[] list, CloudException t)throws CloudException {
+		if(t != null)
+						
+		if(list.length > 0)
 							
-				}
-			});
+	}			
+});
 ```
 </span>
 ###Geo Within
@@ -1169,14 +1172,14 @@ CloudQuery query = new CloudQuery('Sample');
 //
 query.geoWithin("location", [loc1, loc2, loc3]);
 query.find(new CloudObjectArrayCallback(){
-				@Override
-				public void done(CloudObject[] list, CloudException t)throws CloudException {
-						if(t != null){
-						}
-						if(list.length > 0){
-							
-				}
-			});
+	@Override
+	public void done(CloudObject[] list, CloudException t)throws CloudException {
+		if(t != null)
+					
+		if(list.length > 0)
+		// list is an array of CloudObjects.
+	}						
+});
 ```
 </span>
 

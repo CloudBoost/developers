@@ -37,19 +37,19 @@ user.signUp({
 ==Java==
 <span class="java-lines" data-query="signup">
 ```
-				CloudUser obj = new CloudUser();
-				obj.setUserName(username);
-				obj.setPassword(passwd);
-				obj.setEmail("hello@abc.com");
-				obj.signUp(new CloudUserCallback(){
-					@Override
-					public void done(CloudUser object, CloudException e)	throws CloudException {
-						if(e != null){
-						}
-						if(object != null){
-						}
-					}
-				});
+CloudUser obj = new CloudUser();
+obj.setUserName(username);
+obj.setPassword(passwd);
+obj.setEmail("hello@abc.com");
+obj.signUp(new CloudUserCallback(){
+	@Override
+	public void done(CloudUser object, CloudException e)	throws CloudException {
+		if(e != null){
+		}
+		if(object != null){
+		}
+	}
+});
 ```
 </span>
 
@@ -167,20 +167,18 @@ user.logIn({
 <span class="java-lines" data-query="login">
 ```
 CloudUser user = new CloudUser();
-			user.setUserName(username);
-			user.setPassword(passwd);
-			user.logIn(new CloudUserCallback(){
-
-				@Override
-				public void done(CloudUser object, CloudException e)throws CloudException {
-					if(e != null){
-					}
+user.setUserName(username);
+user.setPassword(passwd);
+user.logIn(new CloudUserCallback(){
+	@Override
+	public void done(CloudUser object, CloudException e)throws CloudException {
+		if(e != null){
+		}				
+		if(object != null){
 					
-					if(object != null){
-					
-					}
-				}
-			});
+		}
+	}
+});
 ```
 </span>
 Once the user us login you can access the current logged in user by 
@@ -238,14 +236,12 @@ CB.CloudUser.current.logOut({
 ==Java==
 <span class="java-lines" data-query="logout">
 ```
-	CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
-					@Override
-					public void done(CloudUser x, CloudException t)	throws CloudException {
+CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
+	@Override
+	public void done(CloudUser x, CloudException t)	throws CloudException {
 						
-					}
-
-		
-				});
+	}		
+});
 ```
 </span>
 

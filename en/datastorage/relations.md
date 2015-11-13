@@ -86,15 +86,15 @@ student.set('name', 'John Smith');
 student.set('address', address);
 //save
 student.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-					//Failed to save data
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+			//Failed to save data
+		}
+	}
+});
 ```
 </span>
 
@@ -163,14 +163,14 @@ student.set('name', 'John Smith');
 student.set('address', address);
 //save
 student.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 >Info: For one-to-many relations, you **don't** have to set a <span class="tut-snippet">unique</span> constraint on a column when you're designing your table. 
@@ -239,8 +239,8 @@ studentCourses.save({
 });
 ```
 </span>
-==JavaScript==
-<span class="js-lines" data-query="relation">
+==Java==
+<span class="java-lines" data-query="relation">
 ```
 //create the course object. 
 CloudObject course = new CloudObject('Course');
@@ -254,14 +254,14 @@ studentCourses.set('student', student);
 studentCourses.set('course',course);
 //save
 studentCourses.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
 
@@ -332,13 +332,13 @@ course.set('Name', 'Java');
 course.set('Students',[student1,student2]);
 //save
 course.save(new CloudObjectCallback(){
-			@Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
-		});
+	@Override
+	public void done(CloudObject x, CloudException t) {	
+		if(x != null){
+		}
+		if(t != null){
+		}
+	}
+});
 ```
 </span>
