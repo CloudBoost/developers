@@ -359,7 +359,7 @@ file.fetch({
 To get the file contents from the File object, you need to:
 
 ==JavaScript==
-<span class="js-lines" data-query="fetchfile">
+<span class="js-lines" data-query="fetchfilecontent">
 ```
 file.getFileContent({
   success: function(content) {
