@@ -130,7 +130,7 @@ user.addToRole(role, {
 ```
 </span>
 
-#Check if if the user is in a role
+#Check if the user is in a role
 
 If you want to check if the user is in the role then you can do this by 
 
