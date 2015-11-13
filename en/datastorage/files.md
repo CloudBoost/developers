@@ -258,6 +258,7 @@ file.ACL;
 file.getACL();
 ```
 </span>
+
 #Delete a file
 
 To delete a file, you need to: 
@@ -331,7 +332,6 @@ query.find(new CloudObjectCallback(){
 	public void done(CloudObject obj, CloudException t)throws CloudException {
 		if(t != null)								
 			//obj contains file object
-								
 	}
 });
 ```
