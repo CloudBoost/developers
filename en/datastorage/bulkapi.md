@@ -99,8 +99,6 @@ public void done(CloudObject[] x,CloudException t) throws CloudException {
 	else if(x!=null)
 		//x has the array of saved CloudObjects.
 	}
-									
 });
 ```
 </span>
-
