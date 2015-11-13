@@ -4,7 +4,7 @@ In this section you'll learn how to create your new App (we call it [CloudApp]( 
 
 #Create your first App
 
-If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span class="tut-snippet">App Name</span> and the <span class="tut-snippet">App ID</span>.
+If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span class="tut-snippet">App Name</span> and thee <span class="tut-snippet">App ID</span>.
 
 <img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2015/08/Screen1.PNG">
 
