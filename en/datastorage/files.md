@@ -11,7 +11,7 @@ To save a file in CloudBoost, you basically need to pass in the file object as a
 To save a file from your local file system, you need to:
 
 ==JavaScript==
-<span class="js-lines" data-query="savefile">
+<span class="js-lines" data-query="setfile">
 ```
 var fileUploadControl = $("#profilePhotoFileUpload")[0];
 if (fileUploadControl.files.length > 0) {
@@ -31,7 +31,7 @@ if (fileUploadControl.files.length > 0) {
 </span>
 
 ==Java==
-<span class="java-lines" data-query="savefile">
+<span class="java-lines" data-query="setfile">
 ```
 CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
 	file.save(new CloudStringCallback(){
@@ -51,7 +51,7 @@ CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
 To save a file by creating a blob, you need to:
 
 ==JavaScript==
-<span class="js-lines" data-query="saveblob">
+<span class="js-lines" data-query="setblob">
 ```
 var documentFile = new Blob([
   'This is the content of by document blob'
@@ -70,8 +70,7 @@ file.save({
 </span>
 
 ==Java==
-</span>
-<span class="java-lines" data-query="savefile">
+<span class="java-lines" data-query="setblob">
 ```
 Blob blob=new Blob();//create blob in any of numerous ways
 	CloudFile file = new CloudFile(blob);
@@ -165,7 +164,7 @@ System.out.print(file.id);
 * **Url** : [URL] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
 
 ==JavaScript==
-<span class="js-lines" data-query="viewid">
+<span class="js-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
@@ -173,7 +172,7 @@ console.log(file.url);
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="viewid">
+<span class="nodejs-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
@@ -181,7 +180,7 @@ console.log(file.url);
 </span>
 
 ==Java==
-<span class="java-lines" data-query="viewid">
+<span class="java-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 System.out.print(file.getFileUrl());
@@ -191,7 +190,7 @@ System.out.print(file.getFileUrl());
 * **Name** : [Text] Name of the CloudFile to be assigned by the user.
 
 ==JavaScript==
-<span class="js-lines" data-query="viewid">
+<span class="js-lines" data-query="viewname">
 ```
 file.set('name','abc.txt');
 console.log(file.name);
@@ -199,7 +198,7 @@ console.log(file.name);
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="viewid">
+<span class="nodejs-lines" data-query="viewname">
 ```
 file.set('name','abc.txt');
 console.log(file.name);
@@ -207,7 +206,7 @@ console.log(file.name);
 </span>
 
 ==Java==
-<span class="java-lines" data-query="viewid">
+<span class="java-lines" data-query="viewname">
 ```
 file.setFileName('name','abc.txt');
 System.out.print(file.getFileName());
