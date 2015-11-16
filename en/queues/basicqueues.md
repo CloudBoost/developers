@@ -54,7 +54,7 @@ queue.push('sample', {
 ```
 </span>
 
-#Pulling data from the queue.
+#Pulling data from the queue
 
 To pull data into the Queue, you need to call the pull method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
