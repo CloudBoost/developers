@@ -2,7 +2,7 @@
 
 In this section you'll learn about how to push and pull data of CloudQueues. You'll also learn about message delays, timeouts and more. 
 
-#Create a new Queue.
+#Create a new Queue
 
 Before you push and pull data from the queue. You need to create a queue instance which can be done with one simple line of code. 
 
