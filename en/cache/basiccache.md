@@ -1,10 +1,13 @@
 #####In this section
 
-In this section you'll learn about how to use caching on cloudboost.
+In this section you'll learn about how to use caching for your apps in CloudBoost. Caching is great for your apps because it helps you to access data much faster when compared to the database. On the downside, querying is limited and it is very expensive (money-wise) because all the data is on the memory (which is expensive) instead of being on a disk. It is recommended that you use cache only for frequently accessed data.  
+
+<p>&nbsp;</p>
+><span class="tut-info">Info</span> Cache can only be used with a master key, and not with any of the client keys. 
 
 #Create a new Cache
 
-Before you put and get data from the cache. You need to create a cache instance which can be done by calling create method of the <span class="tut-snippet">CB.CloudCache</span> instance. create method takes no parameters and returns an empty CB.CloudCache instance.
+Before you save and query data from the cache. You need to create a cache instance which can be done by calling create method of the <span class="tut-snippet">CB.CloudCache</span> instance. create method takes no parameters and returns an empty CB.CloudCache instance.
 
 ==JavaScript==
 <span class="js-lines" data-query="create">
@@ -38,16 +41,17 @@ var cache = new CB.CloudCache('CacheName');
 
 #Adding an item into the Cache
 
-To add an item into the Cache, you need to call the put method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter for example a user object.
+To add an item into the Cache, you need to call the put method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
 
 ==JavaScript==
 <span class="js-lines" data-query="put">
 ```
 var cache = new CB.CloudCache('CacheName');
-cache.put('sample',{'name':'John Doe', 'age':24, 'sex':'MALE'}, {
-    success : function(cache){
-        //cache is the object that you added to the cache.
-        console.log(cache);
+car item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
+cache.put('sample',item, {
+    success : function(item){
+        //item is the object that you added to the cache.
+        console.log(item);
     }, error : function(error){
         console.log(error);
     }
@@ -59,10 +63,11 @@ cache.put('sample',{'name':'John Doe', 'age':24, 'sex':'MALE'}, {
 <span class="nodejs-lines" data-query="put">
 ```
 var cache = new CB.CloudCache('CacheName');
-cache.put('sample',{'name':'John Doe', 'age':24, 'sex':'MALE'}, {
-    success : function(cache){
-        //cache is the object that you added to the cache.
-        console.log(cache);
+car item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
+cache.put('sample',item, {
+    success : function(item){
+        //item is the object that you added to the cache.
+        console.log(item);
     }, error : function(error){
         console.log(error);
     }
@@ -78,9 +83,9 @@ To get an item from the Cache, you need to call the get method of the <span clas
 <span class="js-lines" data-query="get">
 ```
 cache.get('sample',{
-    success : function(cache){
-        //cache is the object that you added to the cache..
-        console.log(cache);
+    success : function(item){
+        //item is the object that you added to the cache..
+        console.log(item);
     }, error : function(error){
         console.log(error);
     }
@@ -92,9 +97,9 @@ cache.get('sample',{
 <span class="nodejs-lines" data-query="get">
 ```
 cache.get('sample',{
-    success : function(cache){
-        //cache is the object that you added to the cache..
-        console.log(cache);
+    success : function(item){
+        //item is the object that you added to the cache..
+        console.log(item);
     }, error : function(error){
         console.log(error);
     }
@@ -112,9 +117,9 @@ getAll method returns an array of all the items stored in the cache.
 <span class="js-lines" data-query="getall">
 ```
 cache.getAll({
-    success : function(cacheItems){
-        //cacheItems is an array of all the items stored in that cache instance..
-        console.log(cacheItems);
+    success : function(items){
+        //items is an array of all the items stored in that cache instance..
+        console.log(items);
     }, error : function(error){
         console.log(error);
     }
@@ -126,9 +131,9 @@ cache.getAll({
 <span class="nodejs-lines" data-query="getall">
 ```
 cache.getAll({
-    success : function(cacheItems){
-        //cacheItems is an array of all the items stored in that cache instance..
-        console.log(cacheItems);
+    success : function(items){
+        //items is an array of all the items stored in that cache instance..
+        console.log(items);
     }, error : function(error){
         console.log(error);
     }
@@ -136,19 +141,19 @@ cache.getAll({
 ```
 </span>
 
-#Getting cache items count
+#Count number of items in a cache
 
-To get the number of items stored in the cache, you need to call the getItemsCount method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
+To get the number of items stored in the cache, you need to call the GetItemsCount method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
 
-getItemsCount method returns the number of items stored in the cache.
+GetItemsCount method returns the number of items stored in the cache.
 
 ==JavaScript==
 <span class="js-lines" data-query="getitemscount">
 ```
 cache.getItemsCount({
-    success : function(noOfCacheItems){
-        //noOfCacheItems is the number of items stored in the cache instance..
-        console.log(noOfCacheItems);
+    success : function(count){
+        //count is the number of items stored in the cache instance..
+        console.log(count);
     }, error : function(error){
         console.log(error);
     }
@@ -160,9 +165,9 @@ cache.getItemsCount({
 <span class="nodejs-lines" data-query="getitemscount">
 ```
 cache.getItemsCount({
-    success : function(noOfCacheItems){
-        //noOfCacheItems is the number of items stored in the cache instance..
-        console.log(noOfCacheItems);
+    success : function(count){
+        //count is the number of items stored in the cache instance..
+        console.log(count);
     }, error : function(error){
         console.log(error);
     }
@@ -172,17 +177,18 @@ cache.getItemsCount({
 
 #Getting the size of the cache
 
-To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
+To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance. 
 
-getInfo method returns the size of the cache in kilobytes(kb).
+GetInfo method returns the updated cache instance which has the size of the cache in KB.
 
 ==JavaScript==
 <span class="js-lines" data-query="getinfo">
 ```
 cache.getInfo({
-    success : function(cacheSize){
-        //cacheSize is the size of the cache..
-        console.log(cacheSize);
+    success : function(cache){
+        //cache is the instace of the cache. 
+        //to get cache size, 
+        console.log(cache.size);
     }, error : function(error){
         console.log(error);
     }
@@ -194,9 +200,10 @@ cache.getInfo({
 <span class="nodejs-lines" data-query="getinfo">
 ```
 cache.getInfo({
-    success : function(cacheSize){
-        //cacheSize is the size of the cache..
-        console.log(cacheSize);
+    success : function(cache){
+        //cache is the instace of the cache. 
+        //to get cache size, 
+        console.log(cache.size);
     }, error : function(error){
         console.log(error);
     }
@@ -206,20 +213,19 @@ cache.getInfo({
 
 
 
-#Clearing an instance of the cache
+#Clearing all the items in a cache
 
-To clear an instance of the cache, you need to call the clear method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
+To clear an instance of the cache, you need to call the Clear method of the <span class="tut-snippet">CB.CloudCache</span> instance.
 
-clear method returns an empty cache object which is an instance of the CB.CloudCache.
+Clear method returns an empty cache object which is an instance of the CB.CloudCache.
 the object is of the following format.
- { _type : 'cache', name: 'cacheName', size : '0kb' };
 
 ==JavaScript==
 <span class="js-lines" data-query="clear">
 ```
 cache.clear({
     success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
+        //cache is the an empty instance of CB.CloudCache
         console.log(cache);
     }, error : function(error){
         console.log(error);
@@ -233,7 +239,7 @@ cache.clear({
 ```
 cache.clear({
     success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
+        //cache is the an empty instance of CB.CloudCache
         console.log(cache);
     }, error : function(error){
         console.log(error);
@@ -246,16 +252,14 @@ cache.clear({
 
 To delete an instance of the cache, you need to call the delete method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
 
-delete method returns an empty cache object which is an instance of the CB.CloudCache.
-the object is of the following format.
- { _type : 'cache', name: 'cacheName', size : '0kb' };
+Delete method returns an empty cache object which is an instance of the CB.CloudCache.
 
 ==JavaScript==
 <span class="js-lines" data-query="delete">
 ```
 cache.delete({
     success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
+        //cache is the an empty instance of CB.CloudCache
         console.log(cache);
     }, error : function(error){
         console.log(error);
@@ -269,7 +273,7 @@ cache.delete({
 ```
 cache.delete({
     success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
+        //cache is the an empty instance of CB.CloudCache 
         console.log(cache);
     }, error : function(error){
         console.log(error);
@@ -282,17 +286,16 @@ cache.delete({
 
 To get all the app caches, you need to call the getAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
 
-getAll method returns a cache object which  contains all the caches of the app.
-the object is of the following format.
- { _type : 'cache', name: 'cacheName', size : 'sizeOfAppCache', items: [] };
+getAll method returns an array of CB.CloudCache objects.
+
 
 ==JavaScript==
 <span class="js-lines" data-query="getallappcache">
 ```
 CB.CloudCache.getAll({
-    success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
-        console.log(cache);
+    success : function(caches){
+        //caches is the an array of CloudCache Objects
+        console.log(caches);
     }, error : function(error){
         console.log(error);
     }
@@ -304,9 +307,9 @@ CB.CloudCache.getAll({
 <span class="nodejs-lines" data-query="getallappcache">
 ```
 CB.CloudCache.getAll({
-    success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
-        console.log(cache);
+    success : function(caches){
+        //caches is the an array of CloudCache Objects
+        console.log(caches);
     }, error : function(error){
         console.log(error);
     }
@@ -318,17 +321,14 @@ CB.CloudCache.getAll({
 
 To delete all the app caches, you need to call the deleteAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
 
-deleteAll method returns an empty cache object.
-the object is of the following format.
- { _type : 'cache', name: 'cacheName', size : 'sizeOfAppCache', items: [] };
 
 ==JavaScript==
 <span class="js-lines" data-query="deleteallappcache">
 ```
 CB.CloudCache.deleteAll({
-    success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
-        console.log(cache);
+    success : function(caches){
+        //caches is an array of CB.CloudCache onjects
+        console.log(caches);
     }, error : function(error){
         console.log(error);
     }
@@ -340,9 +340,9 @@ CB.CloudCache.deleteAll({
 <span class="nodejs-lines" data-query="deleteallappcache">
 ```
 CB.CloudCache.deleteAll({
-    success : function(cache){
-        //cache is the an empty instance of CB.CloudCache ..
-        console.log(cache);
+    success : function(caches){
+        //caches is an array of CB.CloudCache onjects
+        console.log(caches);
     }, error : function(error){
         console.log(error);
     }
@@ -354,13 +354,11 @@ CB.CloudCache.deleteAll({
 
 To get name of the cache, you need to call the name property on the <span class="tut-snippet">CB.CloudCache</span> .
 
-name property returns the name of the cache .
-
 ==JavaScript==
 <span class="js-lines" data-query="name">
 ```
 var cache = new CB.CloudCache('sample');
-  var cacheName = cache.name;
+var cacheName = cache.name;
 ```
 </span>
 
@@ -377,7 +375,7 @@ var cacheName = cache.name;
 
 To get size of the cache, you need to call the size property on the <span class="tut-snippet">CB.CloudCache</span> .
 
-size property returns the size of the cache in kilobytes(kb).
+Size property returns the size of the cache in kilobytes(kb).
 
 ==JavaScript==
 <span class="js-lines" data-query="size">
@@ -391,30 +389,9 @@ var cacheSize = cache.size;
 <span class="nodejs-lines" data-query="size">
 ```
 var cache = new CB.CloudCache('sample');
-  var cacheSize = cache.size;
+ var cacheSize = cache.size;
 ```
 </span>
 
-#Items
-
-To get the array of items stored in the cache, you need to call the items property on the <span class="tut-snippet">CB.CloudCache</span> .
-
-items property returns an array of items in the cache .
-
-==JavaScript==
-<span class="js-lines" data-query="items">
-```
-var cache = new CB.CloudCache('sample');
-  var cacheItems = cache.items;
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="items">
-```
-var cache = new CB.CloudCache('sample');
-  var cacheItems = cache.items;
-```
-</span>
 
 
