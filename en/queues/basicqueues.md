@@ -1,10 +1,10 @@
 #####In this section
 
-In this section you'll learn about how to push and pull data of CloudQueues. You'll also learn about message delays, timeouts and more. 
+In this section you'll learn about how to push and pull data of CloudQueues. You'll also learn about message delays, timeouts and more.
 
 #Create a new Queue
 
-Before you push and pull data from the queue. You need to create a queue instance which can be done with one simple line of code. 
+Before you push and pull data from the queue. You need to create a queue instance which can be done with one simple line of code.
 
 ==JavaScript==
 <span class="js-lines" data-query="create">
@@ -30,7 +30,7 @@ To push data into the Queue, you need to call the push method of the <span class
 var queue = new CB.CloudQueue('QueueName');
 queue.push('sample', {
 	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class. 
+    	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
     }, error : function(error){
     	console.log(error);
@@ -45,7 +45,7 @@ queue.push('sample', {
 var queue = new CB.CloudQueue('QueueName');
 queue.push('sample', {
 	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class. 
+    	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
     }, error : function(error){
     	console.log(error);
@@ -63,7 +63,7 @@ To pull data into the Queue, you need to call the pull method of the <span class
 ```
 queue.pull({
 	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class. 
+    	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
     }, error : function(error){
     	console.log(error);
@@ -77,7 +77,7 @@ queue.pull({
 ```
 queue.pull({
 	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class. 
+    	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
     }, error : function(error){
     	console.log(error);
@@ -86,7 +86,7 @@ queue.pull({
 ```
 </span>
 
-><span class="tut-info">Info</span> As soon as you pull the message from the queue, the message is hidden for 30 minutes (1800 seconds). If the message is not deleted during that period it will reappear back into the queue. Please make sure you delete the message after the task is done. If you need more than 30 mins. Please review the timeout section below. 
+><span class="tut-info">Info</span> As soon as you pull the message from the queue, the message is hidden for 30 minutes (1800 seconds). If the message is not deleted during that period it will reappear back into the queue. Please make sure you delete the message after the task is done. If you need more than 30 mins. Please review the timeout section below.
 
 #Deleting a message
 
@@ -97,7 +97,7 @@ To delete a message from the Queue, you need to call the deleteMessage method of
 ```
 queue.deleteMessage(messageId, {
 	success : function(queueMessage){
-    	//message deleted. 
+    	//message deleted.
     }, error : function(error){
     	//error.
     }
@@ -110,7 +110,7 @@ queue.deleteMessage(messageId, {
 ```
 queue.deleteMessage(messageId, {
 	success : function(queueMessage){
-    	//message deleted. 
+    	//message deleted.
     }, error : function(error){
     	//error.
     }
@@ -120,21 +120,21 @@ queue.deleteMessage(messageId, {
 
 #Timeouts
 
-When you pull the message from queue, the message becomes invisible for 30 mins. We have timeouts in place because if your service which is processing the queue crashes, the message re-appears back into the queue within 30 mins and the other service can pick it up and process it. After your task completes, you should delete the message from the queue by calling the DeleteMessage function. 
+When you pull the message from queue, the message becomes invisible for 30 mins. We have timeouts in place because if your service which is processing the queue crashes, the message re-appears back into the queue within 30 mins and the other service can pick it up and process it. After your task completes, you should delete the message from the queue by calling the DeleteMessage function.
 
-You can set custom timeouts at any time you want to fit your requirements. 
+You can set custom timeouts at any time you want to fit your requirements.
 
-To set the timeout, you first need to create the QueueMessage instance, set the timeout and then push it in the queue. 
+To set the timeout, you first need to create the QueueMessage instance, set the timeout and then push it in the queue.
 
 ==JavaScript==
 <span class="js-lines" data-query="timeout">
 ```
 var queueMessage = new CB.QueueMessage();
-queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds. 
+queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds.
 queueMessage.message = "data";
 queue.push(queueMessage, {
 	success : function(queueMessage){
-    	//message pushed. 
+    	//message pushed.
     }, error : function(error){
     	//error.
     }
@@ -146,11 +146,11 @@ queue.push(queueMessage, {
 <span class="nodejs-lines" data-query="timeout">
 ```
 var queueMessage = new CB.QueueMessage();
-queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds. 
+queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds.
 queueMessage.message = "data";
 queue.push(queueMessage, {
 	success : function(queueMessage){
-    	//message pushed. 
+    	//message pushed.
     }, error : function(error){
     	//error.
     }
@@ -160,17 +160,17 @@ queue.push(queueMessage, {
 
 #Delays
 
-To make the message in the queue appear after a certain period of time, you delay the message. Delay can be set in seconds. 
+To make the message in the queue appear after a certain period of time, you delay the message. Delay can be set in seconds.
 
 ==JavaScript==
 <span class="js-lines" data-query="delays">
 ```
 var queueMessage = new CB.QueueMessage();
-queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr. 
+queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.push(queueMessage, {
 	success : function(queueMessage){
-    	//message pushed. 
+    	//message pushed.
     }, error : function(error){
     	//error.
     }
@@ -182,11 +182,11 @@ queue.push(queueMessage, {
 <span class="nodejs-lines" data-query="delays">
 ```
 var queueMessage = new CB.QueueMessage();
-queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr. 
+queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.push(queueMessage, {
 	success : function(queueMessage){
-    	//message pushed. 
+    	//message pushed.
     }, error : function(error){
     	//error.
     }
@@ -196,7 +196,7 @@ queue.push(queueMessage, {
 
 #Expire
 
-To delete the message from the queue after a certain period of time. You can set an expiry date and time to a message. The message will not be available after expire time is elapsed.  
+To delete the message from the queue after a certain period of time. You can set an expiry date and time to a message. The message will not be available after expire time is elapsed.
 
 ==JavaScript==
 <span class="js-lines" data-query="expire">
@@ -207,11 +207,11 @@ var today = new Date();
 var tomorrow = new Date(today);
 tomorrow.setDate(today.getDate()+1);
 //
-queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr. 
+queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.push(queueMessage, {
 	success : function(queueMessage){
-    	//message pushed. 
+    	//message pushed.
     }, error : function(error){
     	//error.
     }
@@ -228,11 +228,11 @@ var today = new Date();
 var tomorrow = new Date(today);
 tomorrow.setDate(today.getDate()+1);
 //
-queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr. 
+queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.push(queueMessage, {
 	success : function(queueMessage){
-    	//message pushed. 
+    	//message pushed.
     }, error : function(error){
     	//error.
     }

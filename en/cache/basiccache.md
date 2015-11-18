@@ -10,7 +10,7 @@ Before you put and get data from the cache. You need to create a cache instance 
 <span class="js-lines" data-query="create">
 ```
 var cache = new CB.CloudCache('CacheName');
-``  cache.create({
+    cache.create({
     success : function(cache){
         //cache is an empty the object of the CB.CloudCache instance.
         console.log(cache);
@@ -18,7 +18,7 @@ var cache = new CB.CloudCache('CacheName');
         console.log(error);
     }
 });
-
+```
 </span>
 
 ==NodeJS==
@@ -358,7 +358,8 @@ name property returns the name of the cache .
 
 ==JavaScript==
 <span class="js-lines" data-query="name">
-``var cache = new CB.CloudCache('sample');
+```
+var cache = new CB.CloudCache('sample');
   var cacheName = cache.name;
 ```
 </span>
@@ -367,7 +368,7 @@ name property returns the name of the cache .
 <span class="nodejs-lines" data-query="name">
 ```
 var cache = new CB.CloudCache('sample');
-  var cacheName = cache.name;
+var cacheName = cache.name;
 ```
 </span>
 
@@ -380,8 +381,9 @@ size property returns the size of the cache in kilobytes(kb).
 
 ==JavaScript==
 <span class="js-lines" data-query="size">
-``var cache = new CB.CloudCache('sample');
-  var cacheSize = cache.size;
+```
+var cache = new CB.CloudCache('sample');
+var cacheSize = cache.size;
 ```
 </span>
 
@@ -401,7 +403,8 @@ items property returns an array of items in the cache .
 
 ==JavaScript==
 <span class="js-lines" data-query="items">
-``var cache = new CB.CloudCache('sample');
+```
+var cache = new CB.CloudCache('sample');
   var cacheItems = cache.items;
 ```
 </span>
