@@ -17,7 +17,7 @@ var cache = new CB.CloudCache('CacheName');
     }, error : function(error){
         console.log(error);
     }
-})
+});
 </span>
 
 ==NodeJS==
@@ -31,7 +31,7 @@ var cache = new CB.CloudCache('CacheName');
     }, error : function(error){
         console.log(error);
     }
-})
+});
 ```
 </span>
 
