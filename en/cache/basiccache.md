@@ -74,7 +74,7 @@ cache.put('sample',{'name':'John Doe', 'age':24, 'sex':'MALE'}, {
 To get an item from the Cache, you need to call the get method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
 
 ==JavaScript==
-<span class="js-lines" data-quet">
+<span class="js-lines" data-query="get">
 ```
 cache.get('sample',{
     success : function(cache){
@@ -88,7 +88,7 @@ cache.get('sample',{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-quet">
+<span class="nodejs-lines" data-query="get">
 ```
 cache.get('sample',{
     success : function(cache){
@@ -108,7 +108,7 @@ To get all the Cache items, you need to call the getAll method of the <span clas
 getAll method returns an array of all the items stored in the cache.
 
 ==JavaScript==
-<span class="js-lines" data-t">
+<span class="js-lines" data-query="getall">
 ```
 cache.getAll({
     success : function(cacheItems){
@@ -122,7 +122,7 @@ cache.getAll({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-t">
+<span class="nodejs-lines" data-query="getall">
 ```
 cache.getAll({
     success : function(cacheItems){
@@ -214,7 +214,7 @@ the object is of the following format.
  { _type : 'cache', name: 'cacheName', size : '0kb' };
 
 ==JavaScript==
-<span class="js-linest">
+<span class="js-lines" data-query="clear">
 ```
 cache.clear({
     success : function(cache){
@@ -228,7 +228,7 @@ cache.clear({
 </span>
 
 ==NodeJS==
-<span class="nodejs-linest">
+<span class="nodejs-lines" data-query="clear">
 ```
 cache.clear({
     success : function(cache){
@@ -250,7 +250,7 @@ the object is of the following format.
  { _type : 'cache', name: 'cacheName', size : '0kb' };
 
 ==JavaScript==
-<span class="js-lt">
+<span class="js-lines" data-query="delete">
 ```
 cache.delete({
     success : function(cache){
@@ -264,7 +264,7 @@ cache.delete({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lt">
+<span class="nodejs-lines" data-query="delete">
 ```
 cache.delete({
     success : function(cache){
@@ -356,14 +356,14 @@ To get name of the cache, you need to call the name property on the <span class=
 name property returns the name of the cache .
 
 ==JavaScript==
-<span class="js-lines" data-query="ndelete">
+<span class="js-lines" data-query="name">
 ``var cache = new CB.CloudCache('sample');
   var cacheName = cache.name;
 ```
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="ndelete">
+<span class="nodejs-lines" data-query="name">
 ```
 var cache = new CB.CloudCache('sample');
   var cacheName = cache.name;
@@ -399,14 +399,14 @@ To get the array of items stored in the cache, you need to call the items proper
 items property returns an array of items in the cache .
 
 ==JavaScript==
-<span class="js-lines" data-query="indelete">
+<span class="js-lines" data-query="items">
 ``var cache = new CB.CloudCache('sample');
   var cacheItems = cache.items;
 ```
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="indelete">
+<span class="nodejs-lines" data-query="items">
 ```
 var cache = new CB.CloudCache('sample');
   var cacheItems = cache.items;
