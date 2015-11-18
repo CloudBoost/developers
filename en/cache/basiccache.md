@@ -28,7 +28,7 @@ var cache = new CB.CloudCache('CacheName');
 <span class="nodejs-lines" data-query="create">
 ```
 var cache = new CB.CloudCache('CacheName');
-``  cache.create({
+    cache.create({
     success : function(cache){
         //cache is an empty the object of the CB.CloudCache instance.
         console.log(cache);
@@ -370,7 +370,6 @@ var cacheName = cache.name;
 ```
 </span>
 
-
 #Size
 
 To get size of the cache, you need to call the size property on the <span class="tut-snippet">CB.CloudCache</span> .
@@ -389,7 +388,7 @@ var cacheSize = cache.size;
 <span class="nodejs-lines" data-query="size">
 ```
 var cache = new CB.CloudCache('sample');
- var cacheSize = cache.size;
+var cacheSize = cache.size;
 ```
 </span>
 
