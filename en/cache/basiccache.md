@@ -47,7 +47,7 @@ To add an item into the Cache, you need to call the put method of the <span clas
 <span class="js-lines" data-query="put">
 ```
 var cache = new CB.CloudCache('CacheName');
-car item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
+var item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
 cache.put('sample',item, {
     success : function(item){
         //item is the object that you added to the cache.
@@ -63,7 +63,7 @@ cache.put('sample',item, {
 <span class="nodejs-lines" data-query="put">
 ```
 var cache = new CB.CloudCache('CacheName');
-car item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
+var item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
 cache.put('sample',item, {
     success : function(item){
         //item is the object that you added to the cache.
