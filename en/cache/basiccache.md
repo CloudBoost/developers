@@ -39,16 +39,16 @@ var cache = new CB.CloudCache('CacheName');
 ```
 </span>
 
-#Adding an item into the Cache
+#Adding or updating an item into the Cache
 
-To add an item into the Cache, you need to call the put method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
+To add or update an item into the Cache, you need to call the set method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
 
 ==JavaScript==
 <span class="js-lines" data-query="put">
 ```
 var cache = new CB.CloudCache('CacheName');
 var item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
-cache.put('sample',item, {
+cache.set('sample',item, {
     success : function(item){
         //item is the object that you added to the cache.
         console.log(item);
@@ -64,7 +64,7 @@ cache.put('sample',item, {
 ```
 var cache = new CB.CloudCache('CacheName');
 var item = {'name':'John Doe', 'age':24, 'sex':'MALE'};
-cache.put('sample',item, {
+cache.set('sample',item, {
     success : function(item){
         //item is the object that you added to the cache.
         console.log(item);
@@ -100,6 +100,36 @@ cache.get('sample',{
     success : function(item){
         //item is the object that you added to the cache..
         console.log(item);
+    }, error : function(error){
+        console.log(error);
+    }
+});
+```
+</span>
+
+#Deleting an item from the cache
+
+To delte an item from the Cache, you need to call the DeleteItem method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
+
+==JavaScript==
+<span class="js-lines" data-query="get">
+```
+cache.deleteItem('sample',{
+    success : function(key){
+        //deleted
+    }, error : function(error){
+        console.log(error);
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="get">
+```
+cache.deleteItem('sample',{
+    success : function(deleted){
+        //deleted
     }, error : function(error){
         console.log(error);
     }
