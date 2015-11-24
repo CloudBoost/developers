@@ -733,7 +733,7 @@ query.doNotSelectColumn('age');
 ```
 </span>
 
-#Find, Find one, Find by ID. 
+#Find, Find one, Find by ID
 
 Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery. 
 
