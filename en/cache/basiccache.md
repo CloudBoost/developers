@@ -5,7 +5,7 @@ In this section you'll learn about how to use caching for your apps in CloudBoos
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> Cache can only be used with a master key, and not with any of the client keys. 
 
-#Create a new Cache
+#Create Cache
 
 Before you save and query data from the cache. You need to create a cache instance which can be done by calling create method of the <span class="tut-snippet">CB.CloudCache</span> instance. create method takes no parameters and returns an empty CB.CloudCache instance.
 
@@ -39,7 +39,7 @@ var cache = new CB.CloudCache('CacheName');
 ```
 </span>
 
-#Adding or updating an item into the Cache
+#Adding / Updating Item
 
 To add or update an item into the Cache, you need to call the set method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
 
@@ -75,7 +75,7 @@ cache.set('sample',item, {
 ```
 </span>
 
-#Getting an item from the cache
+#Get Item
 
 To get an item from the Cache, you need to call the get method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
 
@@ -107,7 +107,7 @@ cache.get('sample',{
 ```
 </span>
 
-#Deleting an item from the cache
+#Delete item
 
 To delte an item from the Cache, you need to call the DeleteItem method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
 
@@ -137,7 +137,7 @@ cache.deleteItem('sample',{
 ```
 </span>
 
-#Getting all the cache items
+#Get all items
 
 To get all the Cache items, you need to call the getAll method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
 
@@ -171,7 +171,7 @@ cache.getAll({
 ```
 </span>
 
-#Count number of items in a cache
+#Count Items
 
 To get the number of items stored in the cache, you need to call the GetItemsCount method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
 
@@ -205,7 +205,7 @@ cache.getItemsCount({
 ```
 </span>
 
-#Getting the size of the cache
+#Get size of a cache
 
 To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance. 
 
@@ -243,7 +243,7 @@ cache.getInfo({
 
 
 
-#Clearing all the items in a cache
+#Clear Cache
 
 To clear an instance of the cache, you need to call the Clear method of the <span class="tut-snippet">CB.CloudCache</span> instance.
 
@@ -278,7 +278,7 @@ cache.clear({
 ```
 </span>
 
-#Deleting an instance of the cache
+#Delete Cache
 
 To delete an instance of the cache, you need to call the delete method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
 
@@ -312,7 +312,7 @@ cache.delete({
 ```
 </span>
 
-#Getting all the app caches
+#Get All Caches
 
 To get all the app caches, you need to call the getAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
 
@@ -347,7 +347,7 @@ CB.CloudCache.getAll({
 ```
 </span>
 
-#Deleting all the app caches
+#Delete All Caches
 
 To delete all the app caches, you need to call the deleteAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
 
