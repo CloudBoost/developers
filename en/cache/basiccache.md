@@ -112,7 +112,7 @@ cache.get('sample',{
 To delte an item from the Cache, you need to call the DeleteItem method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
 
 ==JavaScript==
-<span class="js-lines" data-query="get">
+<span class="js-lines" data-query="delete">
 ```
 cache.deleteItem('sample',{
     success : function(key){
@@ -125,7 +125,7 @@ cache.deleteItem('sample',{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="get">
+<span class="nodejs-lines" data-query="delete">
 ```
 cache.deleteItem('sample',{
     success : function(deleted){
@@ -285,7 +285,7 @@ To delete an instance of the cache, you need to call the delete method of the <s
 Delete method returns an empty cache object which is an instance of the CB.CloudCache.
 
 ==JavaScript==
-<span class="js-lines" data-query="delete">
+<span class="js-lines" data-query="deletecache">
 ```
 cache.delete({
     success : function(cache){
@@ -299,7 +299,7 @@ cache.delete({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="delete">
+<span class="nodejs-lines" data-query="deletecache">
 ```
 cache.delete({
     success : function(cache){
