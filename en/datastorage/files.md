@@ -11,7 +11,7 @@ To save a file in CloudBoost, you basically need to pass in the file object as a
 To save a file from your local file system, you need to:
 
 ==JavaScript==
-<span class="js-lines" data-query="savefile">
+<span class="js-lines" data-query="setfile">
 ```
 var fileUploadControl = $("#profilePhotoFileUpload")[0];
 if (fileUploadControl.files.length > 0) {
@@ -28,9 +28,10 @@ if (fileUploadControl.files.length > 0) {
   })
 }
 ```
-==Java==
 </span>
-<span class="java-lines" data-query="savefile">
+
+==Java==
+<span class="java-lines" data-query="setfile">
 ```
 CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
 file.save(new CloudStringCallback(){
@@ -50,7 +51,7 @@ public void done(String x, CloudException e) throws CloudException {
 To save a file by creating a blob, you need to:
 
 ==JavaScript==
-<span class="js-lines" data-query="saveblob">
+<span class="js-lines" data-query="setblob">
 ```
 var documentFile = new Blob([
   'This is the content of by document blob'
@@ -67,9 +68,9 @@ file.save({
 });
 ```
 </span>
+
 ==Java==
-</span>
-<span class="java-lines" data-query="savefile">
+<span class="java-lines" data-query="setblob">
 ```
 Blob blob=new Blob();//create blob in any of numerous ways
 CloudFile file = new CloudFile(blob);
@@ -84,6 +85,7 @@ public void done(String x, CloudException e) throws CloudException {
 });
 ```
 </span>
+
 ###Save File In CloudObject
 
 To save the file in CloudObject, you need to:
@@ -108,6 +110,7 @@ obj.save({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="savefile">
 ```
@@ -125,6 +128,7 @@ public void done(CloudObject x,CloudException t)throws CloudException {
 });
 ```
 </span>
+
 ><span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
 
 #Default Properties
@@ -148,6 +152,7 @@ console.log(file.id);
 console.log(file.id);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
@@ -159,7 +164,7 @@ System.out.print(file.id);
 * **Url** : [URL] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
 
 ==JavaScript==
-<span class="js-lines" data-query="viewid">
+<span class="js-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
@@ -167,14 +172,15 @@ console.log(file.url);
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="viewid">
+<span class="nodejs-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
 ```
 </span>
+
 ==Java==
-<span class="java-lines" data-query="viewid">
+<span class="java-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 System.out.print(file.getFileUrl());
@@ -184,26 +190,24 @@ System.out.print(file.getFileUrl());
 * **Name** : [Text] Name of the CloudFile to be assigned by the user.
 
 ==JavaScript==
-<span class="js-lines" data-query="viewid">
+<span class="js-lines" data-query="viewname">
 ```
-
 file.set('name','abc.txt');
 console.log(file.name);
 ```
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="viewid">
+<span class="nodejs-lines" data-query="viewname">
 ```
-
 file.set('name','abc.txt');
 console.log(file.name);
 ```
 </span>
-==Java==
-<span class="java-lines" data-query="viewid">
-```
 
+==Java==
+<span class="java-lines" data-query="viewname">
+```
 file.setFileName('name','abc.txt');
 System.out.print(file.getFileName());
 ```
@@ -224,6 +228,7 @@ file.expires;
 file.expires;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewexpires">
 ```
@@ -246,12 +251,14 @@ file.ACL;
 file.ACL;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="viewacl">
 ```
 file.getACL();
 ```
 </span>
+
 #Delete a file
 
 To delete a file, you need to: 
@@ -281,10 +288,11 @@ file.delete({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="deletefile">
 ```
-file.save(new CloudStringCallback() {
+file.delete(new CloudStringCallback() {
 @Override
 public void done(String x,CloudException t) throws CloudException {
 	if(t!=null)
@@ -293,12 +301,16 @@ public void done(String x,CloudException t) throws CloudException {
 		//x is File URL
 	}									
 });
+```
+</span>
+
+
 #Get a File
 
-To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it. 
+To get a File from CloudBoost,you need to query over the CloudObjects which has a file attached to it
 
-==NodeJS==
-<span class="nodejs-lines" data-query="deletefile">
+==Javascript==
+<span class="js-lines" data-query="includefile">
 ```
 var query = new CB.CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
@@ -310,8 +322,23 @@ query.find({
     });
 ```
 </span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="includefile">
+```
+var query = new CB.CloudQuery("Custom");
+query.include("file"); //this will include the file in CloudObjects
+query.find({
+    success: function(res){
+        //Gets the res which has the File Object inside it.
+    }, error: function(err){
+        //error while querying
+    });
+```
+</span>
+
 ==Java==
-<span class="java-lines" data-query="deletefile">
+<span class="java-lines" data-query="includefile">
 ```
 CloudQuery query = new CloudQuery("Custom");
 query.include("file"); //this will include the file in CloudObjects
@@ -320,7 +347,6 @@ query.find(new CloudObjectCallback(){
 	public void done(CloudObject obj, CloudException t)throws CloudException {
 		if(t != null)								
 			//obj contains file object
-								
 	}
 });
 ```
@@ -348,7 +374,7 @@ file.fetch({
 To get the file contents from the File object, you need to:
 
 ==JavaScript==
-<span class="js-lines" data-query="fetchfile">
+<span class="js-lines" data-query="fetchfilecontent">
 ```
 file.getFileContent({
   success: function(content) {
@@ -359,4 +385,3 @@ file.getFileContent({
 });
 ```
 </span>
-

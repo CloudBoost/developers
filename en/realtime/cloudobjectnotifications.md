@@ -26,6 +26,7 @@ CB.CloudObject.on('TableName', 'created', function(obj){
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
@@ -60,6 +61,7 @@ CB.CloudObject.on('TableName', ['created','updated'], function(obj){
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="createupdate">
 ```
@@ -107,6 +109,7 @@ CB.CloudObject.on('Student', 'created', query, function(obj){
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="query">
 ```
@@ -145,6 +148,7 @@ CB.CloudObject.off('Student', 'created');
 CB.CloudObject.off('Student', 'created');
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="off">
 ```

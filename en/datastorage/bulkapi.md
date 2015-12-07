@@ -37,6 +37,7 @@ CB.CloudObject.saveAll([obj1,obj2],{
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="bulksave">
 ```
@@ -57,6 +58,7 @@ public void done(CloudObject[] x,CloudException t)throws CloudException {
 });
 ```
 </span>
+
 #Deleting Multiple CloudObjects
 
 To delete multiple objects pass an array of CloudObjects to the bulk delete function. For example:
@@ -84,6 +86,7 @@ CB.CloudObject.deleteAll([obj1,obj2],{
     });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="bulkdelete">
 ```
@@ -96,7 +99,6 @@ public void done(CloudObject[] x,CloudException t) throws CloudException {
 	else if(x!=null)
 		//x has the array of saved CloudObjects.
 	}
-									
 });
 ```
 </span>
