@@ -88,6 +88,36 @@ queue.pull({
 
 ><span class="tut-info">Info</span> As soon as you pull the message from the queue, the message is hidden for 30 minutes (1800 seconds). If the message is not deleted during that period it will reappear back into the queue. Please make sure you delete the message after the task is done. If you need more than 30 mins. Please review the timeout section below.
 
+#Get a message
+
+To get a Queue Message by Id, you need to call the GetMessageById function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+
+==JavaScript==
+<span class="js-lines" data-query="delete">
+```
+queue.getMessageById({
+    success : function(message){
+    	//message
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="delete">
+```
+queue.getMessageById({
+    success : function(message){
+    	//message
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
 #Deleting a message
 
 To delete a message from the Queue, you need to call the deleteMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -111,6 +141,36 @@ queue.deleteMessage(messageId, {
 queue.deleteMessage(messageId, {
 	success : function(queueMessage){
     	//message deleted.
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+#Deleting a queue
+
+To delete a Queue, you need to call the delete function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+
+==JavaScript==
+<span class="js-lines" data-query="delete">
+```
+queue.delete({
+	success : function(){
+    	//queue deleted.
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="delete">
+```
+queue.delete({
+	success : function(){
+    	//queue deleted.
     }, error : function(error){
     	//error.
     }
