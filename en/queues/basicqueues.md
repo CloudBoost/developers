@@ -88,6 +88,40 @@ queue.pull({
 
 ><span class="tut-info">Info</span> As soon as you pull the message from the queue, the message is hidden for 30 minutes (1800 seconds). If the message is not deleted during that period it will reappear back into the queue. Please make sure you delete the message after the task is done. If you need more than 30 mins. Please review the timeout section below.
 
+#Peeking data from the queue
+
+Peeking usually help you to see the first message in the queue without removing the message from the queue. To peek data into the Queue, you need to call the peek method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+
+==JavaScript==
+<span class="js-lines" data-query="pullqueues">
+```
+queue.peek({
+	success : function(queueMessage){
+    	//queueMessage is an instance of CB.QueueMessage class.
+    	console.log(queueMessage.id);
+    }, error : function(error){
+    	console.log(error);
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="pullqueues">
+```
+queue.peek({
+	success : function(queueMessage){
+    	//queueMessage is an instance of CB.QueueMessage class.
+    	console.log(queueMessage.id);
+    }, error : function(error){
+    	console.log(error);
+    }
+});
+```
+</span>
+
+><span class="tut-info">Info</span> Peek will <b>not</b> hide your message in the queue.
+
 #Get a message
 
 To get a Queue Message by Id, you need to call the GetMessageById function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -95,7 +129,7 @@ To get a Queue Message by Id, you need to call the GetMessageById function of th
 ==JavaScript==
 <span class="js-lines" data-query="delete">
 ```
-queue.getMessageById({
+queue.getMessageById(messageId,{
     success : function(message){
     	//message
     }, error : function(error){
@@ -108,9 +142,39 @@ queue.getMessageById({
 ==NodeJS==
 <span class="nodejs-lines" data-query="delete">
 ```
-queue.getMessageById({
+queue.getMessageById(messageId, {
     success : function(message){
     	//message
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+#Get queue info
+
+To get a queue info, you need to call the get function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+
+==JavaScript==
+<span class="js-lines" data-query="delete">
+```
+queue.get({
+    success : function(queue){
+    	//queue info
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="delete">
+```
+queue.get({
+    success : function(queue){
+    	//queue info
     }, error : function(error){
     	//error.
     }
