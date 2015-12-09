@@ -19,7 +19,12 @@ var queue = new CB.CloudQueue('QueueName');
 var queue = new CB.CloudQueue('QueueName');
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="create">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+```
+</span>
 #Pushing data into the queue
 
 To push data into the Queue, you need to call the push method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">Push</span> function takes in data as the first parameter.
@@ -53,7 +58,22 @@ queue.push('sample', {
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="pushqueue">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+queue.push('sample', new CloudQueueMessage{
+	@Override
+	public void onSuccess(queueMessage){
+	
+	} 
+	@Override
+	public void onError(cloudBoostException){
+	
+	}
+});
+```
+</span>
 #Pulling data from the queue.
 
 To pull data into the Queue, you need to call the pull method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -82,6 +102,22 @@ queue.pull({
     }, error : function(error){
     	console.log(error);
     }
+});
+```
+</span>
+==Java==
+<span class="java-lines" data-query="pullqueues">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+queue.pull(3, new CloudQueueMessage{
+	@Override
+	public void onSuccess(queueMessage){
+	
+	} 
+	@Override
+	public void onError(cloudBoostException){
+	
+	}
 });
 ```
 </span>
@@ -117,7 +153,22 @@ queue.deleteMessage(messageId, {
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="delete">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+queue.deleteMessage('messageId', new CloudQueueMessage{
+	@Override
+	public void onSuccess(queueMessage){
+	
+	} 
+	@Override
+	public void onError(cloudBoostException){
+	
+	}
+});
+```
+</span>
 #Timeouts
 
 When you pull the message from queue, the message becomes invisible for 30 mins. We have timeouts in place because if your service which is processing the queue crashes, the message re-appears back into the queue within 30 mins and the other service can pick it up and process it. After your task completes, you should delete the message from the queue by calling the DeleteMessage function. 
@@ -157,6 +208,25 @@ queue.push(queueMessage, {
 });
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="timeout">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+QueueMessage message=new QueueMessage();
+message.setTimeout(3600);//1 hour timeout
+message.setData('data');
+queue.push(message, new CloudQueueMessage{
+	@Override
+	public void onSuccess(queueMessage){
+	
+	} 
+	@Override
+	public void onError(cloudBoostException){
+	
+	}
+});
+```
+</span>
 
 #Delays
 
@@ -193,7 +263,25 @@ queue.push(queueMessage, {
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="delays">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+QueueMessage message=new QueueMessage();
+message.setDelay(3600);
+message.setData('data');
+queue.push(message, new CloudQueueMessage{
+	@Override
+	public void onSuccess(queueMessage){
+	
+	} 
+	@Override
+	public void onError(cloudBoostException){
+	
+	}
+});
+```
+</span>
 #Expire
 
 To delete the message from the queue after a certain period of time. You can set an expiry date and time to a message. The message will not be available after expire time is elapsed.  
@@ -236,6 +324,25 @@ queue.push(queueMessage, {
     }, error : function(error){
     	//error.
     }
+});
+```
+</span>
+==Java==
+<span class="java-lines" data-query="expire">
+```
+CloudQueue queue = new CloudQueue('QueueName');
+QueueMessage message=new QueueMessage();
+message.setExpires(3600);
+message.setData('data');
+queue.push(message, new CloudQueueMessage{
+	@Override
+	public void onSuccess(queueMessage){
+	
+	} 
+	@Override
+	public void onError(cloudBoostException){
+	
+	}
 });
 ```
 </span>

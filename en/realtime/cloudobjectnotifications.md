@@ -32,12 +32,14 @@ CB.CloudObject.on('TableName', 'created', function(obj){
 ```
 CloudObject.on('TableName', 'created', new CloudObjectCallback(){
 @Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
+public void done(CloudObject x, CloudException t) {	
+	if(x != null){
+	
+	}
+	if(t != null){
+	
+	}
+}
 });
 ```
 </span>
@@ -67,12 +69,14 @@ CB.CloudObject.on('TableName', ['created','updated'], function(obj){
 ```
 CloudObject.on('TableName', new String[]{'created','updated'}, new CloudObjectCallback(){
 @Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
-				}
-				if(t != null){
-				}
-			}
+public void done(CloudObject x, CloudException t) {	
+	if(x != null){
+	
+	}
+	if(t != null){
+	
+	}
+}
 });
 ```
 </span>
@@ -118,13 +122,14 @@ query.equalTo('age',10);
 //
 CloudObject.on('Student', 'created', query, new CloudObjectCallback(){
 @Override
-			public void done(CloudObject x, CloudException t) {	
-				if(x != null){
+public void done(CloudObject x, CloudException t) {	
+	if(x != null){
 				//
-				}
-				if(t != null){
-				}
-			}
+	}
+	if(t != null){
+	
+	}
+}
 });
 ```
 </span>
