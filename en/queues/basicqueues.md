@@ -13,7 +13,6 @@ var queue = new CB.CloudQueue('QueueName');
 queue.create({
 	success : function(queueObject){
     	//returns a queueObject.
-    	console.log(queueMessage.id);
     }, error : function(error){
     	//error
     }
@@ -28,7 +27,6 @@ var queue = new CB.CloudQueue('QueueName');
 queue.create({
 	success : function(queueObject){
     	//returns a queueObject.
-    	console.log(queueMessage.id);
     }, error : function(error){
     	//error
     }
