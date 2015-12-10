@@ -10,6 +10,14 @@ Before you push and pull data from the queue. You need to create a queue instanc
 <span class="js-lines" data-query="create">
 ```
 var queue = new CB.CloudQueue('QueueName');
+queue.create({
+	success : function(queueObject){
+    	//returns a queueObject.
+    	console.log(queueMessage.id);
+    }, error : function(error){
+    	//error
+    }
+});
 ```
 </span>
 
@@ -17,6 +25,14 @@ var queue = new CB.CloudQueue('QueueName');
 <span class="nodejs-lines" data-query="create">
 ```
 var queue = new CB.CloudQueue('QueueName');
+queue.create({
+	success : function(queueObject){
+    	//returns a queueObject.
+    	console.log(queueMessage.id);
+    }, error : function(error){
+    	//error
+    }
+});
 ```
 </span>
 
