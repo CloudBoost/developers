@@ -182,6 +182,36 @@ queue.get({
 ```
 </span>
 
+#Get All Queues
+
+To get all the queues, you need to call the getAll function of the <span class="tut-snippet">CB.CloudQueue</span>.
+
+==JavaScript==
+<span class="js-lines" data-query="getallqueues">
+```
+CB.CloudQueue.getAll({
+    success : function(list){
+    	//list is an array of  CB.CloudQueue Objects
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="getallqueues">
+```
+CB.CloudQueue.getAll({
+    success : function(list){
+    	//list is an array of  CB.CloudQueue Objects
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
 #Deleting a message
 
 To delete a message from the Queue, you need to call the deleteMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
