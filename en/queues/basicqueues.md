@@ -93,7 +93,7 @@ queue.pull({
 Peeking usually help you to see the first message in the queue without removing the message from the queue. To peek data into the Queue, you need to call the peek method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="pullqueues">
+<span class="js-lines" data-query="peekqueues">
 ```
 queue.peek({
 	success : function(queueMessage){
@@ -107,7 +107,7 @@ queue.peek({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="pullqueues">
+<span class="nodejs-lines" data-query="peekqueues">
 ```
 queue.peek({
 	success : function(queueMessage){
@@ -127,7 +127,7 @@ queue.peek({
 To get a Queue Message by Id, you need to call the GetMessageById function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="delete">
+<span class="js-lines" data-query="getmessage">
 ```
 queue.getMessageById(messageId,{
     success : function(message){
@@ -140,7 +140,7 @@ queue.getMessageById(messageId,{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="delete">
+<span class="nodejs-lines" data-query="getmessage">
 ```
 queue.getMessageById(messageId, {
     success : function(message){
@@ -157,7 +157,7 @@ queue.getMessageById(messageId, {
 To get a queue info, you need to call the get function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="delete">
+<span class="js-lines" data-query="queueinfo">
 ```
 queue.get({
     success : function(queue){
@@ -170,7 +170,7 @@ queue.get({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="delete">
+<span class="nodejs-lines" data-query="queueinfo">
 ```
 queue.get({
     success : function(queue){
@@ -187,7 +187,7 @@ queue.get({
 To delete a message from the Queue, you need to call the deleteMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="delete">
+<span class="js-lines" data-query="deletemessage">
 ```
 queue.deleteMessage(messageId, {
 	success : function(queueMessage){
@@ -200,7 +200,7 @@ queue.deleteMessage(messageId, {
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="delete">
+<span class="nodejs-lines" data-query="deletemessage">
 ```
 queue.deleteMessage(messageId, {
 	success : function(queueMessage){
@@ -217,7 +217,7 @@ queue.deleteMessage(messageId, {
 To delete a Queue, you need to call the delete function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="delete">
+<span class="js-lines" data-query="deletequeue">
 ```
 queue.delete({
 	success : function(){
@@ -230,7 +230,7 @@ queue.delete({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="delete">
+<span class="nodejs-lines" data-query="deletequeue">
 ```
 queue.delete({
 	success : function(){
