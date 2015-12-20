@@ -1,4 +1,4 @@
-####In this section
+#####In this section
 In this section, I will be introducing you to realtime functionality of CloudBoost, using the android platform. Much as I have chosen android as a basis, the realtime idea works on any platform, be it web or desktop application.
 Creating real time applications on CloudBoost is totally a no-brainer as you will discover shortly.
 
