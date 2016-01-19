@@ -2,7 +2,7 @@
 In the past, we have looked at different ways of taking advantage of CloudBoost functionality to build your realtime applications. That is just a tip of the iceberg for what you can accomplish with cloudboost. 
 
 In this tutorial, we are going to take it a notch higher and build a clone of a popular real time application, especially among developers. Slack is  a popular collaboration app, widely used by developers so I assume that you are already familiar with it.
-
+<img class="center-img" alt="Slack android Clone" src="https://www.dropbox.com/s/0vtvx257638b8uf/animated_slack_clone.gif?dl=0">
 <p>&nbsp;</p>
 ><span class="tut-imp">Important:</span> this is not a production ready example, in the real chat application, you would have to route messages from different site visitors to available agents etc. At the same time, this example covers the barest skeleton of a webchat application.
 <p>&nbsp;</p>
