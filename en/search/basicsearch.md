@@ -100,8 +100,8 @@ cs.search({
 ```
 cs.search(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] x, CloudException t)	throws CloudException {
-		if( t != null){
+	public void done(CloudObject[] x, CloudException e)	throws CloudException {
+		if( e != null){
 		}
 		if(x!=null){
 		}
