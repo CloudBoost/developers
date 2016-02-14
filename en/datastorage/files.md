@@ -36,7 +36,7 @@ if (fileUploadControl.files.length > 0) {
 CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
 file.save(new CloudStringCallback(){
 @Override
-public void done(String x, CloudException e) throws CloudException {
+public void done(CloudFile x, CloudException e) throws CloudException {
 	if(e != null)
 		//error
 	if(x!=null)		
@@ -72,11 +72,11 @@ file.save({
 ==Java==
 <span class="java-lines" data-query="setblob">
 ```
-Blob blob=new Blob();//create blob in any of numerous ways
+Blob blob;//create blob in any of numerous ways
 CloudFile file = new CloudFile(blob);
 file.save(new CloudStringCallback(){
 @Override
-public void done(String x, CloudException e) throws CloudException {
+public void done(CloudFile x, CloudException e) throws CloudException {
 	if(e != null)
 		//error
 	if(x!=null)
@@ -157,7 +157,7 @@ console.log(file.id);
 <span class="java-lines" data-query="viewid">
 ```
 //Id is null when you create the file but gets assigned to an file as soon as you save it.
-System.out.print(file.id);
+System.out.print(file.getId());
 ```
 </span>
 
@@ -369,6 +369,24 @@ file.fetch({
 ```
 </span>
 
+==Java==
+<span class="java-lines" data-query="fetchfile">
+```
+x1.fetch(new CloudFileArrayCallback() {
+@Override
+public void done(CloudFile[] x, CloudException t)
+    throws CloudException {
+    if (t != null) {
+        }
+    if(x!=null){
+      
+    }
+
+    }
+});
+```
+</span>
+
 #Fetch file contents
 
 To get the file contents from the File object, you need to:
@@ -382,6 +400,24 @@ file.getFileContent({
   }, error: function(err) {
       //error in getting File Contents
   }
+});
+```
+</span>
+==Java==
+<span class="java-lines" data-query="fetchfilecontent">
+```
+file.getFileContent(new ObjectCallback() {
+@Override
+public void done(Object x, CloudException t)
+  throws CloudException {
+    if (t != null) {
+
+        }
+    if(x!=null){
+      
+        }
+
+    }
 });
 ```
 </span>
