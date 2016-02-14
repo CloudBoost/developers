@@ -31,7 +31,7 @@ var cs = new CB.CloudSearch("Student");
 ==Java==
 <span class="java-lines" data-query="create">
 ```
-CloudSearch cs = new CloudSearch("Student","searchQuery","searchFilter");
+CloudSearch cs = new CloudSearch("Student");
 ```
 </span>
 
