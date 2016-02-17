@@ -136,7 +136,7 @@ queue.peekMessage({
 
 ><span class="tut-info">Info</span> Peek will <b>not</b> hide your message in the queue.
 
-#Get a message
+#Get a message by Id
 
 To get a Queue Message by Id, you need to call the GetMessageById function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
