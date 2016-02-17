@@ -70,7 +70,7 @@ queue.addMessage('sample', {
 
 #Get first message from the queue
 
-To get the first message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+To get the ***first*** message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
 <span class="js-lines" data-query="getmessagequeues">
