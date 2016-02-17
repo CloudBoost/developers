@@ -166,6 +166,36 @@ queue.getMessageById(messageId, {
 ```
 </span>
 
+#Get all messages 
+
+To get all Messages from queue, you need to call the getAllMessages function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+
+==JavaScript==
+<span class="js-lines" data-query="getallmessages">
+```
+queue.getAllMessages({
+    success : function(messagesList){
+    	//messages list
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="getallmessages">
+```
+queue.getAllMessages({
+    success : function(messagesList){
+    	//messages list
+    }, error : function(error){
+    	//error.
+    }
+});
+```
+</span>
+
 #Get queue info
 
 To get a queue info, you need to call the get function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
