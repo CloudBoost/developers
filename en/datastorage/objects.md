@@ -91,7 +91,7 @@ CloudObject obj = new CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException e)throws CloudException {
+	public void done(CloudObject x, CloudException e){
 		if(e != null)
 			//error
 		if(x!=null)

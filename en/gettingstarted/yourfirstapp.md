@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create your new App (we call it [CloudApp]( https://docs.cloudboost.io/#CloudApp)) and create your fist Table ([CloudTable]( https://docs.cloudboost.io/#CloudTable)). You will also learn about default columns in CloudBoost and how to create few of your own columns in your table. Finally we'll link the CloudBoost SDK to your project, save few objects ([CloudObjects]( https://docs.cloudboost.io/#CloudObject)) in the table you have created and query it with a simple query ([CloudQuery]( https://docs.cloudboost.io/#CloudQuery)). 
+In this section you'll learn how to create your new App (we call it [CloudApp]( https://docs.cloudboost.io/#CloudApp)) and create your first Table ([CloudTable]( https://docs.cloudboost.io/#CloudTable)). You will also learn about default columns in CloudBoost and how to create few of your own columns in your table. Finally we'll link the CloudBoost SDK to your project, save few objects ([CloudObjects]( https://docs.cloudboost.io/#CloudObject)) in the table you have created and query it with a simple query ([CloudQuery]( https://docs.cloudboost.io/#CloudQuery)). 
 
 #Create your first App
 

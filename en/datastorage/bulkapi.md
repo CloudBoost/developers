@@ -91,7 +91,7 @@ CB.CloudObject.deleteAll([obj1,obj2],{
 <span class="java-lines" data-query="bulkdelete">
 ```
 CloudObject obj=new CloudObject('Custom');
-obj.deleteAll([obj1,obj2],new CloudObjectArrayCallback() {
+obj.deleteAll(new CloudObject[]{obj1,obj2},new CloudObjectArrayCallback() {
 @Override
 public void done(CloudObject[] x,CloudException t) throws CloudException {
 	if(t!=null)

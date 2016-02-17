@@ -59,7 +59,7 @@ cs.searchQuery.searchOn('name','John');
 <span class="java-lines" data-query="attach">
 ```
 SearchQuery searchQuery = new SearchQuery();
-searchQuery.searchOn('name','John');
+searchQuery.searchOn("name","John",null,null,null,null);
 ```
 </span>
 
@@ -165,13 +165,14 @@ cs.search({
 ==Java==
 <span class="java-lines" data-query="newquery">
 ```
-CloudSearch cs = new CloudSearch('TableName');
-//
 //create a search filter
 SearchFilter searchFilter = new SearchFilter();
 //
 //create a search query
 SearchQuery searchQuery = new SearchQuery();
+
+//construct your CloudSearch object
+CloudSearch cs = new CloudSearch("TableName",searchQuery,searchFilter);
 //
 cs.search(new CloudObjectArrayCallback(){
 	@Override
@@ -208,7 +209,7 @@ cs.searchQuery.searchOn('name','John');
 ==Java==
 <span class="java-lines" data-query="searchon">
 ```
-cs.searchQuery.searchOn('name','John');
+searchQuery.searchOn("name","John");
 ```
 </span>
 
@@ -233,7 +234,7 @@ cs.searchQuery.phrase('name','John Smith');
 ==Java==
 <span class="java-lines" data-query="phrase">
 ```
-cs.searchQuery.phrase('name','John Smith');
+searchQuery.phrase("name","John Smith");
 ```
 </span>
 
@@ -267,10 +268,10 @@ cs.searchQuery.or(searchQuery1);
 <span class="java-lines" data-query="or">
 ```
 SearchQuery searchQuery1 = new SearchQuery();
-searchQuery1.searchOn('name', 'John');
+searchQuery1.searchOn("name", "John",null,null,null,null);
 //
-//your main searchQuery
-cs.searchQuery.or(searchQuery1);
+//OR with your main searchQuery
+searchQuery.or(searchQuery1);
 ```
 </span>
 
@@ -304,10 +305,10 @@ cs.searchQuery.and(searchQuery1);
 <span class="java-lines" data-query="and">
 ```
 SearchQuery searchQuery1 = new SearchQuery();
-searchQuery1.searchOn('name', 'John');
+searchQuery1.searchOn("name", "John",null,null,null,null);
 //
-//your main searchQuery
-cs.searchQuery.and(searchQuery1);
+//AND with your main searchQuery
+searchQuery.and(searchQuery1);
 ```
 </span>
 
@@ -341,10 +342,10 @@ cs.searchQuery.not(searchQuery1);
 <span class="java-lines" data-query="not">
 ```
 SearchQuery searchQuery1 = new SearchQuery();
-searchQuery1.searchOn('name', 'John');
+searchQuery1.searchOn("name", "John",null,null,null,null);
 //
 //your main searchQuery
-cs.searchQuery.not(searchQuery1);
+searchQuery.not(searchQuery1);
 ```
 </span>
 
@@ -371,7 +372,7 @@ cs.searchFilter.equalTo("name","John");
 ==Java==
 <span class="java-lines" data-query="equal">
 ```
-cs.searchFilter.equalTo("name","John");
+searchFilter.equalTo("name","John");
 ```
 </span>
 
@@ -396,7 +397,7 @@ cs.searchFilter.notEqualTo("name","John");
 ==Java==
 <span class="java-lines" data-query="notequal">
 ```
-cs.searchFilter.notEqualTo("name","John");
+searchFilter.notEqualTo("name","John");
 ```
 </span>
 
@@ -421,7 +422,7 @@ cs.searchFilter.greaterThan("age",10);
 ==Java==
 <span class="java-lines" data-query="greaterthan">
 ```
-cs.searchFilter.greaterThan("age",10);
+searchFilter.greaterThan("age",10);
 ```
 </span>
 
@@ -446,7 +447,7 @@ cs.searchFilter.lessThan("age",10);
 ==Java==
 <span class="java-lines" data-query="lessthan">
 ```
-cs.searchFilter.lessThan("age",10);
+searchFilter.lessThan("age",10);
 ```
 </span>
 
@@ -472,7 +473,7 @@ cs.searchFilter.greaterThanEqualTo("age",10);
 ==Java==
 <span class="java-lines" data-query="greaterequal">
 ```
-cs.searchFilter.greaterThanEqualTo("age",10);
+searchFilter.greaterThanEqualTo("age",10);
 ```
 </span>
 
@@ -498,7 +499,7 @@ cs.searchFilter.lessThanEqualTo("age",10);
 ==Java==
 <span class="java-lines" data-query="lessequal">
 ```
-cs.searchFilter.lessThanEqualTo("age",10);
+searchFilter.lessThanEqualTo("age",10);
 ```
 </span>
 
@@ -524,7 +525,7 @@ cs.searchFilter.exists("name");
 ==Java==
 <span class="java-lines" data-query="exists">
 ```
-cs.searchFilter.exists("name");
+searchFilter.exists("name");
 ```
 </span>
 
@@ -549,7 +550,7 @@ cs.searchFilter.doesNotExists("name");
 ==Java==
 <span class="java-lines" data-query="notexists">
 ```
-cs.searchFilter.doesNotExists("name");
+searchFilter.doesNotExists("name");
 ```
 </span>
 
@@ -583,10 +584,10 @@ cs.searchFilter.or(searchFilter1);
 <span class="java-lines" data-query="filteror">
 ```
 SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo('name', 'John');
+searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
-cs.searchFilter.or(searchFilter1);
+searchFilter.or(searchFilter1);
 ```
 </span>
 
@@ -620,7 +621,7 @@ cs.searchFilter.and(searchFilter1);
 <span class="java-lines" data-query="filterand">
 ```
 SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo('name', 'John');
+searchFilter1.equalTo("name", 'John');
 //
 //your main searchQuery
 cs.searchFilter.and(searchFilter1);
@@ -657,10 +658,10 @@ cs.searchFilter.not(searchFilter1);
 <span class="java-lines" data-query="filternot">
 ```
 SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo('name', 'John');
+searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
-cs.searchFilter.not(searchFilter1);
+searchFilter.not(searchFilter1);
 ```
 </span>
 
@@ -711,7 +712,7 @@ cs.search({
 ==Java==
 <span class="java-lines" data-query="orderby">
 ```
-CloudSearch cs = new CloudSearch("Student");
+CloudSearch cs = new CloudSearch("Student",null,null);
 //
 cs.orderByAsc('age'); 
 // OR
@@ -776,7 +777,7 @@ cs.search({
 ==Java==
 <span class="java-lines" data-query="limitskip">
 ```
-CloudSearch cs = new CloudSearch("Student");
+CloudSearch cs = new CloudSearch("Student",null,null);
 //
 cs.limit(10); 
 // OR

@@ -11,10 +11,10 @@ Before you push and pull data from the queue. You need to create a queue instanc
 ```
 var queue = new CB.CloudQueue('QueueName');
 queue.create({
-	success : function(queueObject){
-    	//returns a queueObject.
+    success : function(queueObject){
+        //returns a queueObject.
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -25,10 +25,10 @@ queue.create({
 ```
 var queue = new CB.CloudQueue('QueueName');
 queue.create({
-	success : function(queueObject){
-    	//returns a queueObject.
+    success : function(queueObject){
+        //returns a queueObject.
     }, error : function(error){
-    	//error
+        //error
     }
 });
 ```
@@ -43,11 +43,11 @@ To add message into the Queue, you need to call the addMessage method of the <sp
 ```
 var queue = new CB.CloudQueue('QueueName');
 queue.addMessage('sample', {
-	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class.
-    	console.log(queueMessage.id);
+    success : function(queueMessage){
+        //queueMessage is an instance of CB.QueueMessage class.
+        console.log(queueMessage.id);
     }, error : function(error){
-    	console.log(error);
+        console.log(error);
     }
 });
 ```
@@ -58,11 +58,11 @@ queue.addMessage('sample', {
 ```
 var queue = new CB.CloudQueue('QueueName');
 queue.addMessage('sample', {
-	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class.
-    	console.log(queueMessage.id);
+    success : function(queueMessage){
+        //queueMessage is an instance of CB.QueueMessage class.
+        console.log(queueMessage.id);
     }, error : function(error){
-    	console.log(error);
+        console.log(error);
     }
 });
 ```
@@ -76,11 +76,11 @@ To get the ***first*** message from the Queue, you need to call the getMessage m
 <span class="js-lines" data-query="getmessagequeues">
 ```
 queue.getMessage ({
-	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class.
-    	console.log(queueMessage.id);
+    success : function(queueMessage){
+        //queueMessage is an instance of CB.QueueMessage class.
+        console.log(queueMessage.id);
     }, error : function(error){
-    	console.log(error);
+        console.log(error);
     }
 });
 ```
@@ -90,11 +90,11 @@ queue.getMessage ({
 <span class="nodejs-lines" data-query="getmessagequeues">
 ```
 queue.getMessage ({
-	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class.
-    	console.log(queueMessage.id);
+    success : function(queueMessage){
+        //queueMessage is an instance of CB.QueueMessage class.
+        console.log(queueMessage.id);
     }, error : function(error){
-    	console.log(error);
+        console.log(error);
     }
 });
 ```
@@ -110,11 +110,11 @@ Peeking usually help you to see the first message in the queue without removing 
 <span class="js-lines" data-query="peekmessagequeues">
 ```
 queue.peekMessage({
-	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class.
-    	console.log(queueMessage.id);
+    success : function(queueMessage){
+        //queueMessage is an instance of CB.QueueMessage class.
+        console.log(queueMessage.id);
     }, error : function(error){
-    	console.log(error);
+        console.log(error);
     }
 });
 ```
@@ -124,11 +124,11 @@ queue.peekMessage({
 <span class="nodejs-lines" data-query="peekmessagequeues">
 ```
 queue.peekMessage({
-	success : function(queueMessage){
-    	//queueMessage is an instance of CB.QueueMessage class.
-    	console.log(queueMessage.id);
+    success : function(queueMessage){
+        //queueMessage is an instance of CB.QueueMessage class.
+        console.log(queueMessage.id);
     }, error : function(error){
-    	console.log(error);
+        console.log(error);
     }
 });
 ```
@@ -145,9 +145,9 @@ To get a Queue Message by Id, you need to call the GetMessageById function of th
 ```
 queue.getMessageById(messageId,{
     success : function(message){
-    	//message
+        //message
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -158,9 +158,9 @@ queue.getMessageById(messageId,{
 ```
 queue.getMessageById(messageId, {
     success : function(message){
-    	//message
+        //message
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -175,9 +175,9 @@ To get all Messages from queue, you need to call the getAllMessages function of 
 ```
 queue.getAllMessages({
     success : function(messagesList){
-    	//messages list
+        //messages list
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -188,9 +188,9 @@ queue.getAllMessages({
 ```
 queue.getAllMessages({
     success : function(messagesList){
-    	//messages list
+        //messages list
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -205,9 +205,9 @@ To get a queue info, you need to call the get function of the <span class="tut-s
 ```
 queue.get({
     success : function(queue){
-    	//queue info
+        //queue info
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -218,9 +218,9 @@ queue.get({
 ```
 queue.get({
     success : function(queue){
-    	//queue info
+        //queue info
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -235,9 +235,9 @@ To get all the queues, you need to call the getAll function of the <span class="
 ```
 CB.CloudQueue.getAll({
     success : function(list){
-    	//list is an array of  CB.CloudQueue Objects
+        //list is an array of  CB.CloudQueue Objects
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -248,9 +248,9 @@ CB.CloudQueue.getAll({
 ```
 CB.CloudQueue.getAll({
     success : function(list){
-    	//list is an array of  CB.CloudQueue Objects
+        //list is an array of  CB.CloudQueue Objects
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -264,10 +264,10 @@ To delete a message from the Queue, you need to call the deleteMessage method of
 <span class="js-lines" data-query="deletemessage">
 ```
 queue.deleteMessage(messageId, {
-	success : function(queueMessage){
-    	//message deleted.
+    success : function(queueMessage){
+        //message deleted.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -277,10 +277,10 @@ queue.deleteMessage(messageId, {
 <span class="nodejs-lines" data-query="deletemessage">
 ```
 queue.deleteMessage(messageId, {
-	success : function(queueMessage){
-    	//message deleted.
+    success : function(queueMessage){
+        //message deleted.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -294,10 +294,10 @@ To delete a Queue, you need to call the delete function of the <span class="tut-
 <span class="js-lines" data-query="deletequeue">
 ```
 queue.delete({
-	success : function(){
-    	//queue deleted.
+    success : function(){
+        //queue deleted.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -307,10 +307,10 @@ queue.delete({
 <span class="nodejs-lines" data-query="deletequeue">
 ```
 queue.delete({
-	success : function(){
-    	//queue deleted.
+    success : function(){
+        //queue deleted.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -331,10 +331,10 @@ var queueMessage = new CB.QueueMessage();
 queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds.
 queueMessage.message = "data";
 queue.addMessage(queueMessage, {
-	success : function(queueMessage){
-    	//message pushed.
+    success : function(queueMessage){
+        //message pushed.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -347,10 +347,10 @@ var queueMessage = new CB.QueueMessage();
 queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds.
 queueMessage.message = "data";
 queue.addMessage(queueMessage, {
-	success : function(queueMessage){
-    	//message pushed.
+    success : function(queueMessage){
+        //message pushed.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -367,10 +367,10 @@ var queueMessage = new CB.QueueMessage();
 queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.addMessage(queueMessage, {
-	success : function(queueMessage){
-    	//message pushed.
+    success : function(queueMessage){
+        //message pushed.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -383,10 +383,10 @@ var queueMessage = new CB.QueueMessage();
 queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.addMessage(queueMessage, {
-	success : function(queueMessage){
-    	//message pushed.
+    success : function(queueMessage){
+        //message pushed.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -408,10 +408,10 @@ tomorrow.setDate(today.getDate()+1);
 queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.addMessage(queueMessage, {
-	success : function(queueMessage){
-    	//message pushed.
+    success : function(queueMessage){
+        //message pushed.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
@@ -429,10 +429,10 @@ tomorrow.setDate(today.getDate()+1);
 queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
 queue.addMessage(queueMessage, {
-	success : function(queueMessage){
-    	//message pushed.
+    success : function(queueMessage){
+        //message pushed.
     }, error : function(error){
-    	//error.
+        //error.
     }
 });
 ```
