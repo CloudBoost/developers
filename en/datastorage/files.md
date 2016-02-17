@@ -369,19 +369,6 @@ file.fetch({
 ```
 </span>
 
-==NodeJS==
-<span class="nodejs-lines" data-query="fetchfile">
-```
-file.fetch({
-  success: function(file) {
-     //received file Object
-  }, error: function(err) {
-      //error in getting file Object
-  }
-});
-```
-</span>
-
 ==Java==
 <span class="java-lines" data-query="fetchfile">
 ```
@@ -406,19 +393,6 @@ To get the file contents from the File object, you need to:
 
 ==JavaScript==
 <span class="js-lines" data-query="fetchfilecontent">
-```
-file.getFileContent({
-  success: function(content) {
-     //received File Contents
-  }, error: function(err) {
-      //error in getting File Contents
-  }
-});
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="fetchfilecontent">
 ```
 file.getFileContent({
   success: function(content) {
