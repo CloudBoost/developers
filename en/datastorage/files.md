@@ -376,12 +376,12 @@ x1.fetch(new CloudFileArrayCallback() {
 @Override
 public void done(CloudFile[] x, CloudException t)
     throws CloudException {
-    if (t != null) {
-        }
-    if(x!=null){
-      
-    }
-
+	    if (t != null) {
+	    	//exception
+	    }
+	    if(x!=null){
+	    	//file
+	    }
     }
 });
 ```
@@ -411,13 +411,12 @@ file.getFileContent(new ObjectCallback() {
 public void done(Object x, CloudException t)
   throws CloudException {
     if (t != null) {
-
-        }
-    if(x!=null){
-      
-        }
-
+    	//exception
     }
+    if(x!=null){
+    	//file
+    }
+  }
 });
 ```
 </span>
