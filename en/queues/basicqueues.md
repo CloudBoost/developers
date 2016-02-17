@@ -34,15 +34,15 @@ queue.create({
 ```
 </span>
 
-#Pushing data into the queue
+#Add message into the queue
 
-To push data into the Queue, you need to call the push method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">Push</span> function takes in data as the first parameter.
+To add message into the Queue, you need to call the addMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">addMessage</span> function takes in data as the first parameter.
 
 ==JavaScript==
-<span class="js-lines" data-query="pushqueue">
+<span class="js-lines" data-query="addmessagequeue">
 ```
 var queue = new CB.CloudQueue('QueueName');
-queue.push('sample', {
+queue.addMessage('sample', {
 	success : function(queueMessage){
     	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
@@ -54,10 +54,10 @@ queue.push('sample', {
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="pushqueue">
+<span class="nodejs-lines" data-query="addmessagequeue">
 ```
 var queue = new CB.CloudQueue('QueueName');
-queue.push('sample', {
+queue.addMessage('sample', {
 	success : function(queueMessage){
     	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
@@ -68,14 +68,14 @@ queue.push('sample', {
 ```
 </span>
 
-#Pulling data from the queue
+#Get first message from the queue
 
-To pull data into the Queue, you need to call the pull method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
+To get the first message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="pullqueues">
+<span class="js-lines" data-query="getmessagequeues">
 ```
-queue.pull({
+queue.getMessage ({
 	success : function(queueMessage){
     	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
@@ -87,9 +87,9 @@ queue.pull({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="pullqueues">
+<span class="nodejs-lines" data-query="getmessagequeues">
 ```
-queue.pull({
+queue.getMessage ({
 	success : function(queueMessage){
     	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
@@ -107,9 +107,9 @@ queue.pull({
 Peeking usually help you to see the first message in the queue without removing the message from the queue. To peek data into the Queue, you need to call the peek method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="peekqueues">
+<span class="js-lines" data-query="peekmessagequeues">
 ```
-queue.peek({
+queue.peekMessage({
 	success : function(queueMessage){
     	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
@@ -121,9 +121,9 @@ queue.peek({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="peekqueues">
+<span class="nodejs-lines" data-query="peekmessagequeues">
 ```
-queue.peek({
+queue.peekMessage({
 	success : function(queueMessage){
     	//queueMessage is an instance of CB.QueueMessage class.
     	console.log(queueMessage.id);
@@ -141,7 +141,7 @@ queue.peek({
 To get a Queue Message by Id, you need to call the GetMessageById function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
 ==JavaScript==
-<span class="js-lines" data-query="getmessage">
+<span class="js-lines" data-query="getmessageid">
 ```
 queue.getMessageById(messageId,{
     success : function(message){
@@ -154,7 +154,7 @@ queue.getMessageById(messageId,{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="getmessage">
+<span class="nodejs-lines" data-query="getmessageid">
 ```
 queue.getMessageById(messageId, {
     success : function(message){
@@ -300,7 +300,7 @@ To set the timeout, you first need to create the QueueMessage instance, set the 
 var queueMessage = new CB.QueueMessage();
 queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds.
 queueMessage.message = "data";
-queue.push(queueMessage, {
+queue.addMessage(queueMessage, {
 	success : function(queueMessage){
     	//message pushed.
     }, error : function(error){
@@ -316,7 +316,7 @@ queue.push(queueMessage, {
 var queueMessage = new CB.QueueMessage();
 queueMessage.timeout = 3600; // 1hr.  Timeout is in seconds.
 queueMessage.message = "data";
-queue.push(queueMessage, {
+queue.addMessage(queueMessage, {
 	success : function(queueMessage){
     	//message pushed.
     }, error : function(error){
@@ -336,7 +336,7 @@ To make the message in the queue appear after a certain period of time, you dela
 var queueMessage = new CB.QueueMessage();
 queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
-queue.push(queueMessage, {
+queue.addMessage(queueMessage, {
 	success : function(queueMessage){
     	//message pushed.
     }, error : function(error){
@@ -352,7 +352,7 @@ queue.push(queueMessage, {
 var queueMessage = new CB.QueueMessage();
 queueMessage.delay = 3600; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
-queue.push(queueMessage, {
+queue.addMessage(queueMessage, {
 	success : function(queueMessage){
     	//message pushed.
     }, error : function(error){
@@ -377,7 +377,7 @@ tomorrow.setDate(today.getDate()+1);
 //
 queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
-queue.push(queueMessage, {
+queue.addMessage(queueMessage, {
 	success : function(queueMessage){
     	//message pushed.
     }, error : function(error){
@@ -398,7 +398,7 @@ tomorrow.setDate(today.getDate()+1);
 //
 queueMessage.expires = tomorrow; // 1hr.  The message will appear after 1 hr.
 queueMessage.message = "data";
-queue.push(queueMessage, {
+queue.addMessage(queueMessage, {
 	success : function(queueMessage){
     	//message pushed.
     }, error : function(error){
