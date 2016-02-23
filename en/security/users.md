@@ -252,3 +252,61 @@ CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
 });
 ```
 </span>
+
+#Change Password
+
+To change the password of a user you need to call the changePassword function of the `CB.CloudUser` instance. Before you call the changePassword function make sure the current user is loggedIn and the current session is valid. Please note : Calling change password will not log the user out of its current session.
+
+==JavaScript==
+<span class="js-lines" data-query="signup">
+```
+CB.CloudUser.current.changePassword('oldPassword','newPassword',{
+  success: function(user) {
+    //Change Password  successfull
+  },
+  error: function(error) {
+    //Error
+  }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="signup">
+```
+//Change Password does not work on NodeJS, because it needs the current user session to be valid.
+```
+</span>
+
+
+#Reset Password
+
+To reset the password of a user you need to call the resetPassword function of the `CB.CloudUser` class. Reset Password takes in an email of the user as first parameter and callback as second parameter. CloudBoost automatically takes care of emailing the user with password reset link. Please note : If you want to change the format the email which CloudBoost sends by default. You can head over to your CloudBoost App Dashboard and change the email settings of an app.
+
+==JavaScript==
+<span class="js-lines" data-query="signup">
+```
+CB.CloudUser.resetPassword('email',{
+  success: function() {
+    //Reset Password email sent! 
+  },
+  error: function(error) {
+    //error.
+  }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="signup">
+```
+CB.CloudUser.resetPassword('email',{
+  success: function() {
+    //Reset Password email sent! 
+  },
+  error: function(error) {
+    //error.
+  }
+});
+```
+</span>
