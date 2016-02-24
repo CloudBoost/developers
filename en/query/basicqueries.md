@@ -351,7 +351,83 @@ query.find(new CloudObjectArrayCallback(){
 	}
 });
 ```
-</span
+</span>
+
+###Substring
+
+Substring returns all the `CloudObject` which contains the given string.
+
+>Info: Substring with only works with <span class="tut-snippet">Text</span> type. 
+
+==JavaScript==
+<span class="js-lines" data-query="Substring">
+```
+var query = new CB.CloudQuery("Student");
+query.substring('name','on');
+//OR also works with an array. 
+query.substring('name',['on','hn']);
+query.find({
+  success: function(list) {
+    //list is an array of CloudObjects
+  },
+  error: function(error) {
+  }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="Substring">
+```
+var query = new CB.CloudQuery("Student");
+query.substring('name','on');
+//OR also works with an array. 
+query.substring('name',['on','hn']);
+query.find({
+  success: function(list) {
+    //list is an array of CloudObjects
+  },
+  error: function(error) {
+  }
+});
+```
+</span>
+
+###Regex
+
+Returns all the `CloudObject` which matches the regex.
+
+>Info: Regex with only works with <span class="tut-snippet">Text</span> type. 
+
+==JavaScript==
+<span class="js-lines" data-query="regex">
+```
+var query = new CB.CloudQuery("Student");
+query.regex('name','^/*.on*./');
+query.find({
+  success: function(list) {
+    //list is an array of CloudObjects
+  },
+  error: function(error) {
+  }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="regex">
+```
+var query = new CB.CloudQuery("Student");
+query.regex('name','^/*.on*./');
+query.find({
+  success: function(list) {
+    //list is an array of CloudObjects
+  },
+  error: function(error) {
+  }
+});
+```
+</span>
 
 #Queries on Lists
 
