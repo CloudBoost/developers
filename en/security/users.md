@@ -6,7 +6,7 @@ In this section you'll learn how to sign-up and log in a User (we call it CloudU
 
 CloudUser is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudUser and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc. 
 
-#Sign up.
+#Sign up
 
 To sign up a new user you need to initialize a new variable with the type CloudUser, assign it username and password and call the sign-up function. 
 
@@ -258,7 +258,7 @@ CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
 To change the password of a user you need to call the changePassword function of the `CB.CloudUser` instance. Before you call the changePassword function make sure the current user is loggedIn and the current session is valid. Please note : Calling change password will not log the user out of its current session.
 
 ==JavaScript==
-<span class="js-lines" data-query="signup">
+<span class="js-lines" data-query="chagepassword">
 ```
 CB.CloudUser.current.changePassword('oldPassword','newPassword',{
   success: function(user) {
@@ -272,7 +272,7 @@ CB.CloudUser.current.changePassword('oldPassword','newPassword',{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="signup">
+<span class="nodejs-lines" data-query="chagepassword">
 ```
 //Change Password does not work on NodeJS, because it needs the current user session to be valid.
 ```
@@ -284,7 +284,7 @@ CB.CloudUser.current.changePassword('oldPassword','newPassword',{
 To reset the password of a user you need to call the resetPassword function of the `CB.CloudUser` class. Reset Password takes in an email of the user as first parameter and callback as second parameter. CloudBoost automatically takes care of emailing the user with password reset link. Please note : If you want to change the format the email which CloudBoost sends by default. You can head over to your CloudBoost App Dashboard and change the email settings of an app.
 
 ==JavaScript==
-<span class="js-lines" data-query="signup">
+<span class="js-lines" data-query="resetpassword">
 ```
 CB.CloudUser.resetPassword('email',{
   success: function() {
@@ -298,7 +298,7 @@ CB.CloudUser.resetPassword('email',{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="signup">
+<span class="nodejs-lines" data-query="resetpassword">
 ```
 CB.CloudUser.resetPassword('email',{
   success: function() {
