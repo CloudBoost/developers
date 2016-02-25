@@ -46,7 +46,6 @@ To create a new columns click on <span class="tut-snippet">+</span> button on th
 
 After you create a new column. You can begin integrating CloudBoost with your project. In this example, We have created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click [here]( ?lang=en&category=datastorage&subcategory=objects#Data-types).)
 
-
 #Initialize your app
 
 Before you initialize your app, you need to import or link the CloudBoost SDK in your project. 
