@@ -24,6 +24,8 @@ if (fileUploadControl.files.length > 0) {
       console.log(cloudFile.URL);
     }, error: function(error){
       //error
+    }, uploadProgress : function(percentComplete){
+    	//upload progress.
     }
   })
 }
@@ -64,6 +66,8 @@ file.save({
       console.log(file.URL);
   }, error: function(err) {
       //error in uploading File
+  }, uploadProgress : function(percentComplete){
+    	//upload progress.
   }
 });
 ```
@@ -106,6 +110,8 @@ obj.save({
       //res will have File Object
   }, error: function(err) {
       //error in uploading File
+  }, uploadProgress : function(percentComplete){
+    	//upload progress.
   }
 });
 ```
