@@ -10,8 +10,6 @@ Much as this tutorial is designed to be as simple as possible, it still requires
 * ##CloudBoost quickstart:## it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)
 
 
-[here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)
-
 #Create the table
 After creating your first-app, create a table called <span class="tut-snippet">REAL_TIME</span> for this tutorial. Create two columns <span class="tut-snippet">user_name</span> and <span class="tut-snippet">comment</span>, all of type <span class="tut-snippet">text</span>
 
