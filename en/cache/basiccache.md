@@ -602,7 +602,7 @@ var cacheSize = cache.size;
 </span>
 
 ==Java==
-<span class="java-lines" data-query="name">
+<span class="java-lines" data-query="size">
 ```
 CloudCache cache = new CloudCache('sample');
 int size = cache.getSize();
