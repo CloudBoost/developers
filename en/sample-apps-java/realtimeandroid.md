@@ -85,17 +85,20 @@ Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical" >
+    
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000" />
+        
     <TextView
         android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="12sp" />
+        
 </LinearLayout>
 ```
 </span>
@@ -166,18 +169,19 @@ We want as little boiler plate code as possible, because we want to focus on Clo
 We can now bring it all together in the <span class="tut-snippet">MainActivity</span> class.
  
 Here is our <span class="tut-snippet">MainActivity.java</span>
+
 ==Java==
 <span class="java-lines" data-query="link">
 ```
 package io.cloudboost.realtime;
-
+//
 import io.cloudboost.CloudApp;
 import io.cloudboost.CloudException;
 import io.cloudboost.CloudObject;
 import io.cloudboost.CloudObjectCallback;
 import android.app.ListActivity;
 import android.os.Bundle;
-
+//
 public class MainActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -195,7 +199,7 @@ public class MainActivity extends ListActivity {
 			//start listening to "created" events on REAL_TIME table. the other 
 			//2 othertypes of events are "updated" and "deleted"
 			CloudObject.on("REAL_TIME", "created", new CloudObjectCallback() {
-
+				//
 				@Override
 				public void done(final CloudObject x, CloudException t)
 						throws CloudException {
@@ -207,19 +211,16 @@ public class MainActivity extends ListActivity {
 							adapter.add(x);
 						}
 					});
-
 				}
 			});
 		} catch (CloudException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
-
 ```
 </span>
+
 #Bringing it all together
 Compare your code with the original sources downloadable from this page. With everything in place, you can now run the application on the emulator or a device.
 
@@ -233,8 +234,5 @@ Login to your cloudboost dashboard and create a record in the <span class="tut-s
 After saving that record, you can take a look at your emulator screen
 <img class="center-img" alt="App" src="https://www.dropbox.com/s/qkv8bgym4bj7ium/emulatorconfirm.png?dl=0">
 Voila, that is it for our small demo of real time functionality.
-
-
-
 
 
