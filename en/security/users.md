@@ -290,7 +290,6 @@ CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
 		if(e!=null)
 			//
 	}
-	
 });
 ```
 </span>
