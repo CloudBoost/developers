@@ -226,6 +226,8 @@ Compare your code with the original sources downloadable from this page. With ev
 
 <img class="center-img" alt="App" src="https://www.dropbox.com/s/56ngv7g6pnjkahk/initialscreen.PNG">
 
+<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG">
+
 If this screen gets loaded, that means all went well.
 Login to your cloudboost dashboard and create a record in the <span class="tut-snippet">REAL_TIME</span> table
 
