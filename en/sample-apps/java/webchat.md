@@ -518,10 +518,10 @@ Here too, is the manifest file for our project, don’t forget to request intern
 
 After running in the emulator, this is how the chat app looks before any activity:
 
-<img class="center-img" alt="Chat app" src="https://www.dropbox.com/s/7lkisgkf1xqa3ts/chatapp.PNG?dl=0">
+<img class="center-img" alt="Chat app" src="https://blog.cloudboost.io/content/images/2016/03/chatapp.PNG">
 After a little activity, checkout where we are:
 
-<img class="center-img" alt="Chat app active" src="https://www.dropbox.com/s/qydiowryh7lk5q8/chatappactive.PNG?dl=0">
-<img class="center-img" alt="Chat widget4 active" src="https://www.dropbox.com/s/cu4j80l2o6i2sur/chatwidgetactive.PNG?dl=0">
+<img class="center-img" alt="Chat app active" src="https://blog.cloudboost.io/content/images/2016/03/chatappactive.PNG">
+<img class="center-img" alt="Chat widget4 active" src="https://blog.cloudboost.io/content/images/2016/03/chatwidgetactive.PNG">
 
 

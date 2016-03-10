@@ -197,4 +197,4 @@ Here too, is the manifest file for our project, don’t forget to request intern
 ```
 </span>
 So when you launch in the emulator, the screen should launch a counter set to 0. Any hits on your site should increment this counter accordingly.
-<img class="center-img" alt="App" src="https://www.dropbox.com/s/8rrgb3p0ctkz718/counter_display.PNG?dl=0">
+<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2016/03/counter_display.PNG">

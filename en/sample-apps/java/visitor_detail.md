@@ -356,7 +356,7 @@ Here too, is the manifest file for our project, don’t forget to request intern
 
 When i ran the app in the emulator, this is what i got:
 
-<img class="center-img" alt="No visitors" src="https://www.dropbox.com/s/q3m8f4cv1eyw0k3/novisitorsonline.PNG?dl=0">
+<img class="center-img" alt="No visitors" src="https://blog.cloudboost.io/content/images/2016/03/novisitorsonline.PNG">
 
 So I hit the site abit and even called a friend in the states to check it out and this is what I have:
-<img class="center-img" alt="No visitors" src="https://www.dropbox.com/s/saz01mv7qtrt6j9/visitor_locatiosn.PNG?dl=0">
+<img class="center-img" alt="No visitors" src="https://blog.cloudboost.io/content/images/2016/03/visitor_locatiosn.PNG">

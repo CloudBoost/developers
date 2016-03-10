@@ -224,15 +224,15 @@ public class MainActivity extends ListActivity {
 #Bringing it all together
 Compare your code with the original sources downloadable from this page. With everything in place, you can now run the application on the emulator or a device.
 
-<img class="center-img" alt="App" src="https://www.dropbox.com/s/56ngv7g6pnjkahk/initialscreen.PNG?dl=0">
+<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2016/03/initialscreen.PNG">
 
 If this screen gets loaded, that means all went well.
 Login to your cloudboost dashboard and create a record in the <span class="tut-snippet">REAL_TIME</span> table
 
-<img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://www.dropbox.com/s/jlw9uy3hy3xcg5n/dashboardcreate.PNG?dl=0">
+<img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2016/03/dashboardcreate.PNG">
 
 After saving that record, you can take a look at your emulator screen
-<img class="center-img" alt="App" src="https://www.dropbox.com/s/qkv8bgym4bj7ium/emulatorconfirm.png?dl=0">
+<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2016/03/emulatorconfirm.png">
 Voila, that is it for our small demo of real time functionality.
 
 

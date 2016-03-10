@@ -2,7 +2,7 @@
 In the past, we have looked at different ways of taking advantage of CloudBoost functionality to build your realtime applications. That is just a tip of the iceberg for what you can accomplish with cloudboost. 
 
 In this tutorial, we are going to take it a notch higher and build a clone of a popular real time application, especially among developers. Slack is  a popular collaboration app, widely used by developers so I assume that you are already familiar with it.
-<img class="center-img" alt="Slack android Clone" src="https://www.dropbox.com/s/0vtvx257638b8uf/animated_slack_clone.gif?dl=0">
+<img class="center-img" alt="Slack android Clone" src="https://blog.cloudboost.io/content/images/2016/03/animated_slack_clone.gif">
 <p>&nbsp;</p>
 ><span class="tut-imp">Important:</span> this is not a production ready example, in the real chat application, you would have to route messages from different site visitors to available agents etc. At the same time, this example covers the barest skeleton of a webchat application.
 <p>&nbsp;</p>
@@ -167,7 +167,7 @@ And below is the xml inflated for our dialog
 ```
 </span>
 How our dialog will look:
-<img class="center-img" alt="Chat name dialog" src="https://www.dropbox.com/s/4ouo71g2tkh3ka0/inputchatname.PNG?dl=0">
+<img class="center-img" alt="Chat name dialog" src="https://blog.cloudboost.io/content/images/2016/03/inputchatname.PNG">
 
 #Routing chat messageges
 We use CloudBoost notification query to filter realtime alerts whenever messages are received.
@@ -204,7 +204,7 @@ CloudQuery query = new CloudQuery("slack_message");
 </span>
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span>the <code>receiveMessage(CloudObject obj)</code> simply retrieves the message and sender chat name of received message, locates the Adapter store in the Application class and then adds the message to the adapter. So whether the fragment containing the particular chats of the sender has been active or not, the chats will appear the next time you select the sender from the navigation drawer.
-<img class="center-img" alt="Chat user list" src=https://www.dropbox.com/s/0ikaphsz68b2mel/navigation_drawer_withnames.PNG?dl=0">
+<img class="center-img" alt="Chat user list" src="https://blog.cloudboost.io/content/images/2016/03/navigation_drawer_withnames.PNG">
 
 #Posting chats
 We use an asyncronous class to handle the posting of our chat messages to the ##CloudBoost## realtime server, this way the network call will run on a background thread. Other than this, your app can crush due to slow networkd calls and it would block the UI thread.
@@ -275,7 +275,7 @@ class sendMsg extends AsyncTask<String, String, String> {
 </span>
 <p>&nbsp;</p>
 ><span class="tut-info">Info:</span>Notice that this is just a normal CloudObject save operation. This makes implementing Realtime functionality a no brainer. All the boiler plate cold has been abstracted in the backend and implementing real time functionality has been reduced to one additional line of code which we looked at earlier(creating a listener on the chat table).
-<img class="center-img" alt="Chats List view" src="https://www.dropbox.com/s/sj4aosgy5szjfls/chatscreenwithmessages.PNG?dl=0">
+<img class="center-img" alt="Chats List view" src="https://blog.cloudboost.io/content/images/2016/03/chatscreenwithmessages.PNG">
 
 This is it for our slack clone, you can get the full source code from the our git account.
 
