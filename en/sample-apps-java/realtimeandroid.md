@@ -75,7 +75,6 @@ Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet
 
 ==XML==
 
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
