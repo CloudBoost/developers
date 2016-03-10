@@ -177,5 +177,3 @@ Login to your cloudboost dashboard and create a record in the <span class="tut-s
 After saving that record, you can take a look at your emulator screen
 <img class="center-img" alt="App" src="https://www.dropbox.com/s/qkv8bgym4bj7ium/emulatorconfirm.png?dl=0">
 Voila, that is it for our small demo of real time functionality.
-
-
