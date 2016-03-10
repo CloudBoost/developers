@@ -7,7 +7,7 @@ Much as this tutorial is designed to be as simple as possible, it still requires
 
 * <span class="tut-snippet">Java</span> programming language
 * <span class="tut-snippet">Android</span> programming i.e can create an <span class="tut-snippet">Android</span> project in the IDE, an <span class="tut-snippet">Activity</span> and run the project on an emulator
-* ##CloudBoost quickstart:## it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)
+* **CloudBoost quickstart** it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)
 
 
 #Create the table
