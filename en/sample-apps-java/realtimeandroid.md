@@ -36,7 +36,7 @@ Create Your <span class="tut-snippet">MainActivity</span> which should extend <s
 #Main Layout
 Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snippet">res/layout</span> folder, we shall inflate it from <span class="tut-snippet">MainActivity</span>
 
-==xml==
+==XML==
 <span class="xml-lines" data-query="main_layout">
 ```
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
