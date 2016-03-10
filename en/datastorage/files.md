@@ -90,7 +90,7 @@ file.save(new CloudStringCallback(){
 	new FileUploadProgress(){
 	@Override
 	public void setProgress(int percent){
-		//
+		//percentage
 		}
 	}
 );
