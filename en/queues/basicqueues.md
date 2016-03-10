@@ -33,6 +33,7 @@ queue.create({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
@@ -50,6 +51,7 @@ CloudQueue queue = new CloudQueue("QueueName");
 });
 ```
 </span>
+
 #Add message into the queue
 
 To add message into the Queue, you need to call the addMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">addMessage</span> function takes in data as the first parameter.
@@ -83,6 +85,7 @@ queue.addMessage('sample', {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="addmessagequeue">
 ```
@@ -98,6 +101,7 @@ CloudQueue queue = new CloudQueue("QueueName");
 });
 ```
 </span>
+
 #Get first message from the queue
 
 To get the ***first*** message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -129,6 +133,7 @@ queue.getMessage ({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getmessagequeues">
 ```
@@ -143,6 +148,7 @@ que.getMessage(1, new CloudQueueMessageCallback() {
 });
 ```
 </span>
+
 ><span class="tut-info">Info</span> As soon as you pull the message from the queue, the message is hidden for 30 minutes (1800 seconds). If the message is not deleted during that period it will reappear back into the queue. Please make sure you delete the message after the task is done. If you need more than 30 mins. Please review the timeout section below.
 
 #Peek a message
@@ -176,6 +182,7 @@ queue.peekMessage({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="peekmessagequeues">
 ```
@@ -190,6 +197,7 @@ que.peekMessage(1, new CloudQueueMessageCallback() {
 });
 ```
 </span>
+
 ><span class="tut-info">Info</span> Peek will <b>not</b> hide your message in the queue.
 
 #Get a message by Id
@@ -221,6 +229,7 @@ queue.getMessageById(messageId, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getmessageid">
 ```
@@ -235,6 +244,7 @@ que.getMessageById("id", new CloudQueueMessageCallback() {
 });
 ```
 </span>
+
 #Get all messages 
 
 To get all Messages from queue, you need to call the getAllMessages function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -264,6 +274,7 @@ queue.getAllMessages({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getallmessages">
 ```
@@ -278,6 +289,7 @@ que.getAllMessages(new CloudQueueArrayCallback() {
 });
 ```
 </span>
+
 #Get queue info
 
 To get a queue info, you need to call the get function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -307,6 +319,7 @@ queue.get({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="queueinfo">
 ```
@@ -321,6 +334,7 @@ queue.get(new CloudQueueCallback() {
 });
 ```
 </span>
+
 #Get All Queues
 
 To get all the queues, you need to call the getAll function of the <span class="tut-snippet">CB.CloudQueue</span>.
@@ -350,6 +364,7 @@ CB.CloudQueue.getAll({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getallqueues">
 ```
@@ -364,6 +379,7 @@ CloudQueue.getAll(new CloudQueueArrayCallback() {
 });
 ```
 </span>
+
 #Deleting a message
 
 To delete a message from the Queue, you need to call the deleteMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -393,6 +409,7 @@ queue.deleteMessage(messageId, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="deletemessage">
 ```
@@ -407,6 +424,7 @@ que.deleteMessage(id, new CloudQueueMessageCallback() {
 });
 ```
 </span>
+
 #Deleting a queue
 
 To delete a Queue, you need to call the delete function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -436,6 +454,7 @@ queue.delete({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="deletequeue">
 ```
@@ -450,6 +469,7 @@ queue.deleteQueue(queueName, new CloudQueueCallback() {
 });
 ```
 </span>
+
 #Timeouts
 
 When you pull the message from queue, the message becomes invisible for 30 mins. We have timeouts in place because if your service which is processing the queue crashes, the message re-appears back into the queue within 30 mins and the other service can pick it up and process it. After your task completes, you should delete the message from the queue by calling the DeleteMessage function.
@@ -489,6 +509,7 @@ queue.addMessage(queueMessage, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="timeout">
 ```
@@ -507,6 +528,7 @@ QueueMessage[] msgs={msg};
 });
 ```
 </span>
+
 #Delays
 
 To make the message in the queue appear after a certain period of time, you delay the message. Delay can be set in seconds.
@@ -542,6 +564,7 @@ queue.addMessage(queueMessage, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="delays">
 ```
@@ -561,6 +584,7 @@ QueueMessage[] msgs={msg};
 
 ```
 </span>
+
 #Expire
 
 To delete the message from the queue after a certain period of time. You can set an expiry date and time to a message. The message will not be available after expire time is elapsed.
@@ -606,6 +630,7 @@ queue.addMessage(queueMessage, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="expire">
 ```
