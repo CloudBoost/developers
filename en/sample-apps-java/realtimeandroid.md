@@ -9,6 +9,9 @@ Much as this tutorial is designed to be as simple as possible, it still requires
 <li><span class="tut-snippet">Android</span> programming i.e can create an <span class="tut-snippet">Android</span> project in the IDE, an <span class="tut-snippet">Activity</span> and run the project on an emulator</li>
 <li>##CloudBoost quickstart:## it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)</li>
 </ul>
+
+[here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)
+
 #Create the table
 After creating your first-app, create a table called <span class="tut-snippet">REAL_TIME</span> for this tutorial. Create two columns <span class="tut-snippet">user_name</span> and <span class="tut-snippet">comment</span>, all of type <span class="tut-snippet">text</span>
 
