@@ -74,8 +74,7 @@ Remember we are using a <span class="tut-snippet">ListActivity</span>, so it com
 Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet">ListView</span> row layout to simply display user_name and comment, like so
 
 ==XML==
-<span class="xml-lines" data-query="row_layout">
-```
+
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
@@ -97,8 +96,6 @@ Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet
         android:textSize="12sp" />
         
 </LinearLayout>
-```
-</span>
 
 #The adapter
 Create a simple <span class="tut-snippet">ArrayAdapter</span> to supply the <span class="tut-snippet">ListView</span> with <span class="tut-snippet">CloudObject</span>s as rows we will be receiving in real time.
