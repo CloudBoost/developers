@@ -559,7 +559,7 @@ queue.addMessage(queueMessage, {
     success : function(queueMessage){
         //message pushed.
     }, error : function(error){
-        //error.
+        //error
     }
 });
 ```
