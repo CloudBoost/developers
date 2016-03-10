@@ -277,6 +277,7 @@ CB.CloudUser.current.changePassword('oldPassword','newPassword',{
 //Change Password does not work on NodeJS, because it needs the current user session to be valid.
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="chagepassword">
 ```
@@ -325,6 +326,7 @@ CB.CloudUser.resetPassword('email',{
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="resetpassword">
 ```
