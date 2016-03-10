@@ -37,7 +37,7 @@ Create Your <span class="tut-snippet">MainActivity</span> which should extend <s
 Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snippet">res/layout</span> folder, we shall inflate it from <span class="tut-snippet">MainActivity</span>
 
 ==XML==
-<span class="xml-lines" data-query="main_layout">
+
 ```
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -68,7 +68,7 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
         
 </RelativeLayout>
 ```
-</span>
+
 
 Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We don’t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
 
