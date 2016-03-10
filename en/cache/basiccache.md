@@ -38,24 +38,24 @@ var cache = new CB.CloudCache('CacheName');
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
 CloudCache cache = new CloudCache("CacheName");
-	cache.create(new CloudCacheCallback() {
-	 @Override
-	 public void done(CloudCache x, CloudException t) throws CloudException {
-			if(t!=null)
-				//
-			else if(x!=null){
-				//
-				}
-
-			}
-		});
-
+cache.create(new CloudCacheCallback() {
+ @Override
+ public void done(CloudCache x, CloudException t) throws CloudException {
+	if(t!=null)
+		//
+	else if(x!=null){
+		//
+		}
+	}
+});
 ```
 </span>
+
 #Adding / Updating Item
 
 To add or update an item into the Cache, you need to call the set method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
