@@ -7,7 +7,7 @@ Much as this tutorial is designed to be as simple as possible, it still requires
 <ul>
 <li><span class="tut-snippet">Java</span> programming language</li>
 <li><span class="tut-snippet">Android</span> programming i.e can create an <span class="tut-snippet">Android</span> project in the IDE, an <span class="tut-snippet">Activity</span> and run the project on an emulator</li>
-<li>##CloudBoost quickstart:## it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)</li>
+<li>##CloudBoost quickstart:## it's really straightforward, learn to create your first app ([here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp))</li>
 </ul>
 #Create the table
 After creating your first-app, create a table called <span class="tut-snippet">REAL_TIME</span> for this tutorial. Create two columns <span class="tut-snippet">user_name</span> and <span class="tut-snippet">comment</span>, all of type <span class="tut-snippet">text</span>
@@ -68,7 +68,7 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
 
 ```
 </span>
-Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We don’t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
+Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We donâ€™t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
 #ListView row layout
 
 Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet">ListView</span> row layout to simply display user_name and comment, like so
