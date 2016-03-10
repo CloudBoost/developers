@@ -41,7 +41,7 @@ This is what our code will do:
 
 <div id="buum"  width="200" height="200"></div> 
 <script type="text/javascript">
-CB.CloudApp.init('bengi','ailFnQf+q102UpB86ZZBKg==');
+CB.CloudApp.init('bengi','ailFnQf+xxxxxxx==');
 var query = new CB.CloudQuery('chat');
 query.equalTo('admin',true);
 CB.CloudObject.on('chat', 'created',query,function(data){   	
@@ -83,8 +83,9 @@ $(function(){
 Embed this code into you test website i.e. within the html. If you are using blogger like me, you just open the layout editor, add a new widget and choose the javascript/html option of the dialog that pops out. There must be a similar option with wordpress.
 We are done with the little we had to do outside java(android), now we can get back home.
 I placed this widget in my blog, checkout how it looks:
-<img class="center-img" alt="Chat widget" src="https://www.dropbox.com/s/uaqu9hbothdrk04/chatwidgetreal.PNG?dl=0">
-
+<p>&nbsp;</p>
+<img class="center-img" alt="Chat widget" src="https://blog.cloudboost.io/content/images/2016/03/chatwidgetreal.PNG">
+<p>&nbsp;</p>
 #The App
 Create a new Android application called WebChat, and create a new package called io.cloudboost.webchat.
 #ChatBubbleActivity
@@ -123,7 +124,7 @@ public class ChatBubbleActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// init the cloudapp
-		CloudApp.init("bengi", "ailFnQf+q102UpB86ZZBKg==");
+		CloudApp.init("bengi", "ailFnQf+xxxxxxxx==");
 		// inflate main view
 		setContentView(R.layout.activity_chat);
 		// get the sendbutton
@@ -396,6 +397,8 @@ public class ChatMessage {
 		this.message = message;
 	}
 }
+```
+</span>
 #activity_chat.xml
 As we can see above, the ChatBubbleActivity is inflating activity_chat.xml, so we shall also create it inside res/layout folder of the android project
 ==xml==
@@ -515,13 +518,16 @@ Here too, is the manifest file for our project, don’t forget to request intern
 </manifest>
 ```
 </span>
-
+<p>&nbsp;</p>
 After running in the emulator, this is how the chat app looks before any activity:
-
+<p>&nbsp;</p>
 <img class="center-img" alt="Chat app" src="https://blog.cloudboost.io/content/images/2016/03/chatapp.PNG">
+<p>&nbsp;</p>
 After a little activity, checkout where we are:
-
+<p>&nbsp;</p>
 <img class="center-img" alt="Chat app active" src="https://blog.cloudboost.io/content/images/2016/03/chatappactive.PNG">
+<p>&nbsp;</p>
 <img class="center-img" alt="Chat widget4 active" src="https://blog.cloudboost.io/content/images/2016/03/chatwidgetactive.PNG">
-
+<p>&nbsp;</p>
+[full source code](https://github.com/egimaben/web-chat)
 

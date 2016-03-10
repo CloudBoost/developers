@@ -34,7 +34,7 @@ That’s it, and now our script:
 <script src="https://cloudboost.io/js-sdk/cloudboost.js"></script>
 <script>
 function notifyMe(){
-CB.CloudApp.init('bengi','ailFnQf+q102UpB86ZZBKg==');
+CB.CloudApp.init('bengi','ailFnQf+xxxxxxxxxx==');
 var obj=new CB.CloudObject('visitors');
 obj.save({
             success : function(newObj){},          
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 		 * initialize you cloudboost app, the first parameter is app idand the
 		 * second is the client key. please replace accordingly
 		 */
-		CloudApp.init("bengi", "ailFnQf+q102UpB86ZZBKg==");
+		CloudApp.init("xxxxxxx", "xxxxxxxxxx");
 		try {
 			/*
 			 * start listening to "created" events on visitors table. the other
@@ -197,4 +197,7 @@ Here too, is the manifest file for our project, don’t forget to request intern
 ```
 </span>
 So when you launch in the emulator, the screen should launch a counter set to 0. Any hits on your site should increment this counter accordingly.
+<p>&nbsp;</p>
 <img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2016/03/counter_display.PNG">
+<p>&nbsp;</p>
+[full source code](https://github.com/egimaben/visitor_tracker)
