@@ -79,18 +79,18 @@ file.save({
 Blob blob;//create blob in any of numerous ways
 CloudFile file = new CloudFile(blob);
 file.save(new CloudStringCallback(){
-@Override
-public void done(CloudFile x, CloudException e) throws CloudException {
-	if(e != null)
-		//error
-	if(x!=null)
-		System.out.println(x);
-	}
-},
+	@Override
+	public void done(CloudFile x, CloudException e) throws CloudException {
+		if(e != null)
+			//error
+		if(x!=null)
+			System.out.println(x);
+		}
+	},
 	new FileUploadProgress(){
 	@Override
 	public void setProgress(int percent){
-	
+		//
 		}
 	}
 );
