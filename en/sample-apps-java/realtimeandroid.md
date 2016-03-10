@@ -76,7 +76,7 @@ Remember we are using a <span class="tut-snippet">ListActivity</span>, so it com
 
 Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet">ListView</span> row layout to simply display user_name and comment, like so
 
-==xml==
+==XML==
 <span class="xml-lines" data-query="row_layout">
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -160,7 +160,6 @@ public class Adapter  extends ArrayAdapter<CloudObject> {
         return row;
     }
 }
-
 ```
 </span>
 
