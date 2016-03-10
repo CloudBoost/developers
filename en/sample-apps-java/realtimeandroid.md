@@ -15,12 +15,12 @@ After creating your first-app, create a table called <span class="tut-snippet">R
 
 #Tools used
 
-*MyEclipse 2014 with ADT plugin
-*Java sdk for CloudBoost version 1.0.1
-*socket.io-client for java, get it [here](https://github.com/egimaben/socket.io-client)
-*[okhttp-2.4.0](http://mvnrepository.com/artifact/com.squareup.okhttp/okhttp/2.4.0)
-*[okhttp-ws-2.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okhttp/okhttp-ws/2.4.0/)
-*[okio-1.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okio/okio/1.4.0/)
+* MyEclipse 2014 with ADT plugin
+* Java sdk for CloudBoost version 1.0.1
+* socket.io-client for java, get it [here](https://github.com/egimaben/socket.io-client)
+* [okhttp-2.4.0](http://mvnrepository.com/artifact/com.squareup.okhttp/okhttp/2.4.0)
+* [okhttp-ws-2.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okhttp/okhttp-ws/2.4.0/)
+* [okio-1.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okio/okio/1.4.0/)
 
 #The app
 Create a new <span class="tut-snippet">Android</span> project called <span class="tut-snippet">RealTime</span> and import all the above jars
