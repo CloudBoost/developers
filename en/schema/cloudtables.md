@@ -117,7 +117,7 @@ column.dataType = 'Text';
 ==Java==
 <span class="java-lines" data-query="createcol">
 ```
-Column column = new Column('Name');
+Column column = new Column("Name");
 column.required = true;
 column.unique = false;
 column.dataType = 'Text';
@@ -155,7 +155,7 @@ table.save({
 ==Java==
 <span class="java-lines" data-query="addcoltable">
 ```
-CloudTable table = new CloudTable('Student');
+CloudTable table = new CloudTable("Student")
 table.addColumn(column1);
 table.save(new CloudObjectCallback(){
 	@Override
@@ -226,9 +226,9 @@ column.listDataType = 'Text';
 ==Java==
 <span class="java-lines" data-query="listcol">
 ```
-Column column = new Column('Name');
-column.dataType = 'List';
-column.listDataType = 'Text';
+Column column = new Column("Name");
+column.setDataType(DataType.List);
+column.setRelatedToType("text");
 ```
 </span>
 
@@ -262,9 +262,9 @@ column.relatedTo = 'TableName';
 ==Java==
 <span class="java-lines" data-query="relcol">
 ```
-Column column = new Column('Name');
-column.dataType = 'Relation';
-column.relatedTo = 'TableName';
+Column column = new Column("Name");
+column.setDataType(DataType.Relation);
+column.setRelatedTo("TableName");
 ```
 </span>
 
@@ -291,9 +291,9 @@ column.relatedTo = 'TableName';
 ==Java==
 <span class="java-lines" data-query="listrelcol">
 ```
-Column column = new Column('Name');
-column.dataType = 'List';
-column.relatedTo = 'TableName';
+Column column = new Column("Name");
+column.setDataType(DataType.List);
+column.setRelatedTo("TableName");
 ```
 </span>
 
@@ -318,7 +318,7 @@ var columns = table.columns; //array of CB.Column Objects
 ==Java==
 <span class="java-lines" data-query="getcols">
 ```
-Column[] columns = table.columns; //array of Column Objects 
+Column[] columns = table.getColumns(); //array of Column Objects 
 ```
 </span>
 
@@ -341,7 +341,7 @@ var column = table.getColumn('name'); //CB.Column Object
 ==Java==
 <span class="java-lines" data-query="getcolsalt">
 ```
-Column column = table.getColumn('name'); //Column Object
+Column column = table.getColumn("name"); //Column Object
 ```
 </span>
 
@@ -380,7 +380,7 @@ table.save({
 ==Java==
 <span class="java-lines" data-query="editcol">
 ```
-Column column = table.getColumn('Name');
+Column column = table.getColumn("Name");
 column.required = true; 
 table.updateColumn(column);
 table.save(new CloudObjectCallback(){
@@ -428,7 +428,7 @@ table.save({
 ==Java==
 <span class="java-lines" data-query="delcol">
 ```
-table.deleteColumn('ColumnName');
+table.deleteColumn("ColumnName");
 table.save(new CloudObjectCallback(){
 	@Override
 	public void done(CloudObject x, CloudException t) {	
@@ -554,7 +554,7 @@ CB.CloudTable.get('TableName', {
 ==Java==
 <span class="java-lines" data-query="gettabname">
 ```
-CloudTable.get('TableName', new CloudTableCallback(){
+CloudTable.get("TableName", new CloudTableCallback(){
 	@Override
 	public void done(CloudObject x, CloudException t) {	
 		if(x != null){

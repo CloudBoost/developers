@@ -207,7 +207,7 @@ CB.CloudUser.current
 ==Java==
 <span class="java-lines" data-query="viewcurrent">
 ```
-CloudUser.current;
+CloudUser.getCurrentUser();
 ```
 </span>
 
@@ -277,7 +277,22 @@ CB.CloudUser.current.changePassword('oldPassword','newPassword',{
 //Change Password does not work on NodeJS, because it needs the current user session to be valid.
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="chagepassword">
+```
+CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
+	new CloudUserCallback(){
+	@Override
+	public void done(CloudUser user,CloudException e){
+		if(user!=null)
+			//
+		if(e!=null)
+			//
+	}
+	
+});
+```
+</span>
 
 #Reset Password
 
@@ -307,6 +322,20 @@ CB.CloudUser.resetPassword('email',{
   error: function(error) {
     //error.
   }
+});
+```
+</span>
+==Java==
+<span class="java-lines" data-query="resetpassword">
+```
+CloudUser.resetPassword("email",new CloudStringCallback(){
+	@Override
+	public void done(String msg,CloudException e){
+		if(msg!=null)
+			//reset password email sent
+		if(e!=null)
+			//
+	}
 });
 ```
 </span>
