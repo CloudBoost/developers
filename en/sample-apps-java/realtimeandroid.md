@@ -38,35 +38,6 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
 
 ==XML==
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity" >
-    
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Feeds" />
-        
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/controls"
-        android:background="#aaaaaa" />
-        
-    <TextView
-        android:id="@android:id/empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/controls"
-        android:text="There is no data"
-        android:textStyle="bold" />
-        
-</RelativeLayout>
-
 Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We don’t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
 
 #ListView row layout
@@ -75,26 +46,6 @@ Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet
 
 ==XML==
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical" >
-    
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000" />
-        
-    <TextView
-        android:id="@+id/comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="12sp" />
-        
-</LinearLayout>
 
 #The adapter
 Create a simple <span class="tut-snippet">ArrayAdapter</span> to supply the <span class="tut-snippet">ListView</span> with <span class="tut-snippet">CloudObject</span>s as rows we will be receiving in real time.
