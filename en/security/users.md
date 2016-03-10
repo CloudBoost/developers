@@ -286,7 +286,7 @@ CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
 	@Override
 	public void done(CloudUser user,CloudException e){
 		if(user!=null)
-			//
+			//user
 		if(e!=null)
 			//
 	}
