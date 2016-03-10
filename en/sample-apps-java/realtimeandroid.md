@@ -34,7 +34,8 @@ So having dealt with the fundamentals, we can write some real code now:
 Create Your <span class="tut-snippet">MainActivity</span> which should extend <span class="tut-snippet">ListActivity</span>
 
 #Main Layout
-Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snippet">res/layout</span> folder, we shall inflate it from <span class="tut-snippet">MainActivity</span>.
+Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snippet">res/layout</span> folder, we shall inflate it from <span class="tut-snippet">MainActivity</span>
+
 ==xml==
 <span class="xml-lines" data-query="main_layout">
 ```
@@ -43,20 +44,17 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
-
     <TextView
         android:id="@+id/mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Feeds" />
-
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/controls"
         android:background="#aaaaaa" />
-
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
@@ -64,15 +62,16 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
         android:layout_below="@+id/controls"
         android:text="There is no data"
         android:textStyle="bold" />
-
 </RelativeLayout>
-
 ```
 </span>
+
 Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We don’t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
+
 #ListView row layout
 
 Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet">ListView</span> row layout to simply display user_name and comment, like so
+
 ==xml==
 <span class="xml-lines" data-query="row_layout">
 ```
@@ -82,71 +81,66 @@ Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical" >
-
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000" />
-
     <TextView
         android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="12sp" />
-
 </LinearLayout>
-
 ```
 </span>
 
 #The adapter
 Create a simple <span class="tut-snippet">ArrayAdapter</span> to supply the <span class="tut-snippet">ListView</span> with <span class="tut-snippet">CloudObject</span>s as rows we will be receiving in real time.
+
 ==Java==
 <span class="java-lines" data-query="adapter">
 ```
 package io.cloudboost.realtime;
-
 import io.cloudboost.CloudObject;
-
+//
 import java.util.ArrayList;
 import java.util.List;
-
+//
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
+//
 public class Adapter  extends ArrayAdapter<CloudObject> {
     private List<CloudObject> objectList = new ArrayList<>();
-
     public Adapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
-
+    //
     @Override
     public void add(CloudObject object) {
     	objectList.add(object);
         super.add(object);
     }
-
+    //
     @Override
     public int getCount() {
         return this.objectList.size();
     }
-
+    //
     @Override
     public CloudObject getItem(int index) {
         return this.objectList.get(index);
     }
-
+    //
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        
+        //
         if (row == null) {
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.row, parent, false);
