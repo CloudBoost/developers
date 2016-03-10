@@ -335,7 +335,7 @@ CloudUser.resetPassword("email",new CloudStringCallback(){
 		if(msg!=null)
 			//reset password email sent
 		if(e!=null)
-			//
+			//e
 	}
 });
 ```
