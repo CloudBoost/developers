@@ -86,7 +86,14 @@ public void done(CloudFile x, CloudException e) throws CloudException {
 	if(x!=null)
 		System.out.println(x);
 	}
-});
+},
+	new FileUploadProgress(){
+	@Override
+	public void setProgress(int percent){
+	
+		}
+	}
+);
 ```
 </span>
 
