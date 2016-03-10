@@ -44,17 +44,20 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
+    
     <TextView
         android:id="@+id/mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Feeds" />
+        
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/controls"
         android:background="#aaaaaa" />
+        
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
@@ -62,6 +65,7 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
         android:layout_below="@+id/controls"
         android:text="There is no data"
         android:textStyle="bold" />
+        
 </RelativeLayout>
 ```
 </span>
