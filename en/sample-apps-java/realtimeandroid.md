@@ -221,12 +221,12 @@ public class MainActivity extends ListActivity {
 ```
 </span>
 
+<img class="center-img" alt="App" src="https://www.dropbox.com/s/56ngv7g6pnjkahk/initialscreen.PNG">
+
 #Bringing it all together
 Compare your code with the original sources downloadable from this page. With everything in place, you can now run the application on the emulator or a device.
 
-<img class="center-img" alt="App" src="https://www.dropbox.com/s/56ngv7g6pnjkahk/initialscreen.PNG">
 
-<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG">
 
 If this screen gets loaded, that means all went well.
 Login to your cloudboost dashboard and create a record in the <span class="tut-snippet">REAL_TIME</span> table
