@@ -38,8 +38,6 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
 
 ==XML==
 
-<span class="tut-snippet">
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -68,9 +66,6 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
         android:textStyle="bold" />
         
 </RelativeLayout>
-
-</span>
-
 
 Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We don’t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
 
