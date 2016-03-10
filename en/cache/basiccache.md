@@ -91,20 +91,20 @@ cache.set('sample',item, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="put">
 ```
 CloudCache cache = new CloudCache("student");
-	cache.set("test1", "sample", new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException e) throws CloudException {
-		if (e != null)
-			//
-		else {
-			//
-		}
-
+cache.set("test1", "sample", new ObjectCallback() {
+@Override
+public void done(Object x, CloudException e) throws CloudException {
+	if (e != null)
+	//
+	else {
+	//
 	}
+}
 });
 ```
 </span>
@@ -140,20 +140,21 @@ cache.get('sample',{
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="get">
 ```
 CloudCache cache = new CloudCache("student");
-	cache.get("test1", new ObjectCallback() {
-	@Override
-	public void done(Object o, CloudException t)
-		throws CloudException {
-		if (t != null)
-			//
-		else {
-			//
-		}
+cache.get("test1", new ObjectCallback() {
+@Override
+public void done(Object o, CloudException t)
+	throws CloudException {
+	if (t != null)
+		//
+	else {
+		//
 	}
+}
 });
 ```
 </span>
@@ -187,6 +188,7 @@ cache.deleteItem('sample',{
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="delete">
 ```
@@ -235,6 +237,7 @@ cache.getAll({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getall">
 ```
@@ -284,6 +287,7 @@ cache.getItemsCount({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getitemscount">
 ```
@@ -298,6 +302,7 @@ cache.getItemsCount(new CloudIntegerCallback() {
 });
 ```
 </span>
+
 #Get size of a cache
 
 To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance. 
@@ -333,6 +338,7 @@ cache.getInfo({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getinfo">
 ```
@@ -383,6 +389,7 @@ cache.clear({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="clear">
 ```
@@ -397,6 +404,7 @@ cache.clear(new ObjectCallback() {
 });
 ```
 </span>
+
 #Delete Cache
 
 To delete an instance of the cache, you need to call the delete method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -444,6 +452,7 @@ cache.delete(new ObjectCallback() {
 });
 ```
 </span>
+
 #Get All Caches
 
 To get all the app caches, you need to call the getAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
@@ -478,6 +487,7 @@ CB.CloudCache.getAll({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="getallappcache">
 ```
@@ -492,6 +502,7 @@ CloudCache.getAllCache(new ObjectCallback() {
 });
 ```
 </span>
+
 #Delete All Caches
 
 To delete all the app caches, you need to call the deleteAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
@@ -524,6 +535,7 @@ CB.CloudCache.deleteAll({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="deleteallappcache">
 ```
@@ -538,6 +550,7 @@ CloudCache.deleteAll(new ObjectCallback() {
 });
 ```
 </span>
+
 #Name
 
 To get name of the cache, you need to call the name property on the <span class="tut-snippet">CB.CloudCache</span> .
@@ -557,6 +570,7 @@ var cache = new CB.CloudCache('sample');
 var cacheName = cache.name;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="name">
 ```
@@ -564,6 +578,7 @@ CloudCache cache = new CloudCache('sample');
 String cacheName = cache.getCacheName();
 ```
 </span>
+
 #Size
 
 To get size of the cache, you need to call the size property on the <span class="tut-snippet">CB.CloudCache</span> .
@@ -585,6 +600,7 @@ var cache = new CB.CloudCache('sample');
 var cacheSize = cache.size;
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="name">
 ```
