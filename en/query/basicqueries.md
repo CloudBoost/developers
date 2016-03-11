@@ -775,6 +775,38 @@ query.skip(10);
 ```
 </span>
 
+#Paginate
+
+Paginate returns only the specified number of objects from the database. It takes in the current page number and total items in page as parameters and returns list of objects,count,total number of pages. 
+
+==JavaScript==
+<span class="js-lines" data-query="limitskip">
+```
+//paginate
+query.paginate(2,10,{
+  success : function(objectsList,count,totalPages){
+      //objectsList
+    }, error : function(error){
+      //error
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="limitskip">
+```
+//paginate
+query.paginate(2,10,{
+  success : function(objectsList,count,totalPages){
+      //objectsList
+    }, error : function(error){
+      //error
+    }
+});
+```
+</span>
+
 #Select Column
 
 You can return only the specified column data in an object by using <span class="tut-snippet">SelectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">DoNotSelectColumn</span> function.
