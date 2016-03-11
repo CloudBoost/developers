@@ -4,23 +4,24 @@ Creating real time applications on CloudBoost is totally a no-brainer as you wil
 
 #Prerequisites
 Much as this tutorial is designed to be as simple as possible, it still requires one to have basic understanding in the following areas:
-<ul>
-<li><span class="tut-snippet">Java</span> programming language</li>
-<li><span class="tut-snippet">Android</span> programming i.e can create an <span class="tut-snippet">Android</span> project in the IDE, an <span class="tut-snippet">Activity</span> and run the project on an emulator</li>
-<li>##CloudBoost quickstart:## it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)</li>
-</ul>
+
+* <span class="tut-snippet">Java</span> programming language
+* <span class="tut-snippet">Android</span> programming i.e can create an <span class="tut-snippet">Android</span> project in the IDE, an <span class="tut-snippet">Activity</span> and run the project on an emulator
+* **CloudBoost quickstart** it's really straightforward, learn to create your first app [here](https://tutorials.cloudboost.io/en/gettingstarted/yourfirstapp)
+
+
 #Create the table
 After creating your first-app, create a table called <span class="tut-snippet">REAL_TIME</span> for this tutorial. Create two columns <span class="tut-snippet">user_name</span> and <span class="tut-snippet">comment</span>, all of type <span class="tut-snippet">text</span>
 
 #Tools used
-<ul>
-<li>MyEclipse 2014 with ADT plugin</li>
-<li>Java sdk for CloudBoost version 1.0.1</li>
-<li>socket.io-client for java, get it [here](https://github.com/egimaben/socket.io-client)</li>
-<li>[okhttp-2.4.0](http://mvnrepository.com/artifact/com.squareup.okhttp/okhttp/2.4.0)</li>
-<li>[okhttp-ws-2.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okhttp/okhttp-ws/2.4.0/)</li>
-<li>[okio-1.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okio/okio/1.4.0/)</li>
-</ul>
+
+* MyEclipse 2014 with ADT plugin
+* Java sdk for CloudBoost version 1.0.1
+* socket.io-client for java, get it [here](https://github.com/egimaben/socket.io-client)
+* [okhttp-2.4.0](http://mvnrepository.com/artifact/com.squareup.okhttp/okhttp/2.4.0)
+* [okhttp-ws-2.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okhttp/okhttp-ws/2.4.0/)
+* [okio-1.4.0](http://grepcode.com/snapshot/repo1.maven.org/maven2/com.squareup.okio/okio/1.4.0/)
+
 #The app
 Create a new <span class="tut-snippet">Android</span> project called <span class="tut-snippet">RealTime</span> and import all the above jars
 
@@ -33,29 +34,29 @@ So having dealt with the fundamentals, we can write some real code now:
 Create Your <span class="tut-snippet">MainActivity</span> which should extend <span class="tut-snippet">ListActivity</span>
 
 #Main Layout
-Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snippet">res/layout</span> folder, we shall inflate it from <span class="tut-snippet">MainActivity</span>.
-==xml==
-<span class="xml-lines" data-query="main_layout">
-```
+Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snippet">res/layout</span> folder, we shall inflate it from <span class="tut-snippet">MainActivity</span>
+
+==XML==
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
-
+    
     <TextView
         android:id="@+id/mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Feeds" />
-
+        
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/controls"
         android:background="#aaaaaa" />
-
+        
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
@@ -63,89 +64,83 @@ Create <span class="tut-snippet">main_layout</span> inside <span class="tut-snip
         android:layout_below="@+id/controls"
         android:text="There is no data"
         android:textStyle="bold" />
-
+        
 </RelativeLayout>
 
-```
-</span>
-Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We don’t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
+Remember we are using a <span class="tut-snippet">ListActivity</span>, so it comes with a <span class="tut-snippet">ListView</span> ready for us to use.  We donâ€™t actually need to explicitely create the <span class="tut-snippet">ListView</span> in the layout file. But we do this to arrange are widgets on the Screen, and the last <span class="tut-snippet">TextView</span>  will be displayed incase the <span class="tut-snippet">ListView</span> has no records to show.
+
 #ListView row layout
 
 Create <span class="tut-snippet">row.xml</span>  as the <span class="tut-snippet">ListView</span> row layout to simply display user_name and comment, like so
-==xml==
-<span class="xml-lines" data-query="row_layout">
-```
-<?xml version="1.0" encoding="utf-8"?>
+
+==XML==
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical" >
-
+    
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000" />
-
+        
     <TextView
         android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="12sp" />
-
+        
 </LinearLayout>
-
-```
-</span>
 
 #The adapter
 Create a simple <span class="tut-snippet">ArrayAdapter</span> to supply the <span class="tut-snippet">ListView</span> with <span class="tut-snippet">CloudObject</span>s as rows we will be receiving in real time.
+
 ==Java==
 <span class="java-lines" data-query="adapter">
 ```
 package io.cloudboost.realtime;
-
 import io.cloudboost.CloudObject;
-
+//
 import java.util.ArrayList;
 import java.util.List;
-
+//
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
+//
 public class Adapter  extends ArrayAdapter<CloudObject> {
     private List<CloudObject> objectList = new ArrayList<>();
-
     public Adapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
-
+    //
     @Override
     public void add(CloudObject object) {
     	objectList.add(object);
         super.add(object);
     }
-
+    //
     @Override
     public int getCount() {
         return this.objectList.size();
     }
-
+    //
     @Override
     public CloudObject getItem(int index) {
         return this.objectList.get(index);
     }
-
+    //
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        
+        //
         if (row == null) {
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.row, parent, false);
@@ -158,7 +153,6 @@ public class Adapter  extends ArrayAdapter<CloudObject> {
         return row;
     }
 }
-
 ```
 </span>
 
@@ -167,18 +161,19 @@ We want as little boiler plate code as possible, because we want to focus on Clo
 We can now bring it all together in the <span class="tut-snippet">MainActivity</span> class.
  
 Here is our <span class="tut-snippet">MainActivity.java</span>
+
 ==Java==
 <span class="java-lines" data-query="link">
 ```
 package io.cloudboost.realtime;
-
+//
 import io.cloudboost.CloudApp;
 import io.cloudboost.CloudException;
 import io.cloudboost.CloudObject;
 import io.cloudboost.CloudObjectCallback;
 import android.app.ListActivity;
 import android.os.Bundle;
-
+//
 public class MainActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -196,7 +191,7 @@ public class MainActivity extends ListActivity {
 			//start listening to "created" events on REAL_TIME table. the other 
 			//2 othertypes of events are "updated" and "deleted"
 			CloudObject.on("REAL_TIME", "created", new CloudObjectCallback() {
-
+				//
 				@Override
 				public void done(final CloudObject x, CloudException t)
 						throws CloudException {
@@ -208,24 +203,27 @@ public class MainActivity extends ListActivity {
 							adapter.add(x);
 						}
 					});
-
 				}
 			});
 		} catch (CloudException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
-
 ```
 </span>
+
 #Bringing it all together
 Compare your code with the original sources downloadable from this page. With everything in place, you can now run the application on the emulator or a device.
+<<<<<<< HEAD:en/sample-apps/java/realtimeandroid.md
 <p>&nbsp;</p>
 <img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2016/03/initialscreen.PNG">
 <p>&nbsp;</p>
+=======
+
+<img class="center-img" alt="App" src="https://www.dropbox.com/s/56ngv7g6pnjkahk/initialscreen.PNG">
+
+>>>>>>> 3e2f933c9c8c4783563967a2b7d172fcdcc9a5d0:en/sample-apps-java/realtimeandroid.md
 If this screen gets loaded, that means all went well.
 Login to your cloudboost dashboard and create a record in the <span class="tut-snippet">REAL_TIME</span> table
 <p>&nbsp;</p>
@@ -237,7 +235,4 @@ After saving that record, you can take a look at your emulator screen
 <p>&nbsp;</p>
 Voila, that is it for our small demo of real time functionality.
 [full source code](https://github.com/egimaben/realtime)
-
-
-
 
