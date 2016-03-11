@@ -786,6 +786,8 @@ Paginate returns only the specified number of objects from the database. It take
 query.paginate(2,10,{
   success : function(objectsList,count,totalPages){
       //objectsList
+      //count
+      //totalPages
     }, error : function(error){
       //error
     }
@@ -800,6 +802,8 @@ query.paginate(2,10,{
 query.paginate(2,10,{
   success : function(objectsList,count,totalPages){
       //objectsList
+      //count
+      //totalPages
     }, error : function(error){
       //error
     }
