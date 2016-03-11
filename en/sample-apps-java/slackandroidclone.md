@@ -212,6 +212,7 @@ CloudQuery query = new CloudQuery("slack_message");
 #Posting chats
 We use an asyncronous class to handle the posting of our chat messages to the ##CloudBoost## realtime server, this way the network call will run on a background thread. Other than this, your app can crush due to slow networkd calls and it would block the UI thread.
 So here is our async class which I place inside the Fragment class:
+<p>&nbsp;</p>
 ==Java==
 <span class="java-lines" data-query="init">
 ```
