@@ -780,7 +780,7 @@ query.skip(10);
 Paginate returns only the specified number of objects from the database. It takes in the current page number and total items in page as parameters and returns list of objects,count,total number of pages. 
 
 ==JavaScript==
-<span class="js-lines" data-query="limitskip">
+<span class="js-lines" data-query="paginate">
 ```
 //paginate
 query.paginate(2,10,{
@@ -794,7 +794,7 @@ query.paginate(2,10,{
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="limitskip">
+<span class="nodejs-lines" data-query="paginate">
 ```
 //paginate
 query.paginate(2,10,{
