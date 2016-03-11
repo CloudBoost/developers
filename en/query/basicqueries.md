@@ -811,6 +811,13 @@ query.paginate(2,10,{
 ```
 </span>
 
+==Java==
+<span class="java-lines" data-query="paginate">
+```
+//Building..
+```
+</span>
+
 #Select Column
 
 You can return only the specified column data in an object by using <span class="tut-snippet">SelectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">DoNotSelectColumn</span> function.
