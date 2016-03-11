@@ -9,7 +9,7 @@ In this tutorial, we are going to take it a notch higher and build a clone of a 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> here you will learn how to use CloudBoost notification queries i.e how to apply a query on real time notifications so that you are only notified of specific events that meet the query criteria.
 #Assumptions
-I will assume that :
+I will assume a few things :
 <ul>
 <li>You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps, including the libraries to add to the classpath.<li>
 <li>You know android (We shall not focus so much on learning the the android specific concepts bit of the code).</li>

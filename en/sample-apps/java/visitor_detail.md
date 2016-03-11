@@ -4,7 +4,7 @@ We shall embed another visitor tracker on our website and follow customer activi
 You will get introduced to ##CloudGeoPoint## object, we shall need its powerful application later in the series.
 
 #Assumptions
-I will assume that :
+I will assume a few things :
 <ul>
 <li>You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps.</li>
 <li>You have access to change the code of a website to paste the visitor tracking code. If you don’t, you could just create a free blog on google’s blogger, or on wordpress to make our experience as practical as possible (it takes about 5 minutes to create a blog).</li>

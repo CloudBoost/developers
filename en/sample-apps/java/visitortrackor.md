@@ -3,7 +3,7 @@ In this tutorial, we are going to see a simple but common real-time application 
 We try to keep our tutorials as practical as possible. Infact, with 1 or 2 tweaks, you could use the project created here to track the visitors to your site in realtime.
 
 #Assumptions
-I will assume that :
+I will assume a few things :
 <ul>
 
 <li>You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps.</li>

@@ -7,7 +7,7 @@ We shall embed a chat widget in our website for clients to interact with us and 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> here you will learn how to use CloudBoost notification queries i.e how to apply a query on real time notifications so that you are only notified of specific events that meet the query criteria.
 #Assumptions
-I will assume that :
+I will assume a few things:
 <ul>
 <li>You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps.<li>
 <li>You have access to change the code of a website to paste the visitor tracking code. If you don’t, you could just create a free blog on google’s blogger, or on wordpress to make our experience as practical as possible (it takes about 5 minutes to create a blog).</li>
@@ -314,6 +314,7 @@ Here is our adapter class that we shall be using to populate our listview
 package io.cloudboost.webchat;
 ==Java==
 <span class="java-lines" data-query="link">
+
 ```
 import android.content.Context;
 import android.graphics.Bitmap;
