@@ -1136,6 +1136,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 	"skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 
+<<<<<<< HEAD
 
 //skip
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -1155,6 +1156,51 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
+=======
+#Paginate
+
+Paginate returns only the specified number of objects from the database. It takes in the current page number and total items in page as parameters and returns list of objects,count,total number of pages. 
+
+==JavaScript==
+<span class="js-lines" data-query="paginate">
+```
+//paginate
+query.paginate(2,10,{
+  success : function(objectsList,count,totalPages){
+      //objectsList
+      //count
+      //totalPages
+    }, error : function(error){
+      //error
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="paginate">
+```
+//paginate
+query.paginate(2,10,{
+  success : function(objectsList,count,totalPages){
+      //objectsList
+      //count
+      //totalPages
+    }, error : function(error){
+      //error
+    }
+});
+```
+</span>
+
+==Java==
+<span class="java-lines" data-query="paginate">
+```
+//Building..
+```
+</span>
+
+>>>>>>> f9f43d3c943b44e45a16db9f9a5a934414f69104
 #Select Column
 
 You can return only the specified column data in an object by using <span class="tut-snippet">SelectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">DoNotSelectColumn</span> function.
