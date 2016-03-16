@@ -26,7 +26,12 @@ var table = new CB.CloudTable('TableName');
 CloudTable table = new CloudTable('TableName');
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="create">
+```
+//
+```
+</span>
 To add columns, you need to create a new <span class="tut-snippet"> Column</span> Object and assign it to the CloudColumn class. You can use the <span class="tut-snippet">addColumn</span> function / method of CloudTable class
 
 ==JavaScript==
@@ -60,18 +65,104 @@ table.save({
 ==Java==
 <span class="java-lines" data-query="savecol">
 ```
-CloudTable table = new CloudTable('Student');
-Column column = new Column('Name', 'Text');
+CloudTable table = new CloudTable("Student");
+Column column = new Column("Name", DataType.Text);
 table.addColumn(column);
-table.save(new CloudObjectCallback(){
+table.save(new CloudTableCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudTable x, CloudException t) {	
 		if(x != null){
 		}
 		if(t != null){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="savecol">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  	"data": {
+		"appId": "cpnbzclvxjts",
+		"name": "Student",
+		"columns": [{
+			"_type": "column",
+			"dataType": "Id",
+			"relatedTo": null,
+			"unique": true,
+			"relationType": null,
+			"name": "id",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "expires",
+			"isRenamable": false,
+			"required": false,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "createdAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "ACL",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "ACL",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Text",
+			"relationType": null,
+			"unique": false,
+			"name": "Name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom",
+		"maxCount": 9999
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
 ```
 </span>
 
@@ -123,6 +214,12 @@ column.unique = false;
 column.dataType = 'Text';
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="createcol">
+```
+//
+```
+</span>
 
 You need to add the new column object to the CloudTable object.
 
@@ -166,6 +263,92 @@ table.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="addcoltable">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  	"data": {
+		"appId": "cpnbzclvxjts",
+		"name": "Student",
+		"columns": [{
+			"_type": "column",
+			"dataType": "Id",
+			"relatedTo": null,
+			"unique": true,
+			"relationType": null,
+			"name": "id",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "expires",
+			"isRenamable": false,
+			"required": false,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "createdAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "ACL",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "ACL",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Text",
+			"relationType": null,
+			"unique": false,
+			"name": "Name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom",
+		"maxCount": 9999
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
 ```
 </span>
 
@@ -231,6 +414,93 @@ column.setDataType(DataType.List);
 column.setRelatedToType("text");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="listcol">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+	"data": {
+		"appId": "cpnbzclvxjts",
+		"name": "Student",
+		"columns": [{
+			"_type": "column",
+			"dataType": "Id",
+			"relatedTo": null,
+			"unique": true,
+			"relationType": null,
+			"name": "id",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "expires",
+			"isRenamable": false,
+			"required": false,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "createdAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "ACL",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "ACL",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "List",
+			"relationType": null,
+			"unique": false,
+			"relatedTotype": "text",
+			"name": "Name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom",
+		"maxCount": 9999
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
+```
+</span>
 
 #Adding Relational Columns
 
@@ -267,6 +537,92 @@ column.setDataType(DataType.Relation);
 column.setRelatedTo("TableName");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="relcol">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+	"data": {
+		"appId": "cpnbzclvxjts",
+		"name": "Student",
+		"columns": [{
+			"_type": "column",
+			"dataType": "Id",
+			"relatedTo": null,
+			"unique": true,
+			"relationType": null,
+			"name": "id",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "expires",
+			"isRenamable": false,
+			"required": false,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "createdAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "ACL",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "ACL",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": "TableName",
+			"dataType": "Relation",
+			"relationType": null,
+			"unique": false,
+			"name": "Name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom",
+		"maxCount": 9999
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
+```
+</span>
 
 If you want to add a list relational column, then: 
 
@@ -296,6 +652,92 @@ column.setDataType(DataType.List);
 column.setRelatedTo("TableName");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="listrelcol">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+	"data": {
+		"appId": "cpnbzclvxjts",
+		"name": "Student",
+		"columns": [{
+			"_type": "column",
+			"dataType": "Id",
+			"relatedTo": null,
+			"unique": true,
+			"relationType": null,
+			"name": "id",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "expires",
+			"isRenamable": false,
+			"required": false,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "createdAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "DateTime",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"dataType": "ACL",
+			"relatedTo": null,
+			"unique": false,
+			"relationType": null,
+			"name": "ACL",
+			"isRenamable": false,
+			"required": true,
+			"isDeletable": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": "TableName",
+			"dataType": "List",
+			"relationType": null,
+			"unique": false,
+			"name": "Name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom",
+		"maxCount": 9999
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
+```
+</span>
 
 #Getting Columns
 
@@ -321,6 +763,12 @@ var columns = table.columns; //array of CB.Column Objects
 Column[] columns = table.getColumns(); //array of Column Objects 
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="getcols">
+```
+// 
+```
+</span>
 
 You can even get columns using: 
 
@@ -342,6 +790,12 @@ var column = table.getColumn('name'); //CB.Column Object
 <span class="java-lines" data-query="getcolsalt">
 ```
 Column column = table.getColumn("name"); //Column Object
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="getcolsalt">
+```
+//
 ```
 </span>
 
@@ -394,6 +848,119 @@ table.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="editcol">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+	"data": {
+		"id": "MoB7jsKu",
+		"_type": "table",
+		"appId": "cpnbzclvxjts",
+		"_id": "56e18bcadda0421200a2db82",
+		"name": "data",
+		"__v": 3,
+		"columns": [{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Id",
+			"relationType": null,
+			"unique": true,
+			"name": "id",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "DateTime",
+			"relationType": null,
+			"unique": false,
+			"name": "expires",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "DateTime",
+			"relationType": null,
+			"unique": false,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "DateTime",
+			"relationType": null,
+			"unique": false,
+			"name": "createdAt",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "ACL",
+			"relationType": null,
+			"unique": false,
+			"name": "ACL",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Text",
+			"relationType": null,
+			"unique": false,
+			"name": "name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Number",
+			"relationType": null,
+			"unique": false,
+			"name": "age",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "File",
+			"relationType": null,
+			"unique": false,
+			"name": "file",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom"
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
+```
+</span>
 
 >Info: You cannot edit the ColumnName and DataType after its saved. You can only change <span class="tut-snippet">required</span> and <span class="tut-snippet">unique</span> properties of a column.
 
@@ -440,6 +1007,119 @@ table.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="delcol">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+	"data": {
+		"id": "MoB7jsKu",
+		"_type": "table",
+		"appId": "cpnbzclvxjts",
+		"_id": "56e18bcadda0421200a2db82",
+		"name": "data",
+		"__v": 3,
+		"columns": [{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Id",
+			"relationType": null,
+			"unique": true,
+			"name": "id",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "DateTime",
+			"relationType": null,
+			"unique": false,
+			"name": "expires",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": false,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "DateTime",
+			"relationType": null,
+			"unique": false,
+			"name": "updatedAt",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "DateTime",
+			"relationType": null,
+			"unique": false,
+			"name": "createdAt",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "ACL",
+			"relationType": null,
+			"unique": false,
+			"name": "ACL",
+			"isRenamable": false,
+			"isDeletable": false,
+			"required": true,
+			"isEditable": false
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Text",
+			"relationType": null,
+			"unique": false,
+			"name": "name",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "Number",
+			"relationType": null,
+			"unique": false,
+			"name": "age",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		},
+		{
+			"_type": "column",
+			"relatedTo": null,
+			"dataType": "File",
+			"relationType": null,
+			"unique": false,
+			"name": "file",
+			"isRenamable": false,
+			"isDeletable": true,
+			"required": false,
+			"isEditable": true
+		}],
+		"type": "custom"
+	}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
+```
+</span>
 
 #Deleting Table
 
@@ -479,6 +1159,16 @@ table.delete(new CloudTableCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="deltable">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  "name":${table_name},
+  "method":"DELETE"
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
 ```
 </span>
 
@@ -524,7 +1214,15 @@ CloudTable.getAll(new CloudTableArrayCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="getalltabs">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key}
+}' 'http://api.cloudboost.io/app/${app_id}/_getAll'
 
+```
+</span>
 To get a particular table from a CloudApp, You can, 
 
 ==JavaScript==
@@ -563,5 +1261,13 @@ CloudTable.get("TableName", new CloudTableCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="gettabname">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key}
+}' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
 ```
 </span>

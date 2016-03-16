@@ -98,6 +98,86 @@ student.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="oneone">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"document": {
+		"_type": "custom",
+		"expires": null,
+		"address": {
+			"_type": "custom",
+			"expires": null,
+			"StreetName": "Manhattan",
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"StreetName",
+			"Country"],
+			"_tableName": "table",
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"Country": "United States",
+			"_isModified": true
+		},
+		"name": "John Smith",
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name",
+		"address"],
+		"_tableName": "Student",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true
+	}
+
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 
 
 >Info: For one-to-one relations, you need to set <span class="tut-snippet">unique</span> constraint on a column when you're designing your table. 
@@ -173,6 +253,86 @@ student.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="onemany">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"document": {
+		"_type": "custom",
+		"expires": null,
+		"address": {
+			"_type": "custom",
+			"expires": null,
+			"StreetName": "Manhattan",
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"StreetName",
+			"Country"],
+			"_tableName": "Address",
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"Country": "United States",
+			"_isModified": true
+		},
+		"name": "John Smith",
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name",
+		"address"],
+		"_tableName": "Student",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true
+	}
+
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 >Info: For one-to-many relations, you **don't** have to set a <span class="tut-snippet">unique</span> constraint on a column when you're designing your table. 
@@ -268,6 +428,117 @@ studentCourses.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="relation">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"document": {
+		"course": {
+			"_type": "custom",
+			"expires": null,
+			"name": "Java",
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"name"],
+			"_tableName": "Course",
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"_isModified": true
+		},
+		"_type": "custom",
+		"expires": null,
+		"student": {
+			"_type": "custom",
+			"expires": null,
+			"name": "John Smith",
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"name"],
+			"_tableName": "Student",
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"_isModified": true
+		},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"student",
+		"course"],
+		"_tableName": "StudentCourses",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true
+	}
+
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 
 ###With List
 
@@ -328,13 +599,13 @@ course.save({
 <span class="java-lines" data-query="list">
 ```
 //create the student object 
-CloudObject student1 = new CloudObject('Student');
-student1.set('name', 'John Smith');
-CloudObject student2 = new CloudObject('Student');
-student2.set('name', 'Jack Danielle');
-CloudObject course = new CloudObject('Course');
-course.set('Name', 'Java');
-course.set('Students',[student1,student2]);
+CloudObject student1 = new CloudObject("Student");
+student1.set("name", "John Smith");
+CloudObject student2 = new CloudObject("Student");
+student2.set("name", "Jack Danielle");
+CloudObject course = new CloudObject("Course");
+course.set("Name", "Java");
+course.set("Students",new CloudObject[]{student1,student2});
 //save
 course.save(new CloudObjectCallback(){
 	@Override
@@ -345,5 +616,118 @@ course.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==curl==
+<span class="curl-lines" data-query="list">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"document": {
+		"Name": "Java",
+		"_type": "custom",
+		"expires": null,
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"Name",
+		"Students"],
+		"_tableName": "Course",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"Students": [{
+			"_type": "custom",
+			"expires": null,
+			"name": "John Smith",
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"name"],
+			"_tableName": "Student",
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"_isModified": true
+		},
+		{
+			"_type": "custom",
+			"expires": null,
+			"name": "Jack Danielle",
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"name"],
+			"_tableName": "Student",
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"_isModified": true
+		}],
+		"_isModified": true
+	}
+
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>

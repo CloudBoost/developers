@@ -51,7 +51,45 @@ CloudQueue queue = new CloudQueue("QueueName");
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="create">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+	"document": {
+		"_type": "queue",
+		"expires": null,
+		"queueType": "pull",
+		"name": "hostel",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"subscribers": [],
+		"retry": null,
+		"messages": []
+	}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/create'
+```
+</span>
 #Add message into the queue
 
 To add message into the Queue, you need to call the addMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">addMessage</span> function takes in data as the first parameter.
@@ -101,7 +139,81 @@ CloudQueue queue = new CloudQueue("QueueName");
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="addmessagequeue">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+	"document": {
+		"_type": "queue",
+		"expires": null,
+		"queueType": "pull",
+		"name": "hostel",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"subscribers": [],
+		"retry": null,
+		"messages": [{
+			"_type": "queue-message",
+			"expires": null,
+			"_id": null,
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"timeout",
+			"delay",
+			"message"],
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"delay": null,
+			"timeout": 1800,
+			"_isModified": true
+		}]
+	}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message'
+```
+</span>
 #Get first message from the queue
 
 To get the ***first*** message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -148,7 +260,15 @@ que.getMessage(1, new CloudQueueMessageCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="getmessagequeues">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+  "count":${message_count}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/getMessage'
+```
+</span>
 ><span class="tut-info">Info</span> As soon as you pull the message from the queue, the message is hidden for 30 minutes (1800 seconds). If the message is not deleted during that period it will reappear back into the queue. Please make sure you delete the message after the task is done. If you need more than 30 mins. Please review the timeout section below.
 
 #Peek a message
@@ -197,7 +317,15 @@ que.peekMessage(1, new CloudQueueMessageCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="peekmessagequeues">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+  "count":${message_count}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/peekMessage'
+```
+</span>
 ><span class="tut-info">Info</span> Peek will <b>not</b> hide your message in the queue.
 
 #Get a message by Id
@@ -242,6 +370,14 @@ que.getMessageById("id", new CloudQueueMessageCallback() {
 			//
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="getmessageid">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key}
+  }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message/${id}'
 ```
 </span>
 
@@ -289,6 +425,14 @@ que.getAllMessages(new CloudQueueArrayCallback() {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="getallmessages">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key}
+  }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/messages'
+```
+</span>
 
 #Get queue info
 
@@ -334,7 +478,14 @@ queue.get(new CloudQueueCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="queueinfo">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key}
+  }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}'
+```
+</span>
 #Get All Queues
 
 To get all the queues, you need to call the getAll function of the <span class="tut-snippet">CB.CloudQueue</span>.
@@ -379,7 +530,15 @@ CloudQueue.getAll(new CloudQueueArrayCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="getallqueues">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key}
+	
+}' 'http://api.cloudboost.io/queue/${app_id}'
+```
+</span>
 #Deleting a message
 
 To delete a message from the Queue, you need to call the deleteMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -424,7 +583,15 @@ que.deleteMessage(id, new CloudQueueMessageCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="deletemessage">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key}
+  "method":"DELETE"
+}' 'http://api.cloudboost.io/queue/${app_id}/message/${id}'
+```
+</span>
 #Deleting a queue
 
 To delete a Queue, you need to call the delete function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -467,6 +634,46 @@ queue.deleteQueue(queueName, new CloudQueueCallback() {
 			//
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="deletequeue">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+  	"document": {
+		"_type": "queue",
+		"expires": null,
+		"queueType": "pull",
+		"name": "c",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"subscribers": [],
+		"retry": null,
+		"messages": []
+	},
+	"method": "DELETE"
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}'
 ```
 </span>
 
@@ -528,6 +735,81 @@ QueueMessage[] msgs={msg};
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="timeout">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+	"document": {
+		"_type": "queue",
+		"expires": null,
+		"queueType": "pull",
+		"name": "hostel",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"subscribers": [],
+		"retry": null,
+		"messages": [{
+			"_type": "queue-message",
+			"expires": null,
+			"_id": null,
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"timeout",
+			"delay",
+			"message"],
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"delay": null,
+			"timeout": 3600,
+			"_isModified": true
+		}]
+	}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message'
+```
+</span>
 
 #Delays
 
@@ -581,6 +863,81 @@ QueueMessage[] msgs={msg};
 				//msgs
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="delays">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+	"document": {
+		"_type": "queue",
+		"expires": null,
+		"queueType": "pull",
+		"name": "hostel",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"subscribers": [],
+		"retry": null,
+		"messages": [{
+			"_type": "queue-message",
+			"expires": null,
+			"_id": null,
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"timeout",
+			"delay",
+			"message"],
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"delay": 3000,
+			"timeout": 1800,
+			"_isModified": true
+		}]
+	}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message'
 ```
 </span>
 
@@ -646,5 +1003,80 @@ QueueMessage[] msgs={msg};
 				//
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="expire">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+	"document": {
+		"_type": "queue",
+		"expires": null,
+		"queueType": "pull",
+		"name": "hostel",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"subscribers": [],
+		"retry": null,
+		"messages": [{
+			"_type": "queue-message",
+			"expires": ${date},
+			"_id": null,
+			"_modifiedColumns": ["createdAt",
+			"updatedAt",
+			"ACL",
+			"expires",
+			"timeout",
+			"delay",
+			"message"],
+			"ACL": {
+				"write": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				},
+				"read": {
+					"allow": {
+						"role": [],
+						"user": ["all"]
+					},
+					"deny": {
+						"role": [],
+						"user": []
+					}
+				}
+			},
+			"delay": null,
+			"timeout": 1800,
+			"_isModified": true
+		}]
+	}
+}' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message'
 ```
 </span>

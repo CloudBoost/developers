@@ -43,6 +43,12 @@ public void done(CloudObject x, CloudException t) {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="create">
+```
+//
+```
+</span>
 
 Event can be of three types: **created**, **updated** and **deleted**. You can listen to any or all of the events on any table you like. 
 
@@ -78,6 +84,12 @@ public void done(CloudObject x, CloudException t) {
 	}
 }
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="createupdate">
+```
+//
 ```
 </span>
 
@@ -133,6 +145,12 @@ public void done(CloudObject x, CloudException t) {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="query">
+```
+//
+```
+</span>
 
 #Stop listening
 
@@ -158,6 +176,12 @@ CB.CloudObject.off('Student', 'created');
 <span class="java-lines" data-query="off">
 ```
 CloudObject.off('Student', 'created');
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="off">
+```
+//
 ```
 </span>
 

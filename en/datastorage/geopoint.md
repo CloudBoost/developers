@@ -51,6 +51,56 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="saving">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"document": {
+		"_type": "custom",
+		"expires": null,
+		"location": {
+			"_type": "point",
+			"longitude": 17.7,
+			"latitude": 80.3,
+			"coordinates": [17.7,
+			80.3],
+			"_isModified": true
+		},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"location"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true
+	}
+
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 
 #Calculating Distance 
 
@@ -84,6 +134,12 @@ CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInKMs(loc2);
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="calc-kilo">
+```
+//
+```
+</span>
 
 ###In Miles
 
@@ -115,6 +171,12 @@ CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInMiles(loc2);
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="calc-miles">
+```
+//
+```
+</span>
 
 ###In Radians
 
@@ -144,6 +206,12 @@ var distance = loc1.distanceInRadians(loc2);
 CloudGeoPoint loc1 = new CloudGeoPoint(80.3,17.7);
 CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInRadians(loc2);
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="calc-radians">
+```
+//
 ```
 </span>
 
@@ -203,6 +271,27 @@ query.find(new CloudObjectArrayCallback(){
 		//x is a list of CloudObjects							
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="query-near">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": {
+		
+	},
+	"select": {
+		
+	},
+	"query": {
+		"$includeList": [],
+		"$include": [],
+		"location": "{ '$geometry': {coordinates:[17.7,80.3] , type:'Point' }, '$maxDistance': 100000.0, '$minDistance': 50000.0}"
+	},
+	"skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -265,5 +354,26 @@ query.find(new CloudObjectArrayCallback(){
 			//x is a list of CloudObjects
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="query-geo">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": {
+		
+	},
+	"select": {
+		
+	},
+	"query": {
+		"$includeList": [],
+		"$include": [],
+		"location": "{ '$geometry':{ 'type': 'Polygon', 'coordinates': [18.4,78.9,17.4,78.4,17.7,80.4]} }"
+	},
+	"skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>

@@ -71,6 +71,12 @@ var CB = require('cloudboost');
 import io.cloudboost.*;
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="link">
+```
+//
+```
+</span>
 
 Once you have imported and linked the CloudBoost SDK to your project. We need to initialize your new CloudApp. 
 
@@ -110,6 +116,12 @@ CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 <span class="java-lines" data-query="init">
 ```
 CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="init">
+```
+//
 ```
 </span>
 After your app is initialized. You can proceed to the next step which is saving data. 
@@ -164,6 +176,46 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="save">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 
 If you want to learn more about CloudObjects and Data Storage, Click [here]( ?lang=en&category=datastorage&subcategory=objects). 
 
@@ -215,6 +267,27 @@ query.find(new CloudObjectArrayCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="query">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": {
+		
+	},
+	"select": {
+		
+	},
+	"query": {
+		"$includeList": [],
+		"$include": [],
+		"name": "bengi"
+	},
+	"skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 

@@ -65,6 +65,48 @@ role.save(new CloudRoleCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="create">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		
+		"_type": "role",
+		"expires": null,
+		"name":"admin"
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "Role",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/Role'
+```
+</span>
 After the CloudRole is created you can start signing-up users to role.
 
 #Default Properties
@@ -93,6 +135,12 @@ console.log(role.name);
 <span class="java-lines" data-query="viewname">
 ```
 System.out.print(role.getName());
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="viewname">
+```
+//
 ```
 </span>
 
@@ -129,7 +177,92 @@ user.addToRole(role, {
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="add">
+```
+//user is an instance of CloudUser and role is an instance of CloudRole
+user.addToRole(null, new CloudUserCallback() {
+	@Override
+		public void done(CloudUser user, CloudException e) throws CloudException {
+				
+				
+	}
+});
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="add">
+```
+//role is an instance of CloudRole Object.
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+  "role": {		"_type": "role",
+		"expires": null,
+		"name": "admin",
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "Role",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true},
+  "user": {		"updatedAt": "2016-03-15T09:44:28.978Z",
+		"_type": "user",
+		"_version": 0,
+		"username": "momo",
+		"expires": null,
+		"_id": "M6gLT9DI",
+		"email": "momo@gmail.com",
+		"createdAt": "2016-03-15T09:44:28.978Z",
+		"_tableName": "User",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"password": ${encrypted password}}
+}' 'http://api.cloudboost.io/user/cpnbzclvxjts/addToRole'
+```
+</span>
 #Check if the user is in a role
 
 If you want to check if the user is in the role then you can do this by 
@@ -167,6 +300,18 @@ var roles = user.get('roles');
 var roles = user.get('roles'); 
 ```
 </span>
+==Java==
+<span class="java-lines" data-query="get">
+```
+boolean is=user.isInRole(role);
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="get">
+```
+//
+```
+</span>
 
 #Remove a role from a user
 
@@ -197,6 +342,97 @@ user.removeFromRole(role, {
     //erorr if something goes wrong.
   }
 });
+```
+</span>
+==Java==
+<span class="java-lines" data-query="remove">
+```
+user.removeFromRole(null, new CloudUserCallback() {
+			
+	@Override
+	public void done(CloudUser user, CloudException e) throws CloudException {
+				
+				
+	}
+});
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="remove">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  {
+	"role": {
+		"_type": "role",
+		"expires": null,
+		"name": "admin",
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "Role",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true
+	},
+	"user": {
+		"updatedAt": "2016-03-15T09:44:28.978Z",
+		"_type": "user",
+		"_version": 0,
+		"username": "momo",
+		"expires": null,
+		"_id": "M6gLT9DI",
+		"email": "momo@gmail.com",
+		"createdAt": "2016-03-15T09:44:28.978Z",
+		"_tableName": "User",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"password": ${encrypted_password}
+	},
+	"key":${app_key}
+}
+}' 'http://api.cloudboost.io/user/${app_id}/removeFromRole'
 ```
 </span>
 

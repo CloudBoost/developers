@@ -55,7 +55,14 @@ cache.create(new CloudCacheCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="create">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key}
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/create'
+```
+</span>
 #Adding / Updating Item
 
 To add or update an item into the Cache, you need to call the set method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
@@ -108,6 +115,15 @@ public void done(Object x, CloudException e) throws CloudException {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="put">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/html' -d '{
+  "item": ${data_to_cache},
+  "key": ${master_key}}
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/${data_key}}'
+```
+</span>
 
 #Get Item
 
@@ -158,10 +174,17 @@ public void done(Object o, CloudException t)
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="get">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key}
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/${data_key}/item'
+```
+</span>
 #Delete item
 
-To delte an item from the Cache, you need to call the DeleteItem method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
+To delete an item from the Cache, you need to call the DeleteItem method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
 
 ==JavaScript==
 <span class="js-lines" data-query="delete">
@@ -203,7 +226,15 @@ cache.deleteItem("test1", new ObjectCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="delete">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  "method":"DELETE"
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/item/${data_key}'
+```
+</span>
 #Get all items
 
 To get all the Cache items, you need to call the getAll method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -253,7 +284,14 @@ cache.getAllItems(new ObjectCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="getall">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": "${master_key}"
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/items'
+```
+</span>
 #Count Items
 
 To get the number of items stored in the cache, you need to call the GetItemsCount method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -300,6 +338,14 @@ cache.getItemsCount(new CloudIntegerCallback() {
 			//
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="getitemscount">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": "${master_key}"
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/items/count'
 ```
 </span>
 
@@ -353,6 +399,14 @@ cache.getInfo(new ObjectCallback() {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="getinfo">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key}
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}'
+```
+</span>
 
 
 #Clear Cache
@@ -404,7 +458,15 @@ cache.clear(new ObjectCallback() {
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="clear">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  "method":"DELETE"
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/clear'
+```
+</span>
 #Delete Cache
 
 To delete an instance of the cache, you need to call the delete method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -450,6 +512,15 @@ cache.delete(new ObjectCallback() {
 			//
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="deletecache">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  "method":"DELETE"
+}' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}'
 ```
 </span>
 
@@ -502,6 +573,14 @@ CloudCache.getAllCache(new ObjectCallback() {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="getallappcache">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key}
+}' 'http://api.cloudboost.io/cache/${app_id}'
+```
+</span>
 
 #Delete All Caches
 
@@ -550,6 +629,15 @@ CloudCache.deleteAll(new ObjectCallback() {
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="deleteallappcache">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${master_key},
+  "method":"DELETE"
+}' 'http://api.cloudboost.io/cache/${app_id}'
+```
+</span>
 
 #Name
 
@@ -576,6 +664,12 @@ var cacheName = cache.name;
 ```
 CloudCache cache = new CloudCache('sample');
 String cacheName = cache.getCacheName();
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="name">
+```
+//
 ```
 </span>
 
@@ -606,6 +700,12 @@ var cacheSize = cache.size;
 ```
 CloudCache cache = new CloudCache('sample');
 int size = cache.getSize();
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="size">
+```
+//
 ```
 </span>
 

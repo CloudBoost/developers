@@ -53,6 +53,52 @@ obj.signUp(new CloudUserCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="signup">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  	"document": {
+		"_type": "user",
+		"username": ${user_name},
+		"expires": null,
+		"email": "${usr_email},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"username",
+		"password",
+		"email"],
+		"_tableName": "User",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"password": ${password},
+		"_isModified": true
+	}
+}' 'http://api.cloudboost.io/user/${app_id}/signup'
+```
+</span>
 
 After the CloudUser is signed-up a new session is automatically created for you and the user is logged-in unless you call log-out function of CloudUser object. 
 
@@ -84,6 +130,12 @@ console.log(user.username);
 System.out.print(user.getUsername());
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="viewusername">
+```
+//
+```
+</span>
 
 * **Password** : [Encrypted Text] Password of the CloudUser Object
 
@@ -107,6 +159,12 @@ console.log(user.password);
 System.out.print(user.getPassword());
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="viewpass">
+```
+//
+```
+</span>
 
 * **Email** : [Email] An email of the CloudUser object
 
@@ -128,6 +186,12 @@ console.log(user.email);
 <span class="java-lines" data-query="viewemail">
 ```
 System.out.print(user.getEmail());
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="viewemail">
+```
+//
 ```
 </span>
 
@@ -187,6 +251,50 @@ user.logIn(new CloudUserCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="login">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  	"document": {
+		"_type": "user",
+		"username": ${user_name},
+		"expires": null,
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"username",
+		"password"],
+		"_tableName": "User",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"password": ${password},
+		"_isModified": true
+	}
+}' 'http://api.cloudboost.io/user/${app_id}/login'
+```
+</span>
 
 Once the user us login you can access the current logged in user by 
 
@@ -208,6 +316,12 @@ CB.CloudUser.current
 <span class="java-lines" data-query="viewcurrent">
 ```
 CloudUser.getCurrentUser();
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="viewcurrent">
+```
+//
 ```
 </span>
 
@@ -252,6 +366,48 @@ CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="logout">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  	"document": {
+	"_id": "M6gLT9DI",
+	"_type": "user",
+	"username": "momo",
+	"expires": null,
+	"email": "momo@gmail.com",
+	"_tableName": "User",
+	"ACL": {
+		"write": {
+			"allow": {
+				"role": [],
+				"user": ["all"]
+			},
+			"deny": {
+				"role": [],
+				"user": []
+			}
+		},
+		"read": {
+			"allow": {
+				"role": [],
+				"user": ["all"]
+			},
+			"deny": {
+				"role": [],
+				"user": []
+			}
+		}
+	},
+	"password": ${encrypted_password},
+	"createdAt": "2016-03-15T09:44:28.978Z",
+	"updatedAt": "2016-03-15T09:44:28.978Z",
+	"_version": 0
+	}
+}' 'http://api.cloudboost.io/user/${app_id}/logout'
+```
+</span>
 
 #Change Password
 
@@ -291,6 +447,18 @@ CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
 			//e
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="chagepassword">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  {
+	"newPassword": ${old_pass},
+	"oldPassword": ${new_pass},
+	"key":${app_key}
+}
+}' 'http://api.cloudboost.io/user/${app_id}/changePassword'
 ```
 </span>
 
@@ -338,5 +506,16 @@ CloudUser.resetPassword("email",new CloudStringCallback(){
 			//e
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="resetpassword">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  {
+	"email": ${email_address},
+	"key":${app_key}
+}
+}' 'http://api.cloudboost.io/user/${app_id}/resetPassword'
 ```
 </span>

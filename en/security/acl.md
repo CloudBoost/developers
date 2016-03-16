@@ -65,6 +65,46 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="read">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["userId"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 
 In this case, only that particular user will be able to read that object from the database. 
 
@@ -122,6 +162,46 @@ obj.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="write">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["userId"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 
@@ -184,6 +264,46 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="roleread">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": ["roleId"],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 
 In this case, All of the users which belong to that role will be able to read that object from the database. 
 
@@ -243,7 +363,46 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="rolewrite">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": ["roleId"],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 In this case, all of the users which belong to that role will be able to write that object from the database. 
 
 #Public Permissions
@@ -303,7 +462,46 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="publicread">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 In this case, all of the users in your app will be able to read that object from the database. 
 
 
@@ -312,7 +510,7 @@ In this case, all of the users in your app will be able to read that object from
 To have all the users in your app have a read access on a CloudObject, You can: 
 
 ==JavaScript==
-<span class="js-lines" data-query="publciwrite">
+<span class="js-lines" data-query="publicwrite">
 ```
 var obj = new CB.CloudObject("Student");
 obj.ACL = new CB.ACL();
@@ -362,5 +560,44 @@ obj.save(new CloudObjectCallback(){
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="publicwrite">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {		"_type": "custom",
+		"expires": null,
+		${column_name}: ${column_value},
+		"_modifiedColumns": ["createdAt",
+		"updatedAt",
+		"ACL",
+		"expires",
+		"name"],
+		"_tableName": "data",
+		"ACL": {
+			"write": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			},
+			"read": {
+				"allow": {
+					"role": [],
+					"user": ["all"]
+				},
+				"deny": {
+					"role": [],
+					"user": []
+				}
+			}
+		},
+		"_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
 In this case, all of the users in your app will be able to write that object from the database.

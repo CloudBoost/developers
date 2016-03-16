@@ -34,6 +34,12 @@ var cs = new CB.CloudSearch("Student");
 CloudSearch cs = new CloudSearch("Student");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="create">
+```
+//
+```
+</span>
 
 ###Step 2
 
@@ -60,6 +66,12 @@ cs.searchQuery.searchOn('name','John');
 ```
 SearchQuery searchQuery = new SearchQuery();
 searchQuery.searchOn("name","John",null,null,null,null);
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="attach">
+```
+//
 ```
 </span>
 
@@ -107,6 +119,38 @@ cs.search(new CloudObjectArrayCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="search">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				"bool": {
+					"must_not": [],
+					"should": [{
+						"match": {
+							"name": {
+								"query": "[\"egima\",\"bengi\"]"
+							}
+						}
+					}],
+					"must": []
+				}
+			},
+			"filter": {
+				
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -185,7 +229,28 @@ cs.search(new CloudObjectArrayCallback(){
 });
 ```
 </span>
-
+==curl==
+<span class="curl-lines" data-query="newquery">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 #Basic Search Query
 
 ###Search On
@@ -212,6 +277,38 @@ cs.searchQuery.searchOn('name','John');
 searchQuery.searchOn("name","John");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="searchon">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				"bool": {
+					"must_not": [],
+					"should": [{
+						"match": {
+							"name": {
+								"query": "[\"egima\",\"bengi\"]"
+							}
+						}
+					}],
+					"must": []
+				}
+			},
+			"filter": {
+				
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 ###Phrase
 
@@ -235,6 +332,40 @@ cs.searchQuery.phrase('name','John Smith');
 <span class="java-lines" data-query="phrase">
 ```
 searchQuery.phrase("name","John Smith");
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="phrase">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				"bool": {
+					"must_not": [],
+					"should": [{
+						"match": {
+							"name": {
+								"query": "egima",
+								"slop": null,
+								"type": "phrase"
+							}
+						}
+					}],
+					"must": []
+				}
+			},
+			"filter": {
+				
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -274,6 +405,42 @@ searchQuery1.searchOn("name", "John",null,null,null,null);
 searchQuery.or(searchQuery1);
 ```
 </span>
+==curl==
+<span class="java-lines" data-query="or">
+```
+//search for Students either called Adam or smith
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				"bool": {
+					"must_not": [],
+					"should": [],
+					"must": [{
+						"term": {
+							"name": "Adam"
+						}
+					},
+					{
+						"term": {
+							"name": "smith"
+						}
+					}]
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 ###And
 
@@ -311,7 +478,64 @@ searchQuery1.searchOn("name", "John",null,null,null,null);
 searchQuery.and(searchQuery1);
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="and">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				"bool": {
+					"must_not": [],
+					"should": [{
+						"match": {
+							"age": {
+								"query": "10"
+							}
+						}
+					}],
+					"must": [{
+						"must_not": [],
+						"match": {
+							"name": {
+								"query": "John"
+							}
+						},
+						"bool": {
+							"must_not": [],
+							"should": [{
+								"match": {
+									"name": {
+										"query": "John"
+									}
+								}
+							}],
+							"must": []
+						},
+						"should": [{
+							"match": {
+								"name": {
+									"query": "John"
+								}
+							}
+						}],
+						"must": []
+					}]
+				}
+			},
+			"filter": {
 
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 ###Not
 
 To NOT a search query you can use the <span class="tut-snippet">not</span> function.
@@ -348,6 +572,64 @@ searchQuery1.searchOn("name", "John",null,null,null,null);
 searchQuery.not(searchQuery1);
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="not">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				"bool": {
+					"must_not": [{
+						"must_not": [],
+						"match": {
+							"name": {
+								"query": "John"
+							}
+						},
+						"bool": {
+							"must_not": [],
+							"should": [{
+								"match": {
+									"name": {
+										"query": "John"
+									}
+								}
+							}],
+							"must": []
+						},
+						"should": [{
+							"match": {
+								"name": {
+									"query": "John"
+								}
+							}
+						}],
+						"must": []
+					}],
+					"should": [{
+						"match": {
+							"age": {
+								"query": "10"
+							}
+						}
+					}],
+					"must": []
+				}
+			},
+			"filter": {
+
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 #Basic Search Filters
 
@@ -375,6 +657,36 @@ cs.searchFilter.equalTo("name","John");
 searchFilter.equalTo("name","John");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="equal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+
+			},
+			"filter": {
+				"bool": {
+					"must_not": [],
+					"should": [],
+					"must": [{
+						"term": {
+							"name": "John"
+						}
+					}]
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 ###Not Equal To
 
@@ -398,6 +710,36 @@ cs.searchFilter.notEqualTo("name","John");
 <span class="java-lines" data-query="notequal">
 ```
 searchFilter.notEqualTo("name","John");
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="notequal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				"bool": {
+					"must_not": [{
+						"term": {
+							"name": "bengi"
+						}
+					}],
+					"should": [],
+					"must": []
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -425,6 +767,38 @@ cs.searchFilter.greaterThan("age",10);
 searchFilter.greaterThan("age",10);
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="greaterthan">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				"bool": {
+					"must_not": [],
+					"should": [],
+					"must": [{
+						"range": {
+							"age": {
+								"gt": 10
+							}
+						}
+					}]
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 ###Less than
 
@@ -448,6 +822,39 @@ cs.searchFilter.lessThan("age",10);
 <span class="java-lines" data-query="lessthan">
 ```
 searchFilter.lessThan("age",10);
+```
+</span>
+
+==curl==
+<span class="curl-lines" data-query="lessthan">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				"bool": {
+					"must_not": [],
+					"should": [],
+					"must": [{
+						"range": {
+							"age": {
+								"lt": 10
+							}
+						}
+					}]
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -477,6 +884,39 @@ searchFilter.greaterThanEqualTo("age",10);
 ```
 </span>
 
+==curl==
+<span class="curl-lines" data-query="greaterequal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				"bool": {
+					"must_not": [],
+					"should": [],
+					"must": [{
+						"range": {
+							"age": {
+								"gte": 10
+							}
+						}
+					}]
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
 ###Less Than Or Equal To
 
 
@@ -500,6 +940,38 @@ cs.searchFilter.lessThanEqualTo("age",10);
 <span class="java-lines" data-query="lessequal">
 ```
 searchFilter.lessThanEqualTo("age",10);
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="lessequal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+				"bool": {
+					"must_not": [],
+					"should": [],
+					"must": [{
+						"range": {
+							"age": {
+								"lte": 10
+							}
+						}
+					}]
+				}
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -528,6 +1000,36 @@ cs.searchFilter.exists("name");
 searchFilter.exists("name");
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="exists">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+    "query": {
+	"filtered": {
+		"query": {
+			
+		},
+		"filter": {
+			"bool": {
+				"must_not": [],
+				"should": [],
+				"must": [{
+					"exists": {
+						"field": "name"
+					}
+				}]
+			}
+		}
+	}
+},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 ###Does not exists
 
@@ -551,6 +1053,36 @@ cs.searchFilter.doesNotExists("name");
 <span class="java-lines" data-query="notexists">
 ```
 searchFilter.doesNotExists("name");
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="notexists">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+    "query": {
+	"filtered": {
+		"query": {
+			
+		},
+		"filter": {
+			"bool": {
+				"must_not": [],
+				"should": [],
+				"must": [{
+						"missing": {
+							"field": "name"
+						}
+					}]
+			}
+		}
+	}
+},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -590,6 +1122,38 @@ searchFilter1.equalTo("name", "John");
 searchFilter.or(searchFilter1);
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="filteror">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+    "query": {
+	"filtered": {
+		"query": {
+			
+		},
+		"filter": {
+			"bool": {
+				"must_not": [],
+				"should": [{
+						
+					}],
+					"must": [{
+						"term": {
+							"name": "John"
+						}
+					}]
+				}
+		}
+	}
+},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 ###And
 
@@ -624,7 +1188,39 @@ SearchFilter searchFilter1 = new SearchFilter();
 searchFilter1.equalTo("name", 'John');
 //
 //your main searchQuery
-cs.searchFilter.and(searchFilter1);
+searchFilter.and(searchFilter1);
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="filterand">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+    "query": {
+	"filtered": {
+		"query": {
+			
+		},
+		"filter": {
+			"bool": {
+				"must_not": [],
+				"should": [{
+						
+					}],
+					"must": [{
+						"term": {
+							"name": "John"
+						}
+					}]
+				}
+		}
+	}
+},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -662,6 +1258,38 @@ searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
 searchFilter.not(searchFilter1);
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="filternot">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [],
+    "query": {
+	"filtered": {
+		"query": {
+			
+		},
+		"filter": {
+			"bool": {
+				"must_not": [],
+				"should": [{
+						
+					}],
+					"must": [{
+						"term": {
+							"name": "John"
+						}
+					}]
+				}
+		}
+	}
+},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>
 
@@ -729,6 +1357,32 @@ cs.search(new CloudObjectArrayCallback(){
 });
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="orderby">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": [{
+		"name": {
+			"order": "asc"
+		}
+	}],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+
+			}
+		}
+	},
+	"skip": 0,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
 
 #Limit and Skip
 
@@ -792,5 +1446,27 @@ cs.search(new CloudObjectArrayCallback(){
 		}
 	}
 });
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="limitskip">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 5,
+	"sort": [],
+	"query": {
+		"filtered": {
+			"query": {
+				
+			},
+			"filter": {
+
+			}
+		}
+	},
+	"skip": 10,
+	"collectionName": ${table_name}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
 ```
 </span>

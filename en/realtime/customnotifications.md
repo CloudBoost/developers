@@ -48,6 +48,12 @@ CloudNotification.on('ChannelName',new CloudNotificationCallback(){
 }});
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="on">
+```
+//
+```
+</span>
 
 ##Publishing messages to channels
 
@@ -73,6 +79,12 @@ CB.CloudNotification.publish('ChannelName','data');
 CloudNotification.publish('ChannelName','data');
 ```
 </span>
+==curl==
+<span class="curl-lines" data-query="publish">
+```
+//
+```
+</span>
 
 ##Stop listening
 
@@ -96,6 +108,12 @@ CB.CloudNotification.off('ChannelName');
 <span class="java-lines" data-query="off">
 ```
 CloudNotification.off('ChannelName');
+```
+</span>
+==curl==
+<span class="curl-lines" data-query="off">
+```
+//
 ```
 </span>
 
