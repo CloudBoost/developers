@@ -1196,7 +1196,35 @@ query.paginate(2,10,{
 ==Java==
 <span class="java-lines" data-query="paginate">
 ```
-//Building..
+//paginate
+query.paginate(1, null, new PaginatorCallback() {
+	@Override
+	public void done(CloudObject[] objects, Integer count, Integer totalPages,
+		CloudException t) throws CloudException {
+			if(t!=null)
+									
+			else
+	}
+});
+==curl==
+<span class="curl-lines" data-query="paginate">
+```
+//paginate
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": ${total_items_per_page},
+	"sort": {
+
+	},
+	"select": {
+		
+	},
+	"query": {
+		"$includeList": [],
+		"$include": []
+	},
+	"skip": ${(page_no*total_items_per_page)-total_items_per_page}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
