@@ -4,69 +4,63 @@ We shall embed another visitor tracker on our website and follow customer activi
 You will get introduced to ##CloudGeoPoint## object, we shall need its powerful application later in the series.
 
 #Assumptions
-I will assume a few things :
-<ul>
-<li>You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps.</li>
-<li>You have access to change the code of a website to paste the visitor tracking code. If you don’t, you could just create a free blog on google’s blogger, or on wordpress to make our experience as practical as possible (it takes about 5 minutes to create a blog).</li>
-<li>You know android.</li>
-<li>You already have an app on cloudboost, and have created a table called <code>visitor_detail</code>, with the following columns
-<ul>
-<li>city, type text</li>
-<li>region, type text</li>
-<li>ip, type text</li>
-<li>country, type text</li>
-</li>geopoint, type geopoint</li>
-</ul>
-</li>
-</ul>
+I will assume a few things
+
+* You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps.
+* You have access to change the code of a website to paste the visitor tracking code. If you don’t, you could just create a free blog on google’s blogger, or on wordpress to make our experience as practical as possible (it takes about 5 minutes to create a blog).
+* You know android.
+* You already have an app on cloudboost, and have created a table called <code>visitor_detail</code>, with the following columns
+
+ * city, type text
+ * region, type text
+ * ip, type text
+ * country, type text
+ * geopoint, type geopoint
+
+
 #Tracking Code
 For this case, we shall use an external [Geo](http://www.freegeoip.net ) service to get details of our visitors. We shall also make an ajax call from jQuery to get this information and forward it to our app. Don’t focus so much on this javascript code, just copy and paste it and may be change the ##appid## and ##client-key##.
 
 This is what our code will do:
-<ul>
-<li>Link the website to the CloudBoost javascript library, so that we can access CloudBoost functionality.</li>
-<li>Link the website to jquery library, to allow us to make the ajax call.</li>
-<li>Create a function to run everytime the site is loaded, the function will do the following:
-<ul>
-<li>Initialize our app with appid and client-key</li>
-<li>Create a CloudObject for visitor_detail  table</li>
-<li>Make an ajax call to freegeoip.net to fetch visitor’s location details</li>
-<li>Save this CloudObject</li>
-<li>Don’t forget to call the above method.</li>
-</ul>
-</li>
-</ul>
+
+* Link the website to the CloudBoost javascript library, so that we can access CloudBoost functionality.
+* Link the website to jquery library, to allow us to make the ajax call.
+* Create a function to run everytime the site is loaded, the function will do the following:
+
+ * Initialize our app with appid and client-key
+ * Create a CloudObject for visitor_detail  table
+ * Make an ajax call to freegeoip.net to fetch visitor’s location details
+ * Save this CloudObject
+ * Don’t forget to call the above method.
+
 ==JavaScript==
 <span class="js-lines" data-query="link">
 ```
-<script src="https://cloudboost.io/js-sdk/cloudboost.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-function notifyMe(){
-CB.CloudApp.init('bengi','ailFnQf+q102UpB86ZZBKg==');
-var obj=new CB.CloudObject('visitor_detail');
-jQuery.ajax( { 
-  url: '//freegeoip.net/json/', 
-  type: 'POST', 
-  dataType: 'jsonp',
-  success: function(location) {
-	  obj.set('city',location.city);
-	  obj.set('region',location.region_name);
-	  obj.set('ip',location.ip);
-	  obj.set('country',location.country_name);
-	  var geo=new CB.CloudGeoPoint(location.longitude,location.latitude);
-	  obj.set('geopoint',geo);
-	  obj.save({
-            success : function(newObj){},          
-			error : function(error){}                        
+<script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js">
+ function notifyMe(){
+        CB.CloudApp.init('bengi','ailFnQf+q102UpB86ZZBKg==');
+        var obj=new CB.CloudObject('visitor_detail');
+        jQuery.ajax( { 
+          url: '//freegeoip.net/json/', 
+          type: 'POST', 
+          dataType: 'jsonp',
+          success: function(location) {
+              obj.set('city',location.city);
+              obj.set('region',location.region_name);
+              obj.set('ip',location.ip);
+              obj.set('country',location.country_name);
+              var geo=new CB.CloudGeoPoint(location.longitude,location.latitude);
+              obj.set('geopoint',geo);
+              obj.save({
+                    success : function(newObj){},          
+                    error : function(error){}                        
+                });
+            // example where I update content on the page.
+          }
         });
-    // example where I update content on the page.
-  }
-} );
-
-}
-notifyMe()
-</script>
+    }
+    notifyMe()
 ```
 </span>
 
@@ -78,8 +72,9 @@ We are done with the little we had to do outside java(android), now we can get b
 Create a new Android application called VisitorDetail, and create a new package called <span class="tut-snippet">io.cloudboost.visitordetail</span>.
 #MainActivity
 Here is our only activity, MainActivity, it very precise and documented. This time it extends ListActivity. Remember we are keeping out Any Other Code (if that can work like AOB) as little as possible so that we can focus on CloudBoost functionality. Feel free to add meat to the code after it has worked for you.
+
 ==Java==
-<span class="java-lines" data-query="link">
+<span class="java-lines" data-query="createapp">
 ```
 package io.cloudboost.visitorcounter;
 import io.cloudboost.CloudApp;
@@ -89,14 +84,14 @@ import io.cloudboost.CloudObjectCallback;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-
+//
 public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// inflate the main layout
 		setContentView(R.layout.main_layout);
-
+        //
 		final TextView count = (TextView) findViewById(R.id.count);
 		/*
 		 * initialize you cloudboost app, 
@@ -112,9 +107,8 @@ public class MainActivity extends Activity {
 			 * 2 types of events are 
 			 * "updated" and "deleted"
 			 */
-
 			CloudObject.on("visitors", "created", new CloudObjectCallback() {
-
+                //
 				@Override
 				public void done(final CloudObject x, CloudException t)
 						throws CloudException {
@@ -125,7 +119,6 @@ public class MainActivity extends Activity {
 					 * with the received
 					 * cloudobject, we run the code on ui thread 
 					 */
-
 					runOnUiThread(new Runnable() {
 						public void run() {
 							// get the previous count in the view
@@ -135,22 +128,21 @@ public class MainActivity extends Activity {
 							count.setText("" + (++prevCount));
 						}
 					});
-
 				}
 			});
 		} catch (CloudException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
 ```
 </span>
+
 #Adapter
 Here is our adapter class that we shall be using to populate our listview
+
 ==Java==
-<span class="java-lines" data-query="link">
+<span class="java-lines" data-query="adapter">
 ```
 package io.cloudboost.visitordetail;
 import io.cloudboost.CloudObject;
@@ -172,7 +164,6 @@ public class Adapter  extends ArrayAdapter<CloudObject> {
     	objectList.add(object);
         super.add(object);
     }
-
     @Override
     public int getCount() {
         return this.objectList.size();
@@ -202,30 +193,29 @@ public class Adapter  extends ArrayAdapter<CloudObject> {
 }
 ```
 </span>
-#main_layout.xml
+
+#main_layoutXml file
 As we can see above, the MainActivity is inflating main_layout.xml, so we shall also create it inside res/layout folder of the android project
+
 ==xml==
-<span class="xml-lines" data-query="link">
+<span class="xml-lines" data-query="main_layout">
 ```
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
-
     <TextView
         android:id="@+id/mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Visitor details" />
-
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mainText"
         android:background="#aaaaaa" />
-
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
@@ -233,14 +223,15 @@ As we can see above, the MainActivity is inflating main_layout.xml, so we shall 
         android:layout_below="@+id/mainText"
         android:text="No visitors on line"
         android:textStyle="bold" />
-
 </RelativeLayout>
 ```
 </span>
-#row.xml
+
+#rowXml file
 Every record of visitor in the ListView will be inflated using this layout file
+
 ==xml==
-<span class="xml-lines" data-query="link">
+<span class="xml-lines" data-query="row-laylout">
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -248,25 +239,21 @@ Every record of visitor in the ListView will be inflated using this layout file
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical" >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
         <TextView
             android:id="@+id/region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textStyle="bold" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
             android:textColor="#000000" />
-
         <TextView
             android:id="@+id/country"
             android:layout_width="wrap_content"
@@ -284,32 +271,27 @@ Every record of visitor in the ListView will be inflated using this layout file
         android:text="CITY"
         android:textColor="#000000"
         android:textStyle="bold" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-"
         android:textColor="#000000" />
-
     <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ff0000" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  "
         android:textColor="#000000" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="IP:"
         android:textColor="#000000"
         android:textStyle="bold" />
-
     <TextView
         android:id="@+id/ip"
         android:layout_width="wrap_content"
@@ -319,8 +301,10 @@ Every record of visitor in the ListView will be inflated using this layout file
 </LinearLayout>
 ```
 </span>
-#AndroidManifest.xml
+
+#AndroidManifestXml file
 Here too, is the manifest file for our project, don’t forget to request internet permission, otherwise we shall run into errors.
+
 ==xml==
 <span class="xml-lines" data-query="link">
 ```
@@ -332,7 +316,6 @@ Here too, is the manifest file for our project, don’t forget to request intern
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -343,14 +326,11 @@ Here too, is the manifest file for our project, don’t forget to request intern
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
-
 ```
 </span>
 

@@ -61,6 +61,57 @@ obj.Set("location", location);
 await obj.SaveAsync();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="saving">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "document": {
+        "_type": "custom",
+        "expires": null,
+        "location": {
+            "_type": "point",
+            "longitude": 17.7,
+            "latitude": 80.3,
+            "coordinates": [17.7,
+            80.3],
+            "_isModified": true
+        },
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        "location"],
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true
+    }
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 #Calculating Distance 
 
 ###In Kilometres
@@ -102,6 +153,14 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 double distance = loc1.DistanceInKMs(loc2);
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="calc-kilo">
+```
+//
+```
+</span>
+
 ###In Miles
 
 To calculate the distance in Miles's
@@ -141,6 +200,14 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 double distance = loc1.DistanceInMiles(loc2);
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="calc-miles">
+```
+//
+```
+</span>
+
 ###In Radians
 
 To calculate the distance in Radians
@@ -180,6 +247,14 @@ var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 double distance = loc1.DistanceInRadians(loc2);
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="calc-radians">
+```
+//
+```
+</span>
+
 #Queries on Geo-points
 
 ###Near
@@ -249,6 +324,27 @@ query.Near("location", loc, 100000);
 List<CB.CloudObject> list = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="query-near">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "limit": 10,
+    "sort": {        
+    },
+    "select": {        
+    },
+    "query": {
+        "$includeList": [],
+        "$include": [],
+        "location": "{ '$geometry': {coordinates:[17.7,80.3] , type:'Point' }, '$maxDistance': 100000.0, '$minDistance': 50000.0}"
+    },
+    "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Geo Within
 
 Gets all the objects if the point specified by column name lie inside of the specified set of points given. 
@@ -321,5 +417,25 @@ var query = new CB.CloudQuery("Sample");
 var list = new ArrayList();
 query.GeoWithin("location", list);
 List<CB.CloudObject> result = await query.Find();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="query-geo">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "limit": 10,
+    "sort": {        
+    },
+    "select": {        
+    },
+    "query": {
+        "$includeList": [],
+        "$include": [],
+        "location": "{ '$geometry':{ 'type': 'Polygon', 'coordinates': [18.4,78.9,17.4,78.4,17.7,80.4]} }"
+    },
+    "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>

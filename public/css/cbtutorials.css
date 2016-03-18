@@ -86,7 +86,43 @@ ul li {
     -moz-align-items: center;  
     -webkit-align-items:center;    
 }
+.solo-vertical-center{
+   /* Flex row rules */
+    display: flex;
+    display:-webkit-flex;
+    display:-moz-flex;    
+    
+    flex-flow:row wrap;
+    -moz-flex-flow:row wrap;
+    -webkit-flex-flow:row wrap;
 
+    justify-content:flex-start;
+    -moz-justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+
+    align-items:center;  
+    -moz-align-items: center;  
+    -webkit-align-items:center;    
+}
+
+.solo-horizontal-center{
+   /* Flex row rules */
+    display: flex;
+    display:-webkit-flex;
+    display:-moz-flex;    
+    
+    flex-flow:row wrap;
+    -moz-flex-flow:row wrap;
+    -webkit-flex-flow:row wrap;
+
+    justify-content:center;
+    -moz-justify-content:center;
+    -webkit-justify-content:center;
+
+    align-items:flex-start;  
+    -moz-align-items:flex-start;  
+    -webkit-align-items:flex-start;    
+}
 .flex-equal-ratio-items{
   flex:1;
   -moz-flex:1;

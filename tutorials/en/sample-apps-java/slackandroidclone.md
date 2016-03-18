@@ -10,22 +10,19 @@ In this tutorial, we are going to take it a notch higher and build a clone of a 
 ><span class="tut-info">Info</span> here you will learn how to use CloudBoost notification queries i.e how to apply a query on real time notifications so that you are only notified of specific events that meet the query criteria.
 #Assumptions
 I will assume a few things :
-<ul>
-<li>You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps, including the libraries to add to the classpath.<li>
-<li>You know android (We shall not focus so much on learning the the android specific concepts bit of the code).</li>
-<li>You already have an app on cloudboost, and have created a table called <code>slack_message</code>, with the following columns
-<ul>
-<li>message, type text</li>
-<li>from_user, type text</li>
-<li>to_user, type text</li>
 
-</ul>
-</ul>
+* You have checked out our first java tutorial in this series and know you to set up your environment to develop CloudBoost apps, including the libraries to add to the classpath.
+* You know android (We shall not focus so much on learning the the android specific concepts bit of the code).
+* You already have an app on cloudboost, and have created a table called <span class="tut-snippet">slack_message</span>, with the following columns
+  * message, type text
+  * from_user, type text
+  * to_user, type text
+
 #The Android project
-Create a new android project in your IDE(I use Eclipse 3.7 with ADT) and name it <code>SlackAndroidClone</code>, place all the required <code>jar</code>'s in the libs folder.
+Create a new android project in your IDE(I use Eclipse 3.7 with ADT) and name it <span class="tut-snippet">SlackAndroidClone</span>, place all the required <span class="tut-snippet">jar</span>'s in the libs folder.
 
 We are going to use the UI patterns used in Slack  android application. When we take a look at the slack android application,
-A navigation drawer is used to display the list of your team members under a header called <code>DIRECT MESSAGES</code>, your private groups under a header called <code>PRIVATE GROUPS</code> and then there is another header called <code>CHANNELS</code> which hosts all channels in Slack.
+A navigation drawer is used to display the list of your team members under a header called <span class="tut-snippet">DIRECT MESSAGES</span>, your private groups under a header called <span class="tut-snippet">PRIVATE GROUPS</span> and then there is another header called <span class="tut-snippet">CHANNELS</span> which hosts all channels in Slack.
 
 Navigation drawer makes UI navigation of our application very user friendly since the user does not have to leave the main screen to be able to access other important features of the app. This is why Google introduced this pattern together with android-Lollipop as part of material design patterns.
 
@@ -43,6 +40,7 @@ This is the only activity we shall use in our application. This is a simple but 
 A number of things happen inside this Class:
 #activity_main.xml
 Inflating the xml file that defines the layout of widgets in this activity
+
 ==xml==
 <span class="xml-lines" data-query="init">
 ```
@@ -50,15 +48,12 @@ Inflating the xml file that defines the layout of widgets in this activity
     xmlns:app="http://schemas.android.com/apk/res/io.cloudboost.slackclone"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
+    android:layout_height="match_parent">
     <!-- This FrameLayout defines what will appear on our main screen -->
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -68,7 +63,6 @@ Inflating the xml file that defines the layout of widgets in this activity
             android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/slack_logo" >
         </android.support.v7.widget.Toolbar>
-
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="fill_parent"
@@ -76,7 +70,6 @@ Inflating the xml file that defines the layout of widgets in this activity
             android:layout_marginTop="56.0dip" />
     </FrameLayout>
     <!-- this ListView is the widget to appear in our Navigation drawer -->
-
     <ListView
         android:id="@+id/left_drawer"
         android:layout_width="240dp"
@@ -86,15 +79,15 @@ Inflating the xml file that defines the layout of widgets in this activity
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" />
-
 </android.support.v4.widget.DrawerLayout>
 ```
 </span>
+
 As you can see, we use a DrawerLayout as the root of our xml definition. Additionally we use the material design toolbar in order to have more control over our ActionBar.
 
 #Sign in
-We ask the user to input their preferred username (as a hack to allow you to use ur own names). For testing purposes, I have put static names of some team members in CloudBoost. Am assuming you will test on 2 emulators, 2 devices or a device and an emulator, which ever suits you best. So my testing environment used <code>bengi</code> and <code>egima</code>(I know, I know it seems egoistic but please where I come from, you don't just get to use people's names)
-Please feel free to use any name (Granny's, your Ex etc). So if one device is using <code>bengi</code> then you'll realize <code>egima</code> is on your team list or vice versae(customize accordingly). Below is the code for the dialog:
+We ask the user to input their preferred username (as a hack to allow you to use ur own names). For testing purposes, I have put static names of some team members in CloudBoost. Am assuming you will test on 2 emulators, 2 devices or a device and an emulator, which ever suits you best. So my testing environment used <span class="tut-snippet">bengi</span> and <span class="tut-snippet">egima</span>(I know, I know it seems egoistic but please where I come from, you don't just get to use people's names)
+Please feel free to use any name (Granny's, your Ex etc). So if one device is using <span class="tut-snippet">bengi</span> then you'll realize <span class="tut-snippet">egima</span> is on your team list or vice versae(customize accordingly). Below is the code for the dialog:
 
 
 ==Java==
@@ -107,7 +100,7 @@ Please feel free to use any name (Granny's, your Ex etc). So if one device is us
     	Button ok=(Button) dialog.findViewById(R.id.dialogButtonOK);
     	final EditText name=(EditText) dialog.findViewById(R.id.user);
     	ok.setOnClickListener(new OnClickListener() {
-			
+			//
 			@Override
 			public void onClick(View v) {
 				String user="@"+name.getText();
@@ -119,27 +112,26 @@ Please feel free to use any name (Granny's, your Ex etc). So if one device is us
 						App.CURRENT_USER="@egima";
 						adapter.add(new DrawerItem("@bengi", false));
 						teamMembers.add("@bengi");
-
 					}
 					else {
 						App.CURRENT_USER="@bengi";
 						adapter.add(new DrawerItem("@egima", false));}
 					teamMembers.add("@egima");
-
+					//
 					dialog.dismiss();
-				}
-				
+				}				
 			}
 		});
-    	dialog.show();
-    			
+    	dialog.show();    			
     }
 ```
 </span>
-#Dialog.xml
+
+#DialogXml file
 And below is the xml inflated for our dialog
+
 ==xml==
-<span class="xml-lines" data-query="init">
+<span class="xml-lines" data-query="dailog">
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -149,7 +141,6 @@ And below is the xml inflated for our dialog
         <TextView
             android:text="User"
             android:width="120dp" />
-
         <EditText
             android:id="@+id/user"
             android:width="200dp" />
@@ -163,10 +154,10 @@ And below is the xml inflated for our dialog
             android:layout_marginTop="5dp"
             android:text=" Ok " />
     </TableRow>
-
 </TableLayout>
 ```
 </span>
+
 How our dialog will look:
 <p>&nbsp;</p>
 <img class="center-img" alt="Chat name dialog" src="https://blog.cloudboost.io/content/images/2016/03/inputchatname.PNG">
@@ -174,8 +165,9 @@ How our dialog will look:
 #Routing chat messageges
 We use CloudBoost notification query to filter realtime alerts whenever messages are received.
 Here, we are telling the SDK to only notify us when the message is addressed to <code>@bengi</code>. This will be replaced by the chat name you fill in the  dialog box above.
+
 ==Java==
-<span class="java-lines" data-query="init">
+<span class="java-lines" data-query="dailog">
 ```
 CloudQuery query = new CloudQuery("slack_message");
 	query.equalTo("to_user", "@bengi");
@@ -185,25 +177,23 @@ CloudQuery query = new CloudQuery("slack_message");
 				@Override
 				public void done(final CloudObject arg0,
 					CloudException arg1) throws CloudException 
-					{
-					
-					if (arg0 != null)
-						runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-						receiveMessage(arg0);
+					{					
+						if (arg0 != null)
+							runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+							receiveMessage(arg0);
+							}
+							});
 						}
-						});
-
-					}
 				});
 		} 
 		catch (CloudException e) {
 			e.printStackTrace();
 	}
-
 ```
 </span>
+
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span>the <code>receiveMessage(CloudObject obj)</code> simply retrieves the message and sender chat name of received message, locates the Adapter store in the Application class and then adds the message to the adapter. So whether the fragment containing the particular chats of the sender has been active or not, the chats will appear the next time you select the sender from the navigation drawer.
 <p>&nbsp;</p>
@@ -213,8 +203,9 @@ CloudQuery query = new CloudQuery("slack_message");
 We use an asyncronous class to handle the posting of our chat messages to the ##CloudBoost## realtime server, this way the network call will run on a background thread. Other than this, your app can crush due to slow networkd calls and it would block the UI thread.
 So here is our async class which I place inside the Fragment class:
 <p>&nbsp;</p>
+
 ==Java==
-<span class="java-lines" data-query="init">
+<span class="java-lines" data-query="sendMsg">
 ```
 class sendMsg extends AsyncTask<String, String, String> {
 	/**
@@ -226,7 +217,6 @@ class sendMsg extends AsyncTask<String, String, String> {
 		adapter.add(new ChatMessage(editor.getText().toString(),
 				App.CURRENT_USER, 0));
 	}
-
 	/**
 	* send message on a background thread
 	* */
@@ -239,13 +229,13 @@ class sendMsg extends AsyncTask<String, String, String> {
 			obj.set("message", editor.getText().toString());
 			obj.set("to_user", otherUser);
 			obj.save(new CloudObjectCallback() {
-
+				//
 				@Override
 				public void done(final CloudObject arg0,
 						final CloudException arg1)
 						throws CloudException {
 						getActivity().runOnUiThread(new Runnable() {
-
+						//
 						@Override
 						public void run() {
 							if (arg1 != null)
@@ -254,7 +244,6 @@ class sendMsg extends AsyncTask<String, String, String> {
 										Toast.LENGTH_SHORT).show();
 								}
 							});
-
 						}
 					});
 				} catch (CloudException e) {
@@ -265,10 +254,8 @@ class sendMsg extends AsyncTask<String, String, String> {
 						editor.setText("");
 					}
 				});
-
 				return null;
 			}
-
 			/**
 			 * After completing background task, run this method
 			 * **/
@@ -277,6 +264,7 @@ class sendMsg extends AsyncTask<String, String, String> {
 		}
 ```
 </span>
+
 <p>&nbsp;</p>
 ><span class="tut-info">Info:</span>Notice that this is just a normal CloudObject save operation. This makes implementing Realtime functionality a no brainer. All the boiler plate cold has been abstracted in the backend and implementing real time functionality has been reduced to one additional line of code which we looked at earlier(creating a listener on the chat table).
 <p>&nbsp;</p>

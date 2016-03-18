@@ -73,6 +73,83 @@ List<CB.CloudObject> objectList = await CB.CloudObject.SaveAllAsync(list);
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="bulksave">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "document": [{
+        "_type": "custom",
+        "expires": null,
+        "name": "egima",
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        "name"],
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true
+    },
+    {
+        "_type": "custom",
+        "expires": null,
+        "name": "bengi",
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        "name"],
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true
+    }]
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 #Deleting Multiple CloudObjects
 
 To delete multiple objects pass an array of CloudObjects to the bulk delete function. For example:
@@ -121,5 +198,79 @@ public void done(CloudObject[] x,CloudException t) throws CloudException {
 <span class="dotnet-lines" data-query="bulkdelete">
 ```
 await CB.CloudObject.DeleteAllAsync(list);
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="bulkdelete">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "method":"DELETE",
+    "document": [{
+        "updatedAt": "2016-03-16T13:28:20.936Z",
+        "_type": "custom",
+        "_version": 0,
+        "expires": null,
+        "_id": "LYm3d7Bh",
+        "createdAt": "2016-03-16T13:28:20.936Z",
+        "name": "egima",
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        }
+    },
+    {
+        "updatedAt": "2016-03-16T13:28:20.938Z",
+        "_type": "custom",
+        "_version": 0,
+        "expires": null,
+        "_id": "dJ6mwXom",
+        "createdAt": "2016-03-16T13:28:20.938Z",
+        "name": "bengi",
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        }
+    }]
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>

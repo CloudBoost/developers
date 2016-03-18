@@ -233,9 +233,11 @@ function spanCss(spans){
             var dotNetLines=$(spans[i]).hasClass("dotnet-lines"); 
             var iosLines=$(spans[i]).hasClass("ios-lines");
             var rubyLines=$(spans[i]).hasClass("ruby-lines");
-            var iotLines=$(spans[i]).hasClass("iot-lines");       
+            var iotLines=$(spans[i]).hasClass("iot-lines"); 
+            var xmlLines=$(spans[i]).hasClass("xml-lines"); 
+            var curlLines=$(spans[i]).hasClass("curl-lines");        
             
-            if(jsLines || nodejsLines || javaLines || dotNetLines || iosLines || rubyLines || iotLines){
+            if(jsLines || nodejsLines || javaLines || dotNetLines || iosLines || rubyLines || iotLines || xmlLines || curlLines){
                 var langHead="";
                 var langCode="";
                 codeBlock=$(spans[i]).parent().next().find("span");
@@ -250,31 +252,31 @@ function spanCss(spans){
                 
                 //Javacsript
                 if(jsLines){
-                    var res=bindLangCode("js","javascript",spans[i]);
+                    var res=bindLangCode("js","Javascript",spans[i]);
                     langHead+=res.html;
                     langCode+=res.codeHtml;             
                 }
                 //Nodejs
                 if(nodejsLines){
-                    var res=bindLangCode("nodejs","Nodejs",spans[i]);
+                    var res=bindLangCode("nodejs","NodeJS",spans[i]);
                     langHead+=res.html;
                     langCode+=res.codeHtml;             
                 }
                 //Java
                 if(javaLines){
-                    var res=bindLangCode("java","Java",spans[i]); 
+                    var res=bindLangCode("java","Java / Andriod",spans[i]); 
                     langHead+=res.html;
                     langCode+=res.codeHtml;            
                 }
                 //.Net
                 if(dotNetLines){
-                    var res=bindLangCode("dotnet",".Net",spans[i]);
+                    var res=bindLangCode("dotnet",".NET",spans[i]);
                     langHead+=res.html;
                     langCode+=res.codeHtml;             
                 }
                 //IOS
                 if(iosLines){
-                    var res=bindLangCode("ios","IOS",spans[i]);
+                    var res=bindLangCode("ios","iOS",spans[i]);
                     langHead+=res.html;
                     langCode+=res.codeHtml;             
                 } 
@@ -289,7 +291,19 @@ function spanCss(spans){
                     var res=bindLangCode("iot","IOT",spans[i]); 
                     langHead+=res.html;
                     langCode+=res.codeHtml;            
-                }            
+                }
+                //XML
+                if(xmlLines){
+                    var res=bindLangCode("xml","XML",spans[i]); 
+                    langHead+=res.html;
+                    langCode+=res.codeHtml;            
+                } 
+                //CURL
+                if(curlLines){
+                    var res=bindLangCode("curl","cURL",spans[i]); 
+                    langHead+=res.html;
+                    langCode+=res.codeHtml;            
+                }             
               
                 //Check Next Lang Emls
                 (function checkNxt(elm){
@@ -300,10 +314,12 @@ function spanCss(spans){
                         var nxtIosLines=$(elm).parent().next().find("span").hasClass("ios-lines");
                         var nxtRubyLines=$(elm).parent().next().find("span").hasClass("ruby-lines");
                         var nxtIotLines=$(elm).parent().next().find("span").hasClass("iot-lines");
+                        var nxtXmlLines=$(elm).parent().next().find("span").hasClass("xml-lines");
+                        var nxtCurlLines=$(elm).parent().next().find("span").hasClass("curl-lines");
 
                         var mainElm=$(elm).parent().next().find("span");
                         if(nxtJsLines){
-                            var res=bindLangCode("js","javascript",mainElm);
+                            var res=bindLangCode("js","Javascript",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -312,7 +328,7 @@ function spanCss(spans){
                             $(elm).parent().next().remove();
                         }
                         if(nxtNodejsLines){
-                            var res=bindLangCode("nodejs","Nodejs",mainElm);
+                            var res=bindLangCode("nodejs","NodeJS",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -321,7 +337,7 @@ function spanCss(spans){
                             $(elm).parent().next().remove();
                         }
                         if(nxtJavaLines){
-                            var res=bindLangCode("java","Java",mainElm);
+                            var res=bindLangCode("java","Java / Andriod",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -330,7 +346,7 @@ function spanCss(spans){
                             $(elm).parent().next().remove();                  
                         }
                         if(nxtDotNetLines){
-                            var res=bindLangCode("dotnet",".Net",mainElm);
+                            var res=bindLangCode("dotnet",".NET",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -340,7 +356,7 @@ function spanCss(spans){
                         }
 
                         if(nxtIosLines){
-                            var res=bindLangCode("ios","IOS",mainElm);
+                            var res=bindLangCode("ios","iOS",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -358,8 +374,27 @@ function spanCss(spans){
                             checkNxt(mainElm);
                             $(elm).parent().next().remove();
                         }
-                         if(nxtIotLines){
+                        if(nxtIotLines){
                             var res=bindLangCode("iot","IOT",mainElm);
+                            langHead+=res.html;
+                            langCode+=res.codeHtml;
+
+                            //Recursive call
+                            checkNxt(mainElm);
+                            $(elm).parent().next().remove();
+                        }
+
+                        if(nxtXmlLines){
+                            var res=bindLangCode("xml","XML",mainElm);
+                            langHead+=res.html;
+                            langCode+=res.codeHtml;
+
+                            //Recursive call
+                            checkNxt(mainElm);
+                            $(elm).parent().next().remove();
+                        }
+                        if(nxtCurlLines){
+                            var res=bindLangCode("curl","cURL",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -379,10 +414,12 @@ function spanCss(spans){
                         var nxtIosLines=$(elm).parent().prev().find("span").hasClass("ios-lines");
                         var nxtRubyLines=$(elm).parent().prev().find("span").hasClass("ruby-lines");
                         var nxtIotLines=$(elm).parent().prev().find("span").hasClass("iot-lines");
+                        var nxtXmlLines=$(elm).parent().prev().find("span").hasClass("xml-lines");
+                        var nxtCurlLines=$(elm).parent().prev().find("span").hasClass("curl-lines");
 
                         var mainElm=$(elm).parent().prev().find("span");
                         if(nxtJsLines){
-                            var res=bindLangCode("js","javascript",mainElm);
+                            var res=bindLangCode("js","Javascript",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -391,7 +428,7 @@ function spanCss(spans){
                             $(elm).parent().prev().remove();
                         }
                         if(nxtNodejsLines){
-                            var res=bindLangCode("nodejs","Nodejs",mainElm);
+                            var res=bindLangCode("nodejs","NodeJS",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -400,7 +437,7 @@ function spanCss(spans){
                             $(elm).parent().prev().remove();
                         }
                         if(nxtJavaLines){
-                            var res=bindLangCode("java","Java",mainElm);
+                            var res=bindLangCode("java","Java / Andriod",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -409,7 +446,7 @@ function spanCss(spans){
                             $(elm).parent().prev().remove();                   
                         }
                         if(nxtDotNetLines){
-                            var res=bindLangCode("dotnet",".Net",mainElm);
+                            var res=bindLangCode("dotnet",".NET",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -419,7 +456,7 @@ function spanCss(spans){
                         }
 
                         if(nxtIosLines){
-                            var res=bindLangCode("ios","IOS",mainElm);
+                            var res=bindLangCode("ios","iOS",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -445,6 +482,24 @@ function spanCss(spans){
                             //Recursive call
                             PrevNxt(mainElm);
                             $(elm).parent().prev().remove();
+                        }
+                        if(nxtXmlLines){
+                            var res=bindLangCode("xml","XML",mainElm);
+                            langHead+=res.html;
+                            langCode+=res.codeHtml;
+
+                            //Recursive call
+                            checkNxt(mainElm);
+                            $(elm).parent().next().remove();
+                        }
+                        if(nxtCurlLines){
+                            var res=bindLangCode("curl","cURL",mainElm);
+                            langHead+=res.html;
+                            langCode+=res.codeHtml;
+
+                            //Recursive call
+                            checkNxt(mainElm);
+                            $(elm).parent().next().remove();
                         }
 
                 })(spans[i]);     
@@ -472,7 +527,7 @@ function spanCss(spans){
 function bindLangCode(shortName,fullName,rootTag){
     var query=$(rootTag).data("query");
 
-    var jsHtml='<div class="pull-left languageHeader '+shortName+'" data-lang="'+shortName+'" data-query="'+query+'">'; 
+    var jsHtml='<div class="pull-left solo-horizontal-center languageHeader '+shortName+'" data-lang="'+shortName+'" data-query="'+query+'">'; 
         jsHtml+=fullName;                              
         jsHtml+='</div>';
 

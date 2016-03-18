@@ -59,6 +59,52 @@ var rsponse = file.SaveAsync();
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="setfile">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+  "data": "this data will be written to the new file",
+  "fileObj": {
+    "_id": "string",
+    "_type": "file",
+    "ACL": {
+      "read": {
+        "allow": {
+          "user": [
+            "all"
+          ],
+          "role": []
+        },
+        "deny": {
+          "user": [],
+          "role": []
+        }
+      },
+      "write": {
+        "allow": {
+          "user": [
+            "all"
+          ],
+          "role": []
+        },
+        "deny": {
+          "user": [],
+          "role": []
+        }
+      }
+    },
+    "name": "string",
+    "size": 0,
+    "url": "string",
+    "expires": "2016-03-16T13:31:41.151Z",
+    "contentType": "application/octet-stream"
+  }
+}' 'https://api.cloudboost.io/file/${app_id}'
+```
+</span>
+
+
 ###From Blob
 
 To save a file by creating a blob, you need to:
@@ -108,6 +154,13 @@ file.save(new CloudStringCallback(){
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="setblob">
+```
+curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' 'http://api.cloudboost.io/file/${app_id}'
+```
+</span>
+
 ###Save File In CloudObject
 
 To save the file in CloudObject, you need to:
@@ -153,6 +206,79 @@ public void done(CloudObject x,CloudException t)throws CloudException {
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="savefile">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {
+    "_type": "custom",
+    "expires": null,
+    "file": {
+      "_type": "file",
+      "_version": 0,
+      "expires": null,
+      "_id": "AI58Etzj",
+      "name": "myfile",
+      "ACL": {
+        "write": {
+          "allow": {
+            "role": [],
+            "user": ["all"]
+          },
+          "deny": {
+            "role": [],
+            "user": []
+          }
+        },
+        "read": {
+          "allow": {
+            "role": [],
+            "user": ["all"]
+          },
+          "deny": {
+            "role": [],
+            "user": []
+          }
+        }
+      },
+      "contentType": "html/txt",
+      "url": "https://api.cloudboost.io/file/cpnbzclvxjts/AI58Etzje"
+    },
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "file"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true
+  }
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 <span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
 
 #Default Properties
@@ -193,6 +319,13 @@ file.ID
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="viewid">
+```
+//Id is null when you create the file but gets assigned to an file as soon as you save it.
+```
+</span>
+
 * **Url** : [URL] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
 
 ==JavaScript==
@@ -224,6 +357,13 @@ System.out.print(file.getFileUrl());
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 file.Url;
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="viewurl">
+```
+//Url is null when you create the file but gets assigned to an file as soon as you save it.
 ```
 </span>
 
@@ -260,6 +400,13 @@ file.Name
 ```
 </span>
 
+==curl==
+<span class="curl-lines" data-query="viewname">
+```
+//
+```
+</span>
+
 * **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudFile will automatically be deleted at that time.
 
 ==JavaScript==
@@ -287,6 +434,13 @@ file.getExpires();
 <span class="dotnet-lines" data-query="viewexpires">
 ```
 file.Expires;
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="viewexpires">
+```
+//
 ```
 </span>
 
@@ -319,6 +473,12 @@ file.getACL();
 file.ACL;
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="viewacl">
+```
+//
+```
 
 #Delete a file
 
@@ -369,6 +529,16 @@ public void done(String x,CloudException t) throws CloudException {
 <span class="dotnet-lines" data-query="deletefile">
 ```
 await file.DeleteAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="deletefile">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/html' -d '{
+  "key": ${app_key},
+  "method": "DELETE"
+}' 'http://api.cloudboost.io/file/${app_id}/${file_id}'
 ```
 </span>
 
@@ -425,6 +595,26 @@ query.find(new CloudObjectCallback(){
 var query = new CB.CloudQuery("Custom");
 query.Include("file"); //this will include the file in CloudObjects
 var result = await query.Find();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="includefile">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+    "limit": 1,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": ["file"]
+  },
+  "sdk": "java",
+  "skip": 0
+}' 'http://api.cloudboost.io/file/${app_id}/_File/find'
 ```
 </span>
 
@@ -509,5 +699,26 @@ public void done(Object x, CloudException t)
 <span class="dotnet-lines" data-query="fetchfilecontent">
 ```
 var result = await file.GetFileContentAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="fetchfilecontent">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${app_key},
+    "limit": 1,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "_id": ${file_id}
+  },
+  "sdk": "java",
+  "skip": 0
+}' 'http://api.cloudboost.io/file/${app_id}/_File/find'
 ```
 </span>

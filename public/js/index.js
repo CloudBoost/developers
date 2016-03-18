@@ -71,6 +71,8 @@ var hideAndDisableCode = function(){
     $('.code-wrapper-ios').hide();
     $('.code-wrapper-ruby').hide();
     $('.code-wrapper-iot').hide();
+    $('.code-wrapper-xml').hide();
+    $('.code-wrapper-curl').hide();
 
     //Disable Active            
     $('.js').removeClass('languageHeader-active'); 
@@ -79,7 +81,9 @@ var hideAndDisableCode = function(){
     $('.dotnet').removeClass('languageHeader-active'); 
     $('.ios').removeClass('languageHeader-active'); 
     $('.ruby').removeClass('languageHeader-active'); 
-    $('.iot').removeClass('languageHeader-active');          
+    $('.iot').removeClass('languageHeader-active'); 
+    $('.xml').removeClass('languageHeader-active'); 
+    $('.curl').removeClass('languageHeader-active');          
 };      
 
 $(document).scroll(function () {

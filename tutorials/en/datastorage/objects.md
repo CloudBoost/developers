@@ -34,6 +34,13 @@ var obj = new CB.CloudObject("TableName");
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="create">
+```
+//
+```
+</span>
+
 To set data into the objects, You can use the <span class="tut-snippet">set</span> function / method of CloudObject class. 
 
 ==JavaScript==
@@ -61,6 +68,13 @@ obj.set('ColumnName',data);
 <span class="dotnet-lines" data-query="set">
 ```
 obj.Set("ColumnName",data);
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="set">
+```
+//set object
 ```
 </span>
 
@@ -121,6 +135,47 @@ obj.save(new CloudObjectCallback(){
 var obj = new CB.CloudObject("TableName");
 obj.Set("ColumnName", data);
 await obj.SaveAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="save">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {     "_type": "custom",
+        "expires": null,
+        ${column_name}: ${column_value},
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        ${column_name}],
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 
@@ -197,6 +252,13 @@ obj.ID
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="viewid">
+```
+//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+```
+</span>
+
 * **CreatedAt** : [DateTime] A DateTime stamp of when the Object is created. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -224,6 +286,13 @@ obj.getCreatedAt();
 <span class="dotnet-lines" data-query="viewcreateat">
 ```
 obj.CreatedAt
+```
+</span>
+
+==curl==
+<span class="curl-lines" data-query="viewcreateat">
+```
+//
 ```
 </span>
 
@@ -257,6 +326,13 @@ obj.UpdatedAt
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="viewupdateat">
+```
+//
+```
+</span>
+
 * **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
 
 ==JavaScript==
@@ -281,11 +357,19 @@ obj.getExpires();
 </span>
 
 ==.NET==
-<span class="dotnot-lines" data-query="viewexpires">
+<span class="dotnet-lines" data-query="viewexpires">
 ```
 obj.Expires;
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="viewexpires">
+```
+//
+```
+</span>
+
 
 * **ACL** : [CB.ACL]( https://docs.cloudboost.io/#ACL) ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]( /?lang=en&category=security&subcategory=acl) section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]( https://docs.cloudboost.io/#ACL)
 
@@ -311,9 +395,16 @@ obj.getACL();
 </span>
 
 ==.NET==
-<span class="dotnot-lines" data-query="viewacl">
+<span class="dotnet-lines" data-query="viewacl">
 ```
 obj.ACL;
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="viewacl">
+```
+//
 ```
 </span>
 
@@ -368,10 +459,51 @@ obj.save(new CloudObjectCallback(){
 </span>
 
 ==.NET==
-<span class="dotnot-lines" data-query="update">
+<span class="dotnet-lines" data-query="update">
 ```
 obj.Set("ColumnName", newData);
 await obj.SaveAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="update">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {     "_type": "custom",
+        "expires": null,
+        ${column_name}: ${column_value},
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        ${column_name}],
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 
@@ -426,6 +558,27 @@ obj.fetch(new CloudObjectCallback(){
 await obj.FetchAsync();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="fetch">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "limit": 1,
+    "sort": {        
+    },
+    "select": {        
+    },
+    "query": {
+        "$includeList": [],
+        "$include": [],
+        "_id": ${id_of_object_to_fetch}
+    },
+    "skip": 0,
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 #Deleting Objects
 
 If you want to delete an object form the database then you need to call the delete function / method of CloudObject. 
@@ -475,6 +628,47 @@ obj.delete(new CloudObjectCallback(){
 <span class="dotnet-lines" data-query="delete">
 ```
 await obj.DeleteAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="delete">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "document": {
+        "updatedAt": "2016-03-15T09:22:10.446Z",
+        "_type": "custom",
+        "_version": 0,
+        "expires": null,
+        "_id": ${id_of_object_to_delete},
+        "createdAt": "2016-03-15T09:22:10.446Z",
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        }
+    },
+    "method": "DELETE",
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 

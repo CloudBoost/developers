@@ -79,6 +79,14 @@ import io.cloudboost.*;
 Install-Package cloudboost
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="link">
+```
+//
+```
+</span>
+
 Once you have imported and linked the CloudBoost SDK to your project. We need to initialize your new CloudApp. 
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
@@ -126,6 +134,14 @@ CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="init">
+```
+//
+```
+</span>
+
 After your app is initialized. You can proceed to the next step which is saving data. 
 
 #Saving data
@@ -187,6 +203,48 @@ obj.Set("ColumnName", data);
 await obj.SaveAsync();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="save">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {     "_type": "custom",
+        "expires": null,
+        ${column_name}: ${column_value},
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        "name"],
+        "_tableName": "data",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 If you want to learn more about CloudObjects and Data Storage, Click [here]( ?lang=en&category=datastorage&subcategory=objects). 
 
 #Querying data
@@ -248,6 +306,27 @@ query.EqualTo("ColumnName", data);
 List<CB.CloudObject> = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="query">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "limit": 10,
+    "sort": {        
+    },
+    "select": {        
+    },
+    "query": {
+        "$includeList": [],
+        "$include": [],
+        "name": "bengi"
+    },
+    "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 If you want to learn more about Queries, Check out the query section [here](?lang=en&category=query&subcategory=basicqueries). 
 
 
