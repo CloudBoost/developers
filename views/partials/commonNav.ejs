@@ -1,0 +1,73 @@
+<!--Navigation-->
+<nav class="navbar-default navbar-static-side main-navigation" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav tut-main-topics-menu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+
+                    <span class="flex-general-row-wrapper-center">
+                        <!--<img alt="image" class="menu-img" src="assets/img/cbtut.png"/>-->
+                        <i class="fa fa-book fa-2x" style="color:white;"></i>
+                    </span>
+
+                    <a class="flex-general-row-wrapper-center" style="cursor:default;">
+                        <span class="clear flex-general-row-wrapper-center"> 
+                            <span class="block m-t-xs"> 
+                                <h3><strong class="font-bold">Guide</strong></h3>
+                            </span>                               
+                        </span> 
+                    </a>                       
+                </div>
+                
+            </li>
+
+            <% tutorialTopics.forEach(function(eachTut) {
+
+                if (nospacelowcase(eachTut.name)==category) { %>
+                    <li class="active">
+                <% }else{ %>
+                    <li>
+                <% } %>
+               
+                    <a href="index-2.html">
+                        <i class="fa <%= eachTut.icon %>"></i> 
+                        <span class="nav-label"><%= eachTut.name %></span> 
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+
+                        <% eachTut.tutorials.forEach(function(eachSub) { 
+
+                            if (nospacelowcase(eachSub.name)==subCategory) { %>
+                                <li class="change-topic active">
+                            <% }else{ %>
+                                <li class="change-topic">
+                            <% } %>
+                          
+                                <a  class="category-select-menubtn" href="/<%= eachSub.tutorialLink.lang %>/<%= eachSub.tutorialLink.category %>/<%= eachSub.tutorialLink.subcategory %>" data-subcat="<%= eachSub.tutorialLink.subcategory %>">
+                                 <%= eachSub.name %>
+                                </a>
+                            </li>
+                        <% }); %>    
+
+                    </ul>
+                </li> 
+
+            <% }); %>
+          
+            <!--<li>
+                <a href="index-2.html">
+                    <i class="fa fa-th-large"></i> 
+                    <span class="nav-label">Dashboards</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="index-2.html">Dashboard v.1</a></li>
+                    <li ><a href="dashboard_2.html">Dashboard v.2</a></li>
+                    <li ><a href="dashboard_3.html">Dashboard v.3</a></li>
+                </ul>
+            </li> -->              
+        </ul>
+    </div>
+</nav>
+<!--Navigation-->

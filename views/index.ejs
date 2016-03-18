@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CloudBoost | <% tutorialTopics.forEach(function(eachTut) { eachTut.tutorials.forEach(function(eachSub) { if (nospacelowcase(eachSub.name)==subCategory) { %> <%= eachTut.name %> <%= eachSub.name %> <%}});}); %></title> 
+       
+    <meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="CloudBoost is one complete Database Solution for your apps which does data-storage, search and realtime, graphs, time-series and much more.">
+    <meta name="keywords" content="database service,database as a service, hybrid database, cloudboost, search, realtime, storage, app storage, nosql">
+    
+    <!--Common head links-->  
+    <% include ./partials/commonHeadLinks %>
+
+    <!--IMPORTANT:Bind Tuturial data from server to javascript variables-->
+    <script type="text/javascript">        
+        var language=<%- JSON.stringify(language) %>; 
+        var categoryName=<%- JSON.stringify(category) %>;
+        var subCategoryName=<%- JSON.stringify(subCategory) %>;
+        var tutMarkup=<%- JSON.stringify(tutorialDetails) %>;
+    </script>
+   
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!--Navigation-->
+        <% include ./partials/commonNav %>
+        <!--Navigation-->        
+            
+        <div id="page-wrapper" class="white-bg">
+            <!--Header Nav-->    
+            <% include ./partials/header %>
+            <!--Header Nav-->
+
+            <!--Steps Category-->
+            <ul class="steps-category-wrapper">
+                <!--<li class="step-active">
+                    <a class="steps-anchor" href="#intro">
+                        <span>Intro</span>
+                    </a>
+                </li>-->         
+            </ul>
+            <!--/End Steps Category-->
+
+            <!--Main Content-->
+            <div class="main-tut-wrapper">               
+                <!--Category Name--> 
+                 <div class="row category-wrapper">
+                    <div class="col-lg-12">
+                        <div class="wrapper wrapper-content">
+                            <div class="animated fadeInRightBig">
+                              <!--********Custom starts****************-->
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <% tutorialTopics.forEach(function(eachTut) { 
+                                            eachTut.tutorials.forEach(function(eachSub) { 
+                                                if (nospacelowcase(eachSub.name)==subCategory) { %>
+                                                    <p class="cat-desc" style=""> <%= eachTut.name %></p>
+                                                    <h1 class="cat-name"> <%= eachSub.name %></h1>  
+                                                <%}
+                                            });
+                                        }); %>
+                                                                 
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                        
+                <!--.End Category Name-->
+
+                <!--Content Body-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="wrapper wrapper-content">
+                            <div class="animated fadeInRightBig">
+                              <!--********Custom starts****************-->
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <!--Dummy Space-->
+                                    </div>
+                                    <div class="col-lg-7">
+                                                                    
+                                   
+                                       <div class="real-content">
+                                        <!--Dynamic Content-->
+                                       </div>
+                                    </div> 
+                                    <div class="col-lg-2">
+                                        <!--Dummy Space-->
+                                    </div>                              
+                                </div>        
+
+                              <!--********End Custom starts************-->
+                            </div>
+                        </div>
+                    </div>
+                </div>                              
+            </div>
+            <!--/Main Content-->            
+
+            <!--while Loading Content-->
+            <div class="loading-tut-wrapper flex-general-column-wrapper-center">                
+                <div class="flex-general-column-wrapper-center">                           
+                    <div class="flex-general-column-wrapper-center">
+                        <!--<i class="fa fa-spinner fa-spin fa-3x"></i>--> 
+                        <img id="on-load-spinner" src="/img/loading.gif" style="height:180px;">
+                        <span id="error-display" style="font-size:18px;font-weight:800px; color:#7F7E7E;">Couldn't load this time</span>
+                    </div>                                                      
+                </div>                 
+            </div>
+            <!--/while Loading Content-->
+
+        </div>      
+    </div>       
+
+    <!--Scripts-->
+    <% include ./partials/commonScripts %>
+
+</body>
+</html>
