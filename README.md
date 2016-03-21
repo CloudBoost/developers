@@ -84,7 +84,7 @@ var j=2
   * Java->java-lines
   * Nodejs->nodejs-lines
   * IOS->ios-lines
-  * IOT->iotlines
+  * IOT->iot-lines
   * Ruby->ruby-lines
   * cURL->curl-lines
   * XML->xml-lines
