@@ -78,6 +78,7 @@ var j=2
 ```
 * There should be one line space between different programming language span tags.
 * data-query="functionality name" should be same for different programming language of same functionality.
+* Functionality name should be unique and shoudn't conflict with other functionality names.
 * Following are the allowed strings to mention the programming language
   * Javascript->js-lines
   * .Net->dotnet-lines
