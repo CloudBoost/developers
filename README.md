@@ -41,17 +41,17 @@ eg: ```<span class="tut-snippet">var x=150; </span>```
 Multi lines code snippets act as code tabs of different programming languages. This multi lines code should be written in span tags with class="(name of programming language)-lines" and with data attribute data-query="(functionality name of this code)". The main code should enclosed in ```(original markdown for code snippet) inside span tags.
 
 eg: 
-`<span class="java-lines" data-query="addtable">`
-` ``` `
+```
+<span class="java-lines" data-query="addtable">`
 `your code line 1`
 `your code line 2`
 `your code line 3`
-` ``` `
-`</span>`
+</span>
+```
 
-    
 You can add more programming languages codes followed one after one of same functionality.</br>
 eg:
+
 ```
 <span class="java-lines" data-query="addtable">
 </span>
