@@ -38,14 +38,14 @@ Small code or one line code snippets should enclosed in span tags with class="tu
 eg: &lt;span class="tut-snippet"&gt;var x=150; &lt;/span&gt;
 
 ## Multi line code snippets
-Multi lines code snippets act as code tabs of different programming languages. This multi lines code should be written in span tags with class="(name of programming language)-lines" and with data attribute data-query="(functionality name of this code)". The main code should enclosed in "```" inside span tags.
+Multi lines code snippets act as code tabs of different programming languages. This multi lines code should be written in span tags with class="(name of programming language)-lines" and with data attribute data-query="(functionality name of this code)". The main code should enclosed in ```(original markdown for code snipper) inside span tags.
 
 eg: &lt;span class="java-lines" data-query="addtable"&gt;</br>
     ```
     first line
     second line
     third line
-    ```
+    ```</br>
     &lt;/span&gt;
 
 
