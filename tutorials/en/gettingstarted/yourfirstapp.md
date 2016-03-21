@@ -4,43 +4,40 @@ In this section you'll learn how to create your new App (we call it [CloudApp]( 
 
 #Create your first App
 
-If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span class="tut-snippet">App Name</span> and thee <span class="tut-snippet">App ID</span>.
+If you haven't signed up on CloudBoost yet, this is the right time for you to create your new account and get started right away, CloudBoost gives you an enough free tier (check Pricing) so you can build your projects and launch it for free. Once you have signed up and activated your account by verifying your email. You will then be able to create a new app by entering <span class="tut-snippet">App Name</span>.
 
-<img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2015/08/Screen1.PNG">
+<img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2016/03/Dashboard.png">
 
-<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2015/08/Screen2.PNG">
+<img class="center-img" alt="App" src="https://blog.cloudboost.io/content/images/2016/03/app.png">
 
 ><span class="tut-info">Info</span> **App Name** : Application Name is any name that makes sense to you as a developer and helps YOU find this particular app with other apps in your dashboard which you have created. It is a any <span class="tut-snippet">string</span> which you want. 
 
-<p>&nbsp;</p>
-><span class="tut-info">Info</span> **App ID** : Application ID is **unique** to all of CloudBoost Network. It is a any <span class="tut-snippet">string</span> which should be **lowercase, cannot start with a number, and should be without any special characters**. AppID is used to initialize your CloudApp in the SDK. We'll talk about that later. 
 
-![CloudApp Created](https://blog.cloudboost.io/content/images/2015/08/Screen3.PNG)
+![CloudApp Created](https://blog.cloudboost.io/content/images/2016/03/sampleapp.png)
 
-After you enter your App ID and App Name, your new CloudApp is created. Now, you can create a new table in your app. 
+After you enter  App Name, your new CloudApp is created. Now, you can create a new table in your app. 
 
 #Creating a new table
 
-To create a new table click on <span class="tut-snippet">Tables</span> when you're on your App Screen and then click on <span class="tut-snippet">Add new table</span>. 
+To create a new table click on <span class="tut-snippet">Manage App</span> when you're on your Tables Screen and then click on <span class="tut-snippet">Add new table</span>. 
 
-![Tables button in App Screen](https://blog.cloudboost.io/content/images/2015/09/Untitled-1.png)
+![Tables button in App Screen](https://blog.cloudboost.io/content/images/2016/03/tables.png)
 
 ![Add new table](https://blog.cloudboost.io/content/images/2015/09/Capture-2.PNG)
 
-><span class="tut-info">Info</span> User and Role tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them and let them remain. We'll talk more about User and Role tables in security section of this documentation. 
+><span class="tut-info">Info</span> User, Role and Device tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them and let them remain. We'll talk more about User,Role and Device tables in security section of this documentation. 
 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> Table names cannot start with a number and cannot contain any special characters. Table name should not be same as any other tables of the same app. 
 
-After you create a new table. Click on it which will take you to a screen where you can create new columns.
+After you create a new table. Click on it which will take you to a Dashboard screen where you can create new columns.
 
 #Create Columns
 
 To create a new columns click on <span class="tut-snippet">+</span> button on the table header when you're in Data Browser Screen and then enter your column name with the Data Type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you don’t want <span class="tut-snippet">null</span> values to be saved in that column.
 
-![+ Icon on tables](https://blog.cloudboost.io/content/images/2015/09/Untitled-1.png)
 
-![Add new table](https://blog.cloudboost.io/content/images/2015/09/Untitled-1.png)
+<img class="full-length-img" alt="Your CloudBoost Dashboard" src="https://blog.cloudboost.io/content/images/2016/03/datab.png">
 
 ><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should not be same as any other columns of the same table. 
 
@@ -91,7 +88,7 @@ Once you have imported and linked the CloudBoost SDK to your project. We need to
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
 
-![App Keys on an App](https://blog.cloudboost.io/content/images/2015/09/Untitled.png)
+![App Keys on an App](https://blog.cloudboost.io/content/images/2016/03/appkeys.png)
 
 ![App ID, Master Key and Client Key](https://blog.cloudboost.io/content/images/2015/09/Capture-1.PNG)
 
