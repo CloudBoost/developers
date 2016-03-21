@@ -70,7 +70,8 @@ eg:
 * There should be one line space between different programming language span tags.
 * data-query="functionality name" should be same for different programming language of same functionality.
 * Following are the allowed strings to mention the programming language
-* * Javascript->js-lines
+* 
+  * Javascript->js-lines
   * .Net->dotnet-lines
   * Java->java-lines
   * Nodejs->nodejs-lines
