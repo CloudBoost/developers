@@ -48,8 +48,7 @@ function buildTutorial(markup){
     
     hideAndDisableCode();
     $('.js').addClass('languageHeader-active'); 
-    $('.code-wrapper-js').show();                                 
-      
+    $('.code-wrapper-js').show();      
 }
 
 //Active Step
