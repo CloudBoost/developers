@@ -56,8 +56,6 @@ eg:</br>
     &lt;span class="nodejs-lines" data-query="addtable"&gt;</br>
     &lt;/span&gt;</br></br>
     
-    &lt;span class="dotnet-lines" data-query="addtable"&gt;</br>
-    &lt;/span&gt;</br>
 
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
