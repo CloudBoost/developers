@@ -37,5 +37,10 @@ eg: &lt;img class="center-img" alt="" src="path/image.png"&gt;
 Small code or one line code snippets should enclosed in span tags with class="tut-snippet".</br>
 eg: &lt;span class="tut-snippet"&gt;var x=150; &lt;/span&gt;
 
+## Multi line code snippets
+Multi lines code snippets act as code tabs of different programming languages. This multi lines code should be enclosed in span tags with class="(name of programming language)-lines" and with data attribute data-query="(functionality name of this code)".
+
+
+
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
