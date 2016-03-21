@@ -67,10 +67,19 @@ eg:
 
 **Important**
 * There shoud not be any space between codes line, if it necessary to display space, use // quote marks
+eg:
+```
+<span class="js-lines" data-query="addtable">
+` ``
+var i=0;
+//
+var j=2
+`` `
+</span>
+```
 * There should be one line space between different programming language span tags.
 * data-query="functionality name" should be same for different programming language of same functionality.
 * Following are the allowed strings to mention the programming language
-* 
   * Javascript->js-lines
   * .Net->dotnet-lines
   * Java->java-lines
