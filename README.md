@@ -64,7 +64,22 @@ eg:
 <span class="dotnet-lines" data-query="addtable">;
 </span>;
 ```
-    
+
+**Important**
+* There shoud not be any space between codes line, if it necessary to display space, use // quote marks
+* There should be one line space between different programming language span tags.
+* data-query="functionality name" should be same for different programming language of same functionality.
+* Following are the allowed strings to mention the programming language
+* * Javascript->js-lines
+  * .Net->dotnet-lines
+  * Java->java-lines
+  * Nodejs->nodejs-lines
+  * IOS->ios-lines
+  * IOT->iotlines
+  * Ruby->ruby-lines
+  * cURL->curl-lines
+  * XML->xml-lines
+
 
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
