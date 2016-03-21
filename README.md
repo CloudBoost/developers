@@ -48,7 +48,7 @@ eg: &lt;span class="java-lines" data-query="addtable"&gt;</br>
     ```</br>
     &lt;/span&gt;</br></br>
     
-You can add more programming languages codes of same functionality followed one after one.
+You can add more programming languages codes of same functionality followed one after one.</br>
 eg: &lt;span class="java-lines" data-query="addtable"&gt;</br>
     &lt;/span&gt;</br>
     
