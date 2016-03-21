@@ -22,5 +22,12 @@ eg: &lt;span class="tut-snippet"&gt;var x=150; &lt;/span&gt;
 Blockquotes should enclosed in span tags with class="tut-info".</br>
 eg: &lt;span class="tut-info"&gt;Focus &lt;/span&gt;
 
+## Images
+For full length images, use image tags with class="full-length-img".</br>
+eg: &lt;img class="full-length-img" alt="" src="path/image.png"&gt;</br></br>
+
+For center/mid length images, use image tags with class="center-img".</br>
+eg: &lt;img class="center-img" alt="" src="path/image.png"&gt;
+
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
