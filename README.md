@@ -16,7 +16,7 @@ Menu headings should with start with #(h1 tag), without full stop(.) at the end.
 
 ## Info
 Info quotes should enclosed in span tags with class="tut-info".</br>
-eg: ```&lt;span class="tut-info"&gt;Info &lt;/span&gt;``
+eg: ```<span class="tut-info">Info</span>```
 
 ## Important quotes
 Important quotes should enclosed in span tags with class="tut-imp".</br>
