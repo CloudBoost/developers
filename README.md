@@ -46,9 +46,17 @@ eg: &lt;span class="java-lines" data-query="addtable"&gt;</br>
     second line
     third line
     ```</br>
-    &lt;/span&gt;
-
-
+    &lt;/span&gt;</br></br>
+    
+You can add more programming languages codes of same functionality followed one after one.
+eg: &lt;span class="java-lines" data-query="addtable"&gt;</br>
+    &lt;/span&gt;</br>
+    
+    &lt;span class="nodejs-lines" data-query="addtable"&gt;</br>
+    &lt;/span&gt;</br>
+    
+    &lt;span class="dotnet-lines" data-query="addtable"&gt;</br>
+    &lt;/span&gt;</br>
 
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
