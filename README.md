@@ -54,8 +54,8 @@ eg:</br>
     &lt;/span&gt;</br>
     
     &lt;span class="nodejs-lines" data-query="addtable"&gt;
-    &lt;/span&gt;
-    skdhdfj
+    &lt;/span&gt;</br>
+    
     &lt;span class="dotnet-lines" data-query="addtable"&gt;
     &lt;/span&gt;</br>
     
