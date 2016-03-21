@@ -8,5 +8,8 @@ Tutorials for CloudBoost hosted at https://tutorials.cloudboost.io
 # Guide to write tutorials
 (to make compatible with https://tutorials.cloudboost.io)
 
+## Menu Headings
+Menu headings with start with #(h1 tag), without full stop(.) at the end.
+
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
