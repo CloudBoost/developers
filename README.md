@@ -53,16 +53,16 @@ eg:
     
 You can add more programming languages codes followed one after one of same functionality.</br>
 eg:
-    ```
-    <span class="java-lines" data-query="addtable">
-    </span>
+```
+<span class="java-lines" data-query="addtable">
+</span>
     
-    <span class="nodejs-lines" data-query="addtable">
-    </span>
+<span class="nodejs-lines" data-query="addtable">
+</span>
     
-    <span class="dotnet-lines" data-query="addtable">;
-    </span>;
-    ```
+<span class="dotnet-lines" data-query="addtable">;
+</span>;
+```
     
 
 #Contribute
