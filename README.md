@@ -42,7 +42,7 @@ Multi lines code snippets act as code tabs of different programming languages. T
 
 eg: 
 ```
-<span class="java-lines" data-query="addtable">`
+<span class="java-lines" data-query="addtable">
 `` `
 your code line 1
 your code line 2
