@@ -18,9 +18,17 @@ Menu headings should with start with #(h1 tag), without full stop(.) at the end.
 Small code or one line code snippets should enclosed in span tags with class="tut-snippet".</br>
 eg: &lt;span class="tut-snippet"&gt;var x=150; &lt;/span&gt;
 
-## Blockquotes
-Blockquotes should enclosed in span tags with class="tut-info".</br>
-eg: &lt;span class="tut-info"&gt;Focus &lt;/span&gt;
+## Info
+Info quotes should enclosed in span tags with class="tut-info".</br>
+eg: &lt;span class="tut-info"&gt;Info &lt;/span&gt;
+
+## Important quotes
+Important quotes should enclosed in span tags with class="tut-imp".</br>
+eg: &lt;span class="tut-imp"&gt;important &lt;/span&gt;
+
+## Warning quotes
+Warning quotes should enclosed in span tags with class="tut-warning".</br>
+eg: &lt;span class="tut-warning"&gt;Warning &lt;/span&gt;
 
 ## Images
 For full length images, use image tags with class="full-length-img".</br>
