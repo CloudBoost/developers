@@ -44,21 +44,25 @@ eg:
     ```
     <span class="java-lines" data-query="addtable">
     ```
-    first line
-    second line
-    third line
+    your code line 1
+    your code line 2
+    your code line 3
     ```
     </span>
     ```
     
 You can add more programming languages codes followed one after one of same functionality.</br>
-eg:</br>
-    &lt;span class="java-lines" data-query="addtable"&gt;
-    &lt;/span&gt;</br>
-    &lt;span class="nodejs-lines" data-query="addtable"&gt;
-    &lt;/span&gt;</br>
-    &lt;span class="dotnet-lines" data-query="addtable"&gt;
-    &lt;/span&gt;</br>
+eg:
+    ```
+    <span class="java-lines" data-query="addtable">
+    </span>
+    
+    <span class="nodejs-lines" data-query="addtable">
+    </span>
+    
+    <span class="dotnet-lines" data-query="addtable">;
+    </span>;
+    ```
     
 
 #Contribute
