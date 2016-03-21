@@ -20,18 +20,18 @@ eg: ```<span class="tut-info">Info</span>```
 
 ## Important quotes
 Important quotes should enclosed in span tags with class="tut-imp".</br>
-eg: &lt;span class="tut-imp"&gt;important &lt;/span&gt;
+eg: ```<span class="tut-imp">important </span>```
 
 ## Warning quotes
 Warning quotes should enclosed in span tags with class="tut-warning".</br>
-eg: &lt;span class="tut-warning"&gt;Warning &lt;/span&gt;
+eg: ```<span class="tut-warning">Warning </span>
 
 ## Images
 For full length images, use image tags with class="full-length-img".</br>
-eg: &lt;img class="full-length-img" alt="" src="path/image.png"&gt;</br></br>
+eg: ```<img class="full-length-img" alt="" src="path/image.png">```
 
 For center/mid length images, use image tags with class="center-img".</br>
-eg: &lt;img class="center-img" alt="" src="path/image.png"&gt;
+eg: ```<img class="center-img" alt="" src="path/image.png">
 
 ## Small / One line code snippets
 Small code or one line code snippets should enclosed in span tags with class="tut-snippet".</br>
