@@ -1288,8 +1288,10 @@ Paginate returns only the specified number of objects from the database. It take
 ==JavaScript==
 <span class="js-lines" data-query="paginate">
 ```
-//paginate
-query.paginate(2,10,{
+var currentPageNo=2; //Current Page number
+var totalItemsInPage=10; //total items in page
+//
+query.paginate(currentPageNo,totalItemsInPage,{
   success : function(objectsList,count,totalPages){
       //objectsList
       //count
