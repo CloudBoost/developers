@@ -24,29 +24,31 @@ eg: ```<span class="tut-imp">important </span>```
 
 ## Warning quotes
 Warning quotes should enclosed in span tags with class="tut-warning".</br>
-eg: ```<span class="tut-warning">Warning </span>
+eg: ```<span class="tut-warning">Warning </span>```
 
 ## Images
 For full length images, use image tags with class="full-length-img".</br>
 eg: ```<img class="full-length-img" alt="" src="path/image.png">```
-
+</br>
 For center/mid length images, use image tags with class="center-img".</br>
-eg: ```<img class="center-img" alt="" src="path/image.png">
+eg: ```<img class="center-img" alt="" src="path/image.png">```
 
 ## Small / One line code snippets
 Small code or one line code snippets should enclosed in span tags with class="tut-snippet".</br>
-eg: &lt;span class="tut-snippet"&gt;var x=150; &lt;/span&gt;
+eg: ```<span class="tut-snippet">var x=150; </span>```
 
 ## Multi line code snippets
 Multi lines code snippets act as code tabs of different programming languages. This multi lines code should be written in span tags with class="(name of programming language)-lines" and with data attribute data-query="(functionality name of this code)". The main code should enclosed in ```(original markdown for code snippet) inside span tags.
 
-eg: &lt;span class="java-lines" data-query="addtable"&gt;</br>
+eg: 
+    ```<span class="java-lines" data-query="addtable">
     ```
     first line
     second line
     third line
-    ```</br>
-    &lt;/span&gt;</br></br>
+    ```
+    </span>
+    ```
     
 You can add more programming languages codes followed one after one of same functionality.</br>
 eg:</br>
