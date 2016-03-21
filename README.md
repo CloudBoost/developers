@@ -13,7 +13,11 @@ Menu headings should with start with #(h1 tag), without full stop(.) at the end.
 
 ## Small / One line code snippets
 Small code or one line code snippets should enclosed in span tags with class="tut-snippet".</br>
-eg: &lt;span class="tut-snippet"&gt;var &lt;/span&gt;
+eg: &lt;span class="tut-snippet"&gt;var x=150; &lt;/span&gt;
+
+## Blockquotes
+Blockquotes should enclosed in span tags with class="tut-info".</br>
+eg: &lt;span class="tut-info"&gt;Focus &lt;/span&gt;
 
 #Contribute
 If you want to contribute to this repo. Please make sure you spell check everything and make sure you have tested the code with the live CloudBoost API before sending us the pull request.
