@@ -6,7 +6,10 @@
 Tutorials for CloudBoost hosted at https://tutorials.cloudboost.io
 
 # Guide to write tutorials
-(to make compatible with https://tutorials.cloudboost.io)
+(to make compatible with https://tutorials.cloudboost.io)</br>
+
+Mastering the Markdown
+https://guides.github.com/features/mastering-markdown
 
 ## Menu Headings
 Menu headings should with start with #(h1 tag), without full stop(.) at the end.
