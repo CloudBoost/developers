@@ -8,7 +8,7 @@ Tutorials for CloudBoost hosted at https://tutorials.cloudboost.io
 # Guide to write tutorials
 (to make compatible with https://tutorials.cloudboost.io)</br>
 
-Apart from Markdown[Guide for markdown](https://guides.github.com/features/mastering-markdown), following are the guide to make compatible to cloudboost tutorials site.
+Apart from Markdown [Guide for markdown](https://guides.github.com/features/mastering-markdown), following are the guide to make compatible to cloudboost tutorials site.
 
 
 ## Menu Headings
