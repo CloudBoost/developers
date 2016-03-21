@@ -75,6 +75,48 @@ obj.acl.SetUserReadAccess(user.id, true);
 await obj.SaveAsync();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="read">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {   "_type": "custom",
+    "expires": null,
+    ${column_name}: ${column_value},
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "name"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": [],
+          "user": ["userId"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 In this case, only that particular user will be able to read that object from the database. 
 
 
@@ -143,6 +185,48 @@ obj.acl.SetUserWriteAccess(user.id, true);
 await obj.SaveAsync();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="write">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {   "_type": "custom",
+    "expires": null,
+    ${column_name}: ${column_value},
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "name"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["userId"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 In this case, Only that particular user will be able to write that object to the database.
 
 #Role Permissions
@@ -213,6 +297,47 @@ await obj.SaveAsync();
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="roleread">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {   "_type": "custom",
+    "expires": null,
+    ${column_name}: ${column_value},
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "name"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": ["roleId"],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
 In this case, All of the users which belong to that role will be able to read that object from the database. 
 
 ###Write Access
@@ -278,6 +403,47 @@ var obj = new CB.CloudObject("Student");
 obj.acl = new ACL();
 obj.acl.SetRoleWriteAccess(role.id, true);
 await obj.SaveAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="rolewrite">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {   "_type": "custom",
+    "expires": null,
+    ${column_name}: ${column_value},
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "name"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": ["roleId"],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 
@@ -351,6 +517,48 @@ await obj.SaveAsync();
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="publicread">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {   "_type": "custom",
+    "expires": null,
+    ${column_name}: ${column_value},
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "name"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
+
 In this case, all of the users in your app will be able to read that object from the database. 
 
 ###Write Access
@@ -416,6 +624,47 @@ var obj = new CB.CloudObject("Student");
 obj.acl = new ACL();
 obj.acl.SetPublicWriteAccess( true);
 await obj.SaveAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="publicwrite">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "document": {   "_type": "custom",
+    "expires": null,
+    ${column_name}: ${column_value},
+    "_modifiedColumns": ["createdAt",
+    "updatedAt",
+    "ACL",
+    "expires",
+    "name"],
+    "_tableName": "data",
+    "ACL": {
+      "write": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      },
+      "read": {
+        "allow": {
+          "role": [],
+          "user": ["all"]
+        },
+        "deny": {
+          "role": [],
+          "user": []
+        }
+      }
+    },
+    "_isModified": true}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
 

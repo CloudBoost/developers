@@ -65,6 +65,27 @@ query.EqualTo("name","John");
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="basic">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "name": "john"
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Not Equal To
 
 ==JavaScript==
@@ -122,6 +143,29 @@ query.NotEqualTo("name","John");
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="notequal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "name": {
+      "$ne": "adam"
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Greater Than
 
 ==JavaScript==
@@ -179,6 +223,29 @@ query.GreaterThan("age", 25);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="greaterthan">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "age": {
+      "$gt": 30
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Less Than
 
 ==JavaScript==
@@ -236,6 +303,29 @@ query.LessThan("age", 15);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==curl==
+<span class="curl-lines" data-query="lessthan">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "age": {
+      "$lt": 30
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Greater Than and Equal To
 
 ==JavaScript==
@@ -293,6 +383,29 @@ query.GreaterThanEqualTo("age", 15);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="greaterequal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "age": {
+      "$gte": 30
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Less Than and Equal To
 
 ==JavaScript==
@@ -350,6 +463,29 @@ query.LessThanEqualTo("age", 15);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="lessequal">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "age": {
+      "$lte": 30
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Starts With
 
 >Info: Starts with only works with <span class="tut-snippet">Text</span> type. 
@@ -409,6 +545,30 @@ query.StartsWith("name","J");
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="startwith">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "name": {
+      "$options": "im",
+      "$regex": "^b"
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Substring
 
 Substring returns all the `CloudObject` which contains the given string.
@@ -449,6 +609,13 @@ query.find({
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="Substring">
+```
+//
+```
+</span>
+
 ###Regex
 
 Returns all the `CloudObject` which matches the regex.
@@ -482,6 +649,13 @@ query.find({
   error: function(error) {
   }
 });
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="regex">
+```
+//
 ```
 </span>
 
@@ -552,6 +726,31 @@ query.ContainedIn("courses", list);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="containedin">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "name": {
+      "$nin": [],
+      "$in": ["adam",
+      "bengi"]
+    },
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Does not contain
 
 ==JavaScript==
@@ -617,6 +816,29 @@ query.NotContainedIn("courses", list);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="notcontained">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "name": {
+      "$nin": ["ben"]
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Contains All
 
 ==JavaScript==
@@ -682,6 +904,29 @@ query.ContainsAll("courses", list);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="containsall">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "name": {
+      "$all": ["adam","bengi"]
+    },
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 #AND and OR
 
 By adding two or more constraints on a single query object will AND it by default. For example: 
@@ -747,6 +992,30 @@ query.GreaterThan("age", 10);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="and">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "name": "bengi",
+    "age": {
+      "$gt": 30
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 
 If you want to **OR** a query, you can: 
 
@@ -820,6 +1089,39 @@ List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="or">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {    
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "$or": [{
+      "$includeList": [],
+      "$include": [],
+      "age": {
+        "$gt": 30
+      }
+    },
+    {
+      "$includeList": [],
+      "$include": [],
+      "age": {
+        "$lt": 60
+      }
+    }]
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 #Order By
 
 ==JavaScript==
@@ -859,6 +1161,43 @@ query.orderByDesc('name');
 query.OrderByAsc("name");
 //You can also order by Desending
 query.OrderByDesc("name");
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="orderby">
+```
+//order by ascending 
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+    "age": 1
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+//
+//order by descending
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+    "age": -1
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -903,6 +1242,42 @@ query.skip(10);
 query.Limit =10;
 //skip
 query.Skip = 10;
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="limitskip">
+```
+//limit
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 5,
+  "sort": {
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+//
+//
+//skip
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 5
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -957,6 +1332,26 @@ Dictinary<string, Object> result = query.Paginate(2, 10);
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="paginate">
+```
+//paginate
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": ${total_items_per_page},
+  "sort": {
+  },
+  "select": {    
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": ${(page_no*total_items_per_page)-total_items_per_page}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 #Select Column
 
 You can return only the specified column data in an object by using <span class="tut-snippet">SelectColumn</span> function. You can also choose NOT to return the data from that column by using the <span class="tut-snippet">DoNotSelectColumn</span> function.
@@ -998,6 +1393,50 @@ query.doNotSelectColumn('age');
 query.SelectColumn("name");
 //do not select
 query.DoNotSelectColumn("age");
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="selectcol">
+```
+//select
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {
+    "updatedAt": 1,
+    "_type": 1,
+    "_id": 1,
+    "createdAt": 1,
+    "age": 1,
+    "name": 1,
+    "_tableName": 1,
+    "ACL": 1
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+//
+//do not select
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {
+    "name": 0
+  },
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -1053,7 +1492,25 @@ List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
-FindOne only returns the top object thatis matched by the query. It returns a CloudObjects / CloudUser / CloudRole.
+==curl==
+<span class="curl-lines" data-query="query">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": []
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+FindOne only returns the top object that is matched by the query. It returns a CloudObjects / CloudUser / CloudRole.
 
 ==JavaScript==
 <span class="js-lines" data-query="findone">
@@ -1099,6 +1556,26 @@ query.findOne(new CloudObjectCallback(){
 <span class="dotnet-lines" data-query="findone">
 ```
 CB.CloudObject result = await query.FindOne();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="findone">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "ben": {
+      "$exists": false
+    }
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/findOne'
 ```
 </span>
 
@@ -1152,6 +1629,25 @@ CB.CloudObject result = await query.GET("id");
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="findid">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "_id": "id"
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 #Count
 
 Counts the number of object that satisfies the query.
@@ -1199,6 +1695,25 @@ public void done(int x, CloudException t) {
 <span class="dotnet-lines" data-query="count">
 ```
 int result = await query.Count();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="count">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "_id": "id"
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/count'
 ```
 </span>
 
@@ -1253,6 +1768,25 @@ query.distinct('age',new CloudObjectArrayCallback(){
 <span class="dotnet-lines" data-query="distinct">
 ```
 List<CB.CloudObject> result = await query.Distict("columnName");
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="distinct">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "name": "id"
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/distinct'
 ```
 </span>
 
@@ -1325,6 +1859,24 @@ List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="simplejoin">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 **Solution :**
 
 To solve this, you need to call the <span class="tut-snippet">include</span> function of CB.CloudQuery Object and pass in the ColumnName. 
@@ -1393,6 +1945,24 @@ List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="include">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": ["course"],
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
 ###Multi level joins
 
 You can also do multi-level join on your CloudObject. 
@@ -1425,6 +1995,24 @@ query.include('course.teacher');
 ```
 query.Include("course.teacher");
 List<CB.CloudObject> result = await query.Find();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="multijoin">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": ["course.teacher"],
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -1495,6 +2083,25 @@ var query = new CB.CloudQuery("Custom");
 //third parameter is the radius to check in meters. 
 query.Near("location", loc, 100000); 
 List<CB.CloudObject> result = await query.Find();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="near">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "location": "{ '$geometry': {coordinates:[80.3,17.7] , type:'Point' }, '$maxDistance': 100000.0, '$minDistance': 0.0}"
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -1576,5 +2183,24 @@ var query = new CB.CloudQuery("Custom");
 //third parameter is the radius to check in meters. 
 query.Near("location", loc, 100000); 
 List<CB.CloudObject> result = await query.Find();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="geowithin">
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+  "limit": 10,
+  "sort": {
+  },
+  "select": {},
+  "query": {
+    "$includeList": [],
+    "$include": [],
+    "location": "{ '$geometry':{ 'type': 'Polygon', 'coordinates': [78.9,18.4,78.4,17.4,80.4,17.7]} }"
+  },
+  "skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>

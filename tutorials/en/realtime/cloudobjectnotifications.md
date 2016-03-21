@@ -52,6 +52,13 @@ void action(Object result){
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="create">
+```
+//
+```
+</span>
+
 Event can be of three types: **created**, **updated** and **deleted**. You can listen to any or all of the events on any table you like. 
 
 You can even add events as an array. For example: 
@@ -99,6 +106,14 @@ void action(Object result){
 }
 ```
 </span>
+
+==cURL==
+<span class="curl-lines" data-query="createupdate">
+```
+//
+```
+</span>
+
 >Info: CloudObject Notifications are only fired when that particular client has a read access to that object. Please read a section on [ACL](?lang=en&category=security&subcategory=acl) for more information. 
 
 
@@ -163,6 +178,14 @@ void action(Object result){
 }
 ```
 </span>
+
+==curl==
+<span class="curl-lines" data-query="query">
+```
+//
+```
+</span>
+
 #Stop listening
 
 To stop listening. You can call the <span class="tut-snippet"> off</span> method/function of CloudObject class and pass the event as a second parameter which you want to stop listening to. 
@@ -194,6 +217,13 @@ CloudObject.off('Student', 'created');
 <span class="dotnet-lines" data-query="off">
 ```
 CB.CloudObject.Off("Student");
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="off">
+```
+//
 ```
 </span>
 

@@ -59,6 +59,13 @@ void action(Object result){
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="on">
+```
+//
+```
+</span>
+
 ##Publishing messages to channels
 
 Now as we're listening to channel form one side and we can publish messages to those channels to fire the callback which was attached to the event. 
@@ -91,6 +98,13 @@ CB.CloudNotification.Publsh("sample", "data");
 ```
 </span>
 
+==cURL==
+<span class="curl-lines" data-query="publish">
+```
+//
+```
+</span>
+
 ##Stop listening
 
 To stop listening to notifications from Channels you need to call the <span class="tut-snippet"> off</span> method/function of CloudNotifications class.
@@ -120,6 +134,13 @@ CloudNotification.off('ChannelName');
 <span class="dotnet-lines" data-query="off">
 ```
 CB.CloudNotification.Off("sample");
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="off">
+```
+//
 ```
 </span>
 
