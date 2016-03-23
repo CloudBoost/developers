@@ -322,6 +322,14 @@ var roles = user.get('roles');
 ```
 </span>
 
+==.NET==
+<span class="dotnet-lines" data-query="get">
+```
+//roles is an array of CloudRole
+List<CB.CloudRole> roles = user.Get("roles");
+```
+</span>
+
 ==cURL==
 <span class="curl-lines" data-query="get">
 ```
@@ -358,6 +366,14 @@ user.removeFromRole(role, {
     //erorr if something goes wrong
   }
 });
+```
+</span>
+
+==.NET==
+<span class="nodejs-lines" data-query="remove">
+```
+//role is a CB.CloudRole object type
+await user.RemoveFromRole(role);
 ```
 </span>
 

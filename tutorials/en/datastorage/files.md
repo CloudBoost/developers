@@ -55,7 +55,7 @@ byte[] data = System.Text.Encoding.UTF8.GetBytes(".net cloudfile testing!");
 string name = "sample.txt";
 string type = "txt";
 var file = new CB.CloudFile(data, name, type);
-var rsponse = file.SaveAsync();
+var rsponse = await file.SaveAsync();
 ```
 </span>
 
@@ -154,6 +154,13 @@ file.save(new CloudStringCallback(){
 ```
 </span>
 
+==.NET==
+<span class="dotnet-lines" data-query="setblob">
+```
+//
+```
+</span>
+
 ==cURL==
 <span class="curl-lines" data-query="setblob">
 ```
@@ -203,6 +210,13 @@ public void done(CloudObject x,CloudException t)throws CloudException {
 		//x has File Object
 	}
 });
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="savefile">
+```
+//
 ```
 </span>
 

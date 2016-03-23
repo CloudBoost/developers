@@ -873,6 +873,13 @@ Column column = table.getColumn("name"); //Column Object
 ```
 </span>
 
+==.NET==
+<span class="dotnet-lines" data-query="getcolsalt">
+```
+CB.Column column = table.GetColumn("name"); //Column Object
+```
+</span>
+
 ==cURL==
 <span class="curl-lines" data-query="getcolsalt">
 ```
@@ -927,6 +934,16 @@ table.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="editcol">
+```
+CB.Column column = table.GetColumn("name"); //Column Object
+column.required = true;
+table.UpdateColumn(column);
+await table.SaveAsync();
 ```
 </span>
 

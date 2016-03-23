@@ -513,6 +513,13 @@ CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
 ```
 </span>
 
+==.NET==
+<span class="dotnet-lines" data-query="chagepassword">
+```
+await CloudUser.Current.ChangePassword("oldPassword","newPassword");
+```
+</span>
+
 ==cURL==
 <span class="curl-lines" data-query="chagepassword">
 ```
@@ -570,6 +577,17 @@ CloudUser.resetPassword("email",new CloudStringCallback(){
 			//e
 	}
 });
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="resetpassword">
+```
+var err = await CloudUser.CurrentUser.ResetPassword("email");
+if(err == null)
+{
+    //password changed
+}
 ```
 </span>
 

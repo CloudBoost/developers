@@ -609,6 +609,17 @@ query.find({
 ```
 </span>
 
+==.NET==
+<span class="dotnet-lines" data-query="Substring">
+```
+var query = new CB.CloudQuery("Student");
+var value = new ArrayList();
+value.Add("on");
+query.SubString("name", value);
+List<CB.CloudObject> list = await query.FindAsync();
+```
+</span>
+
 ==cURL==
 <span class="curl-lines" data-query="Substring">
 ```
@@ -649,6 +660,15 @@ query.find({
   error: function(error) {
   }
 });
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="regex">
+```
+var query = new CB.CloudQuery("Student");
+query.RegEx("name", "^/*.on*./");
+List<CB.CloudObject> list = await query.FindAsync();
 ```
 </span>
 
