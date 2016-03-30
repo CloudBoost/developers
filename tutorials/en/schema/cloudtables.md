@@ -23,7 +23,7 @@ var table = new CB.CloudTable('TableName');
 ==Java==
 <span class="java-lines" data-query="create">
 ```
-CloudTable table = new CloudTable('TableName');
+CloudTable table = new CloudTable("TableName");
 ```
 </span>
 
@@ -74,8 +74,8 @@ table.save({
 ==Java==
 <span class="java-lines" data-query="savecol">
 ```
-CloudTable table = new CloudTable('Student');
-Column column = new Column('Name', 'Text');
+CloudTable table = new CloudTable("Student");
+Column column = new Column("Name", "Text");
 table.addColumn(column);
 table.save(new CloudObjectCallback(){
 	@Override
@@ -229,9 +229,9 @@ column.dataType = 'Text';
 <span class="java-lines" data-query="createcol">
 ```
 Column column = new Column("Name");
-column.required = true;
-column.unique = false;
-column.dataType = 'Text';
+column.setRequired(true);
+column.setUnique(false);
+column.setDataType(DataType.Text);
 ```
 </span>
 
@@ -923,7 +923,7 @@ table.save({
 <span class="java-lines" data-query="editcol">
 ```
 Column column = table.getColumn("Name");
-column.required = true; 
+column.setRequired(true); 
 table.updateColumn(column);
 table.save(new CloudObjectCallback(){
 	@Override

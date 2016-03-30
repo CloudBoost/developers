@@ -121,7 +121,7 @@ CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 ==Java==
 <span class="java-lines" data-query="init">
 ```
-CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
+CloudApp.init("YOUR APP ID", "YOUR APP KEY");
 ```
 </span>
 
@@ -178,8 +178,8 @@ obj.save({
 ==Java==
 <span class="java-lines" data-query="save">
 ```
-CloudObject obj = new CloudObject('TableName');
-obj.set('ColumnName', data);
+CloudObject obj = new CloudObject("TableName");
+obj.set("ColumnName", data);
 obj.save(new CloudObjectCallback(){
 	@Override
 	public void done(CloudObject x, CloudException t) {	
@@ -281,8 +281,8 @@ query.find({
 ==Java==
 <span class="java-lines" data-query="query">
 ```
-CloudQuery query = new CloudQuery('TableName');
-query.equalTo('ColumnName', data);
+CloudQuery query = new CloudQuery("TableName");
+query.equalTo("ColumnName", data);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] x, CloudException t) {	

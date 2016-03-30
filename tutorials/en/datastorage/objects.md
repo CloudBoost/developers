@@ -23,7 +23,7 @@ var obj = new CB.CloudObject('TableName');
 ==Java==
 <span class="java-lines" data-query="create">
 ```
-CloudObject obj = new CloudObject('TableName');
+CloudObject obj = new CloudObject("TableName");
 ```
 </span>
 
@@ -443,7 +443,7 @@ obj.save({
 ==Java==
 <span class="java-lines" data-query="update">
 ```
-obj.set('ColumnName', newData);
+obj.set("ColumnName", newData);
 obj.save(new CloudObjectCallback(){
 	@Override
 	public void done(CloudObject x, CloudException t) {	

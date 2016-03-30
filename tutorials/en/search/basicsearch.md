@@ -1323,7 +1323,7 @@ cs.searchFilter.and(searchFilter1);
 <span class="java-lines" data-query="filterand">
 ```
 SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo("name", 'John');
+searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
 cs.searchFilter.and(searchFilter1);
@@ -1500,9 +1500,9 @@ cs.search({
 ```
 CloudSearch cs = new CloudSearch("Student",null,null);
 //
-cs.orderByAsc('age'); 
+cs.orderByAsc("age"); 
 // OR
-cs.orderByDesc('age'); 
+cs.orderByDesc("age");
 //
 cs.search(new CloudObjectArrayCallback(){
 	@Override

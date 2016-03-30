@@ -43,7 +43,7 @@ CB.CloudNotification.on('ChannelName',function(data){
 ==Java==
 <span class="java-lines" data-query="on">
 ```
-CloudNotification.on('ChannelName',new CloudNotificationCallback(){
+CloudNotification.on("ChannelName",new CloudNotificationCallback(){
 		//data can be anything you publish to a channel. Can be a string, number, object etc. 
 }});
 ```
@@ -87,7 +87,7 @@ CB.CloudNotification.publish('ChannelName','data');
 ==Java==
 <span class="java-lines" data-query="publish">
 ```
-CloudNotification.publish('ChannelName','data');
+CloudNotification.publish("ChannelName","data");
 ```
 </span>
 
@@ -126,7 +126,7 @@ CB.CloudNotification.off('ChannelName');
 ==Java==
 <span class="java-lines" data-query="off">
 ```
-CloudNotification.off('ChannelName');
+CloudNotification.off("ChannelName");
 ```
 </span>
 

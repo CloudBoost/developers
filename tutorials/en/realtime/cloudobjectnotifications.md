@@ -30,7 +30,7 @@ CB.CloudObject.on('TableName', 'created', function(obj){
 ==Java==
 <span class="java-lines" data-query="create">
 ```
-CloudObject.on('TableName', 'created', new CloudObjectCallback(){
+CloudObject.on("TableName", "created", new CloudObjectCallback(){
 @Override
 public void done(CloudObject x, CloudException t) {	
 	if(x != null){
@@ -82,7 +82,7 @@ CB.CloudObject.on('TableName', ['created','updated'], function(obj){
 ==Java==
 <span class="java-lines" data-query="createupdate">
 ```
-CloudObject.on('TableName', new String[]{'created','updated'}, new CloudObjectCallback(){
+CloudObject.on("TableName", new String[]{"created","updated"}, new CloudObjectCallback(){
 @Override
 public void done(CloudObject x, CloudException t) {	
 	if(x != null){
@@ -150,10 +150,10 @@ CB.CloudObject.on('Student', 'created', query, function(obj){
 ==Java==
 <span class="java-lines" data-query="query">
 ```
-CloudQuery query = new CloudQuery('Student');
-query.equalTo('age',10);
+CloudQuery query = new CloudQuery("Student");
+query.equalTo("age",10);
 //
-CloudObject.on('Student', 'created', query, new CloudObjectCallback(){
+CloudObject.on("Student", "created", query, new CloudObjectCallback(){
 @Override
 public void done(CloudObject x, CloudException t) {	
 	if(x != null){
@@ -209,7 +209,7 @@ CB.CloudObject.off('Student', 'created');
 ==Java==
 <span class="java-lines" data-query="off">
 ```
-CloudObject.off('Student', 'created');
+CloudObject.off("Student", "created");
 ```
 </span>
 

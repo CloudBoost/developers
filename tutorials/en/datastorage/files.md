@@ -402,7 +402,7 @@ console.log(file.name);
 ==Java==
 <span class="java-lines" data-query="viewname">
 ```
-file.setFileName('name','abc.txt');
+file.setFileName("name","abc.txt");
 System.out.print(file.getFileName());
 ```
 </span>

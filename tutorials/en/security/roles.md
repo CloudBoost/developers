@@ -195,7 +195,19 @@ user.addToRole(role, {
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="add">
+```
+//user is an instance of CloudUser and role is an instance of CloudRole
+user.addToRole(null, new CloudUserCallback() {
+	@Override
+	public void done(CloudUser user, CloudException e) throws CloudException {
+				
+				
+	}
+});
+```
+</span>
 ==.NET==
 <span class="dotnet-lines" data-query="add">
 ```
@@ -294,7 +306,12 @@ var isInRole = user.isInRole(role);
 var isInRole = user.isInRole(role); 
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="check">
+```
+boolean isInRole = user.isInRole(role); 
+```
+</span>
 ==.NET==
 <span class="dotnet-lines" data-query="check">
 ```
@@ -329,7 +346,12 @@ var roles = user.get('roles');
 List<CB.CloudRole> roles = user.Get("roles");
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="get">
+```
+String[] roles=user.getRoles();
+```
+</span>
 ==cURL==
 <span class="curl-lines" data-query="get">
 ```
@@ -376,7 +398,19 @@ user.removeFromRole(role, {
 await user.RemoveFromRole(role);
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="remove">
+```
+user.removeFromRole(null, new CloudUserCallback() {
+			
+	@Override
+	public void done(CloudUser user, CloudException e) throws CloudException {
+				
+				
+	}
+});
+```
+</span>
 ==cURL==
 <span class="curl-lines" data-query="remove">
 ```

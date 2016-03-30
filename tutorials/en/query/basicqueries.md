@@ -44,7 +44,7 @@ query.find({
 <span class="java-lines" data-query="basic">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.equalTo('name','John');
+query.equalTo("name","John");
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] x, CloudException t) {	
@@ -122,7 +122,7 @@ query.find({
 <span class="java-lines" data-query="notequal">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.notEqualTo('name','John');
+query.notEqualTo("name","John");
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -202,7 +202,7 @@ query.find({
 <span class="java-lines" data-query="greaterthan">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.greaterThan('age',15);
+query.greaterThan("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -282,7 +282,7 @@ query.find({
 <span class="java-lines" data-query="lessthan">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.lessThan('age',15);
+query.lessThan("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -362,7 +362,7 @@ query.find({
 <span class="java-lines" data-query="greaterequal">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.greaterThanEqualTo('age',15);
+query.greaterThanEqualTo("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -442,7 +442,7 @@ query.find({
 <span class="java-lines" data-query="lessequal">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.lessThanEqualTo('age',15);
+query.lessThanEqualTo("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -524,7 +524,7 @@ query.find({
 <span class="java-lines" data-query="startwith">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.startsWith('name','J');
+query.startsWith("name","J");
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -608,7 +608,23 @@ query.find({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="Substring">
+```
+//
+CloudQuery query=new CloudQuery("data");
+query.subString("name", "on");
+//OR also works with an array. 
+query.subString("name",new String[]{"on","in"});
+query.find(new CloudObjectArrayCallback() {
+	@Override
+	public void done(CloudObject[] x, CloudException t) throws CloudException {
+		
+				
+	}
+});
+```
+</span>
 ==.NET==
 <span class="dotnet-lines" data-query="Substring">
 ```
@@ -620,10 +636,54 @@ List<CB.CloudObject> list = await query.FindAsync();
 ```
 </span>
 
-==cURL==
+==curl==
 <span class="curl-lines" data-query="Substring">
 ```
-//
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": {
+		
+	},
+	"select": {
+		
+	},
+	"query": {
+		"$includeList": [],
+		"$include": [],
+		"name": {
+			"$regex": ".*on.*"
+		}
+	},
+	"skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+
+//OR, alternatively use array
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"limit": 10,
+	"sort": {
+		
+	},
+	"select": {
+		
+	},
+	"query": {
+		"$includeList": [],
+		"$include": [],
+		"$or": [{
+			"name": {
+				"$regex": ".*on.*"
+			}
+		},
+		{
+			"name": {
+				"$regex": ".*hn.*"
+			}
+		}]
+	},
+	"skip": 0
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -662,7 +722,21 @@ query.find({
 });
 ```
 </span>
-
+==Java==
+<span class="java-lines" data-query="regex">
+```
+//
+CloudQuery query=new CloudQuery("data");
+query.regex("name", "^/*.on*./");
+query.find(new CloudObjectArrayCallback() {
+	@Override
+	public void done(CloudObject[] x, CloudException t) throws CloudException {
+				
+				
+	}
+});
+```
+</span>
 ==.NET==
 <span class="dotnet-lines" data-query="regex">
 ```
@@ -672,10 +746,29 @@ List<CB.CloudObject> list = await query.FindAsync();
 ```
 </span>
 
-==cURL==
+==curl==
 <span class="curl-lines" data-query="regex">
 ```
 //
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+	"query": {
+		"$include": [],
+		"$includeList": [],
+		"name": {
+			"$regex": "^/*.on*./"
+		}
+	},
+	"select": {
+		
+	},
+	"sort": {
+		
+	},
+	"limit": 10,
+	"skip": 0
+}
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
 
@@ -722,7 +815,7 @@ query.find({
 ```
 CloudQuery query = new CloudQuery("Student");
 //find Students who are in JavaScript OR C# course
-query.containedIn('courses', ['JavaScript', 'C#']);
+query.containedIn("courses", new String[]{"JavaScript", "C#"});
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -812,7 +905,7 @@ query.find({
 ```
 CloudQuery query = new CloudQuery("Student");
 //find Students who are in NOT in JavaScript AND C# course
-query.notContainedIn('courses', ['JavaScript', 'C#']);
+query.notContainedIn("courses", new String[]{"JavaScript", "C#"});
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -900,7 +993,7 @@ query.find({
 ```
 CloudQuery query = new CloudQuery("Student");
 //find Students who are in JavaScript AND C# course
-query.containsAll('courses', ['JavaScript', 'C#']);
+query.containsAll("courses", new String[]{"JavaScript", "C#"});
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -989,8 +1082,8 @@ query.find({
 <span class="java-lines" data-query="and">
 ```
 CloudQuery query = new CloudQuery("Student");
-query.equalTo('name', 'John');
-query.greaterThan('age', 10);
+query.equalTo("name", "John");
+query.greaterThan("age", 10);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t) {	
@@ -1081,9 +1174,9 @@ query.find({
 <span class="java-lines" data-query="or">
 ```
 CloudQuery query1 = new CloudQuery("Student");
-query1.equalTo('name', 'John');
+query1.equalTo("name", "John");
 CloudQuery query2 = new CloudQuery("Student");
-query2.greaterThan('age', 10);
+query2.greaterThan("age", 10);
 CloudQuery query = CB.CloudQuery.or(query1,query2); //OR it. 
 query.find(new CloudObjectArrayCallback(){
 	@Override
@@ -1168,9 +1261,9 @@ query.orderByDesc('name');
 <span class="java-lines" data-query="orderby">
 ```
 //order by Ascending
-query.orderByAsc('name');
+query.orderByAsc("name");
 //You can also order by Desending
-query.orderByDesc('name');
+query.orderByDesc("name");
 ```
 </span>
 
@@ -1342,7 +1435,16 @@ query.paginate(2,10,{
 ==Java==
 <span class="java-lines" data-query="paginate">
 ```
-//Building..
+//paginate
+query.paginate(1, null, new PaginatorCallback() {
+	@Override
+	public void done(CloudObject[] objects, Integer count, Integer totalPages,
+		CloudException t) throws CloudException {
+			if(t!=null)
+									
+			else
+	}
+});
 ```
 </span>
 
@@ -1402,9 +1504,9 @@ query.doNotSelectColumn('age');
 <span class="java-lines" data-query="selectcol">
 ```
 //select
-query.selectColumn('name');
+query.selectColumn("name");
 //do not select
-query.doNotSelectColumn('age');
+query.doNotSelectColumn("age");
 ```
 </span>
 
@@ -1632,7 +1734,7 @@ query.findById('id', {
 ==Java==
 <span class="java-lines" data-query="findid">
 ```
-query.findById('id', new CloudObjectCallback(){
+query.findById("id", new CloudObjectCallback(){
 	@Override
 	public void done(CloudObject obj, CloudException t) {	
 		if(x != null)
@@ -1774,7 +1876,7 @@ query.distinct('age',{
 ==Java==
 <span class="java-lines" data-query="distinct">
 ```
-query.distinct('age',new CloudObjectArrayCallback(){
+query.distinct("age",new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
 		if(t != null)
@@ -1861,7 +1963,7 @@ query.find({
 ==Java==
 <span class="java-lines" data-query="simplejoin">
 ```
-CloudQuery query = new CloudQuery('Student');
+CloudQuery query = new CloudQuery("Student");
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
@@ -1942,8 +2044,8 @@ query.find({
 ==Java==
 <span class="java-lines" data-query="include">
 ```
-CloudQuery query = new CloudQuery('Student');
-query.include('course');
+CloudQuery query = new CloudQuery("Student");
+query.include("course");
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
@@ -2008,7 +2110,7 @@ query.include('course.teacher');
 ==Java==
 <span class="java-lines" data-query="multijoin">
 ```
-query.include('course.teacher'); 
+query.include("course.teacher"); 
 ```
 </span>
 
@@ -2082,7 +2184,7 @@ query.find({
 <span class="java-lines" data-query="near">
 ```
 CloudGeoPoint loc = new CloudGeoPoint(17.7,80.3);
-CloudQuery query = new CloudQuery('Custom');
+CloudQuery query = new CloudQuery("Custom");
 //third parameter is the radius to check in meters. 
 query.near("location", loc, 100000); 
 query.find(new CloudObjectArrayCallback(){

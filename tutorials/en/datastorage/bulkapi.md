@@ -41,11 +41,11 @@ CB.CloudObject.saveAll([obj1,obj2],{
 ==Java==
 <span class="java-lines" data-query="bulksave">
 ```
-CloudObject obj1 = new CloudObject('Custom');
-obj1.set('name','abcd');
-CloudObject obj2 = new CloudObject('Custom');
-obj2.set('name','pqrs');
-CloudObject obj=new CloudObject('Custom');
+CloudObject obj1 = new CloudObject("Custom");
+obj1.set("name","abcd");
+CloudObject obj2 = new CloudObject("Custom");
+obj2.set("name","pqrs");
+CloudObject obj=new CloudObject("Custom");
 CloudObject[] arr={obj1,obj2};
 obj.saveAll(arr,new CloudObjectArrayCallback() {
 @Override
@@ -65,7 +65,7 @@ public void done(CloudObject[] x,CloudException t)throws CloudException {
 var obj1 = new CB.CloudObject("Custom");
 obj1.Set("name","abcd");
 var obj2 = new CB.CloudObject("Custom");
-obj2.Set('name','pqrs');
+obj2.Set("name","name");
 var list = new ArrayList();
 list.Add(obj1);
 list.Add(obj2);
@@ -181,7 +181,7 @@ CB.CloudObject.deleteAll([obj1,obj2],{
 ==Java==
 <span class="java-lines" data-query="bulkdelete">
 ```
-CloudObject obj=new CloudObject('Custom');
+CloudObject obj=new CloudObject("Custom");
 obj.deleteAll(new CloudObject[]{obj1,obj2},new CloudObjectArrayCallback() {
 @Override
 public void done(CloudObject[] x,CloudException t) throws CloudException {

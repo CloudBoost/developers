@@ -78,13 +78,13 @@ student.save({
 <span class="java-lines" data-query="oneone">
 ```
 //create the address object. 
-CloudObject address = new CloudObject('Address');
-address.set('StreetName','Manhattan');
-address.set('Country','United States');
+CloudObject address = new CloudObject("Address");
+address.set("StreetName","Manhattan");
+address.set("Country","United States");
 //create the student object and set address object inside it.  
-CloudObject student = new CloudObject('Student');
-student.set('name', 'John Smith');
-student.set('address', address);
+CloudObject student = new CloudObject("Student");
+student.set("name", "John Smith");
+student.set("address", address);
 //save
 student.save(new CloudObjectCallback(){
 	@Override
@@ -251,13 +251,13 @@ student.save({
 <span class="java-lines" data-query="onemany">
 ```
 //create the address object. 
-CloudObject address = new CloudObject('Address');
-address.set('StreetName','Manhattan');
-address.set('Country','United States');
+CloudObject address = new CloudObject("Address");
+address.set("StreetName","Manhattan");
+address.set("Country","United States");
 //create the student object and set address object inside it. 
-CloudObject student = new CloudObject('Student');
-student.set('name', 'John Smith');
-student.set('address', address);
+CloudObject student = new CloudObject("Student");
+student.set("name", "ohn Smith");
+student.set("address", address);
 //save
 student.save(new CloudObjectCallback(){
 	@Override
@@ -439,15 +439,15 @@ studentCourses.save({
 <span class="java-lines" data-query="relation">
 ```
 //create the course object. 
-CloudObject course = new CloudObject('Course');
-course.set('name','Java');
+CloudObject course = new CloudObject("Course");
+course.set("name","Java");
 //create the student object 
-CloudObject student = new CloudObject('Student');
-student.set('name', 'John Smith');
+CloudObject student = new CloudObject("Student");
+student.set("name", "John Smith");
 //assign student and course to studentCourses
-CloudObject studentCourses = new CloudObject('StudentCourses');
-studentCourses.set('student', student);
-studentCourses.set('course',course);
+CloudObject studentCourses = new CloudObject("StudentCourses");
+studentCourses.set("student", student);
+studentCourses.set("course",course);
 //save
 studentCourses.save(new CloudObjectCallback(){
 	@Override
@@ -649,13 +649,13 @@ course.save({
 <span class="java-lines" data-query="list">
 ```
 //create the student object 
-CloudObject student1 = new CloudObject('Student');
-student1.set('name', 'John Smith');
-CloudObject student2 = new CloudObject('Student');
-student2.set('name', 'Jack Danielle');
-CloudObject course = new CloudObject('Course');
-course.set('Name', 'Java');
-course.set('Students',[student1,student2]);
+CloudObject student1 = new CloudObject("Student");
+student1.set("name", "John Smith");
+CloudObject student2 = new CloudObject("Student");
+student2.set("name", "Jack Danielle");
+CloudObject course = new CloudObject("Course");
+course.set("Name", "Java");
+course.set("Students",new CloudObject[]{student1,student2});
 //save
 course.save(new CloudObjectCallback(){
 	@Override
