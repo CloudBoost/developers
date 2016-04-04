@@ -50,6 +50,14 @@ role.save({
 ```
 </span>
 
+==.NET==
+<span class="dotnet-lines" data-query="create">
+```
+var role = new CB.CloudRole("Student");
+await role.SaveAsync();
+```
+</span>
+
 ==Java==
 <span class="java-lines" data-query="create">
 ```
@@ -63,14 +71,6 @@ role.save(new CloudRoleCallback(){
 		}
 	}
 });
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var role = new CB.CloudRole("Student");
-await role.SaveAsync();
 ```
 </span>
 
@@ -195,6 +195,7 @@ user.addToRole(role, {
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="add">
 ```
@@ -202,12 +203,12 @@ user.addToRole(role, {
 user.addToRole(null, new CloudUserCallback() {
 	@Override
 	public void done(CloudUser user, CloudException e) throws CloudException {
-				
-				
+	//				
 	}
 });
 ```
 </span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="add">
 ```
@@ -306,18 +307,28 @@ var isInRole = user.isInRole(role);
 var isInRole = user.isInRole(role); 
 ```
 </span>
-==Java==
-<span class="java-lines" data-query="check">
-```
-boolean isInRole = user.isInRole(role); 
-```
-</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="check">
 ```
 var isInRole = user.IsInRole(role);
 ```
 </span>
+
+==Java==
+<span class="java-lines" data-query="check">
+```
+boolean isInRole = user.isInRole(role); 
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="check">
+// 
+```
+</span>
+
+
 
 #Get all roles from a user
 
@@ -346,12 +357,14 @@ var roles = user.get('roles');
 List<CB.CloudRole> roles = user.Get("roles");
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="get">
 ```
 String[] roles=user.getRoles();
 ```
 </span>
+
 ==cURL==
 <span class="curl-lines" data-query="get">
 ```
@@ -398,19 +411,19 @@ user.removeFromRole(role, {
 await user.RemoveFromRole(role);
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="remove">
 ```
-user.removeFromRole(null, new CloudUserCallback() {
-			
+user.removeFromRole(null, new CloudUserCallback() {			
 	@Override
-	public void done(CloudUser user, CloudException e) throws CloudException {
-				
-				
+	public void done(CloudUser user, CloudException e) throws CloudException {			
+		//		
 	}
 });
 ```
 </span>
+
 ==cURL==
 <span class="curl-lines" data-query="remove">
 ```
