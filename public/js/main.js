@@ -47,8 +47,17 @@ function buildTutorial(markup){
     });         
     
     hideAndDisableCode();
-    $('.js').addClass('languageHeader-active'); 
-    $('.code-wrapper-js').show();      
+     //Activate the first available widget
+    var isActivatedFirst=false;
+    $(".languageHeader").each(function(event){
+        var lang=$(this).data("lang");
+        var query=$(this).data("query");
+        if(lang  && query && !isActivatedFirst){            
+            $('.'+lang).addClass('languageHeader-active'); 
+            $('.code-wrapper-'+lang).show();
+            isActivatedFirst=true;
+        }
+    });      
 }
 
 //Active Step
