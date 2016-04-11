@@ -2,7 +2,7 @@
 
 In this section, you will learn about using push notifications in your apps with **CloudBoost**. Push notifications are a very important feature in an android app because it enables seamless communication from your server to your app. In this case your server will be **CloudBoost** Push notification server. One big problem with smart phones is excessive battery consumption due to constant activity by the many apps installed. An app which has push notification feature may reduce this problem because it does not have to keep polling the server for new information.
 
-Not that **CloudBoost** server uses [Google Cloud Messaging](https://developers.google.com/cloud-messaging) to reach your app. So before you start using this feature, ensure that you have created a project for your app on google developer console and obtained credentials like senderID/Project_number and ApiKey. 
+Not that **CloudBoost** server uses [Google Cloud Messaging](https://developers.google.com/cloud-messaging) to reach your app. So before you start using this feature, ensure that you have created a project for your app on google developer console and obtained credentials like senderID/Project_number and ApiKey.
 
 Also ensure that you have installed these credentials on your **CloudApp** settings from the CloudBoost dashboard.
 Additionally, before any device running your app can receive any push notifications, it must register itself with GCM using the **instanceID** API and obtain a **registrationID**. After the launch of push notifications, every new **CloudApp** comes with a table called **Device**. This table stores details of all instances of your app (i.e. every running installation on android devices). So **registrationID** is stored as **deviceToken** in this table.
@@ -20,10 +20,10 @@ Call this API as your Android application is loading for the first time in order
 ```
 CloudPush push=new CloudPush();
 String[] channels={"hackers","crackers"};
-push.addDevice([xxxxxxxdeviceToken],[Timezone as String], channels, [appname], new CloudObjectCallback() {	
+push.addDevice([xxxxxxxdeviceToken],[Timezone as String], channels, [appname], new CloudObjectCallback() {
 	@Override
 	public void done(CloudObject x, CloudException t) throws CloudException {
-			//		
+			//
 	}
 });
 ```
@@ -62,8 +62,3 @@ push.send(new PushData("title", "my message"), [channels], new CloudPushCallback
 });
 ```
 </span>
-
-
-
-
-
