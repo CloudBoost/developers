@@ -43,6 +43,66 @@ await push.SendAsync();
 ```
 </span>
 
+#Channels
+
+You can also send push notification to only specific channels.
+
+==.NET==
+<span class="dotnet-lines" data-query="channels">
+```
+var push = new CB.CloudPush();
+await push.InitAsync();
+var list = new ArrayList();
+list.add("hackers");
+list.add("crackers");
+push.Channel = list;
+var message = new Dictionary<string, object>();
+message["text1"] = "Hello";
+message["text2"] = "How are you?";
+push.Message = message;
+push.Type = 'toast'; //other valid options 'badge', 'tile', 'raw'
+await push.SendAsync();
+```
+</span>
+
+#Subscribe
+
+Subscribe to a channel(s)
+
+==.NET==
+<span class="dotnet-lines" data-query="subscribe">
+```
+var list = new ArrayList();
+list.add("hackers");
+list.add("crackers");
+await CB.CloudPush.SubscribeAsync();
+```
+</span>
+
+#UnSubscribe
+
+Unsubscribe to a channel(s)
+
+==.NET==
+<span class="dotnet-lines" data-query="unsubscribe">
+```
+var list = new ArrayList();
+list.add("hackers");
+await CB.CloudPush.UnsubscribeAsync();
+```
+</span>
+
+#Subscribed Channel List
+
+Get a channel list for which current device has subscribed
+
+==.NET==
+<span class="dotnet-lines" data-query="subscribedlist">
+```
+ArrayList list = await SubscribedChannelListAsync();
+```
+</span>
+
 #Receive Message
 
 To recive a push notification, you can use this method.
@@ -51,24 +111,21 @@ To recive a push notification, you can use this method.
 <span class="dotnet-lines" data-query="receivemessage">
 ```
 CB.CloudPush.CBPushNotificationReceived(new Callback(action));
-void action(PushNotificationChannel sender, PushNotificationReceivedEventArgs args){
-  switch (args.NotificationType)
-  {
-      case PushNotificationType.Badge:
-          //args.BadgeNotification.Content.GetXml();
-          break;
-
-      case PushNotificationType.Tile:
-          //args.TileNotification.Content.GetXml();
-          break;
-
-      case PushNotificationType.Toast:
-          //args.ToastNotification.Content.GetXml();
-          break;
-
-      case PushNotificationType.Raw:
-          //args.RawNotification.Content;
-          break;
+void action(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
+{
+  switch(args){
+    case PushNotificationType.Badge:
+        //args.BadgeNotification.Content.GetXml();
+        break;
+    case PushNotificationType.Tile:
+        //args.TileNotification.Content.GetXml();
+        break;
+    case PushNotificationType.Toast:
+        //args.ToastNotification.Content.GetXml();
+        break;
+    case PushNotificationType.Raw:
+        //args.RawNotification.Content;
+        break;
   }
 }
 ```
