@@ -154,7 +154,7 @@ push.send(new PushData("title", "my message"), query, new CloudPushCallback() {
 Alternatively, you could just specify a single channel during the push operation, instead of using a CloudQuery.
 
 ==Java==
-<span class="java-lines" data-query="pushquery">
+<span class="java-lines" data-query="pusharray">
 ```
 CloudPush push=new CloudPush();
 push.send(new PushData("title", "my message"), "movers", new CloudPushCallback() {
@@ -170,7 +170,7 @@ push.send(new PushData("title", "my message"), "movers", new CloudPushCallback()
 
 Or you could specify an array of channels to push the message to.
 ==Java==
-<span class="java-lines" data-query="pushquery">
+<span class="java-lines" data-query="pushchannel">
 ```
 CloudPush push=new CloudPush();
 String[] channels={"movers","shakers"};
