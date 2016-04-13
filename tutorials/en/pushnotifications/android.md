@@ -122,7 +122,7 @@ Or you could specify only a message.
 <span class="java-lines" data-query="simplesend">
 ```
 String channel="movers";
-CloudPush.send("title", channel, new CloudPushCallback() {
+CloudPush.send("message", channel, new CloudPushCallback() {
 	@Override
 	public void done(Object x, CloudException t) throws CloudException {
 		//
@@ -131,7 +131,7 @@ CloudPush.send("title", channel, new CloudPushCallback() {
 ```
 </span>
 
-#Push only message
+#Push title and message
 
 Or you could specify only a title and message.
 
