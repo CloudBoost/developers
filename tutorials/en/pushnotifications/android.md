@@ -18,29 +18,11 @@ Call this API as your Android application is loading for the first time in order
 ==Java==
 <span class="java-lines" data-query="adddevice">
 ```
-CloudPush push=new CloudPush();
 String[] channels={"hackers","crackers"};
-push.addDevice([xxxxxxxdeviceToken],[Timezone as String], channels, [appname], new CloudObjectCallback() {
+CloudPush.addDevice([xxxxxxxdeviceToken],[Timezone as String], channels,new CloudObjectCallback() {
 	@Override
 	public void done(CloudObject x, CloudException t) throws CloudException {
-			//
-	}
-});
-```
-</span>
-
-#Add settings
-
-Before your **CloudApp** is able to send any push notifications through GCM server, it should be able to authenticate itself to GCM. GCM will need your **CloudApp** to present it's requests with ApiKey and an Array of deviceTokens or a topic/channel.
-
-==Java==
-<span class="java-lines" data-query="addsettings">
-```
-CloudPush push=new CloudPush();
-push.addSettings([senderId], [apikey], new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t) throws CloudException {
-		//object is a json object with _id, _tableName
+		//
 	}
 });
 ```
@@ -51,10 +33,9 @@ push.addSettings([senderId], [apikey], new ObjectCallback() {
 In case you would like to subscribe a device to a given channel, use this API
 
 ==Java==
-<span class="java-lines" data-query="subscribe">
+<span class="java-lines" data-query="subscribesinglechannel">
 ```
-CloudPush push=new CloudPush();
-push.subscribe("movers", "xxxxxxxxxxxx", new CloudObjectCallback() {	
+CloudPush.subscribe("movers", "deviceToken", new CloudObjectCallback() {	
 	@Override
 	public void done(CloudObject x, CloudException t) throws CloudException {
 		//
@@ -66,11 +47,10 @@ push.subscribe("movers", "xxxxxxxxxxxx", new CloudObjectCallback() {
 Alternatively, you could specify an array of channels to subscribe to
 
 ==Java==
-<span class="java-lines" data-query="subscribe">
+<span class="java-lines" data-query="subscribechannelarray">
 ```
-CloudPush push=new CloudPush();
 String[] channels={"movers","shakers"};
-push.subscribe(channels, "xxxxxxxxxxxx", new CloudObjectCallback() {	
+CloudPush.subscribe(channels, "xxxxxxxxxxxx", new CloudObjectCallback() {	
 	@Override
 	public void done(CloudObject x, CloudException t) throws CloudException {
 		//
@@ -84,10 +64,9 @@ push.subscribe(channels, "xxxxxxxxxxxx", new CloudObjectCallback() {
 In case you would like to stop receiving push messages from a certain channel, call this API
 
 ==Java==
-<span class="java-lines" data-query="subscribe">
+<span class="java-lines" data-query="unsubscribesinglechannel">
 ```
-CloudPush push=new CloudPush();
-push.unSubscribe("movers", "xxxxxxxxxxxx", new CloudObjectCallback() {	
+CloudPush.unSubscribe("movers", "xxxxxxxxxxxx", new CloudObjectCallback() {	
 	@Override
 	public void done(CloudObject x, CloudException t) throws CloudException {
 		//
@@ -99,11 +78,10 @@ push.unSubscribe("movers", "xxxxxxxxxxxx", new CloudObjectCallback() {
 Alternatively, you could specify an array of channels to unsubscribe from
 
 ==Java==
-<span class="java-lines" data-query="subscribe">
+<span class="java-lines" data-query="unsubscribechannelarray">
 ```
-CloudPush push=new CloudPush();
 String[] channels={"movers","shakers"};
-push.unSubscribe(channels, "xxxxxxxxxxxx", new CloudObjectCallback() {	
+CloudPush.unSubscribe(channels, "xxxxxxxxxxxx", new CloudObjectCallback() {	
 	@Override
 	public void done(CloudObject x, CloudException t) throws CloudException {
 		//
@@ -114,13 +92,50 @@ push.unSubscribe(channels, "xxxxxxxxxxxx", new CloudObjectCallback() {
 
 #Push message
 
-After correct set up, you can send push messages to all your clients with this API
+After correct set up, you can send push messages to all your clients with this API. One option is to encapsulate all attributes of the push message in a PushData object.
 
 ==Java==
 <span class="java-lines" data-query="sendmessage">
 ```
-CloudPush push=new CloudPush();
-push.send(new PushData("title", "my message"), [channels], new CloudPushCallback() {
+PushData data=new PushData();
+data.setTitle("title");
+data.setMessage("message");
+data.setIcon("icon_name");
+CloudPush.send(data, [channels], new CloudPushCallback() {
+	@Override
+	public void done(Object x, CloudException t) throws CloudException {
+		//
+	}
+});
+```
+</span>
+
+#Push only title
+
+Or you could specify only a title.
+
+==Java==
+<span class="java-lines" data-query="sendtitle">
+```
+String[] channels={"movers","shakers"};
+CloudPush.send("title", channels, new CloudPushCallback() {
+	@Override
+	public void done(Object x, CloudException t) throws CloudException {
+		//
+	}
+});
+```
+</span>
+
+#Push only message
+
+Or you could specify only a title and message.
+
+==Java==
+<span class="java-lines" data-query="sendtitleandmessage">
+```
+String[] channels={"movers","shakers"};
+CloudPush.send("title","message", channels, new CloudPushCallback() {
 	@Override
 	public void done(Object x, CloudException t) throws CloudException {
 		//
@@ -134,13 +149,12 @@ push.send(new PushData("title", "my message"), [channels], new CloudPushCallback
 Sometimes you would like to further modify the effect of your push operation. Particularly, you may want the message to be pushed to only devices that have subscribed to specific channels. You can do this by wrapping the command inside a **CloudQuery**.
 
 ==Java==
-<span class="java-lines" data-query="pushquery">
+<span class="java-lines" data-query="sendquery">
 ```
-CloudPush push=new CloudPush();
 String[] channels={"movers","shakers"};
 CloudQuery query=new CloudQuery("Device");
 query.containedIn("channels", channels);
-push.send(new PushData("title", "my message"), query, new CloudPushCallback() {
+CloudPush.send(new PushData("title", "my message"), query, new CloudPushCallback() {
 	@Override
 	public void done(Object x, CloudException t) throws CloudException {
 		//
@@ -154,10 +168,9 @@ push.send(new PushData("title", "my message"), query, new CloudPushCallback() {
 Alternatively, you could just specify a single channel during the push operation, instead of using a CloudQuery.
 
 ==Java==
-<span class="java-lines" data-query="pusharray">
+<span class="java-lines" data-query="sendchannel">
 ```
-CloudPush push=new CloudPush();
-push.send(new PushData("title", "my message"), "movers", new CloudPushCallback() {
+CloudPush.send(new PushData("title", "my message"), "movers", new CloudPushCallback() {
 	@Override
 	public void done(Object x, CloudException t) throws CloudException {
 		//
@@ -169,12 +182,12 @@ push.send(new PushData("title", "my message"), "movers", new CloudPushCallback()
 #Channel array on push
 
 Or you could specify an array of channels to push the message to.
+
 ==Java==
-<span class="java-lines" data-query="pushchannel">
+<span class="java-lines" data-query="sendchannelarray">
 ```
-CloudPush push=new CloudPush();
 String[] channels={"movers","shakers"};
-push.send(new PushData("title", "my message"), channels, new CloudPushCallback() {
+CloudPush.send(new PushData("title", "my message"), channels, new CloudPushCallback() {
 	@Override
 	public void done(Object x, CloudException t) throws CloudException {
 		//
@@ -182,3 +195,5 @@ push.send(new PushData("title", "my message"), channels, new CloudPushCallback()
 });
 ```
 </span>
+
+
