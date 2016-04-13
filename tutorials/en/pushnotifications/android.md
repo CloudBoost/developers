@@ -4,7 +4,11 @@ In this section, you will learn about using push notifications in your apps with
 
 Not that **CloudBoost** server uses [Google Cloud Messaging](https://developers.google.com/cloud-messaging) to reach your app. So before you start using this feature, ensure that you have created a project for your app on google developer console and obtained credentials like senderID/Project_number and ApiKey.
 
-Also ensure that you have installed these credentials on your **CloudApp** settings from the CloudBoost dashboard.
+Also ensure that you have installed these credentials on your **CloudApp** settings from the CloudBoost dashboard. You particularly do this by opening your app in the dashboard and going to settings:
+<p>&nbsp;</p>
+<img class="full-length-img" alt="GCM Credentials" src="https://blog.cloudboost.io/content/images/2016/04/appSettings-1.jpg">
+<p>&nbsp;</p>
+
 Additionally, before any device running your app can receive any push notifications, it must register itself with GCM using the **instanceID** API and obtain a **registrationID**. After the launch of push notifications, every new **CloudApp** comes with a table called **Device**. This table stores details of all instances of your app (i.e. every running installation on android devices). So **registrationID** is stored as **deviceToken** in this table.
 
 So as your app is loading for the first time, it must call the <span class="tut-snippet">CloudPush.addDevice</span> API after getting credentials from GCM instanceID API to register itself with your **CloudApp**, otherwise, it cannot receive any direct messages.
