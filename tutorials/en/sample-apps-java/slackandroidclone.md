@@ -38,7 +38,8 @@ Next, we shall see the code that pulls off the different parts of our applicatio
 This is the only activity we shall use in our application. This is a simple but powerful advantage of Navigation drawer pattern. All our core activities will take place in this activity as we switch around using the drawer.
 
 A number of things happen inside this Class:
-#activity_main.xml
+
+#Activity_main.xml
 Inflating the xml file that defines the layout of widgets in this activity
 
 ==xml==

@@ -17,7 +17,7 @@ Check [this tutorial](http://egima.blogspot.ug/2016/03/androidcloudboost-push-no
 
 #Add device
 
-Call this API as your Android application is loading for the first time in order to register itself to **CloudApp** to receive push notifications.
+Call this API as your Android application is loading for the first time in order to register itself to **CloudApp** to receive push notifications. Alternatively, you could command JavaSDK to auto-register devices running your app to GCM and CloudApp. You do this by initializing with the overloaded version of CloudApp.init(). [Check this tutorial](https://tutorials.cloudboost.io/en/sample-apps-java/cloudpush).
 
 ==Java==
 <span class="java-lines" data-query="adddevice">
@@ -34,7 +34,7 @@ CloudPush.addDevice([xxxxxxxdeviceToken],[Timezone as String], channels,new Clou
 
 #Subscribe to channel
 
-In case you would like to subscribe a device to a given channel, use this API
+In case you would like to subscribe a device to a given channel, use this API. Otherwise, by default, all devices are subscribed to the <span class="tut-snippet">global</span> channel, which you can use to send bulk push to all your app instances. 
 
 ==Java==
 <span class="java-lines" data-query="singlesubscribe">
