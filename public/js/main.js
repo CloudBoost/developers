@@ -272,7 +272,7 @@ function spanCss(spans){
                 }
                 //Java
                 if(javaLines){
-                    var res=bindLangCode("java","Andriod",spans[i]); 
+                    var res=bindLangCode("java","Android",spans[i]); 
                     langHead+=res.html;
                     langCode+=res.codeHtml;            
                 }
@@ -345,7 +345,7 @@ function spanCss(spans){
                             $(elm).parent().next().remove();
                         }
                         if(nxtJavaLines){
-                            var res=bindLangCode("java","Andriod",mainElm);
+                            var res=bindLangCode("java","Android",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 
@@ -445,7 +445,7 @@ function spanCss(spans){
                             $(elm).parent().prev().remove();
                         }
                         if(nxtJavaLines){
-                            var res=bindLangCode("java","Andriod",mainElm);
+                            var res=bindLangCode("java","Android",mainElm);
                             langHead+=res.html;
                             langCode+=res.codeHtml;
 

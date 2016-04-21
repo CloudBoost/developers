@@ -8,6 +8,10 @@ body{
 ul li {
     font-size: 16px;   
 }
+.just-navmenu{   
+    height: 77vh;
+    overflow-y: auto;
+}
 .tut-main-topics-menu li{
     font-size: 12px;
 }
@@ -187,6 +191,13 @@ ul li {
     z-index: 2;    
     display: block;
     top: 220px;    
+}
+
+@media screen and (max-device-width : 991px)
+{
+    .steps-category-wrapper{    
+       display: none !important;   
+    }
 }
 .steps-category-wrapper li:first-child {
     margin-top:0; 

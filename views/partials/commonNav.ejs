@@ -1,7 +1,7 @@
 <!--Navigation-->
 <nav class="navbar-default navbar-static-side main-navigation" role="navigation">
     <div class="sidebar-collapse">
-        <ul class="nav tut-main-topics-menu" id="side-menu">
+        <ul class="nav tut-main-topics-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
 
@@ -20,7 +20,9 @@
                 </div>
                 
             </li>
-
+        </ul> 
+           
+        <ul class="nav tut-main-topics-menu just-navmenu" id="side-menu">
             <% tutorialTopics.forEach(function(eachTut) {
 
                 if (nospacelowcase(eachTut.name)==category) { %>
