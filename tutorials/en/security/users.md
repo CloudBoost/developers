@@ -390,13 +390,13 @@ Social Authentication for your app.
 * Add your app URL
 * Set primary color of the login page
 * Enable atleast one authentication model 
-* If you enable third party social authentications, Copy the respective Callback URL  and paste it in your app page of the provider and copy the providers crendetials and paste them in app settings which is show below image.
+* If you enable third party social authentications, Copy the respective Callback URL  and paste it in your app page of the provider. Make sure copying the providers crendetials and paste them in app settings which is shown in below image.
 
 <img class="full-length-img" alt="Add Credentials" src="https://www.dropbox.com/s/ha98e8a37idgwpr/socialauth.jpg?dl=0&raw=1">
 
 #####Get current User
 
-Once you get authenticated successfully, you get redirected to your app page, You can retrive current user from server and providers token with following code.
+Once you get authenticated successfully, you get redirected to your app page, You can retrieve current user with providers token from server with following code.
 
 ==JavaScript==
 <span class="js-lines" data-query="getcurrentuserfromserver">
