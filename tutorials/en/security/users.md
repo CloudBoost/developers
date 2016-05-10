@@ -422,10 +422,24 @@ If you want to build your own custom login page (and not use the one we provide)
 * accessSecret    (only for twitter) : Access Secret from Twitter. 
 
 ==JavaScript==
-<span class="js-lines" data-query="loginwithprovider">
+<span class="js-lines" data-query="loginwithfacebook">
 ```
-CB.CloudUser.authenticateWithProvider({provider:"providerName",
-        accessToken:"providerToken"},{
+//Example for facebook, google, github, linkedin
+//
+CB.CloudUser.authenticateWithProvider({provider:"facebook",
+        accessToken:"hsgshssbsvbsns"},{
+  success: function(user) {
+    console.log(user);
+  },
+  error: function(error) {
+   console.log(error);
+  }
+});
+//
+//Example for twitter
+//
+CB.CloudUser.authenticateWithProvider({provider:"twitter",
+        accessToken:"hdhdhdddd", accessSecret:"dhdgwwkw"},{
   success: function(user) {
     console.log(user);
   },
@@ -435,7 +449,6 @@ CB.CloudUser.authenticateWithProvider({provider:"providerName",
 });
 ```
 </span>
-
 
 #Log out
 
