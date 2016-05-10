@@ -380,6 +380,63 @@ CB.CloudUser.Current
 ```
 </span>
 
+#Social Authentication
+
+Social Authentication for your app.
+
+#####Adding credentials in app settings
+
+* Go to app settings in [CloudBoost Dashboard](https://dashboard.cloudboost.io)
+* Add your app URL
+* Set primary color of the login page
+* Enable atleast one authentication model 
+* If you enable third party social authentications, Copy the respective Callback URL  and paste it in your app page of the provider and copy the providers crendetials and paste them in app settings which is show below image.
+
+<img class="full-length-img" alt="Add Credentials" src="https://www.dropbox.com/s/ha98e8a37idgwpr/socialauth.jpg?dl=0&raw=1">
+
+#####Get current User
+
+Once you get authenticated successfully, you get redirected to your app page, You can retrive current user from server and providers token with following code.
+
+==JavaScript==
+<span class="js-lines" data-query="getcurrentuserfromserver">
+```
+CB.CloudUser.getCurrentUser({
+  success: function(user) {
+    console.log(user);
+  },
+  error: function(error) {
+   console.log(error);
+  }
+});
+```
+</span>
+
+
+#####Login with provider
+
+Once you have providers accessToken, you can use following method to login with provider which takes Json object having
+
+* provider (required) : Provider name.
+* accessToken   (required) : Provider access token.
+* accessSecret    (required only for twitter) : provider access secret which is a special case for twitter.
+
+==JavaScript==
+<span class="js-lines" data-query="loginwithprovider">
+```
+CB.CloudUser.authenticateWithProvider({provider:"providerName",
+        accessToken:"providerToken"},{
+  success: function(user) {
+    console.log(user);
+  },
+  error: function(error) {
+   console.log(error);
+  }
+});
+```
+</span>
+
+
 #Log out
 
 If you want to flush the session out and log out the user, then you can do this by
