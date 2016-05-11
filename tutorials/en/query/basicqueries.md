@@ -573,7 +573,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 Substring returns all the `CloudObject` which contains the given string.
 
->Info: Substring with only works with <span class="tut-snippet">Text</span> type. 
+Params
+
+* Column Name (String)
+* Value (String)
+* isCaseInsensitive (Boolean)
+
+>Info: Substring only works with <span class="tut-snippet">Text</span> type.
 
 ==JavaScript==
 <span class="js-lines" data-query="Substring">
@@ -581,7 +587,7 @@ Substring returns all the `CloudObject` which contains the given string.
 var query = new CB.CloudQuery("Student");
 query.substring('name','on');
 //OR also works with an array. 
-query.substring('name',['on','hn']);
+query.substring('name',['on','hn'], false);
 query.find({
   success: function(list) {
     //list is an array of CloudObjects
@@ -608,6 +614,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="Substring">
 ```
@@ -618,13 +625,12 @@ query.subString("name", "on");
 query.subString("name",new String[]{"on","in"});
 query.find(new CloudObjectArrayCallback() {
 	@Override
-	public void done(CloudObject[] x, CloudException t) throws CloudException {
-		
-				
+	public void done(CloudObject[] x, CloudException t) throws CloudException {				
 	}
 });
 ```
 </span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="Substring">
 ```
@@ -643,10 +649,8 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${client_key},
 	"limit": 10,
 	"sort": {
-		
 	},
-	"select": {
-		
+	"select": {		
 	},
 	"query": {
 		"$includeList": [],
@@ -657,16 +661,14 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 	},
 	"skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-
+//
 //OR, alternatively use array
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${client_key},
 	"limit": 10,
-	"sort": {
-		
+	"sort": {		
 	},
-	"select": {
-		
+	"select": {		
 	},
 	"query": {
 		"$includeList": [],
@@ -722,6 +724,7 @@ query.find({
 });
 ```
 </span>
+
 ==Java==
 <span class="java-lines" data-query="regex">
 ```
@@ -730,13 +733,12 @@ CloudQuery query=new CloudQuery("data");
 query.regex("name", "^/*.on*./");
 query.find(new CloudObjectArrayCallback() {
 	@Override
-	public void done(CloudObject[] x, CloudException t) throws CloudException {
-				
-				
+	public void done(CloudObject[] x, CloudException t) throws CloudException {				
 	}
 });
 ```
 </span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="regex">
 ```
@@ -759,11 +761,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 			"$regex": "^/*.on*./"
 		}
 	},
-	"select": {
-		
+	"select": {		
 	},
-	"sort": {
-		
+	"sort": {		
 	},
 	"limit": 10,
 	"skip": 0
