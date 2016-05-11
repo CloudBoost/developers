@@ -114,3 +114,109 @@ CB.CloudPush.send({message:"my first notifications"},query,{
 ```
 </span>
 
+#Browser Push Notifications
+
+Now You can receieve Push notifications to your browser very easily with CloudBoost.
+
+#####Add a ServiceWorker.js file
+Add a service worker file in root of your app, which listens to messages from server.
+
+==JavaScript==
+<span class="js-lines" data-query="swjs">
+```
+self.addEventListener('push', function(event) {
+  var obj = event.data.json();  
+  fireNotification(obj, event);  
+});
+//
+function fireNotification(obj, event) {
+  var title = obj.title ;  
+  var body = obj.message; 
+  var icon = obj.icon;  
+  var tag = 'push';
+   //
+  event.waitUntil(self.registration.showNotification(title, {
+    body: body,  
+    icon: icon,  
+    tag: tag  
+  }));
+}
+```
+</span>
+
+#####Enable/Disable Browser Notifications
+After adding service worker file to your app, you need to enable the browser notifications. The browser will pop up a notification asking the permisson to enable notifications.
+
+==JavaScript==
+<span class="js-lines" data-query="enablebrowser">
+```
+CB.CloudPush.enableWebNotifications({
+    success:function(msg){
+        //Success
+    },
+    error:function(error){
+        //Error
+    }
+});
+```
+</span>
+
+You can also disable browser notificatiosn whenever you want to.
+
+==JavaScript==
+<span class="js-lines" data-query="disablebrowser">
+```
+CB.CloudPush.disableWebNotifications({
+    success:function(msg){
+        //Success
+    },
+    error:function(error){
+        //Error
+    }
+});
+```
+</span>
+
+##### Extra steps for Chrome support
+
+* Navigate to the Google Developers Console  and set up a new project.
+* Go to your project's homepage [Google Developers Console](https://console.developers.google.com), then
+    * Select the Enable Google APIs for use in your apps option.
+    * In the next screen, click Cloud Messaging for Android under the Mobile APIs section.
+    * Click the Enable API button.
+* Now you need to make a note of your project number and API key because you'll need them later. To find them:
+    * Project number: click Home on the left; the project number is clearly marked at the top of your project's home page.
+    * API key: click Credentials on the left hand menu; the API key can be found on that screen.
+
+
+</br>
+##### manifest.json
+You need to include a Google app-style manifest.json file in your app, which references the project number you made a note of earlier in the **gcm_sender_id** parameter. Here is our simple example manifest.json:
+
+==JavaScript==
+<span class="js-lines" data-query="manifestjson">
+```
+{  
+  "name": "Push Demo",  
+  "short_name": "Push Demo",  
+  "icons": [{  
+        "src": "push-icon.png",  
+        "sizes": "111x111",
+        "type": "image/png"
+      }],  
+  "start_url": "/index.html",  
+  "display": "standalone",  
+  "gcm_sender_id": "224273183921"    
+}
+```
+</span>
+
+You also need to reference your manifest using a **&lt;link&gt;** element in your HTML:
+
+**&lt;link rel="manifest" href="manifest.json"&gt;**
+
+
+</br>
+##### Notification Icon
+You can add your custom App icon  in app settings of [CloudBoost Dashboard](https://dashboard.cloudboost.io) which serves as notification icon
+
