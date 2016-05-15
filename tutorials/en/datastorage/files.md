@@ -1,8 +1,8 @@
 #####In this section
 
-In this section you'll learn about how to save a file from your local file system to CloudBoost. 
+In this section you'll learn about how to save a file from your local file system to CloudBoost.
 
-#Saving a file 
+#Saving a file
 
 To save a file in CloudBoost, you basically need to pass in the file object as a parameter and call the save function of the [CB.CloudFile](https://docs.cloudboost.io/#CloudFile) class. You can save files of any size in CloudBoost, but you will be charged for the storage units according to [Pricing](https://cloudboost.io/pricing) Page.
 
@@ -103,7 +103,16 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'https://api.cloudboost.io/file/${app_id}'
 ```
 </span>
-
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+// yourData is an NSData object
+let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
+file.save({ response in
+    response.log()
+})
+```
+</span>
 
 ###From Blob
 
@@ -292,8 +301,22 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
-
-<span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
+</span>
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+// yourData is an NSData object
+let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
+file.save({ response in
+    let obj = CloudObject(tableName: "Student")
+    obj.set("file", value: file)
+    obj.save({ response in
+        response.log()
+    })
+})
+```
+</span>
+<span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it.
 
 #Default Properties
 
@@ -339,6 +362,12 @@ file.ID
 //Id is null when you create the file but gets assigned to an file as soon as you save it.
 ```
 </span>
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+print(file.getId())
+```
+</span>
 
 * **Url** : [URL] A unique url of a CloudFile is assigned as soon as the File is saved. **You cannot assign a user-defined Url to a CloudFile**.
 
@@ -380,6 +409,12 @@ file.Url;
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 ```
 </span>
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+print(file.getFileUrl())
+```
+</span>
 
 * **Name** : [Text] Name of the CloudFile to be assigned by the user.
 
@@ -410,7 +445,7 @@ System.out.print(file.getFileName());
 ==.NET==
 <span class="dotnet-lines" data-query="viewname">
 ```
-file.Name 
+file.Name
 ```
 </span>
 
@@ -418,6 +453,12 @@ file.Name
 <span class="curl-lines" data-query="viewname">
 ```
 //
+```
+</span>
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+print(file.setFileName("Sample"))
 ```
 </span>
 
@@ -493,10 +534,17 @@ file.ACL;
 ```
 //
 ```
+</span>
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+file.getACL()
+```
+</span>
 
 #Delete a file
 
-To delete a file, you need to: 
+To delete a file, you need to:
 
 ==JavaScript==
 <span class="js-lines" data-query="deletefile">
@@ -553,6 +601,15 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/htm
   "key": ${app_key},
   "method": "DELETE"
 }' 'http://api.cloudboost.io/file/${app_id}/${file_id}'
+```
+</span>
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+// throws if fileObj is not saved
+try! fileObj.delete({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -629,6 +686,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "sdk": "java",
   "skip": 0
 }' 'http://api.cloudboost.io/file/${app_id}/_File/find'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.include("file")
+// throws if the app is not initialized with AppID and AppKey
+try! query.find({response in
+    response.log()
+})
 ```
 </span>
 
@@ -734,5 +803,21 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "sdk": "java",
   "skip": 0
 }' 'http://api.cloudboost.io/file/${app_id}/_File/find'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
+    if response.success {
+        // getting the data
+        if let data = response.object as? NSData {
+            // parsing into string (if the original data was string as well)
+            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
+            print(content)
+        }
+    }
+})
 ```
 </span>

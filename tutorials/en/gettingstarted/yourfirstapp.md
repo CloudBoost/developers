@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create your new App (we call it [CloudApp]( https://docs.cloudboost.io/#CloudApp)) and create your first Table ([CloudTable]( https://docs.cloudboost.io/#CloudTable)).  You'll learn to add CloudBoost SDK to your project, save simple objects ([CloudObjects]( https://docs.cloudboost.io/#CloudObject)) in the table and query it with a simple query ([CloudQuery]( https://docs.cloudboost.io/#CloudQuery)). 
+In this section you'll learn how to create your new App (we call it [CloudApp]( https://docs.cloudboost.io/#CloudApp)) and create your first Table ([CloudTable]( https://docs.cloudboost.io/#CloudTable)).  You'll learn to add CloudBoost SDK to your project, save simple objects ([CloudObjects]( https://docs.cloudboost.io/#CloudObject)) in the table and query it with a simple query ([CloudQuery]( https://docs.cloudboost.io/#CloudQuery)).
 
 #Create your first App
 
@@ -10,11 +10,11 @@ If you haven't signed up for [CloudBoost](https://www.cloudboost.io) yet, this i
 
 ![Your App Created](https://blog.cloudboost.io/content/images/2016/03/sampleapp.png)
 
-After you enter `App Name`, your new `CloudApp` is created. Next step : Create a new table to store your data. 
+After you enter `App Name`, your new `CloudApp` is created. Next step : Create a new table to store your data.
 
 #Creating a new table
 
-To create a new table click on <span class="tut-snippet">Manage App</span>. Now you'll be redirected to tables screen. Click on <span class="tut-snippet">Add new table</span>. 
+To create a new table click on <span class="tut-snippet">Manage App</span>. Now you'll be redirected to tables screen. Click on <span class="tut-snippet">Add new table</span>.
 
 ![Manage App Button](https://blog.cloudboost.io/content/images/2016/03/tables.png)
 
@@ -23,7 +23,7 @@ To create a new table click on <span class="tut-snippet">Manage App</span>. Now 
 ><span class="tut-info">Info</span> User, Role and Device tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them. We'll talk more about User,Role and Device tables later in the documentation. Basically, User and Roles are used to build Authentication and Devices are used for Push Notifications.
 
 <p>&nbsp;</p>
-><span class="tut-info">Info</span> Table name cannot start with a number and cannot contain any special characters. Table name should be **unique**. 
+><span class="tut-info">Info</span> Table name cannot start with a number and cannot contain any special characters. Table name should be **unique**.
 
 After you create a new table. Click on it which will take you to a Data Browser screen where you can create new columns.
 
@@ -33,13 +33,13 @@ To create a new columns click on <span class="tut-snippet">+</span> button and t
 
 <img class="full-length-img" alt="Your New Table" src="https://blog.cloudboost.io/content/images/2016/03/datab.png">
 
-><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should be unique. 
+><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should be unique.
 
 After you create a new column. You can begin integrating CloudBoost with your app. In this example, we created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click [here]( ?lang=en&category=datastorage&subcategory=objects#Data-types).)
 
 #Initialize your app
 
-Before you initialize your app, you need to import or link the CloudBoost SDK in your project. 
+Before you initialize your app, you need to import or link the CloudBoost SDK in your project.
 
 ==JavaScript==
 <span class="js-lines" data-query="link">
@@ -51,9 +51,9 @@ Before you initialize your app, you need to import or link the CloudBoost SDK in
 ==NodeJS==
 <span class="nodejs-lines" data-query="link">
 ```
-//On Terminal 
+//On Terminal
 npm install cloudboost --save
-//In server.js / app.js file. 
+//In server.js / app.js file.
 var CB = require('cloudboost');
 ```
 </span>
@@ -61,7 +61,7 @@ var CB = require('cloudboost');
 ==Java==
 <span class="java-lines" data-query="link">
 ```
-//Install CloudBoost from Maven : 
+//Install CloudBoost from Maven :
 //http://mvnrepository.com/artifact/io.cloudboost
 import io.cloudboost.*;
 ```
@@ -78,11 +78,18 @@ Install-Package cloudboost
 ==cURL==
 <span class="curl-lines" data-query="link">
 ```
-//No step required. 
+//No step required.
 ```
 </span>
 
-Once you have imported CloudBoost SDK to your project. You need to initialize your new CloudApp. 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+// install pod, "pod CloudBoost"
+import CloudBoost
+```
+</span>
+Once you have imported CloudBoost SDK to your project. You need to initialize your new CloudApp.
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
 
@@ -97,9 +104,9 @@ You will see two **keys** : **Master Key** and **Client Key**
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> **Client Key** : Client key is the public key and can be used in your apps. Client key can be exposed to your apps, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules.
 
-><span class="tut-imp">Important:</span> Never expose your master key in your apps. Master key can only be used on the server. 
+><span class="tut-imp">Important:</span> Never expose your master key in your apps. Master key can only be used on the server.
 
-Now you know your App ID and Keys, You can now proceed to initialize your App. 
+Now you know your App ID and Keys, You can now proceed to initialize your App.
 
 
 ==JavaScript==
@@ -133,15 +140,22 @@ CB.CloudApp.Init('YOUR APP ID', 'YOUR APP KEY');
 ==cURL==
 <span class="curl-lines" data-query="init">
 ```
-//You dont need to initialize the app for REST. 
+//You dont need to initialize the app for REST.
 ```
 </span>
 
-After your app is initialized. You can write code to save and query data. 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let app = CloudApp.init(appID: "YOUR APP ID", appKey: "YOUR APP KEY")
+```
+</span>
+
+After your app is initialized. You can write code to save and query data.
 
 #Saving data
 
-To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a new <span class="tut-snippet">CloudObject</span>, add data to it and call save. 
+To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a new <span class="tut-snippet">CloudObject</span>, add data to it and call save.
 
 ==JavaScript==
 <span class="js-lines" data-query="save">
@@ -150,7 +164,7 @@ var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
-        //obj saved. 
+        //obj saved.
     },error : fucntion(error){
         //error
     }
@@ -165,7 +179,7 @@ var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
-        //obj saved. 
+        //obj saved.
     },error : fucntion(error){
         //error
     }
@@ -180,7 +194,7 @@ CloudObject obj = new CloudObject("TableName");
 obj.set("ColumnName", data);
 obj.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -240,7 +254,19 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-If you want to learn more about CloudObjects and Data Storage, Click [here](?lang=en&category=datastorage&subcategory=objects). 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let obj = CloudObject(tableName: "TableName")
+obj.set("ColumnName", value: data)
+obj.save({ resp in
+    if(resp.success){
+      // successfully saved
+    }
+})
+```
+</span>
+If you want to learn more about CloudObjects and Data Storage, Click [here](?lang=en&category=datastorage&subcategory=objects).
 
 #Querying data
 
@@ -283,7 +309,7 @@ CloudQuery query = new CloudQuery("TableName");
 query.equalTo("ColumnName", data);
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] x, CloudException t) {	
+	public void done(CloudObject[] x, CloudException t) {
 		if(x != null){
 			//objects
 		}
@@ -324,7 +350,16 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-If you want to learn more about Queries, Check out the query section [here](?lang=en&category=query&subcategory=basicqueries). 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "TableName")
+// throws error if the "obj: data" passed is not an acceptable value
+try! query.equalTo("ColumnName", obj: data)
 
-
-
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+If you want to learn more about Queries, Check out the query section [here](?lang=en&category=query&subcategory=basicqueries).

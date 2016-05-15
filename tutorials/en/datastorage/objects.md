@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create an Object (we call it [CloudObject]( https://docs.cloudboost.io/#CloudObject)) and save it into your [CloudTable]( https://docs.cloudboost.io/#CloudTable). You will also learn about default properties in objects. Finally we'll also learn to update, delete and refresh / fetch CloudObjects and look into various data-types CloudBoost supports. 
+In this section you'll learn how to create an Object (we call it [CloudObject]( https://docs.cloudboost.io/#CloudObject)) and save it into your [CloudTable]( https://docs.cloudboost.io/#CloudTable). You will also learn about default properties in objects. Finally we'll also learn to update, delete and refresh / fetch CloudObjects and look into various data-types CloudBoost supports.
 
 #Saving Objects
 
@@ -40,8 +40,13 @@ var obj = new CB.CloudObject("TableName");
 //
 ```
 </span>
-
-To set data into the objects, You can use the <span class="tut-snippet">set</span> function / method of CloudObject class. 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let obj = CloudObject(tableName: "TableName")
+```
+</span>
+To set data into the objects, You can use the <span class="tut-snippet">set</span> function / method of CloudObject class.
 
 ==JavaScript==
 <span class="js-lines" data-query="set">
@@ -77,10 +82,15 @@ obj.Set("ColumnName",data);
 //set object
 ```
 </span>
-
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.set("ColumnName", value: data)
+```
+</span>
 To know more about what data types CloudBoost supports. Please check this [Data Types](#Data-types) section.
 
-To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable. 
+To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable.
 
 ==JavaScript==
 <span class="js-lines" data-query="save">
@@ -89,7 +99,7 @@ var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
-        console.log(obj.id); //a new id is automatically generated. 
+        console.log(obj.id); //a new id is automatically generated.
     },error : function(error){
         //object failed to save.  
     }
@@ -104,7 +114,7 @@ var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
-        console.log(obj.id); //a new id is automatically generated. 
+        console.log(obj.id); //a new id is automatically generated.
     },error : function(error){
         //object failed to save.  
     }
@@ -179,51 +189,61 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let obj = CloudObject(tableName: "TableName")
+obj.set("ColumnName", value: data)
+obj.save({ response in
+  response.log()
+})
+```
+</span>
 #Data-types
 
-CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports. 
+CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports.
 
 ####Simple Data-types.
 
-* **Text** : Used to store string / text of any length. 
+* **Text** : Used to store string / text of any length.
 
-* **URL** : Used to store a URL. 
+* **URL** : Used to store a URL.
 
 * **Email** : Used to store an Email.
 
 * **Number** : Used to store a number.
 
-* **Boolean** : Used to store true / false. 
+* **Boolean** : Used to store true / false.
 
-* **Date Time** : Used to a date time. 
+* **Date Time** : Used to a date time.
 
-* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint](https://docs.cloudboost.io/#CloudGeoPoint) Object instance. 
+* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint](https://docs.cloudboost.io/#CloudGeoPoint) Object instance.
 
 * **Object** : Used to store a JSON object.
 
-* **Files** : Used to store a [CloudFile]( https://docs.cloudboost.io/#CloudFile) of any size. 
+* **Files** : Used to store a [CloudFile]( https://docs.cloudboost.io/#CloudFile) of any size.
 
-* **Encrypted Text** : Used to store important text like Password, etc. 
+* **Encrypted Text** : Used to store important text like Password, etc.
 
 ####Relational Data-types
 
 * **Relation** : Used as a relation to any other [CB.CloudObject](https://docs.cloudboost.io/#CloudObject) of the same or any other table.
 
-* **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations. 
+* **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations.
 
-><span class="tut-info">Info:</span> CloudBoost is schema-mix database. For all your schema-full data, use the columns with respective datatypes, for schema-less data use the data-type called <span class="tut-snippet">Object</span> and you can store any type of data in it. 
+><span class="tut-info">Info:</span> CloudBoost is schema-mix database. For all your schema-full data, use the columns with respective datatypes, for schema-less data use the data-type called <span class="tut-snippet">Object</span> and you can store any type of data in it.
 
 
 #Default Properties
 
-Every CloudObject when created has default properties attached to it. Here is a list of all the default properties attached to CloudObjects when you initialize them. 
+Every CloudObject when created has default properties attached to it. Here is a list of all the default properties attached to CloudObjects when you initialize them.
 
 * **Id** : [Txt] A unique ID of a CloudObject is assigned as soon as the Object is saved. **You cannot assign a user-defined ID to a CloudObject**.
 
 ==JavaScript==
 <span class="js-lines" data-query="viewid">
 ```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
 console.log(obj.id);
 ```
 </span>
@@ -231,7 +251,7 @@ console.log(obj.id);
 ==NodeJS==
 <span class="nodejs-lines" data-query="viewid">
 ```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
 console.log(obj.id);
 ```
 </span>
@@ -239,7 +259,7 @@ console.log(obj.id);
 ==Java==
 <span class="java-lines" data-query="viewid">
 ```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
 System.out.print(obj.getId());
 ```
 </span>
@@ -247,7 +267,7 @@ System.out.print(obj.getId());
 ==.NET==
 <span class="dotnet-lines" data-query="viewid">
 ```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
 obj.ID
 ```
 </span>
@@ -255,10 +275,17 @@ obj.ID
 ==cURL==
 <span class="curl-lines" data-query="viewid">
 ```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it. 
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
+obj.getId()
+```
+</span>
 * **CreatedAt** : [DateTime] A DateTime stamp of when the Object is created. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -295,7 +322,12 @@ obj.CreatedAt
 //
 ```
 </span>
-
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.getCreatedAt()
+```
+</span>
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -330,6 +362,12 @@ obj.UpdatedAt
 <span class="curl-lines" data-query="viewupdateat">
 ```
 //
+```
+</span>
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.getUpdatedAt()
 ```
 </span>
 
@@ -369,7 +407,12 @@ obj.Expires;
 //
 ```
 </span>
-
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.getExpires()
+```
+</span>
 
 * **ACL** : [CB.ACL]( https://docs.cloudboost.io/#ACL) ACL's are Access Control List. They protect your data. You can read more about ACL's in the [Security]( /?lang=en&category=security&subcategory=acl) section. By default, ACL's are Public read and Public write which means anyone can read or write any data. You can modify this in a way where you give write and read access to a particular User or/and Role and this is how you protect specific sections of your data stored in CloudBoost. To know more about ACL's, click [here]( https://docs.cloudboost.io/#ACL)
 
@@ -405,6 +448,12 @@ obj.ACL;
 <span class="curl-lines" data-query="viewacl">
 ```
 //
+```
+</span>
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.getAcl()
 ```
 </span>
 
@@ -446,7 +495,7 @@ obj.save({
 obj.set("ColumnName", newData);
 obj.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 			//
 		}
@@ -506,10 +555,22 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
-
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.set("dob", value: "yesterday")
+obj.save({ resp in
+   if(resp.success){
+       // successfully saved, 'obj' now contains the newly saved data with ID
+   }else{
+      // failed
+   }
+})
+```
+</span>
 #Fetching Objects
 
-If you have an old or a stale copy of CloudObject and you want to refresh / fetch the updated one from the server then you can use the fetch method / function of CloudObject. 
+If you have an old or a stale copy of CloudObject and you want to refresh / fetch the updated one from the server then you can use the fetch method / function of CloudObject.
 
 ==JavaScript==
 <span class="js-lines" data-query="fetch">
@@ -540,7 +601,7 @@ obj.fetch({
 ```
 obj.fetch(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 			//
 		}
@@ -579,9 +640,22 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.set("dob", value: "yesterday")
+obj.save({ resp in
+   if(resp.success){
+       // successfully saved, 'obj' now contains the newly saved data with ID
+   }else{
+      // failed
+   }
+})
+```
+</span>
 #Deleting Objects
 
-If you want to delete an object form the database then you need to call the delete function / method of CloudObject. 
+If you want to delete an object form the database then you need to call the delete function / method of CloudObject.
 
 ==JavaScript==
 <span class="js-lines" data-query="delete">
@@ -612,7 +686,7 @@ obj.delete({
 ```
 obj.delete(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 			//
 		}
@@ -671,10 +745,20 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+obj.delete({ resp in
+   // obj must have an ID
+   if(resp.success){
+       // successfully deleted
+   }else{
+      // failed
+   }
+})
+```
+</span>
 
 #####What's next?
 
 In the next section you'll learn how to create relations between CloudObjects, and save them to the database. Click [here]( /?lang=en&category=datastorage&subcategory=relations) to go to the relations documentation.
-
-
-

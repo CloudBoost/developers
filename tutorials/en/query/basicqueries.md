@@ -1,10 +1,10 @@
 #####In this section
 
-In this section you'll learn about how to query [CloudObjects]( https://docs.cloudboost.io/#CloudObject) from the database. You will also learn few important queries like Distinct, queries on Geo-points and much more. 
+In this section you'll learn about how to query [CloudObjects]( https://docs.cloudboost.io/#CloudObject) from the database. You will also learn few important queries like Distinct, queries on Geo-points and much more.
 
-In many cases, you need a powerful way to query data in your database and specify which objects you want to retrieve. [CB.CloudQuery](https://docs.cloudboost.io/#CloudQuery) offers different ways to retrieve a list of objects you need. 
+In many cases, you need a powerful way to query data in your database and specify which objects you want to retrieve. [CB.CloudQuery](https://docs.cloudboost.io/#CloudQuery) offers different ways to retrieve a list of objects you need.
 
-The general pattern is to create a [CB.CloudQuery](https://docs.cloudboost.io/#CloudQuery), put conditions on it, and then retrieve an Array of matching [CB.CloudObject]( https://docs.cloudboost.io/#CloudObject) using find. 
+The general pattern is to create a [CB.CloudQuery](https://docs.cloudboost.io/#CloudQuery), put conditions on it, and then retrieve an Array of matching [CB.CloudObject]( https://docs.cloudboost.io/#CloudObject) using find.
 
 #Basic Query Constraints
 
@@ -47,7 +47,7 @@ CloudQuery query = new CloudQuery("Student");
 query.equalTo("name","John");
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] x, CloudException t) {	
+	public void done(CloudObject[] x, CloudException t) {
 		if(x != null)
 			//x is an array of CloudObjects
 		if(t != null)
@@ -83,6 +83,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.equalTo("name", obj: "John")
+
+try! query.find({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -125,7 +137,7 @@ CloudQuery query = new CloudQuery("Student");
 query.notEqualTo("name","John");
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(x != null)
 			//x  is an array of CloudObjects
 		if(t != null)
@@ -166,6 +178,17 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.notEqualTo("name", obj: "John")
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
 ###Greater Than
 
 ==JavaScript==
@@ -205,7 +228,7 @@ CloudQuery query = new CloudQuery("Student");
 query.greaterThan("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -246,6 +269,17 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.greaterThan("age", obj: 15)
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
 ###Less Than
 
 ==JavaScript==
@@ -285,7 +319,7 @@ CloudQuery query = new CloudQuery("Student");
 query.lessThan("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -326,6 +360,17 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.lessThan("age", obj: 15)
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
 ###Greater Than and Equal To
 
 ==JavaScript==
@@ -365,7 +410,7 @@ CloudQuery query = new CloudQuery("Student");
 query.greaterThanEqualTo("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -406,6 +451,17 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.greaterThanEqualTo("age", obj: 15)
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
 ###Less Than and Equal To
 
 ==JavaScript==
@@ -445,11 +501,11 @@ CloudQuery query = new CloudQuery("Student");
 query.lessThanEqualTo("age",15);
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-		//	
+		//
 	}
 });
 ```
@@ -486,9 +542,20 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.lessThanEqualTo("age", obj: 15)
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
 ###Starts With
 
->Info: Starts with only works with <span class="tut-snippet">Text</span> type. 
+>Info: Starts with only works with <span class="tut-snippet">Text</span> type.
 
 ==JavaScript==
 <span class="js-lines" data-query="startwith">
@@ -527,7 +594,7 @@ CloudQuery query = new CloudQuery("Student");
 query.startsWith("name","J");
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -569,18 +636,30 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.startsWith("name", str: "Jo")
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ###Substring
 
 Substring returns all the `CloudObject` which contains the given string.
 
->Info: Substring with only works with <span class="tut-snippet">Text</span> type. 
+>Info: Substring with only works with <span class="tut-snippet">Text</span> type.
 
 ==JavaScript==
 <span class="js-lines" data-query="Substring">
 ```
 var query = new CB.CloudQuery("Student");
 query.substring('name','on');
-//OR also works with an array. 
+//OR also works with an array.
 query.substring('name',['on','hn']);
 query.find({
   success: function(list) {
@@ -597,7 +676,7 @@ query.find({
 ```
 var query = new CB.CloudQuery("Student");
 query.substring('name','on');
-//OR also works with an array. 
+//OR also works with an array.
 query.substring('name',['on','hn']);
 query.find({
   success: function(list) {
@@ -614,13 +693,13 @@ query.find({
 //
 CloudQuery query=new CloudQuery("data");
 query.subString("name", "on");
-//OR also works with an array. 
+//OR also works with an array.
 query.subString("name",new String[]{"on","in"});
 query.find(new CloudObjectArrayCallback() {
 	@Override
 	public void done(CloudObject[] x, CloudException t) throws CloudException {
-		
-				
+
+
 	}
 });
 ```
@@ -643,10 +722,10 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${client_key},
 	"limit": 10,
 	"sort": {
-		
+
 	},
 	"select": {
-		
+
 	},
 	"query": {
 		"$includeList": [],
@@ -663,10 +742,10 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${client_key},
 	"limit": 10,
 	"sort": {
-		
+
 	},
 	"select": {
-		
+
 	},
 	"query": {
 		"$includeList": [],
@@ -687,11 +766,23 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.substring("name", subStr: "oh")
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ###Regex
 
 Returns all the `CloudObject` which matches the regex.
 
->Info: Regex with only works with <span class="tut-snippet">Text</span> type. 
+>Info: Regex with only works with <span class="tut-snippet">Text</span> type.
 
 ==JavaScript==
 <span class="js-lines" data-query="regex">
@@ -731,8 +822,8 @@ query.regex("name", "^/*.on*./");
 query.find(new CloudObjectArrayCallback() {
 	@Override
 	public void done(CloudObject[] x, CloudException t) throws CloudException {
-				
-				
+
+
 	}
 });
 ```
@@ -760,15 +851,27 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 		}
 	},
 	"select": {
-		
+
 	},
 	"sort": {
-		
+
 	},
 	"limit": 10,
 	"skip": 0
 }
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.regex("name", exp: "^/*.on*./")
+
+try! query.find({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -818,7 +921,7 @@ CloudQuery query = new CloudQuery("Student");
 query.containedIn("courses", new String[]{"JavaScript", "C#"});
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -861,6 +964,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.containedIn("courses", obj: ["math","science"])
+
+try! query.find({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -908,7 +1023,7 @@ CloudQuery query = new CloudQuery("Student");
 query.notContainedIn("courses", new String[]{"JavaScript", "C#"});
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -949,6 +1064,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.notContainedIn("courses", obj: ["math","science"])
+
+try! query.find({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -996,7 +1123,7 @@ CloudQuery query = new CloudQuery("Student");
 query.containsAll("courses", new String[]{"JavaScript", "C#"});
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
@@ -1040,9 +1167,21 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.containsAll("courses", obj: ["math","science"])
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 #AND and OR
 
-By adding two or more constraints on a single query object will AND it by default. For example: 
+By adding two or more constraints on a single query object will AND it by default. For example:
 
 ==JavaScript==
 <span class="js-lines" data-query="and">
@@ -1086,11 +1225,11 @@ query.equalTo("name", "John");
 query.greaterThan("age", 10);
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-		//	
+		//
 	}
 });
 ```
@@ -1129,8 +1268,21 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.equalTo("name", obj: "John")
+query.greaterThan("age", obj: 10)
 
-If you want to **OR** a query, you can: 
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
+
+If you want to **OR** a query, you can:
 
 ==JavaScript==
 <span class="js-lines" data-query="or">
@@ -1139,7 +1291,7 @@ var query1 = new CB.CloudQuery("Student");
 query1.equalTo('name', 'John');
 var query2 = new CB.CloudQuery("Student");
 query2.greaterThan('age', 10);
-var query = CB.CloudQuery.or(query1,query2); //OR it. 
+var query = CB.CloudQuery.or(query1,query2); //OR it.
 query.find({
   success: function(list){
     //list is an array of CloudObjects
@@ -1158,7 +1310,7 @@ var query1 = new CB.CloudQuery("Student");
 query1.equalTo('name', 'John');
 var query2 = new CB.CloudQuery("Student");
 query2.greaterThan('age', 10);
-var query = CB.CloudQuery.or(query1,query2); //OR it. 
+var query = CB.CloudQuery.or(query1,query2); //OR it.
 query.find({
   success: function(list){
     //list is an array of CloudObjects
@@ -1177,14 +1329,14 @@ CloudQuery query1 = new CloudQuery("Student");
 query1.equalTo("name", "John");
 CloudQuery query2 = new CloudQuery("Student");
 query2.greaterThan("age", 10);
-CloudQuery query = CB.CloudQuery.or(query1,query2); //OR it. 
+CloudQuery query = CB.CloudQuery.or(query1,query2); //OR it.
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(list != null)
 			//list is an array of CloudObjects
 		if(t != null)
-		//	
+		//
 	}
 });
 ```
@@ -1235,6 +1387,24 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query1 = CloudQuery(tableName: "Student")
+try! query1.equalTo("name", obj: "John")
+
+let query2 = CloudQuery(tableName: "Student")
+try! query2.lessThan("marks", obj: 70)
+
+let query = CloudQuery(tableName: "Student")
+try! query.or(query1, object2: query2)
+
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 #Order By
 
 ==JavaScript==
@@ -1280,7 +1450,7 @@ query.OrderByDesc("name");
 ==cURL==
 <span class="curl-lines" data-query="orderby">
 ```
-//order by ascending 
+//order by ascending
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${client_key},
   "limit": 10,
@@ -1314,9 +1484,19 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+//sort by Ascending
+query.sortAscendingBy("name")
+//You can also sort by Desending
+query.sortDescendingBy("name")
+```
+</span>
+
 #Limit & Skip
 
-Limit returns only the specified number of objects from the database. Skip in turn skips the specified number of objects from the database and returns the rest of the objects. 
+Limit returns only the specified number of objects from the database. Skip in turn skips the specified number of objects from the database and returns the rest of the objects.
 
 ==JavaScript==
 <span class="js-lines" data-query="limitskip">
@@ -1394,9 +1574,19 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+//limit
+query.setLimit(10)
+//skip
+query.setSkip(10)
+```
+</span>
+
 #Paginate
 
-Paginate returns only the specified number of objects from the database. It takes in the current page number and total items in page as parameters and returns list of objects,count,total number of pages. 
+Paginate returns only the specified number of objects from the database. It takes in the current page number and total items in page as parameters and returns list of objects,count,total number of pages.
 
 ==JavaScript==
 <span class="js-lines" data-query="paginate">
@@ -1441,7 +1631,7 @@ query.paginate(1, null, new PaginatorCallback() {
 	public void done(CloudObject[] objects, Integer count, Integer totalPages,
 		CloudException t) throws CloudException {
 			if(t!=null)
-									
+
 			else
 	}
 });
@@ -1473,6 +1663,24 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": ${(page_no*total_items_per_page)-total_items_per_page}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query1 = CloudQuery(tableName: "QueryPaginate")
+let pageNum = 2
+let totalItemsInPage = 10
+query1.paginate(pageNum, _totalItemsInPage: totalItemsInPage, callback: {
+    object, count, totalPages in
+    if object != nil && object?.count > totalItemsInPage {
+        print("received number of items are greater than the required value")
+    }else if Int(ceil(Double(count!)/Double(totalItemsInPage))) != totalPages {
+        print("totalpages is not recieved as expected")                        
+    }
+})
+
 ```
 </span>
 
@@ -1564,9 +1772,19 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+//select
+query.selectColumn("name")
+//do not select
+query.doNotSelectColumn("age")
+```
+</span>
+
 #Find, Find one, Find by ID
 
-Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery. 
+Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery.
 
 ==JavaScript==
 <span class="js-lines" data-query="query">
@@ -1599,11 +1817,11 @@ query.find({
 ```
 query.find(new CloudObjectArrayCallback(){
 	@Override
-	public void done(CloudObject[] list, CloudException t) {	
+	public void done(CloudObject[] list, CloudException t) {
 		if(x != null)
 			//list is an array of CloudObjects
 		if(t != null)
-		//	
+		//
 	}
 });
 ```
@@ -1631,6 +1849,19 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+try! query.find({ response in
+    if response.success {
+      // successful search
+    }else{
+      // check what is wrong
+    }
+})
 ```
 </span>
 
@@ -1667,7 +1898,7 @@ query.findOne({
 ```
 query.findOne(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null)
 			//x is a CloudObject
 		if(t != null)
@@ -1700,6 +1931,21 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/findOne'
+```
+</span>
+
+
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+try! query.findOne({ response in
+    if response.success {
+      // successful search
+    }else{
+      // check what is wrong
+    }
+})
 ```
 </span>
 
@@ -1736,7 +1982,7 @@ query.findById('id', {
 ```
 query.findById("id", new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject obj, CloudException t) {	
+	public void done(CloudObject obj, CloudException t) {
 		if(x != null)
 			 //obj is CloudObject
 		if(t != null)
@@ -1769,6 +2015,19 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+try! query.findById("id", callback: { response in
+    if response.success {
+      // successful search
+    }else{
+      // check what is wrong
+    }
+})
 ```
 </span>
 
@@ -1805,7 +2064,7 @@ query.count({
 ```
 query.count(new CloudIntegerCallback(){
 @Override
-public void done(int x, CloudException t) {	
+public void done(int x, CloudException t) {
 	if(x != null)
 	//			
 	if(t != null)
@@ -1841,9 +2100,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+query.count({ response in
+    response.log()
+})
+```
+</span>
+
 #Distinct
 
-Distinct query returns the distinct values of a specified column. 
+Distinct query returns the distinct values of a specified column.
 
 ==JavaScript==
 <span class="js-lines" data-query="distinct">
@@ -1851,7 +2119,7 @@ Distinct query returns the distinct values of a specified column.
 query.distinct('age',{
   success : function(list){
       //list is an array of CloudObjects.
-        //list has all the objects with distinct age. 
+        //list has all the objects with distinct age.
     }, error : function(error){
       //error
     }
@@ -1865,7 +2133,7 @@ query.distinct('age',{
 query.distinct('age',{
   success : function(list){
       //list is an array of CloudObjects.
-        //list has all the objects with distinct age. 
+        //list has all the objects with distinct age.
     }, error : function(error){
       //error
     }
@@ -1914,13 +2182,22 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+query.distinct("age", callback: { response in
+    response.log()
+})
+```
+</span>
+
 #Joins
 
 ###Simple Joins
 
-When CloudObjects are related by the Relation or List of Relations data type and you query those CloudObject from the database,. By default, the data of related CloudObject will not return in the results. 
+When CloudObjects are related by the Relation or List of Relations data type and you query those CloudObject from the database,. By default, the data of related CloudObject will not return in the results.
 
-For example, if a Student table has a column called courses which is a relation to Course table then, 
+For example, if a Student table has a column called courses which is a relation to Course table then,
 
 If you query students and get the course property,
 
@@ -2003,7 +2280,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 **Solution :**
 
-To solve this, you need to call the <span class="tut-snippet">include</span> function of CB.CloudQuery Object and pass in the ColumnName. 
+To solve this, you need to call the <span class="tut-snippet">include</span> function of CB.CloudQuery Object and pass in the ColumnName.
 
 ==JavaScript==
 <span class="js-lines" data-query="include">
@@ -2089,28 +2366,28 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ###Multi level joins
 
-You can also do multi-level join on your CloudObject. 
+You can also do multi-level join on your CloudObject.
 
 For example :
 
 ==JavaScript==
 <span class="js-lines" data-query="multijoin">
 ```
-query.include('course.teacher'); 
+query.include('course.teacher');
 ```
 </span>
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="multijoin">
 ```
-query.include('course.teacher'); 
+query.include('course.teacher');
 ```
 </span>
 
 ==Java==
 <span class="java-lines" data-query="multijoin">
 ```
-query.include("course.teacher"); 
+query.include("course.teacher");
 ```
 </span>
 
@@ -2144,15 +2421,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ###Near
 
-Queries for objects which are within range given by the query. It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> to the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters. 
+Queries for objects which are within range given by the query. It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> to the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters.
 
 ==JavaScript==
 <span class="js-lines" data-query="near">
 ```
 var loc = new CB.CloudGeoPoint(17.7,80.3);
 var query = new CB.CloudQuery('Custom');
-//third parameter is the radius to check in meters. 
-query.near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.near("location", loc, 100000);
 query.find({
   success : function(list){
       //list is an array of CloudObjects.
@@ -2168,8 +2445,8 @@ query.find({
 ```
 var loc = new CB.CloudGeoPoint(17.7,80.3);
 var query = new CB.CloudQuery('Custom');
-//third parameter is the radius to check in meters. 
-query.near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.near("location", loc, 100000);
 query.find({
   success : function(list){
       //list is an array of CloudObjects.
@@ -2185,8 +2462,8 @@ query.find({
 ```
 CloudGeoPoint loc = new CloudGeoPoint(17.7,80.3);
 CloudQuery query = new CloudQuery("Custom");
-//third parameter is the radius to check in meters. 
-query.near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.near("location", loc, 100000);
 query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] list, CloudException t)throws CloudException {
@@ -2204,8 +2481,8 @@ query.find(new CloudObjectArrayCallback(){
 ```
 var loc = new CB.CloudGeoPoint(17.7,80.3);
 var query = new CB.CloudQuery("Custom");
-//third parameter is the radius to check in meters. 
-query.Near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.Near("location", loc, 100000);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>
@@ -2231,9 +2508,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ###Geo Within
 
-Gets all the objects if the point specified by column name lie inside of the specified set of points given. 
+Gets all the objects if the point specified by column name lie inside of the specified set of points given.
 
-Geo Within at least requires 3 points to be passed to the query. 
+Geo Within at least requires 3 points to be passed to the query.
 
 ==JavaScript==
 <span class="js-lines" data-query="geowithin">
@@ -2304,8 +2581,8 @@ var loc1 = new CloudGeoPoint(18.4,78.9);
 var loc2 = new CloudGeoPoint(17.4,78.4);
 var loc3 = new CloudGeoPoint(17.7,80.4);
 var query = new CB.CloudQuery("Custom");
-//third parameter is the radius to check in meters. 
-query.Near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.Near("location", loc, 100000);
 List<CB.CloudObject> result = await query.Find();
 ```
 </span>

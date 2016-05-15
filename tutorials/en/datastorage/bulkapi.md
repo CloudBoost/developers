@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn about how to save and delete more than one CloudObject at a Time. You'll learn about the Bulk API for Save and Delete in CloudBoost. 
+In this section you'll learn about how to save and delete more than one CloudObject at a Time. You'll learn about the Bulk API for Save and Delete in CloudBoost.
 
 #Saving Multiple CloudObjects
 
@@ -150,6 +150,22 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+let obj1 = CloudObject(tableName: "Student")
+obj1.setString("name", value: "Randhir")
+
+let obj2 = CloudObject(tableName: "Student")
+obj2.setString("name", value: "Omar")
+
+CloudObject.saveAll([obj1, obj2], callback: { response in
+    response.log()
+})
+
+```
+</span>
+
 #Deleting Multiple CloudObjects
 
 To delete multiple objects pass an array of CloudObjects to the bulk delete function. For example:
@@ -161,7 +177,7 @@ CB.CloudObject.deleteAll([obj1,obj2],{
     success: function(res){
         //successfully delete CloudObjects.
     },error: function(err){
-        // error while deleting CloudObjects. err is an array of error objects. 
+        // error while deleting CloudObjects. err is an array of error objects.
     });
 ```
 </span>
@@ -173,7 +189,7 @@ CB.CloudObject.deleteAll([obj1,obj2],{
     success: function(res){
         //successfully delete CloudObjects.
     },error: function(err){
-        // error while deleting CloudObjects. err is an array of error objects. 
+        // error while deleting CloudObjects. err is an array of error objects.
     });
 ```
 </span>
@@ -272,5 +288,16 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
         }
     }]
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+// obj1 and obj2 must contain their ObjectID before deleting
+CloudObject.deleteAll([obj1, obj2], callback: { response in
+    response.log()
+})
+
 ```
 </span>

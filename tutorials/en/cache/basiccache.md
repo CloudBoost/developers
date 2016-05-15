@@ -3,7 +3,7 @@
 In this section you'll learn about how to use caching for your apps in CloudBoost. Caching is great for your apps because it helps you to access data much faster when compared to the database. On the downside, querying is limited and it is very expensive (money-wise) because all the data is on the memory (which is expensive) instead of being on a disk. It is recommended that you use cache only for frequently accessed data.  
 
 <p>&nbsp;</p>
-><span class="tut-info">Info</span> Cache can only be used with a master key, and not with any of the client keys. 
+><span class="tut-info">Info</span> Cache can only be used with a master key, and not with any of the client keys.
 
 #Create Cache
 
@@ -73,6 +73,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+// Throws an error when cacheName is invalid
+let cache = try! CloudCache(cacheName: "newCache")
+// Throws an error when AppID/AppKey is nil
+try! cache.create({ response in
+    response.log()    
+})
+```
+</span>
+
 #Adding / Updating Item
 
 To add or update an item into the Cache, you need to call the set method of the <span class="tut-snippet">CB.CloudCache</span> instance. <span class="tut-snippet">put</span> function takes in a key as the first parameter and an item of any datatype as the second parameter.
@@ -133,7 +145,7 @@ var cache = new CB.CloudCache("CacheName");
 var list = new Dictionary<string, Object>();
 list.Add("name", "John Doe");
 list.Add("sex", "MALE");
-list.Add("age", 24); 
+list.Add("age", 24);
 var result = await cache.SetAsync("sample", data);
 ```
 </span>
@@ -145,6 +157,21 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/htm
   "item": ${data_to_cache},
   "key": ${master_key}}
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/${data_key}}'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")
+  let obj = ["name":"Randhir", "marks": 34]
+  try cache.set("sample", value: obj, callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -214,6 +241,20 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.get("sample", callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 #Delete item
 
 To delte an item from the Cache, you need to call the DeleteItem method of the <span class="tut-snippet">CB.CloudCache</span> instance with the parameter of the item key.
@@ -253,7 +294,7 @@ cache.deleteItem("test1", new ObjectCallback() {
 		throws CloudException {
 		if (t != null)
 			//
-		else 
+		else
 		   //
 });
 ```
@@ -273,6 +314,20 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key": ${master_key},
   "method":"DELETE"
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/item/${data_key}'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.deleteItem("sample", callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -342,6 +397,20 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getAllItems(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 #Count Items
 
 To get the number of items stored in the cache, you need to call the GetItemsCount method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -407,9 +476,23 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getItemsCount(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 #Get size of a cache
 
-To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance. 
+To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance.
 
 GetInfo method returns the updated cache instance which has the size of the cache in KB.
 
@@ -418,8 +501,8 @@ GetInfo method returns the updated cache instance which has the size of the cach
 ```
 cache.getInfo({
     success : function(cache){
-        //cache is the instace of the cache. 
-        //to get cache size, 
+        //cache is the instace of the cache.
+        //to get cache size,
         console.log(cache.size);
     }, error : function(error){
         console.log(error);
@@ -433,8 +516,8 @@ cache.getInfo({
 ```
 cache.getInfo({
     success : function(cache){
-        //cache is the instace of the cache. 
-        //to get cache size, 
+        //cache is the instace of the cache.
+        //to get cache size,
         console.log(cache.size);
     }, error : function(error){
         console.log(error);
@@ -471,6 +554,20 @@ await cache.GetInfoAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getInfo(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -541,6 +638,19 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.clear(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
 #Delete Cache
 
 To delete an instance of the cache, you need to call the delete method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -566,7 +676,7 @@ cache.delete({
 ```
 cache.delete({
     success : function(cache){
-        //cache is the an empty instance of CB.CloudCache 
+        //cache is the an empty instance of CB.CloudCache
         console.log(cache);
     }, error : function(error){
         console.log(error);
@@ -604,6 +714,20 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key": ${master_key},
   "method":"DELETE"
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}'
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.delete(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -673,6 +797,19 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {  
+  CloudCache.getAllCache(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 #Delete All Caches
 
 To delete all the app caches, you need to call the deleteAll method a static method of the <span class="tut-snippet">CB.CloudCache</span>  with no parameters.
@@ -738,6 +875,19 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+do {  
+  CloudCache.deleteAll(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 #Name
 
 To get name of the cache, you need to call the name property on the <span class="tut-snippet">CB.CloudCache</span> .
@@ -778,6 +928,14 @@ var cacheName = cache.Name;
 <span class="curl-lines" data-query="name">
 ```
 //
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+let cache = try! CloudCache(cacheName: "newCache")
+let name = cache.getCacheName()
 ```
 </span>
 
@@ -823,5 +981,13 @@ var cacheSize = cache.Size;
 <span class="curl-lines" data-query="size">
 ```
 //
+```
+</span>
+
+==Swift==
+<span class="ios=lines" data-query="create">
+```
+let cache = try! CloudCache(cacheName: "newCache")
+let size = cache.getCacheSize()
 ```
 </span>
