@@ -124,6 +124,15 @@ Create a new file `ServiceWorker.js`, Copy the code below and save it in the roo
 ==JavaScript==
 <span class="js-lines" data-query="swjs">
 ```
+self.addEventListener('install', function(event) {
+  self.skipWaiting();
+  //Service worker Installed
+});
+//
+self.addEventListener('activate', function(event) {
+  //Service worker Activated
+});
+//
 self.addEventListener('push', function(event) {
   var obj = event.data.json();  
   fireNotification(obj, event);  
