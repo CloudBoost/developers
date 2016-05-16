@@ -100,6 +100,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let queue = CloudQueue(queueName: queueName, queueType: nil)
+try! queue.create({ response in
+    if response.success {
+      // queue created
+    }
+})
+```
+</span>
+
 #Add message into the queue
 
 To add message into the Queue, you need to call the addMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance. <span class="tut-snippet">addMessage</span> function takes in data as the first parameter.
@@ -141,7 +153,7 @@ CloudQueue queue = new CloudQueue("QueueName");
 	queue.addMessage("sample", new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			else
 				//
@@ -234,6 +246,18 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let queue = CloudQueue(queueName: queueName, queueType: nil)
+queue.addMessage("Randhir", callback: { response in
+    if response.success {
+      // message added
+    }
+})
+```
+</span>
+
 #Get first message from the queue
 
 To get the ***first*** message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -274,7 +298,7 @@ que.getMessage(1, new CloudQueueMessageCallback() {
 	public void done(QueueMessage[] msgs, CloudException e) {
 		if (e != null)
 			//
-		if (msgs != null) 
+		if (msgs != null)
 			//
 	}
 });
@@ -295,6 +319,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${app_key},
   "count":${message_count}
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/getMessage'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let numberOfMessages = 1
+queue.getMessage(numberOfMessages, callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -340,7 +376,7 @@ que.peekMessage(1, new CloudQueueMessageCallback() {
 	public void done(QueueMessage[] msgs, CloudException e) {
 		if (e != null)
 			//
-		if (msgs != null) 
+		if (msgs != null)
 			//
 	}
 });
@@ -361,6 +397,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${app_key},
   "count":${message_count}
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/peekMessage'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let numberOfMessages = 1
+queue.peekMessage(numberOfMessages, callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -404,7 +452,7 @@ que.getMessageById("id", new CloudQueueMessageCallback() {
 	public void done(QueueMessage msg, CloudException e) {
 		if (e != null)
 			//
-		if (msg != null) 
+		if (msg != null)
 			//
 	}
 });
@@ -427,7 +475,18 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-#Get all messages 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+queue.getMessageById("id", callback: { response in
+    if response.success {
+      // message added
+    }
+})
+```
+</span>
+
+#Get all messages
 
 To get all Messages from queue, you need to call the getAllMessages function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
@@ -465,7 +524,7 @@ que.getAllMessages(new CloudQueueArrayCallback() {
 	public void done(QueueMessage[] msgs, CloudException e) {
 		if (e != null)
 			//
-		if (msgs != null) 
+		if (msgs != null)
 			//
 	}
 });
@@ -485,6 +544,17 @@ await queue.GetAllMessagesAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${app_key}
   }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/messages'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+queue.getAllMessages({ response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -526,7 +596,7 @@ queue.get(new CloudQueueCallback() {
 	public void done(CloudQueue q, CloudException e) {
 		if (e != null)
 			//
-		if (q != null) 
+		if (q != null)
 			//
 	}
 });
@@ -546,6 +616,17 @@ await queue.GetAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${app_key}
   }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+CloudQueue.get(queueName,callback: { response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -587,7 +668,7 @@ CloudQueue.getAll(new CloudQueueArrayCallback() {
 	public void done(CloudQueue[] q, CloudException e) {
 		if (e != null)
 			//
-		if (q != null) 
+		if (q != null)
 			//
 	}
 });
@@ -607,6 +688,17 @@ await queue.GetAllAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${client_key}    
 }' 'http://api.cloudboost.io/queue/${app_id}'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+CloudQueue.getAll({ response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -669,6 +761,17 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key": ${client_key}
   "method":"DELETE"
 }' 'http://api.cloudboost.io/queue/${app_id}/message/${id}'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+queue.deleteMessage("id", callback: { response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -765,6 +868,17 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+queue.delete({ response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 #Timeouts
 
 When you pull the message from queue, the message becomes invisible for 30 mins. We have timeouts in place because if your service which is processing the queue crashes, the message re-appears back into the queue within 30 mins and the other service can pick it up and process it. After your task completes, you should delete the message from the queue by calling the DeleteMessage function.
@@ -815,7 +929,7 @@ QueueMessage[] msgs={msg};
 	queue.addMessage(msgs, new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			if(msgs!=null)
 				//
@@ -912,6 +1026,17 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+queue.delete({ response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 #Delays
 
 To make the message in the queue appear after a certain period of time, you delay the message. Delay can be set in seconds.
@@ -958,7 +1083,7 @@ QueueMessage[] msgs={msg};
 	queue.addMessage(msgs, new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			if(msgs!=null)
 				//msgs
@@ -1055,6 +1180,18 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let msg = QueueMessage()
+msg.setMessage("Sample")
+msg.setDelay(1000)
+queue.addMessage(msg, callback: { response in
+    response.log()
+})
+```
+</span>
+
 #Expire
 
 To delete the message from the queue after a certain period of time. You can set an expiry date and time to a message. The message will not be available after expire time is elapsed.
@@ -1111,7 +1248,7 @@ QueueMessage[] msgs={msg};
 	queue.addMessage(msgs, new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			if(msgs!=null)
 				//
@@ -1208,3 +1345,16 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let msg = QueueMessage()
+msg.setMessage("Sample")
+let today = NSDate()
+let tomorrow = today.dateByAddingTimeInterval(NSTimeInterval.abs(86400))
+msg.setExpires(tomorrow)
+queue.addMessage(msg, callback: { response in
+    response.log()
+})
+```
+</span>
