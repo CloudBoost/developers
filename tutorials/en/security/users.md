@@ -380,6 +380,76 @@ CB.CloudUser.Current
 ```
 </span>
 
+#Social Authentication
+
+Here's how you can add third party authentication providers like Facebook, GitHub, LinkedIn, Twitter and more in just under 10 mins for your app. 
+
+#####Enable Social Authentication
+
+* Go to your app settings in [CloudBoost Dashboard](https://dashboard.cloudboost.io)
+* Add your app callback URL. This is usually the URL of the page you want your users to be redirected to after successful login. 
+* Set the color of your apps login page to match the brand color of your app. 
+* Enable one or more authentication providers.  
+* If you enable third party social authentications. You need to copy the respective Callback URL and paste it in the app settings page of the provider. 
+
+<img class="full-length-img" alt="Add Credentials" src="https://www.dropbox.com/s/ha98e8a37idgwpr/socialauth.jpg?dl=0&raw=1">
+
+#####After successful authentication.
+
+Once you get authenticated successfully, you are redirected to your app page (which you have mentioned in the Callback URL in CloudBoost App Settings), You can retrieve current logged in user by : 
+
+==JavaScript==
+<span class="js-lines" data-query="getcurrentuserfromserver">
+```
+CB.CloudUser.getCurrentUser({
+  success: function(user) {
+    console.log(user);
+  },
+  error: function(error) {
+   console.log(error);
+  }
+});
+```
+</span>
+
+
+#####Login with provider
+
+If you want to build your own custom login page (and not use the one we provide). Then you can integrate third party authentication providers from our SDK. Every provider (like Facebook, Twitter, etc) returns an accessToken on successful authentication, you can then pass this accessToken with Cloudboost SDK to create a session for that user. 
+
+* provider (required) : Provider name. Supported values are "facebook", "twitter", "google", "linkedin", "github".
+* accessToken   (required) : AccessToken from Facebook, Twitter, Google, LinkedIn, GitHub, etc.
+* accessSecret    (only for twitter) : Access Secret from Twitter. 
+
+==JavaScript==
+<span class="js-lines" data-query="loginwithfacebook">
+```
+//Example for facebook, google, github, linkedin
+//
+CB.CloudUser.authenticateWithProvider({provider:"facebook",
+        accessToken:"hsgshssbsvbsns"},{
+  success: function(user) {
+    console.log(user);
+  },
+  error: function(error) {
+   console.log(error);
+  }
+});
+//
+//Example for twitter
+//
+CB.CloudUser.authenticateWithProvider({provider:"twitter",
+        accessToken:"hdhdhdddd", accessSecret:"dhdgwwkw"},{
+  success: function(user) {
+    console.log(user);
+  },
+  error: function(error) {
+   console.log(error);
+  }
+});
+```
+</span>
+
 #Log out
 
 If you want to flush the session out and log out the user, then you can do this by
