@@ -112,7 +112,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 // throws error if latitude and longitude are not valid values
 let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
@@ -172,7 +172,7 @@ double distance = loc1.DistanceInKMs(loc2);
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
 let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
@@ -226,7 +226,7 @@ double distance = loc1.DistanceInMiles(loc2);
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
 let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
@@ -280,7 +280,7 @@ double distance = loc1.DistanceInRadians(loc2);
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
 let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
@@ -378,7 +378,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let query = CloudQuery(tableName: "LocationTest")
 let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
@@ -484,7 +484,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let query = CloudQuery(tableName: "LocationTest")
 let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)

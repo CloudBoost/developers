@@ -74,7 +74,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 // Throws an error when cacheName is invalid
 let cache = try! CloudCache(cacheName: "newCache")
@@ -161,7 +161,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/htm
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")
@@ -242,7 +242,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -318,7 +318,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -398,7 +398,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -477,7 +477,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -558,7 +558,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -639,7 +639,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -718,7 +718,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {
   let cache = try CloudCache(cacheName: "newCache")  
@@ -798,7 +798,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {  
   CloudCache.getAllCache(callback: { response in
@@ -876,7 +876,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 do {  
   CloudCache.deleteAll(callback: { response in
@@ -932,7 +932,7 @@ var cacheName = cache.Name;
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let cache = try! CloudCache(cacheName: "newCache")
 let name = cache.getCacheName()
@@ -985,7 +985,7 @@ var cacheSize = cache.Size;
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let cache = try! CloudCache(cacheName: "newCache")
 let size = cache.getCacheSize()

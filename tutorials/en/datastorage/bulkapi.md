@@ -151,7 +151,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let obj1 = CloudObject(tableName: "Student")
 obj1.setString("name", value: "Randhir")
@@ -292,7 +292,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 // obj1 and obj2 must contain their ObjectID before deleting
 CloudObject.deleteAll([obj1, obj2], callback: { response in

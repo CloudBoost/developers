@@ -104,7 +104,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 // yourData is an NSData object
 let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
@@ -303,7 +303,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 // yourData is an NSData object
 let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
@@ -363,7 +363,7 @@ file.ID
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 print(file.getId())
 ```
@@ -410,7 +410,7 @@ file.Url;
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 print(file.getFileUrl())
 ```
@@ -456,7 +456,7 @@ file.Name
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 print(file.setFileName("Sample"))
 ```
@@ -536,7 +536,7 @@ file.ACL;
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 file.getACL()
 ```
@@ -604,7 +604,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/htm
 ```
 </span>
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 // throws if fileObj is not saved
 try! fileObj.delete({ response in
@@ -690,7 +690,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 let query = CloudQuery(tableName: "Student")
 query.include("file")
@@ -807,7 +807,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==Swift==
-<span class="ios=lines" data-query="create">
+<span class="ios-lines" data-query="create">
 ```
 CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
     if response.success {
