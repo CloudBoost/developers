@@ -2278,6 +2278,20 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.find({ res in
+    if let list = res.object as? [NSMutableDictionary] {
+        let  obj = list[0]
+        let name = obj.get("name")
+    }
+})
+```
+</span>
+
+
 **Solution :**
 
 To solve this, you need to call the <span class="tut-snippet">include</span> function of CB.CloudQuery Object and pass in the ColumnName.
@@ -2364,6 +2378,22 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let query = CloudQuery(tableName: "Student")
+query.include("course")
+try! query.find({ res in
+    if let list = res.object as? [NSMutableDictionary] {
+        let  obj = list[0]
+        if let course = obj.get("course") as? NSMutableDictionary {
+            let courseName = courses.get("name")
+        }
+    }
+})
+```
+</span>
+
 ###Multi level joins
 
 You can also do multi-level join on your CloudObject.
@@ -2414,6 +2444,14 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+query.include("course.teacher")
 ```
 </span>
 
@@ -2503,6 +2541,22 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let geoPoint = try! CloudGeoPoint(latitude: 17, longitude: 80)
+let query = CloudQuery(tableName: "Student")
+query.near("location", geoPoint: geoPoint, maxDistance: 10000, minDistance: 10)
+try! query.find({ res in
+    if let list = res.object as? [NSMutableDictionary] {
+        if list.count > 0 {
+          // near point exists                  
+        }
+    }
+})
 ```
 </span>
 
@@ -2603,5 +2657,23 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
+let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
+let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
+let query = CloudQuery(tableName: "Custom")
+query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
+try! query.find({ response in
+  if let list = res.object as? [NSMutableDictionary] {
+      if list.count > 0 {
+        // near point exists                  
+      }
+  }
+})
 ```
 </span>
