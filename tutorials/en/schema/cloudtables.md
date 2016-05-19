@@ -1,6 +1,6 @@
 #####In this section
 
-In this section you'll learn how to create a Table (we call it [CloudTable]( https://docs.cloudboost.io/#CloudTable)) and save it into your CloudBoost App. You will also learn about default columns in tables. Finally we'll also learn to add, delete and update columns in a CloudTable. 
+In this section you'll learn how to create a Table (we call it [CloudTable]( https://docs.cloudboost.io/#CloudTable)) and save it into your CloudBoost App. You will also learn about default columns in tables. Finally we'll also learn to add, delete and update columns in a CloudTable.
 
 #Saving a new table
 
@@ -38,6 +38,13 @@ var table = new CB.CloudTable("TableName");
 <span class="curl-lines" data-query="create">
 ```
 //
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let table = CloudTable(tableName: "TableName")
 ```
 </span>
 
@@ -79,7 +86,7 @@ Column column = new Column("Name", "Text");
 table.addColumn(column);
 table.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -186,15 +193,27 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let table = CloudTable(tableName: "Student")
+let column = Column(name: "name", dataType: CloudBoostDataType.Text)
+table.addColumn(column)
+table.save({ response in
+    response.log()
+})
+```
+</span>
+
 #Default Columns
 
 Every CloudTable when created has default columns attached to it. Here is a list of all the default columns attached to CloudTable when you initialize them. **All of the default columns are not editable or deleteable.**
 
-* **Id** : [Text] A unique ID column of a CloudObject. 
+* **Id** : [Text] A unique ID column of a CloudObject.
 
 * **CreatedAt** : [DateTime] A DateTime stamp of when the Object is created.  
 
-* **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. 
+* **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated.
 
 * **Expires** : [DateTime] <span class="tut-snippet">null</span> by default. You can set <span class="tut-snippet">expires</span> to any value in the future and CloudBoost will make sure the CloudObject will automatically be deleted at that time.   
 
@@ -202,7 +221,7 @@ Every CloudTable when created has default columns attached to it. Here is a list
 
 #Adding new columns
 
-Before you add columns to the CloudTable you need to instantiate new column objects from Column class. 
+Before you add columns to the CloudTable you need to instantiate new column objects from Column class.
 
 
 ==JavaScript==
@@ -252,6 +271,16 @@ column.dataType = 'Text';
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Text, required: true, unique: false)
+// unique, required can also be set using the following functions
+column.setRequired(true)
+column.setUnique(true)
+```
+</span>
+
 You need to add the new column object to the CloudTable object.
 
 ==JavaScript==
@@ -287,7 +316,7 @@ CloudTable table = new CloudTable("Student")
 table.addColumn(column1);
 table.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -394,41 +423,53 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let table = CloudTable(tableName: "Student")
+let column = Column(name: "name", dataType: CloudBoostDataType.Text)
+table.addColumn(column)
+table.save({ response in
+    response.log()
+})
+```
+</span>
+
 #Data-types
 
-CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports. 
+CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports.
 
 ####Simple Data-types.
 
-* **Text** : Used to store string / text of any length. 
+* **Text** : Used to store string / text of any length.
 
-* **URL** : Used to store a URL. 
+* **URL** : Used to store a URL.
 
 * **Email** : Used to store an Email.
 
 * **Number** : Used to store a number.
 
-* **Boolean** : Used to store true / false. 
+* **Boolean** : Used to store true / false.
 
-* **Date Time** : Used to a date time. 
+* **Date Time** : Used to a date time.
 
-* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint](https://docs.cloudboost.io/#CloudGeoPoint) Object instance. 
+* **Geo Point** : Used to store latitude / longitude. This is  [CB.GeoPoint](https://docs.cloudboost.io/#CloudGeoPoint) Object instance.
 
 * **Object** : Used to store a JSON object.
 
-* **Files** : Used to store the file of any size. 
+* **Files** : Used to store the file of any size.
 
-* **Encrypted Text** : Used to store important text like Password, etc. 
+* **Encrypted Text** : Used to store important text like Password, etc.
 
 ####Relational Data-types.
 
 * **Relation** : Used as a relation to any other [CB.CloudObject](https://docs.cloudboost.io/#CloudObject) of the same or any other table.
 
-* **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations. 
+* **List** : This is an Array and this can be an Array of anything. From a simple example of Array of Text to a more complicated example of Array of Relations.
 
 #Adding List Columns
 
-Here's the sample code which will help you add a list column : 
+Here's the sample code which will help you add a list column :
 
 ==JavaScript==
 <span class="js-lines" data-query="listcol">
@@ -554,9 +595,19 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Number)
+// data type can be changed using the following functions
+column.setDataType(CloudBoostDataType.List)
+column.setRelatedToType(CloudBoostDataType.Text)
+```
+</span>
+
 #Adding Relational Columns
 
-There are two types of DataTypes which are considered when you're relating tables. 
+There are two types of DataTypes which are considered when you're relating tables.
 
 * Relations
 * List
@@ -686,7 +737,15 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-If you want to add a list relational column, then: 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
+age.setRelatedTo("TableName")
+```
+</span>
+
+If you want to add a list relational column, then:
 
 ==JavaScript==
 <span class="js-lines" data-query="listrelcol">
@@ -811,46 +870,54 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
+age.setRelatedTo("TableName")
+```
+</span>
+
 #Getting Columns
 
-To get columns from a CloudTable, You can, 
+To get columns from a CloudTable, You can,
 
 ==JavaScript==
 <span class="js-lines" data-query="getcols">
 ```
-var columns = table.columns; //array of CB.Column Objects 
+var columns = table.columns; //array of CB.Column Objects
 ```
 </span>
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="getcols">
 ```
-var columns = table.columns; //array of CB.Column Objects 
+var columns = table.columns; //array of CB.Column Objects
 ```
 </span>
 
 ==Java==
 <span class="java-lines" data-query="getcols">
 ```
-Column[] columns = table.getColumns(); //array of Column Objects 
+Column[] columns = table.getColumns(); //array of Column Objects
 ```
 </span>
 
 ==.NET==
 <span class="dotnet-lines" data-query="getcols">
 ```
-var columns = table.Columns; //array of CB.Column Objects 
+var columns = table.Columns; //array of CB.Column Objects
 ```
 </span>
 
 ==cURL==
 <span class="curl-lines" data-query="getcols">
 ```
-// 
+//
 ```
 </span>
 
-You can even get columns using: 
+You can even get columns using:
 
 ==JavaScript==
 <span class="js-lines" data-query="getcolsalt">
@@ -887,15 +954,22 @@ CB.Column column = table.GetColumn("name"); //Column Object
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let column = table.getColumn("name")
+```
+</span>
+
 #Editing Columns
 
-To edit columns from a CloudTable, You can, 
+To edit columns from a CloudTable, You can,
 
 ==JavaScript==
 <span class="js-lines" data-query="editcol">
 ```
 var column = table.getColumn('Name');
-column.required = true; 
+column.required = true;
 table.updateColumn(column);
 table.save({
     success : function(table){
@@ -909,7 +983,7 @@ table.save({
 <span class="nodejs-lines" data-query="editcol">
 ```
 var column = table.getColumn('Name');
-column.required = true; 
+column.required = true;
 table.updateColumn(column);
 table.save({
     success : function(table){
@@ -923,11 +997,11 @@ table.save({
 <span class="java-lines" data-query="editcol">
 ```
 Column column = table.getColumn("Name");
-column.setRequired(true); 
+column.setRequired(true);
 table.updateColumn(column);
 table.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -1061,11 +1135,20 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let column = table.getColumn("name") // returns an optional value, check nullability
+column?.setRequired(true)
+table.updateColumn(column!) // returns false if the given column does not exist
+```
+</span>
+
 >Info: You cannot edit the ColumnName and DataType after its saved. You can only change <span class="tut-snippet">required</span> and <span class="tut-snippet">unique</span> properties of a column.
 
 #Deleting Columns
 
-To delete columns from a CloudTable, you can, 
+To delete columns from a CloudTable, you can,
 
 ==JavaScript==
 <span class="js-lines" data-query="delcol">
@@ -1097,7 +1180,7 @@ table.save({
 table.deleteColumn("ColumnName");
 table.save(new CloudObjectCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -1229,9 +1312,19 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+table.deleteColumn("ColumnName")
+table.save({ response in
+    response.log()
+})
+```
+</span>
+
 #Deleting Table
 
-To delete tables from a CloudApp, you can, 
+To delete tables from a CloudApp, you can,
 
 ==JavaScript==
 <span class="js-lines" data-query="deltable">
@@ -1260,7 +1353,7 @@ table.delete({
 ```
 table.delete(new CloudTableCallback(){
 	@Override
-	public void done(CloudTable x, CloudException t) {	
+	public void done(CloudTable x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -1288,9 +1381,24 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+do {
+  try table.delete() { response in
+    if response.success {
+      // deleted successfully
+    }
+  }
+} catch {
+  // AppID/AppKey nil
+}
+```
+</span>
+
 #Getting Tables
 
-To get all the tables from a CloudApp, You can, 
+To get all the tables from a CloudApp, You can,
 
 ==JavaScript==
 <span class="js-lines" data-query="getalltabs">
@@ -1321,7 +1429,7 @@ CB.CloudTable.getAll({
 ```
 CloudTable.getAll(new CloudTableArrayCallback(){
 	@Override
-	public void done(CloudTable[] x, CloudException t) {	
+	public void done(CloudTable[] x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -1347,7 +1455,16 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-To get a particular table from a CloudApp, You can, 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+CloudTable.getAll() { response in
+  // response.object contains an array of tables
+}
+```
+</span>
+
+To get a particular table from a CloudApp, You can,
 
 ==JavaScript==
 <span class="js-lines" data-query="gettabname">
@@ -1378,7 +1495,7 @@ CB.CloudTable.get('TableName', {
 ```
 CloudTable.get("TableName", new CloudTableCallback(){
 	@Override
-	public void done(CloudObject x, CloudException t) {	
+	public void done(CloudObject x, CloudException t) {
 		if(x != null){
 		}
 		if(t != null){
@@ -1401,5 +1518,16 @@ await CB.CloudTable.GetAsync("name");
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+CloudTable.get("table") { response, table in
+    if table != nil {
+      // table retrieved
+    }
+}
 ```
 </span>

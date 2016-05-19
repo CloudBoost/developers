@@ -1,10 +1,10 @@
 #####In this section
 
-In this section you'll learn about how to search your data and CloudObjects in CloudBoost. You will also learn few important search queries like SearchOn, Phrase and much more. 
+In this section you'll learn about how to search your data and CloudObjects in CloudBoost. You will also learn few important search queries like SearchOn, Phrase and much more.
 
-In some cases, you need a powerful way to search data and have search boxes in your apps and when the query is executed CloudBoost will return only relevant results from the database. CB.CloudSearch offers different ways to search the data you need. 
+In some cases, you need a powerful way to search data and have search boxes in your apps and when the query is executed CloudBoost will return only relevant results from the database. CB.CloudSearch offers different ways to search the data you need.
 
-The general pattern is to create a CB.CloudSearch object, attach it with CB.SearchQuery and a CB.SearchFilter, write conditions on it, and then retrieve an Array of matching CB.CloudObject using search function / method. 
+The general pattern is to create a CB.CloudSearch object, attach it with CB.SearchQuery and a CB.SearchFilter, write conditions on it, and then retrieve an Array of matching CB.CloudObject using search function / method.
 
 #Basic Search
 
@@ -12,7 +12,7 @@ Here is an example of a very basic search in CloudBoost
 
 ###Step 1
 
-Create a CloudSearch Object. 
+Create a CloudSearch Object.
 
 ==JavaScript==
 <span class="js-lines" data-query="create">
@@ -49,9 +49,16 @@ var cs = new CB.CloudSearch("Student");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let cs = CloudSearch(tableName: "TableName")
+```
+</span>
+
 ###Step 2
 
-Attach SearchQuery to CloudSearch Object and write your query in searchOn function / method. 
+Attach SearchQuery to CloudSearch Object and write your query in searchOn function / method.
 
 ==JavaScript==
 <span class="js-lines" data-query="attach">
@@ -92,9 +99,17 @@ searchQuery.SearchOn("name","John",null,null,null,null);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let searchQuery = SearchQuery()
+searchQuery.searchOn("name",query: "John")
+```
+</span>
+
 ###Step 3
 
-Search. 
+Search.
 
 ==JavaScript==
 <span class="js-lines" data-query="search">
@@ -178,13 +193,25 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // fail
+  }
+})
+```
+</span>
 #Search Query and Search Filters
 
-There are two queries in CloudSearch, One is **SearchQuery** and the other is **SearchFilter**. When you run the CloudSearch query, Your data is filtered first by using the FilteredQuery and then, the filtered data is then searched using the SearchQuery and the results are then returned. 
+There are two queries in CloudSearch, One is **SearchQuery** and the other is **SearchFilter**. When you run the CloudSearch query, Your data is filtered first by using the FilteredQuery and then, the filtered data is then searched using the SearchQuery and the results are then returned.
 
 <img src="https://blog.cloudboost.io/content/images/2015/09/Capture.PNG" alt="CloudBoost Search Pipeline" class="full-length-img">
 
-To create a new SearchQuery and SearchFilter you can : 
+To create a new SearchQuery and SearchFilter you can :
 
 ==JavaScript==
 <span class="js-lines" data-query="newquery">
@@ -284,6 +311,26 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+// create a CloudSearch object
+let cs = CloudSearch(tableName: "TableName")
+// set the search query
+cs.searchQuery = SearchQuery()
+// set search filter
+cs.searchFilter = SearchFilter()
+
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // fail
+  }
+})
+```
+</span>
+
 #Basic Search Query
 
 ###Search On
@@ -347,6 +394,14 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchQuery.searchOn("name",query: "John")
 ```
 </span>
 
@@ -413,6 +468,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchQuery?.phrase("name", query: "John")
 ```
 </span>
 
@@ -495,6 +557,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let searchQuery1 = SearchQuery()
+searchQuery1.searchOn("name",query: "John")
+cs.searchQuery?.or(query2)
 ```
 </span>
 
@@ -602,6 +673,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let searchQuery1 = SearchQuery()
+searchQuery1.searchOn("name",query: "John")
+cs.searchQuery?.and(query2)
+```
+</span>
+
 ###Not
 
 To NOT a search query you can use the <span class="tut-snippet">not</span> function.
@@ -706,6 +786,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let searchQuery1 = SearchQuery()
+searchQuery1.searchOn("name",query: "John")
+cs.searchQuery?.not(query2)
+```
+</span>
+
 #Basic Search Filters
 
 ###Equal To
@@ -770,6 +859,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.equalTo("name", data: "John")
+```
+</span>
+
 ###Not Equal To
 
 To have a notEqualTo constraint over a search filter you can use the <span class="tut-snippet">notEqualTo</span> function.
@@ -829,6 +925,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.notEqualTo("name", data: "John")
 ```
 </span>
 
@@ -896,6 +999,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.greaterThan("age", data: 10)
+```
+</span>
+
 ###Less than
 
 To have a lessThan constraint over a search filter you can use the <span class="tut-snippet">lessThan</span> function.
@@ -957,6 +1067,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.lessThan("age", data: 10)
 ```
 </span>
 
@@ -1025,6 +1142,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.greaterThanEqualTo("age", data: 10)
+```
+</span>
+
 ###Less Than Or Equal To
 
 
@@ -1090,6 +1214,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.lessThanEqualTo("age", data: 10)
+```
+</span>
+
 ###Exists
 
 To have a constraint over a search filter where a column cannot be null. You can use the <span class="tut-snippet">exists</span> function.
@@ -1152,6 +1283,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.exists("name")
+```
+</span>
+
 ###Does not exists
 
 To have a constraint over a search filter where a column is null. You can use the <span class="tut-snippet">doesNotExists</span> function.
@@ -1211,6 +1349,13 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+cs.searchFilter?.doesNotExists("name")
 ```
 </span>
 
@@ -1293,6 +1438,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let filter1 = SearchFilter()
+filter1.equalTo("name", data: "John")
+cs.searchFilter?.or(filter1)
+```
+</span>
+
 ###And
 
 To AND a search filter you can use the <span class="tut-snippet">and</span> function.
@@ -1369,6 +1523,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let filter1 = SearchFilter()
+filter1.equalTo("name", data: "John")
+cs.searchFilter?.and(filter1)
 ```
 </span>
 
@@ -1451,18 +1614,27 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let filter1 = SearchFilter()
+filter1.equalTo("name", data: "John")
+cs.searchFilter?.not(filter1)
+```
+</span>
+
 #Order By
 
-You can also OrderBy the results by : 
+You can also OrderBy the results by :
 
 ==JavaScript==
 <span class="js-lines" data-query="orderby">
 ```
 var cs = new CB.CloudSearch("Student");
 //
-cs.orderByAsc('age'); 
+cs.orderByAsc('age');
 // OR
-cs.orderByDesc('age'); 
+cs.orderByDesc('age');
 //
 cs.search({
   success: function(list){
@@ -1480,9 +1652,9 @@ cs.search({
 ```
 var cs = new CB.CloudSearch("Student");
 //
-cs.orderByAsc('age'); 
+cs.orderByAsc('age');
 // OR
-cs.orderByDesc('age'); 
+cs.orderByDesc('age');
 //
 cs.search({
   success: function(list){
@@ -1500,7 +1672,7 @@ cs.search({
 ```
 CloudSearch cs = new CloudSearch("Student",null,null);
 //
-cs.orderByAsc("age"); 
+cs.orderByAsc("age");
 // OR
 cs.orderByDesc("age");
 //
@@ -1520,7 +1692,7 @@ cs.search(new CloudObjectArrayCallback(){
 <span class="dotnet-lines" data-query="orderby">
 ```
 var cs = new CB.CloudSearch("Student");
-cs.OrderByAsc("age"); 
+cs.OrderByAsc("age");
 cs.OrderByDesc("age");
 ```
 </span>
@@ -1550,18 +1722,34 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let cs = CloudSearch(tableName: "TableName")
+cs.orderByAsc("age")
+cs.orderByDesc("age")
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // failure
+  }
+})
+```
+</span>
+
 #Limit and Skip
 
-You can also limit and skip the results by : 
+You can also limit and skip the results by :
 
 ==JavaScript==
 <span class="js-lines" data-query="limitskip">
 ```
 var cs = new CB.CloudSearch("Student");
 //
-cs.limit(10); 
+cs.limit(10);
 // OR
-cs.skip(5); 
+cs.skip(5);
 //
 cs.search({
   success: function(list){
@@ -1579,9 +1767,9 @@ cs.search({
 ```
 var cs = new CB.CloudSearch("Student");
 //
-cs.limit(10); 
+cs.limit(10);
 // OR
-cs.skip(5); 
+cs.skip(5);
 //
 cs.search({
   success: function(list){
@@ -1599,9 +1787,9 @@ cs.search({
 ```
 CloudSearch cs = new CloudSearch("Student",null,null);
 //
-cs.limit(10); 
+cs.limit(10);
 // OR
-cs.skip(5); 
+cs.skip(5);
 //
 cs.search(new CloudObjectArrayCallback(){
 	@Override
@@ -1619,7 +1807,7 @@ cs.search(new CloudObjectArrayCallback(){
 <span class="dotnet-lines" data-query="limitskip">
 ```
 var cs = new CB.CloudSearch("Student");
-cs.Limit = 10; 
+cs.Limit = 10;
 cs.Skip = 5;
 ```
 </span>
@@ -1642,5 +1830,21 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 10,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let cs = CloudSearch(tableName: "TableName")
+cs.setLimit(10)
+cs.setSkip(1)
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // failure
+  }
+})
 ```
 </span>
