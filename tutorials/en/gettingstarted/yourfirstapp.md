@@ -67,6 +67,14 @@ import io.cloudboost.*;
 ```
 </span>
 
+==iOS==
+<span class="ios-lines" data-query="link">
+```
+// install pod, "pod CloudBoost"
+import CloudBoost
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="link">
 ```
@@ -82,13 +90,6 @@ Install-Package cloudboost
 ```
 </span>
 
-==iOS==
-<span class="ios-lines" data-query="link">
-```
-// install pod, "pod CloudBoost"
-import CloudBoost
-```
-</span>
 Once you have imported CloudBoost SDK to your project. You need to initialize your new CloudApp.
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
@@ -130,6 +131,13 @@ CloudApp.init("YOUR APP ID", "YOUR APP KEY");
 ```
 </span>
 
+==iOS==
+<span class="ios-lines" data-query="init">
+```
+let app = CloudApp.init(appID: "YOUR APP ID", appKey: "YOUR APP KEY")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="init">
 ```
@@ -141,13 +149,6 @@ CB.CloudApp.Init('YOUR APP ID', 'YOUR APP KEY');
 <span class="curl-lines" data-query="init">
 ```
 //You dont need to initialize the app for REST.
-```
-</span>
-
-==iOS==
-<span class="ios-lines" data-query="init">
-```
-let app = CloudApp.init(appID: "YOUR APP ID", appKey: "YOUR APP KEY")
 ```
 </span>
 
@@ -204,6 +205,19 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==iOS==
+<span class="ios-lines" data-query="save">
+```
+let obj = CloudObject(tableName: "TableName")
+obj.set("ColumnName", value: data)
+obj.save({ resp in
+    if(resp.success){
+      // successfully saved
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="save">
 ```
@@ -254,18 +268,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==iOS==
-<span class="ios-lines" data-query="save">
-```
-let obj = CloudObject(tableName: "TableName")
-obj.set("ColumnName", value: data)
-obj.save({ resp in
-    if(resp.success){
-      // successfully saved
-    }
-})
-```
-</span>
 If you want to learn more about CloudObjects and Data Storage, Click [here](?lang=en&category=datastorage&subcategory=objects).
 
 #Querying data
@@ -321,6 +323,19 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==iOS==
+<span class="ios-lines" data-query="query">
+```
+let query = CloudQuery(tableName: "TableName")
+// throws error if the "obj: data" passed is not an acceptable value
+try! query.equalTo("ColumnName", obj: data)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="query">
 ```
@@ -347,19 +362,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     },
     "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==iOS==
-<span class="ios-lines" data-query="query">
-```
-let query = CloudQuery(tableName: "TableName")
-// throws error if the "obj: data" passed is not an acceptable value
-try! query.equalTo("ColumnName", obj: data)
-//
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
