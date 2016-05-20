@@ -197,6 +197,7 @@ CB.CloudPush.disableWebNotifications({
     * Project number: click Home on the left; the project number is clearly marked at the top of your project's home page.
     * API key: click Credentials on the left hand menu; the API key can be found there.
 
+* Go to the App Settings page in [CloudBoost Dashboard](https://dashboard.cloudboost.io) and add the Andriod push notificaiton credentials to enable pushes for Chrome.
 
 </br>
 ##### manifest.json
