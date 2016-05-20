@@ -83,7 +83,7 @@ Install-Package cloudboost
 </span>
 
 ==iOS==
-<span class="ios-lines" data-query="create">
+<span class="ios-lines" data-query="link">
 ```
 // install pod, "pod CloudBoost"
 import CloudBoost
@@ -145,7 +145,7 @@ CB.CloudApp.Init('YOUR APP ID', 'YOUR APP KEY');
 </span>
 
 ==iOS==
-<span class="ios-lines" data-query="create">
+<span class="ios-lines" data-query="init">
 ```
 let app = CloudApp.init(appID: "YOUR APP ID", appKey: "YOUR APP KEY")
 ```
@@ -255,7 +255,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 </span>
 
 ==iOS==
-<span class="ios-lines" data-query="create">
+<span class="ios-lines" data-query="save">
 ```
 let obj = CloudObject(tableName: "TableName")
 obj.set("ColumnName", value: data)
@@ -351,7 +351,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 </span>
 
 ==iOS==
-<span class="ios-lines" data-query="create">
+<span class="ios-lines" data-query="query">
 ```
 let query = CloudQuery(tableName: "TableName")
 // throws error if the "obj: data" passed is not an acceptable value
@@ -362,4 +362,5 @@ try! query.find({ response in
 })
 ```
 </span>
+
 If you want to learn more about Queries, Check out the query section [here](?lang=en&category=query&subcategory=basicqueries).
