@@ -1,8 +1,8 @@
 #####In this section
 
-In this section you'll learn about how to save a file from your local file system to CloudBoost. 
+In this section you'll learn about how to save a file from your local file system to CloudBoost.
 
-#Saving a file 
+#Saving a file
 
 To save a file in CloudBoost, you basically need to pass in the file object as a parameter and call the save function of the [CB.CloudFile](https://docs.cloudboost.io/#CloudFile) class. You can save files of any size in CloudBoost, but you will be charged for the storage units according to [Pricing](https://cloudboost.io/pricing) Page.
 
@@ -45,6 +45,17 @@ public void done(CloudFile x, CloudException e) throws CloudException {
 		System.out.println(x);
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="setfile">
+```
+// yourData is an NSData object
+let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
+file.save({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -103,7 +114,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'https://api.cloudboost.io/file/${app_id}'
 ```
 </span>
-
 
 ###From Blob
 
@@ -213,6 +223,21 @@ public void done(CloudObject x,CloudException t)throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="savefile">
+```
+// yourData is an NSData object
+let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
+file.save({ response in
+    let obj = CloudObject(tableName: "Student")
+    obj.set("file", value: file)
+    obj.save({ response in
+        response.log()
+    })
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="savefile">
 ```
@@ -293,7 +318,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-<span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it. 
+<span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it.
 
 #Default Properties
 
@@ -322,6 +347,13 @@ console.log(file.id);
 ```
 //Id is null when you create the file but gets assigned to an file as soon as you save it.
 System.out.print(file.getId());
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="viewid">
+```
+print(file.getId())
 ```
 </span>
 
@@ -366,6 +398,13 @@ System.out.print(file.getFileUrl());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewurl">
+```
+print(file.getFileUrl())
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewurl">
 ```
@@ -407,10 +446,17 @@ System.out.print(file.getFileName());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewname">
+```
+print(file.setFileName("Sample"))
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewname">
 ```
-file.Name 
+file.Name
 ```
 </span>
 
@@ -481,6 +527,13 @@ file.getACL();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewacl">
+```
+file.getACL()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewacl">
 ```
@@ -493,10 +546,11 @@ file.ACL;
 ```
 //
 ```
+</span>
 
 #Delete a file
 
-To delete a file, you need to: 
+To delete a file, you need to:
 
 ==JavaScript==
 <span class="js-lines" data-query="deletefile">
@@ -536,6 +590,16 @@ public void done(String x,CloudException t) throws CloudException {
 		//x is File URL
 	}									
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="deletefile">
+```
+// throws if fileObj is not saved
+try! fileObj.delete({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -600,6 +664,18 @@ query.find(new CloudObjectCallback(){
 			//obj contains file object.
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="includefile">
+```
+let query = CloudQuery(tableName: "Student")
+query.include("file")
+// throws if the app is not initialized with AppID and AppKey
+try! query.find({response in
+    response.log()
+})
 ```
 </span>
 
@@ -709,6 +785,22 @@ public void done(Object x, CloudException t)
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="fetchfile">
+```
+CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
+    if response.success {
+        // getting the data
+        if let data = response.object as? NSData {
+            // parsing into string (if the original data was string as well)
+            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
+            print(content)
+        }
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="fetchfilecontent">
 ```
@@ -736,3 +828,5 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'http://api.cloudboost.io/file/${app_id}/_File/find'
 ```
 </span>
+
+

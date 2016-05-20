@@ -3,7 +3,7 @@
 In this section you'll learn about how to use caching for your apps in CloudBoost. Caching is great for your apps because it helps you to access data much faster when compared to the database. On the downside, querying is limited and it is very expensive (money-wise) because all the data is on the memory (which is expensive) instead of being on a disk. It is recommended that you use cache only for frequently accessed data.  
 
 <p>&nbsp;</p>
-><span class="tut-info">Info</span> Cache can only be used with a master key, and not with any of the client keys. 
+><span class="tut-info">Info</span> Cache can only be used with a master key, and not with any of the client keys.
 
 #Create Cache
 
@@ -53,6 +53,18 @@ cache.create(new CloudCacheCallback() {
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+// Throws an error when cacheName is invalid
+let cache = try! CloudCache(cacheName: "newCache")
+// Throws an error when AppID/AppKey is nil
+try! cache.create({ response in
+    response.log()    
+})
 ```
 </span>
 
@@ -126,6 +138,21 @@ public void done(Object x, CloudException e) throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="put">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")
+  let obj = ["name":"Randhir", "marks": 34]
+  try cache.set("sample", value: obj, callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="put">
 ```
@@ -133,7 +160,7 @@ var cache = new CB.CloudCache("CacheName");
 var list = new Dictionary<string, Object>();
 list.Add("name", "John Doe");
 list.Add("sex", "MALE");
-list.Add("age", 24); 
+list.Add("age", 24);
 var result = await cache.SetAsync("sample", data);
 ```
 </span>
@@ -198,6 +225,20 @@ public void done(Object o, CloudException t)
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="get">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.get("sample", callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="get">
 ```
@@ -253,9 +294,23 @@ cache.deleteItem("test1", new ObjectCallback() {
 		throws CloudException {
 		if (t != null)
 			//
-		else 
+		else
 		   //
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="delete">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.deleteItem("sample", callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -275,6 +330,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/item/${data_key}'
 ```
 </span>
+
 
 #Get all items
 
@@ -323,6 +379,20 @@ cache.getAllItems(new ObjectCallback() {
 			}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="getall">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getAllItems(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -391,6 +461,20 @@ cache.getItemsCount(new CloudIntegerCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getitemscount">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getItemsCount(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getitemscount">
 ```
@@ -409,7 +493,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 #Get size of a cache
 
-To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance. 
+To get the size of the  cache, you need to call the getInfo method of the <span class="tut-snippet">CB.CloudCache</span> instance.
 
 GetInfo method returns the updated cache instance which has the size of the cache in KB.
 
@@ -418,8 +502,8 @@ GetInfo method returns the updated cache instance which has the size of the cach
 ```
 cache.getInfo({
     success : function(cache){
-        //cache is the instace of the cache. 
-        //to get cache size, 
+        //cache is the instace of the cache.
+        //to get cache size,
         console.log(cache.size);
     }, error : function(error){
         console.log(error);
@@ -433,8 +517,8 @@ cache.getInfo({
 ```
 cache.getInfo({
     success : function(cache){
-        //cache is the instace of the cache. 
-        //to get cache size, 
+        //cache is the instace of the cache.
+        //to get cache size,
         console.log(cache.size);
     }, error : function(error){
         console.log(error);
@@ -455,6 +539,20 @@ cache.getInfo(new ObjectCallback() {
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="getinfo">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getInfo(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -524,6 +622,20 @@ cache.clear(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="clear">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.clear(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="clear">
 ```
@@ -566,7 +678,7 @@ cache.delete({
 ```
 cache.delete({
     success : function(cache){
-        //cache is the an empty instance of CB.CloudCache 
+        //cache is the an empty instance of CB.CloudCache
         console.log(cache);
     }, error : function(error){
         console.log(error);
@@ -587,6 +699,20 @@ cache.delete(new ObjectCallback() {
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="deletecache">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.delete(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
 ```
 </span>
 
@@ -657,6 +783,19 @@ CloudCache.getAllCache(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getallappcache">
+```
+do {  
+  CloudCache.getAllCache(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getallappcache">
 ```
@@ -721,6 +860,19 @@ CloudCache.deleteAll(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deleteallappcache">
+```
+do {  
+  CloudCache.deleteAll(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deleteallappcache">
 ```
@@ -766,6 +918,14 @@ String cacheName = cache.getCacheName();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="name">
+```
+let cache = try! CloudCache(cacheName: "newCache")
+let name = cache.getCacheName()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="name">
 ```
@@ -808,6 +968,14 @@ var cacheSize = cache.size;
 ```
 CloudCache cache = new CloudCache('sample');
 int size = cache.getSize();
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="size">
+```
+let cache = try! CloudCache(cacheName: "newCache")
+let size = cache.getCacheSize()
 ```
 </span>
 

@@ -52,6 +52,18 @@ CloudQueue queue = new CloudQueue("QueueName");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let queue = CloudQueue(queueName: queueName, queueType: nil)
+try! queue.create({ response in
+    if response.success {
+      // queue created
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -141,12 +153,24 @@ CloudQueue queue = new CloudQueue("QueueName");
 	queue.addMessage("sample", new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			else
 				//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="addmessagequeue">
+```
+let queue = CloudQueue(queueName: queueName, queueType: nil)
+queue.addMessage("Randhir", callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -274,10 +298,22 @@ que.getMessage(1, new CloudQueueMessageCallback() {
 	public void done(QueueMessage[] msgs, CloudException e) {
 		if (e != null)
 			//
-		if (msgs != null) 
+		if (msgs != null)
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="getmessagequeues">
+```
+let numberOfMessages = 1
+queue.getMessage(numberOfMessages, callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -340,10 +376,22 @@ que.peekMessage(1, new CloudQueueMessageCallback() {
 	public void done(QueueMessage[] msgs, CloudException e) {
 		if (e != null)
 			//
-		if (msgs != null) 
+		if (msgs != null)
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="peekmessagequeues">
+```
+let numberOfMessages = 1
+queue.peekMessage(numberOfMessages, callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -404,10 +452,21 @@ que.getMessageById("id", new CloudQueueMessageCallback() {
 	public void done(QueueMessage msg, CloudException e) {
 		if (e != null)
 			//
-		if (msg != null) 
+		if (msg != null)
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="getmessageid">
+```
+queue.getMessageById("id", callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -427,7 +486,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-#Get all messages 
+#Get all messages
 
 To get all Messages from queue, you need to call the getAllMessages function of the <span class="tut-snippet">CB.CloudQueue</span> instance.
 
@@ -465,10 +524,21 @@ que.getAllMessages(new CloudQueueArrayCallback() {
 	public void done(QueueMessage[] msgs, CloudException e) {
 		if (e != null)
 			//
-		if (msgs != null) 
+		if (msgs != null)
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="getallmessages">
+```
+queue.getAllMessages({ response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -526,10 +596,21 @@ queue.get(new CloudQueueCallback() {
 	public void done(CloudQueue q, CloudException e) {
 		if (e != null)
 			//
-		if (q != null) 
+		if (q != null)
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="queueinfo">
+```
+CloudQueue.get(queueName,callback: { response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -587,10 +668,21 @@ CloudQueue.getAll(new CloudQueueArrayCallback() {
 	public void done(CloudQueue[] q, CloudException e) {
 		if (e != null)
 			//
-		if (q != null) 
+		if (q != null)
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="getallqueues">
+```
+CloudQueue.getAll({ response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -655,6 +747,17 @@ que.deleteMessage(id, new CloudQueueMessageCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deletemessage">
+```
+queue.deleteMessage("id", callback: { response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deletemessage">
 ```
@@ -714,6 +817,17 @@ queue.deleteQueue(queueName, new CloudQueueCallback() {
 			//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="deletequeue">
+```
+queue.delete({ response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -815,12 +929,23 @@ QueueMessage[] msgs={msg};
 	queue.addMessage(msgs, new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			if(msgs!=null)
 				//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="timeout">
+```
+queue.delete({ response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -958,12 +1083,24 @@ QueueMessage[] msgs={msg};
 	queue.addMessage(msgs, new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			if(msgs!=null)
 				//msgs
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="delays">
+```
+let msg = QueueMessage()
+msg.setMessage("Sample")
+msg.setDelay(1000)
+queue.addMessage(msg, callback: { response in
+    response.log()
+})
 ```
 </span>
 
@@ -1111,12 +1248,26 @@ QueueMessage[] msgs={msg};
 	queue.addMessage(msgs, new CloudQueueMessageCallback() {
 		@Override
 		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null) 
+			if (e != null)
 				//
 			if(msgs!=null)
 				//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="expire">
+```
+let msg = QueueMessage()
+msg.setMessage("Sample")
+let today = NSDate()
+let tomorrow = today.dateByAddingTimeInterval(NSTimeInterval.abs(86400))
+msg.setExpires(tomorrow)
+queue.addMessage(msg, callback: { response in
+    response.log()
+})
 ```
 </span>
 
@@ -1207,4 +1358,3 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message'
 ```
 </span>
-

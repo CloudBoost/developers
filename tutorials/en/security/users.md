@@ -1,14 +1,14 @@
 #####In this section
 
-In this section you'll learn how to sign-up and log in a User (we call it CloudUser) and let CloudBoost do all the heavy-lifting like session management for your apps. Finally, you will also learn about default properties in CloudUser and how to save or delete a user. 
+In this section you'll learn how to sign-up and log in a User (we call it CloudUser) and let CloudBoost do all the heavy-lifting like session management for your apps. Finally, you will also learn about default properties in CloudUser and how to save or delete a user.
 
 #Before we begin
 
-CloudUser is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudUser and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc. 
+CloudUser is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudUser and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc.
 
 #Sign up
 
-To sign up a new user you need to initialize a new variable with the type CloudUser, assign it username and password and call the sign-up function. 
+To sign up a new user you need to initialize a new variable with the type CloudUser, assign it username and password and call the sign-up function.
 
 ==JavaScript==
 <span class="js-lines" data-query="signup">
@@ -31,7 +31,7 @@ user.signUp({
 ==NodeJS==
 <span class="nodejs-lines" data-query="signup">
 ```
-//Sign up function will not work on NodeJS. If you want to create a new user on the server. You can use save() function of CloudUser instead. 
+//Sign up function will not work on NodeJS. If you want to create a new user on the server. You can use save() function of CloudUser instead.
 ```
 </span>
 
@@ -51,6 +51,23 @@ obj.signUp(new CloudUserCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="signup">
+```
+let user = CloudUser(username: "username", password: "password")
+user.setEmail("email@domain.com")
+do{
+    try user.signup({ response in
+      if response.success {
+        // user signed up
+      }
+    })
+} catch {
+    print("Could not catch!")
+}
 ```
 </span>
 
@@ -112,11 +129,11 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-After the CloudUser is signed-up a new session is automatically created for you and the user is logged-in unless you call log-out function of CloudUser object. 
+After the CloudUser is signed-up a new session is automatically created for you and the user is logged-in unless you call log-out function of CloudUser object.
 
 #Default Properties
 
-Every CloudUser when created has default properties attached to it. Here is a list of all the default properties attached to CloudUser when you initialize them. 
+Every CloudUser when created has default properties attached to it. Here is a list of all the default properties attached to CloudUser when you initialize them.
 
 * **All of the CloudObject default properties are available in CloudUser, as CloudUser is inherited from CloudObjects. To see what default properties are available in CloudObject, Please click [here](?lang=en&category=datastorage&subcategory=objects)**
 
@@ -180,6 +197,13 @@ System.out.print(user.getPassword());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewpass">
+```
+user.getUsername()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewpass">
 ```
@@ -217,6 +241,13 @@ System.out.print(user.getEmail());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewemail">
+```
+user.getEmail()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewemail">
 ```
@@ -233,7 +264,7 @@ user.Email
 
 #Log in
 
-To login a CloudUser you can set the username and password and call the login function / method. 
+To login a CloudUser you can set the username and password and call the login function / method.
 
 ==JavaScript==
 <span class="js-lines" data-query="login">
@@ -285,6 +316,23 @@ user.logIn(new CloudUserCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="login">
+```
+let user = CloudUser(username: "username", password: "password")
+user.setEmail("email@domain.com")
+do{
+    try user.login({ response in
+      if response.success {
+        // user signed up
+      }
+    })
+} catch {
+    print("Could not catch!")
+}
 ```
 </span>
 
@@ -343,7 +391,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-Once the user us login you can access the current logged in user by 
+Once the user us login you can access the current logged in user by
 
 ==JavaScript==
 <span class="js-lines" data-query="viewcurrent">
@@ -382,21 +430,21 @@ CB.CloudUser.Current
 
 #Social Authentication
 
-Here's how you can add third party authentication providers like Facebook, GitHub, LinkedIn, Twitter and more in just under 10 mins for your app. 
+Here's how you can add third party authentication providers like Facebook, GitHub, LinkedIn, Twitter and more in just under 10 mins for your app.
 
 #####Enable Social Authentication
 
 * Go to your app settings in [CloudBoost Dashboard](https://dashboard.cloudboost.io)
-* Add your app callback URL. This is usually the URL of the page you want your users to be redirected to after successful login. 
-* Set the color of your apps login page to match the brand color of your app. 
+* Add your app callback URL. This is usually the URL of the page you want your users to be redirected to after successful login.
+* Set the color of your apps login page to match the brand color of your app.
 * Enable one or more authentication providers.  
-* If you enable third party social authentications. You need to copy the respective Callback URL and paste it in the app settings page of the provider. 
+* If you enable third party social authentications. You need to copy the respective Callback URL and paste it in the app settings page of the provider.
 
 <img class="full-length-img" alt="Add Credentials" src="https://www.dropbox.com/s/ha98e8a37idgwpr/socialauth.jpg?dl=0&raw=1">
 
 #####After successful authentication.
 
-Once you get authenticated successfully, you are redirected to your app page (which you have mentioned in the Callback URL in CloudBoost App Settings), You can retrieve current logged in user by : 
+Once you get authenticated successfully, you are redirected to your app page (which you have mentioned in the Callback URL in CloudBoost App Settings), You can retrieve current logged in user by :
 
 ==JavaScript==
 <span class="js-lines" data-query="getcurrentuserfromserver">
@@ -415,11 +463,11 @@ CB.CloudUser.getCurrentUser({
 
 #####Login with provider
 
-If you want to build your own custom login page (and not use the one we provide). Then you can integrate third party authentication providers from our SDK. Every provider (like Facebook, Twitter, etc) returns an accessToken on successful authentication, you can then pass this accessToken with Cloudboost SDK to create a session for that user. 
+If you want to build your own custom login page (and not use the one we provide). Then you can integrate third party authentication providers from our SDK. Every provider (like Facebook, Twitter, etc) returns an accessToken on successful authentication, you can then pass this accessToken with Cloudboost SDK to create a session for that user.
 
 * provider (required) : Provider name. Supported values are "facebook", "twitter", "google", "linkedin", "github".
 * accessToken   (required) : AccessToken from Facebook, Twitter, Google, LinkedIn, GitHub, etc.
-* accessSecret    (only for twitter) : Access Secret from Twitter. 
+* accessSecret    (only for twitter) : Access Secret from Twitter.
 
 ==JavaScript==
 <span class="js-lines" data-query="loginwithfacebook">
@@ -612,7 +660,7 @@ To reset the password of a user you need to call the resetPassword function of t
 ```
 CB.CloudUser.resetPassword('email',{
   success: function() {
-    //Reset Password email sent! 
+    //Reset Password email sent!
   },
   error: function(error) {
     //error.
@@ -626,7 +674,7 @@ CB.CloudUser.resetPassword('email',{
 ```
 CB.CloudUser.resetPassword('email',{
   success: function() {
-    //Reset Password email sent! 
+    //Reset Password email sent!
   },
   error: function(error) {
     //error.
@@ -672,4 +720,3 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'http://api.cloudboost.io/user/${app_id}/resetPassword'
 ```
 </span>
-

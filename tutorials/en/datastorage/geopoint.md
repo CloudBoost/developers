@@ -1,19 +1,19 @@
 #####In this section
 
-In this section you'll learn about how to add GeoPoints to [CloudObjects]( https://docs.cloudboost.io/#CloudObject) in CloudBoost. You will learn more about [CB.GeoPoint]( https://docs.cloudboost.io/#CloudGeoPoint) queries like Near, Geo Within and more. 
+In this section you'll learn about how to add GeoPoints to [CloudObjects]( https://docs.cloudboost.io/#CloudObject) in CloudBoost. You will learn more about [CB.GeoPoint]( https://docs.cloudboost.io/#CloudGeoPoint) queries like Near, Geo Within and more.
 #Saving Geopoint
 
-Saving a Geo-point inside of a [CloudObject]( https://docs.cloudboost.io/#CloudObject) is simple.  You create a new Geo-point object, set the longitude and latitude and set that geo-point object to the CloudObject and save the CloudObject. 
+Saving a Geo-point inside of a [CloudObject]( https://docs.cloudboost.io/#CloudObject) is simple.  You create a new Geo-point object, set the longitude and latitude and set that geo-point object to the CloudObject and save the CloudObject.
 
 ==JavaScript==
 <span class="js-lines" data-query="saving">
 ```
 var location = new CB.CloudGeoPoint(80.3,17.7);
-var obj = new CB.CloudObject('Student'); 
+var obj = new CB.CloudObject('Student');
 obj.set('location',location);
 obj.save({
     success : function(obj){
-        //object saved. 
+        //object saved.
     }, error : function(error){
         //error
     }});
@@ -24,11 +24,11 @@ obj.save({
 <span class="nodejs-lines" data-query="saving">
 ```
 var location = new CB.CloudGeoPoint(80.3,17.7);
-var obj = new CB.CloudObject('Student'); 
+var obj = new CB.CloudObject('Student');
 obj.set('location',location);
 obj.save({
     success : function(obj){
-        //object saved. 
+        //object saved.
     }, error : function(error){
         //error
     }
@@ -40,7 +40,7 @@ obj.save({
 <span class="java-lines" data-query="saving">
 ```
 CloudGeoPoint location = new CloudGeoPoint(80.3,17.7);
-CloudObject obj = new CloudObject("Student"); 
+CloudObject obj = new CloudObject("Student");
 obj.set("location",location);
 obj.save(new CloudObjectCallback(){
 	@Override
@@ -52,11 +52,24 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="saving">
+```
+// throws error if latitude and longitude are not valid values
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let locationTest = CloudObject(tableName: "LocationTest")
+locationTest.set("location", value: point)
+locationTest.save({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="saving">
 ```
 var location = new CB.CloudGeoPoint(80.3,17.7);
-var obj = new CB.CloudObject("Student"); 
+var obj = new CB.CloudObject("Student");
 obj.Set("location", location);
 await obj.SaveAsync();
 ```
@@ -112,7 +125,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-#Calculating Distance 
+#Calculating Distance
 
 ###In Kilometres
 
@@ -142,6 +155,15 @@ var distance = loc1.distanceInKMs(loc2);
 CloudGeoPoint loc1 = new CloudGeoPoint(80.3,17.7);
 CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
 Double distance = loc1.distanceInKMs(loc2);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="calc-kilo">
+```
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+point.distanceInKMs(point2)
 ```
 </span>
 
@@ -192,6 +214,15 @@ Double distance = loc1.distanceInMiles(loc2);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="calc-miles">
+```
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+point.distanceInMiles(point2)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="calc-miles">
 ```
@@ -239,6 +270,15 @@ Double distance = loc1.distanceInRadians(loc2);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="calc-radians">
+```
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+point.distanceInRadius(point2)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="calc-radians">
 ```
@@ -259,15 +299,15 @@ double distance = loc1.DistanceInRadians(loc2);
 
 ###Near
 
-Queries for objects which are within range given by the query. It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> as the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters. 
+Queries for objects which are within range given by the query. It gives result in the order of nearest to farthest. You basically pass in the <span class="tut-snippet">ColumnName</span> as the first parameter, second parameter takes in a <span class="tut-snippet">CB.CloudGeoPoint</span>, and third takes in the radius in meters.
 
 ==JavaScript==
 <span class="js-lines" data-query="query-near">
 ```
 var loc = new CB.CloudGeoPoint(80.3,17.7);
 var query = new CB.CloudQuery('Custom');
-//third parameter is the radius to check in meters. 
-query.near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.near("location", loc, 100000);
 query.find({
     success : function(list){
         //list is an array of CloudObjects.
@@ -283,8 +323,8 @@ query.find({
 ```
 var loc = new CB.CloudGeoPoint(80.3,17.7);
 var query = new CB.CloudQuery('Custom');
-//third parameter is the radius to check in meters. 
-query.near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.near("location", loc, 100000);
 query.find({
     success : function(list){
         //list is an array of CloudObjects.
@@ -300,9 +340,9 @@ query.find({
 ```
 CloudGeoPoint loc = new CloudGeoPoint(80.3,17.7);
 CloudQuery query = new CloudQuery("Custom");
-//third parameter is the radius to check in meters. 
-query.near("location", loc, 100000,50000); 
-query.find(new CloudObjectArrayCallback(){	
+//third parameter is the radius to check in meters.
+query.near("location", loc, 100000,50000);
+query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] x, CloudException e)throws CloudException {
 		if(e != null)
@@ -314,13 +354,25 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="query-near">
+```
+let query = CloudQuery(tableName: "LocationTest")
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+query.near("location", geoPoint: point, maxDistance: 400000, minDistance: 0)
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="query-near">
 ```
 var loc = new CB.CloudGeoPoint(80.3,17.7);
 var query = new CB.CloudQuery("Custom");
-//third parameter is the radius to check in meters. 
-query.Near("location", loc, 100000); 
+//third parameter is the radius to check in meters.
+query.Near("location", loc, 100000);
 List<CB.CloudObject> list = await query.Find();
 ```
 </span>
@@ -347,9 +399,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ###Geo Within
 
-Gets all the objects if the point specified by column name lie inside of the specified set of points given. 
+Gets all the objects if the point specified by column name lie inside of the specified set of points given.
 
-Geo Within at least requires 3 points to be passed to the query. 
+Geo Within at least requires 3 points to be passed to the query.
 
 ==JavaScript==
 <span class="js-lines" data-query="query-geo">
@@ -395,15 +447,30 @@ CloudGeoPoint loc2 = new CloudGeoPoint(78.4,17.4);
 CloudGeoPoint loc3 = new CloudGeoPoint(80.4,17.7);
 CloudQuery query = new CloudQuery("Sample");
 query.geoWithin("location", [loc1, loc2, loc3]);
-query.find(new CloudObjectArrayCallback(){	
+query.find(new CloudObjectArrayCallback(){
 	@Override
 	public void done(CloudObject[] x, CloudException e)throws CloudException {
 		if(e != null)
 			//error				
-		if(x!=null)	
+		if(x!=null)
 			//x is a list of CloudObjects
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="query-geo">
+```
+let query = CloudQuery(tableName: "LocationTest")
+let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
+let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
+let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
+query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
+try! query.find({ response in
+    response.log()
+    // received points that fall within the polygon formed by the given points
+})
 ```
 </span>
 
