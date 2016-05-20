@@ -82,7 +82,7 @@ Install-Package cloudboost
 ```
 </span>
 
-==IOS==
+==iOS==
 <span class="ios-lines" data-query="create">
 ```
 // install pod, "pod CloudBoost"
@@ -144,7 +144,7 @@ CB.CloudApp.Init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
 
-==IOS==
+==iOS==
 <span class="ios-lines" data-query="create">
 ```
 let app = CloudApp.init(appID: "YOUR APP ID", appKey: "YOUR APP KEY")
@@ -254,7 +254,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==IOS==
+==iOS==
 <span class="ios-lines" data-query="create">
 ```
 let obj = CloudObject(tableName: "TableName")
@@ -350,7 +350,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==IOS==
+==iOS==
 <span class="ios-lines" data-query="create">
 ```
 let query = CloudQuery(tableName: "TableName")

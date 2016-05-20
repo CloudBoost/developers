@@ -1,20 +1,20 @@
 #####In this section
 
-In this section you'll learn what roles are and how to add users to the Role. Finally, you will also learn about default properties in CloudRole and how to secure your data with ACL's in CloudBoost. 
+In this section you'll learn what roles are and how to add users to the Role. Finally, you will also learn about default properties in CloudRole and how to secure your data with ACL's in CloudBoost.
 
 #Before we begin
 
-CloudRole is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudRole and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc. 
+CloudRole is inherited from CloudObject class, which means everything that CloudObject contains is also contained in CloudRole and that includes default properties like Id, createdAt, updatedAt, etc. and all of the functions like save, delete etc.
 
-CloudRole is basically a group of Users. For example : 
+CloudRole is basically a group of Users. For example :
 
-If you're building a School Management System for a School, then there might be few roles such as : 
+If you're building a School Management System for a School, then there might be few roles such as :
 
 * Administrators
 * Teachers
 * Students
 
-Each one of these user can have any number of users. 
+Each one of these user can have any number of users.
 
 #Create a Role
 
@@ -117,15 +117,26 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let role = CloudRole(roleName: "Student")
+role.save({ response in
+    response.log()
+})
+
+```
+</span>
+
 After the CloudRole is created you can start signing-up users to role.
 
 #Default Properties
 
-Every CloudUser when created has default properties attached to it. Here is a list of all the default properties attached to CloudUser when you initialize them. 
+Every CloudUser when created has default properties attached to it. Here is a list of all the default properties attached to CloudUser when you initialize them.
 
 * **All of the CloudObject default properties are available in CloudUser, as CloudUser is inherited from CloudObjects. To see what default properties are available in CloudObject, Please click [here](?lang=en&category=datastorage&subcategory=objects)**
 
-* **Name** : [Text] A name of the role. 
+* **Name** : [Text] A name of the role.
 
 ==JavaScript==
 <span class="js-lines" data-query="viewname">
@@ -162,9 +173,16 @@ role.Name
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+role.getName()
+```
+</span>
+
 #Add user to role
 
-Here is the sample code to add a CloudUser to the CloudRole. 
+Here is the sample code to add a CloudUser to the CloudRole.
 
 ==JavaScript==
 <span class="js-lines" data-query="add">
@@ -290,21 +308,32 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+user.addToRole(role, callback: { response in
+  if response.success {
+    // user added to role
+  }
+})
+```
+</span>
+
 #Check if the user is in a role
 
-If you want to check if the user is in the role then you can do this by 
+If you want to check if the user is in the role then you can do this by
 
 ==JavaScript==
 <span class="js-lines" data-query="check">
 ```
-var isInRole = user.isInRole(role); 
+var isInRole = user.isInRole(role);
 ```
 </span>
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="check">
 ```
-var isInRole = user.isInRole(role); 
+var isInRole = user.isInRole(role);
 ```
 </span>
 
@@ -318,27 +347,34 @@ var isInRole = user.IsInRole(role);
 ==Java==
 <span class="java-lines" data-query="check">
 ```
-boolean isInRole = user.isInRole(role); 
+boolean isInRole = user.isInRole(role);
 ```
 </span>
 
 ==cURL==
 <span class="curl-lines" data-query="check">
-// 
+```
+//
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let isInRole = user.isInRole(role)
 ```
 </span>
 
 
-
 #Get all roles from a user
 
-If you want to get all the roles a user belongs to, then you need to do something like : 
+If you want to get all the roles a user belongs to, then you need to do something like :
 
 ==JavaScript==
 <span class="js-lines" data-query="get">
 ```
 //roles is an array of CloudRole
-var roles = user.get('roles'); 
+var roles = user.get('roles');
 ```
 </span>
 
@@ -346,7 +382,7 @@ var roles = user.get('roles');
 <span class="nodejs-lines" data-query="get">
 ```
 //roles is an array of CloudRole
-var roles = user.get('roles'); 
+var roles = user.get('roles');
 ```
 </span>
 
@@ -372,9 +408,17 @@ String[] roles=user.getRoles();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+//roles is an array of CloudRole
+let roles = user.getRoles();
+```
+</span>
+
 #Remove a role from a user
 
-If you want to remove a particular role, then you need to do something like : 
+If you want to remove a particular role, then you need to do something like :
 
 ==JavaScript==
 <span class="js-lines" data-query="remove">
@@ -503,4 +547,13 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+user.removeFromRole(role, callback: { response in
+    if response.success {
+      // user removed from role
+    }
+}
+```
+</span>
