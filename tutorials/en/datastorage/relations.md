@@ -99,6 +99,19 @@ student.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let student = CloudObject(tableName: "Student")
+let address = CloudObject(tableName: "Address")
+address.set("country", value: "India")
+student.set("address", value: address)
+student.save({ resp in
+    resp.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="oneone">
 ```
@@ -195,20 +208,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let student = CloudObject(tableName: "Student")
-let address = CloudObject(tableName: "Address")
-address.set("country", value: "India")
-student.set("address", value: address)
-student.save({ resp in
-    resp.log()
-})
-```
-</span>
-
-
 >Info: For one-to-one relations, you need to set <span class="tut-snippet">unique</span> constraint on a column when you're designing your table.
 
 #One to many
@@ -282,6 +281,19 @@ student.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="onemany">
+```
+let student = CloudObject(tableName: "Student")
+let address = CloudObject(tableName: "Address")
+address.set("country", value: "India")
+student.set("address", value: address)
+student.save({ resp in
+    resp.log()
+})
 ```
 </span>
 
@@ -381,18 +393,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let student = CloudObject(tableName: "Student")
-let address = CloudObject(tableName: "Address")
-address.set("country", value: "India")
-student.set("address", value: address)
-student.save({ resp in
-    resp.log()
-})
-```
-</span>
 >Info: For one-to-many relations, you **don't** have to set a <span class="tut-snippet">unique</span> constraint on a column when you're designing your table.
 
 
@@ -695,6 +695,24 @@ course.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="list">
+```
+//create the student object
+let student1 = CloudObject(tableName: "Student")
+student1.set("name", value: "John Smith")
+let student2 = CloudObject(tableName: "Student")
+student2.set("name", value: "Jack")
+let course = CloudObject(tableName: "Course")
+course.set("Name", value: "Java:)
+course.set("Students",value: [student1,student2])
+//save
+course.save({ response in
+  response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="list">
 ```
@@ -823,23 +841,5 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
         "_isModified": true
     }
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-//create the student object
-let student1 = CloudObject(tableName: "Student")
-student1.set("name", value: "John Smith")
-let student2 = CloudObject(tableName: "Student")
-student2.set("name", value: "Jack")
-let course = CloudObject(tableName: "Course")
-course.set("Name", value: "Java:)
-course.set("Students",value: [student1,student2])
-//save
-course.save({ response in
-  response.log()
-})
 ```
 </span>

@@ -52,6 +52,18 @@ CloudQueue queue = new CloudQueue("QueueName");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let queue = CloudQueue(queueName: queueName, queueType: nil)
+try! queue.create({ response in
+    if response.success {
+      // queue created
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -97,18 +109,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
         "messages": []
     }
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/create'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let queue = CloudQueue(queueName: queueName, queueType: nil)
-try! queue.create({ response in
-    if response.success {
-      // queue created
-    }
-})
 ```
 </span>
 
@@ -159,6 +159,18 @@ CloudQueue queue = new CloudQueue("QueueName");
 				//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="addmessagequeue">
+```
+let queue = CloudQueue(queueName: queueName, queueType: nil)
+queue.addMessage("Randhir", callback: { response in
+    if response.success {
+      // message added
+    }
+})
 ```
 </span>
 
@@ -246,18 +258,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let queue = CloudQueue(queueName: queueName, queueType: nil)
-queue.addMessage("Randhir", callback: { response in
-    if response.success {
-      // message added
-    }
-})
-```
-</span>
-
 #Get first message from the queue
 
 To get the ***first*** message from the Queue, you need to call the getMessage method of the <span class="tut-snippet">CB.CloudQueue</span> instance.
@@ -305,6 +305,18 @@ que.getMessage(1, new CloudQueueMessageCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getmessagequeues">
+```
+let numberOfMessages = 1
+queue.getMessage(numberOfMessages, callback: { response in
+    if response.success {
+      // message added
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getmessagequeues">
 ```
@@ -319,18 +331,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${app_key},
   "count":${message_count}
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/getMessage'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let numberOfMessages = 1
-queue.getMessage(numberOfMessages, callback: { response in
-    if response.success {
-      // message added
-    }
-})
 ```
 </span>
 
@@ -383,6 +383,18 @@ que.peekMessage(1, new CloudQueueMessageCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="peekmessagequeues">
+```
+let numberOfMessages = 1
+queue.peekMessage(numberOfMessages, callback: { response in
+    if response.success {
+      // message added
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="peekmessagequeues">
 ```
@@ -397,18 +409,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "key": ${app_key},
   "count":${message_count}
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/peekMessage'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let numberOfMessages = 1
-queue.peekMessage(numberOfMessages, callback: { response in
-    if response.success {
-      // message added
-    }
-})
 ```
 </span>
 
@@ -459,6 +459,17 @@ que.getMessageById("id", new CloudQueueMessageCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getmessageid">
+```
+queue.getMessageById("id", callback: { response in
+    if response.success {
+      // message added
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getmessageid">
 ```
@@ -472,17 +483,6 @@ await queue.GetMessageByIdAsync("id");
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${app_key}
   }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message/${id}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-queue.getMessageById("id", callback: { response in
-    if response.success {
-      // message added
-    }
-})
 ```
 </span>
 
@@ -531,6 +531,17 @@ que.getAllMessages(new CloudQueueArrayCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getallmessages">
+```
+queue.getAllMessages({ response in
+    if response.success {
+      // message added
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getalltmessages">
 ```
@@ -544,17 +555,6 @@ await queue.GetAllMessagesAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${app_key}
   }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/messages'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-queue.getAllMessages({ response in
-    if response.success {
-      // message added
-    }
-})
 ```
 </span>
 
@@ -603,6 +603,17 @@ queue.get(new CloudQueueCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="queueinfo">
+```
+CloudQueue.get(queueName,callback: { response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="queueinfo">
 ```
@@ -616,17 +627,6 @@ await queue.GetAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${app_key}
   }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudQueue.get(queueName,callback: { response in
-  if response.success {
-    response.log()
-  }
-})
 ```
 </span>
 
@@ -675,6 +675,17 @@ CloudQueue.getAll(new CloudQueueArrayCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getallqueues">
+```
+CloudQueue.getAll({ response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getallqueus">
 ```
@@ -688,17 +699,6 @@ await queue.GetAllAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${client_key}    
 }' 'http://api.cloudboost.io/queue/${app_id}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudQueue.getAll({ response in
-  if response.success {
-    response.log()
-  }
-})
 ```
 </span>
 
@@ -747,6 +747,17 @@ que.deleteMessage(id, new CloudQueueMessageCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deletemessage">
+```
+queue.deleteMessage("id", callback: { response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deletemessage">
 ```
@@ -761,17 +772,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key": ${client_key}
   "method":"DELETE"
 }' 'http://api.cloudboost.io/queue/${app_id}/message/${id}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-queue.deleteMessage("id", callback: { response in
-  if response.success {
-    response.log()
-  }
-})
 ```
 </span>
 
@@ -820,6 +820,17 @@ queue.deleteQueue(queueName, new CloudQueueCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deletequeue">
+```
+queue.delete({ response in
+  if response.success {
+    response.log()
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deletequeue">
 ```
@@ -865,17 +876,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
     },
     "method": "DELETE"
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-queue.delete({ response in
-  if response.success {
-    response.log()
-  }
-})
 ```
 </span>
 
@@ -935,6 +935,17 @@ QueueMessage[] msgs={msg};
 				//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="timeout">
+```
+queue.delete({ response in
+  if response.success {
+    response.log()
+  }
+})
 ```
 </span>
 
@@ -1026,17 +1037,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-queue.delete({ response in
-  if response.success {
-    response.log()
-  }
-})
-```
-</span>
-
 #Delays
 
 To make the message in the queue appear after a certain period of time, you delay the message. Delay can be set in seconds.
@@ -1089,6 +1089,18 @@ QueueMessage[] msgs={msg};
 				//msgs
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="delays">
+```
+let msg = QueueMessage()
+msg.setMessage("Sample")
+msg.setDelay(1000)
+queue.addMessage(msg, callback: { response in
+    response.log()
+})
 ```
 </span>
 
@@ -1180,18 +1192,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let msg = QueueMessage()
-msg.setMessage("Sample")
-msg.setDelay(1000)
-queue.addMessage(msg, callback: { response in
-    response.log()
-})
-```
-</span>
-
 #Expire
 
 To delete the message from the queue after a certain period of time. You can set an expiry date and time to a message. The message will not be available after expire time is elapsed.
@@ -1254,6 +1254,20 @@ QueueMessage[] msgs={msg};
 				//
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="expire">
+```
+let msg = QueueMessage()
+msg.setMessage("Sample")
+let today = NSDate()
+let tomorrow = today.dateByAddingTimeInterval(NSTimeInterval.abs(86400))
+msg.setExpires(tomorrow)
+queue.addMessage(msg, callback: { response in
+    response.log()
+})
 ```
 </span>
 
@@ -1342,19 +1356,5 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
         }]
     }
 }' 'http://api.cloudboost.io/queue/${app_id}/${queue_name}/message'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let msg = QueueMessage()
-msg.setMessage("Sample")
-let today = NSDate()
-let tomorrow = today.dateByAddingTimeInterval(NSTimeInterval.abs(86400))
-msg.setExpires(tomorrow)
-queue.addMessage(msg, callback: { response in
-    response.log()
-})
 ```
 </span>

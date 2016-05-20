@@ -57,6 +57,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="basic">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.equalTo("name", obj: "John")
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="basic">
 ```
@@ -83,18 +95,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.equalTo("name", obj: "John")
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -147,6 +147,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="notequal">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.notEqualTo("name", obj: "John")
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="notequal">
 ```
@@ -178,17 +190,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.notEqualTo("name", obj: "John")
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
 ###Greater Than
 
 ==JavaScript==
@@ -238,6 +239,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="greaterthan">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.greaterThan("age", obj: 15)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="greaterthan">
 ```
@@ -269,17 +282,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.greaterThan("age", obj: 15)
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
 ###Less Than
 
 ==JavaScript==
@@ -329,6 +331,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="lessthan">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.lessThan("age", obj: 15)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="lessthan">
 ```
@@ -360,17 +374,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.lessThan("age", obj: 15)
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
 ###Greater Than and Equal To
 
 ==JavaScript==
@@ -420,6 +423,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="greaterequal">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.greaterThanEqualTo("age", obj: 15)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="greaterequal">
 ```
@@ -451,17 +466,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.greaterThanEqualTo("age", obj: 15)
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
 ###Less Than and Equal To
 
 ==JavaScript==
@@ -511,6 +515,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="lessequal">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.lessThanEqualTo("age", obj: 15)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="lessequal">
 ```
@@ -542,17 +558,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.lessThanEqualTo("age", obj: 15)
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
 ###Starts With
 
 >Info: Starts with only works with <span class="tut-snippet">Text</span> type.
@@ -604,6 +609,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="startwith">
+```
+let query = CloudQuery(tableName: "Student")
+query.startsWith("name", str: "Jo")
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="startswith">
 ```
@@ -633,18 +650,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.startsWith("name", str: "Jo")
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -710,6 +715,18 @@ query.find(new CloudObjectArrayCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="Substring">
+```
+let query = CloudQuery(tableName: "Student")
+query.substring("name", subStr: "oh")
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="Substring">
 ```
@@ -768,18 +785,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.substring("name", subStr: "oh")
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
 ###Regex
 
 Returns all the `CloudObject` which matches the regex.
@@ -830,6 +835,18 @@ query.find(new CloudObjectArrayCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="regex">
+```
+let query = CloudQuery(tableName: "Student")
+query.regex("name", exp: "^/*.on*./")
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="regex">
 ```
@@ -860,18 +877,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 	"skip": 0
 }
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.regex("name", exp: "^/*.on*./")
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -931,6 +936,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="containedin">
+```
+let query = CloudQuery(tableName: "Student")
+query.containedIn("courses", obj: ["math","science"])
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="containedIn">
 ```
@@ -964,18 +981,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.containedIn("courses", obj: ["math","science"])
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -1033,6 +1038,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="notcontained">
+```
+let query = CloudQuery(tableName: "Student")
+query.notContainedIn("courses", obj: ["math","science"])
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="notcontained">
 ```
@@ -1064,18 +1081,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.notContainedIn("courses", obj: ["math","science"])
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -1133,6 +1138,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="containsall">
+```
+let query = CloudQuery(tableName: "Student")
+query.containsAll("courses", obj: ["math","science"])
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="containsall">
 ```
@@ -1164,18 +1181,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.containsAll("courses", obj: ["math","science"])
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -1235,6 +1240,19 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="and">
+```
+let query = CloudQuery(tableName: "Student")
+query.equalTo("name", obj: "John")
+query.greaterThan("age", obj: 10)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="and">
 ```
@@ -1265,19 +1283,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.equalTo("name", obj: "John")
-query.greaterThan("age", obj: 10)
-
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -1342,6 +1347,24 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="or">
+```
+let query1 = CloudQuery(tableName: "Student")
+try! query1.equalTo("name", obj: "John")
+//
+let query2 = CloudQuery(tableName: "Student")
+try! query2.lessThan("marks", obj: 70)
+//
+let query = CloudQuery(tableName: "Student")
+try! query.or(query1, object2: query2)
+//
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="or">
 ```
@@ -1387,24 +1410,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query1 = CloudQuery(tableName: "Student")
-try! query1.equalTo("name", obj: "John")
-
-let query2 = CloudQuery(tableName: "Student")
-try! query2.lessThan("marks", obj: 70)
-
-let query = CloudQuery(tableName: "Student")
-try! query.or(query1, object2: query2)
-
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
 #Order By
 
 ==JavaScript==
@@ -1434,6 +1439,16 @@ query.orderByDesc('name');
 query.orderByAsc("name");
 //You can also order by Desending
 query.orderByDesc("name");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="orderby">
+```
+//sort by Ascending
+query.sortAscendingBy("name")
+//You can also sort by Desending
+query.sortDescendingBy("name")
 ```
 </span>
 
@@ -1484,16 +1499,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-//sort by Ascending
-query.sortAscendingBy("name")
-//You can also sort by Desending
-query.sortDescendingBy("name")
-```
-</span>
-
 #Limit & Skip
 
 Limit returns only the specified number of objects from the database. Skip in turn skips the specified number of objects from the database and returns the rest of the objects.
@@ -1525,6 +1530,16 @@ query.skip(10);
 query.limit(10);
 //skip
 query.skip(10);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="limitskip">
+```
+//limit
+query.setLimit(10)
+//skip
+query.setSkip(10)
 ```
 </span>
 
@@ -1571,16 +1586,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 5
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-//limit
-query.setLimit(10)
-//skip
-query.setSkip(10)
 ```
 </span>
 
@@ -1631,10 +1636,27 @@ query.paginate(1, null, new PaginatorCallback() {
 	public void done(CloudObject[] objects, Integer count, Integer totalPages,
 		CloudException t) throws CloudException {
 			if(t!=null)
-
+      //
 			else
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="paginate">
+```
+let query1 = CloudQuery(tableName: "QueryPaginate")
+let pageNum = 2
+let totalItemsInPage = 10
+query1.paginate(pageNum, _totalItemsInPage: totalItemsInPage, callback: {
+    object, count, totalPages in
+    if object != nil && object?.count > totalItemsInPage {
+        print("received number of items are greater than the required value")
+    }else if Int(ceil(Double(count!)/Double(totalItemsInPage))) != totalPages {
+        print("totalpages is not recieved as expected")                        
+    }
+})
 ```
 </span>
 
@@ -1663,24 +1685,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": ${(page_no*total_items_per_page)-total_items_per_page}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query1 = CloudQuery(tableName: "QueryPaginate")
-let pageNum = 2
-let totalItemsInPage = 10
-query1.paginate(pageNum, _totalItemsInPage: totalItemsInPage, callback: {
-    object, count, totalPages in
-    if object != nil && object?.count > totalItemsInPage {
-        print("received number of items are greater than the required value")
-    }else if Int(ceil(Double(count!)/Double(totalItemsInPage))) != totalPages {
-        print("totalpages is not recieved as expected")                        
-    }
-})
-
 ```
 </span>
 
@@ -1715,6 +1719,16 @@ query.doNotSelectColumn('age');
 query.selectColumn("name");
 //do not select
 query.doNotSelectColumn("age");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="selectcol">
+```
+//select
+query.selectColumn("name")
+//do not select
+query.doNotSelectColumn("age")
 ```
 </span>
 
@@ -1772,16 +1786,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-//select
-query.selectColumn("name")
-//do not select
-query.doNotSelectColumn("age")
-```
-</span>
-
 #Find, Find one, Find by ID
 
 Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery.
@@ -1827,6 +1831,19 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="query">
+```
+try! query.find({ response in
+    if response.success {
+      // successful search
+    }else{
+      // check what is wrong
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="query">
 ```
@@ -1849,19 +1866,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-try! query.find({ response in
-    if response.success {
-      // successful search
-    }else{
-      // check what is wrong
-    }
-})
 ```
 </span>
 
@@ -1907,6 +1911,19 @@ query.findOne(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="findone">
+```
+try! query.findOne({ response in
+    if response.success {
+      // successful search
+    }else{
+      // check what is wrong
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="findone">
 ```
@@ -1931,21 +1948,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/findOne'
-```
-</span>
-
-
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-try! query.findOne({ response in
-    if response.success {
-      // successful search
-    }else{
-      // check what is wrong
-    }
-})
 ```
 </span>
 
@@ -1992,6 +1994,19 @@ query.findById("id", new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="findid">
+```
+try! query.findById("id", callback: { response in
+    if response.success {
+      // successful search
+    }else{
+      // check what is wrong
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="findid">
 ```
@@ -2015,19 +2030,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-try! query.findById("id", callback: { response in
-    if response.success {
-      // successful search
-    }else{
-      // check what is wrong
-    }
-})
 ```
 </span>
 
@@ -2074,6 +2076,15 @@ public void done(int x, CloudException t) {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="count">
+```
+query.count({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="count">
 ```
@@ -2097,15 +2108,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/count'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-query.count({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -2156,6 +2158,15 @@ query.distinct("age",new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="distinct">
+```
+query.distinct("age", callback: { response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="distinct">
 ```
@@ -2179,15 +2190,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/distinct'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-query.distinct("age", callback: { response in
-    response.log()
-})
 ```
 </span>
 
@@ -2253,6 +2255,19 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="simplejoin">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.find({ res in
+    if let list = res.object as? [NSMutableDictionary] {
+        let  obj = list[0]
+        let name = obj.get("name")
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="simplejoin">
 ```
@@ -2277,20 +2292,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
 ```
 </span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.find({ res in
-    if let list = res.object as? [NSMutableDictionary] {
-        let  obj = list[0]
-        let name = obj.get("name")
-    }
-})
-```
-</span>
-
 
 **Solution :**
 
@@ -2352,6 +2353,22 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="include">
+```
+let query = CloudQuery(tableName: "Student")
+query.include("course")
+try! query.find({ res in
+    if let list = res.object as? [NSMutableDictionary] {
+        let  obj = list[0]
+        if let course = obj.get("course") as? NSMutableDictionary {
+            let courseName = courses.get("name")
+        }
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="include">
 ```
@@ -2375,22 +2392,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.include("course")
-try! query.find({ res in
-    if let list = res.object as? [NSMutableDictionary] {
-        let  obj = list[0]
-        if let course = obj.get("course") as? NSMutableDictionary {
-            let courseName = courses.get("name")
-        }
-    }
-})
 ```
 </span>
 
@@ -2421,6 +2422,13 @@ query.include("course.teacher");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="multijoin">
+```
+query.include("course.teacher")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="multijoin">
 ```
@@ -2444,14 +2452,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-query.include("course.teacher")
 ```
 </span>
 
@@ -2514,6 +2514,22 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="near">
+```
+let geoPoint = try! CloudGeoPoint(latitude: 17, longitude: 80)
+let query = CloudQuery(tableName: "Student")
+query.near("location", geoPoint: geoPoint, maxDistance: 10000, minDistance: 10)
+try! query.find({ res in
+    if let list = res.object as? [NSMutableDictionary] {
+        if list.count > 0 {
+          // near point exists                  
+        }
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="near">
 ```
@@ -2541,22 +2557,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let geoPoint = try! CloudGeoPoint(latitude: 17, longitude: 80)
-let query = CloudQuery(tableName: "Student")
-query.near("location", geoPoint: geoPoint, maxDistance: 10000, minDistance: 10)
-try! query.find({ res in
-    if let list = res.object as? [NSMutableDictionary] {
-        if list.count > 0 {
-          // near point exists                  
-        }
-    }
-})
 ```
 </span>
 
@@ -2628,6 +2628,24 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="geowithin">
+```
+let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
+let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
+let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
+let query = CloudQuery(tableName: "Custom")
+query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
+try! query.find({ response in
+  if let list = res.object as? [NSMutableDictionary] {
+      if list.count > 0 {
+        // near point exists                  
+      }
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="geowithin">
 ```
@@ -2657,23 +2675,5 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   },
   "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
-let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
-let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
-let query = CloudQuery(tableName: "Custom")
-query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
-try! query.find({ response in
-  if let list = res.object as? [NSMutableDictionary] {
-      if list.count > 0 {
-        // near point exists                  
-      }
-  }
-})
 ```
 </span>

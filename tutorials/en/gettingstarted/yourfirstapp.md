@@ -356,7 +356,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 let query = CloudQuery(tableName: "TableName")
 // throws error if the "obj: data" passed is not an acceptable value
 try! query.equalTo("ColumnName", obj: data)
-
+//
 try! query.find({ response in
     response.log()
 })

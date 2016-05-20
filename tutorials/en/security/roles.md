@@ -50,27 +50,37 @@ role.save({
 ```
 </span>
 
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var role = new CB.CloudRole("Student");
-await role.SaveAsync();
-```
-</span>
-
 ==Java==
 <span class="java-lines" data-query="create">
 ```
 CloudRole role = new CloudRole("Student");
 role.save(new CloudRoleCallback(){
-	@Override
-	public void done(CloudRole roleObj, CloudException e)throws CloudException {
-		if(e != null){
-		}
-		if(roleObj == null){
-		}
-	}
+  @Override
+  public void done(CloudRole roleObj, CloudException e)throws CloudException {
+    if(e != null){
+    }
+    if(roleObj == null){
+    }
+  }
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let role = CloudRole(roleName: "Student")
+role.save({ response in
+    response.log()
+})
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="create">
+```
+var role = new CB.CloudRole("Student");
+await role.SaveAsync();
 ```
 </span>
 
@@ -117,17 +127,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let role = CloudRole(roleName: "Student")
-role.save({ response in
-    response.log()
-})
-
-```
-</span>
-
 After the CloudRole is created you can start signing-up users to role.
 
 #Default Properties
@@ -159,6 +158,13 @@ System.out.print(role.getName());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewname">
+```
+role.getName()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewname">
 ```
@@ -170,13 +176,6 @@ role.Name
 <span class="curl-lines" data-query="viewname">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-role.getName()
 ```
 </span>
 
@@ -224,6 +223,17 @@ user.addToRole(null, new CloudUserCallback() {
 	//				
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="add">
+```
+user.addToRole(role, callback: { response in
+  if response.success {
+    // user added to role
+  }
+})
 ```
 </span>
 
@@ -308,17 +318,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-user.addToRole(role, callback: { response in
-  if response.success {
-    // user added to role
-  }
-})
-```
-</span>
-
 #Check if the user is in a role
 
 If you want to check if the user is in the role then you can do this by
@@ -337,17 +336,24 @@ var isInRole = user.isInRole(role);
 ```
 </span>
 
-==.NET==
-<span class="dotnet-lines" data-query="check">
-```
-var isInRole = user.IsInRole(role);
-```
-</span>
-
 ==Java==
 <span class="java-lines" data-query="check">
 ```
 boolean isInRole = user.isInRole(role);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="check">
+```
+let isInRole = user.isInRole(role)
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="check">
+```
+var isInRole = user.IsInRole(role);
 ```
 </span>
 
@@ -357,14 +363,6 @@ boolean isInRole = user.isInRole(role);
 //
 ```
 </span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let isInRole = user.isInRole(role)
-```
-</span>
-
 
 #Get all roles from a user
 
@@ -386,6 +384,21 @@ var roles = user.get('roles');
 ```
 </span>
 
+==Java==
+<span class="java-lines" data-query="get">
+```
+String[] roles=user.getRoles();
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="get">
+```
+//roles is an array of CloudRole
+let roles = user.getRoles();
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="get">
 ```
@@ -394,25 +407,10 @@ List<CB.CloudRole> roles = user.Get("roles");
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="get">
-```
-String[] roles=user.getRoles();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="get">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-//roles is an array of CloudRole
-let roles = user.getRoles();
 ```
 </span>
 
@@ -448,23 +446,34 @@ user.removeFromRole(role, {
 ```
 </span>
 
+==Java==
+<span class="java-lines" data-query="remove">
+```
+user.removeFromRole(null, new CloudUserCallback() {     
+  @Override
+  public void done(CloudUser user, CloudException e) throws CloudException {      
+    //    
+  }
+});
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="remove">
+```
+user.removeFromRole(role, callback: { response in
+    if response.success {
+      // user removed from role
+    }
+}
+```
+</span>
+
 ==.NET==
 <span class="nodejs-lines" data-query="remove">
 ```
 //role is a CB.CloudRole object type
 await user.RemoveFromRole(role);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="remove">
-```
-user.removeFromRole(null, new CloudUserCallback() {			
-	@Override
-	public void done(CloudUser user, CloudException e) throws CloudException {			
-		//		
-	}
-});
 ```
 </span>
 
@@ -544,16 +553,5 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key":${app_key}
 }
 }' 'http://api.cloudboost.io/user/${app_id}/removeFromRole'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-user.removeFromRole(role, callback: { response in
-    if response.success {
-      // user removed from role
-    }
-}
 ```
 </span>

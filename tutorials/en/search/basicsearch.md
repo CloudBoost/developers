@@ -35,6 +35,13 @@ CloudSearch cs = new CloudSearch("Student");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let cs = CloudSearch(tableName: "TableName")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -46,13 +53,6 @@ var cs = new CB.CloudSearch("Student");
 <span class="curl-lines" data-query="create">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let cs = CloudSearch(tableName: "TableName")
 ```
 </span>
 
@@ -84,6 +84,14 @@ searchQuery.searchOn("name","John",null,null,null,null);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="attach">
+```
+let searchQuery = SearchQuery()
+searchQuery.searchOn("name",query: "John")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="attach">
 ```
@@ -96,14 +104,6 @@ searchQuery.SearchOn("name","John",null,null,null,null);
 <span class="curl-lines" data-query="attach">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let searchQuery = SearchQuery()
-searchQuery.searchOn("name",query: "John")
 ```
 </span>
 
@@ -154,6 +154,19 @@ cs.search(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="search">
+```
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // fail
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="search">
 ```
@@ -193,18 +206,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // fail
-  }
-})
-```
-</span>
 #Search Query and Search Filters
 
 There are two queries in CloudSearch, One is **SearchQuery** and the other is **SearchFilter**. When you run the CloudSearch query, Your data is filtered first by using the FilteredQuery and then, the filtered data is then searched using the SearchQuery and the results are then returned.
@@ -280,6 +281,26 @@ cs.search(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="newquery">
+```
+// create a CloudSearch object
+let cs = CloudSearch(tableName: "TableName")
+// set the search query
+cs.searchQuery = SearchQuery()
+// set search filter
+cs.searchFilter = SearchFilter()
+//
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // fail
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="newquery">
 ```
@@ -311,26 +332,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// create a CloudSearch object
-let cs = CloudSearch(tableName: "TableName")
-// set the search query
-cs.searchQuery = SearchQuery()
-// set search filter
-cs.searchFilter = SearchFilter()
-
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // fail
-  }
-})
-```
-</span>
-
 #Basic Search Query
 
 ###Search On
@@ -355,6 +356,13 @@ cs.searchQuery.searchOn('name','John');
 <span class="java-lines" data-query="searchon">
 ```
 searchQuery.searchOn("name","John");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="searchon">
+```
+cs.searchQuery.searchOn("name",query: "John")
 ```
 </span>
 
@@ -398,13 +406,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchQuery.searchOn("name",query: "John")
-```
-</span>
-
 ###Phrase
 
 To search on any set of words that are close to each other like for example (John Smith). You can use phrase.
@@ -427,6 +428,13 @@ cs.searchQuery.phrase('name','John Smith');
 <span class="java-lines" data-query="phrase">
 ```
 searchQuery.phrase("name","John Smith");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="phrase">
+```
+cs.searchQuery?.phrase("name", query: "John")
 ```
 </span>
 
@@ -471,13 +479,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchQuery?.phrase("name", query: "John")
-```
-</span>
-
 ###Or
 
 To OR a search query you can use the <span class="tut-snippet">or</span> function.
@@ -512,6 +513,15 @@ searchQuery1.searchOn("name", "John",null,null,null,null);
 //
 //OR with your main searchQuery
 searchQuery.or(searchQuery1);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="or">
+```
+let searchQuery1 = SearchQuery()
+searchQuery1.searchOn("name",query: "John")
+cs.searchQuery?.or(query2)
 ```
 </span>
 
@@ -560,15 +570,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let searchQuery1 = SearchQuery()
-searchQuery1.searchOn("name",query: "John")
-cs.searchQuery?.or(query2)
-```
-</span>
-
 ###And
 
 To AND a search query you can use the <span class="tut-snippet">and</span> function.
@@ -603,6 +604,15 @@ searchQuery1.searchOn("name", "John",null,null,null,null);
 //
 //AND with your main searchQuery
 searchQuery.and(searchQuery1);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="and">
+```
+let searchQuery1 = SearchQuery()
+searchQuery1.searchOn("name",query: "John")
+cs.searchQuery?.and(query2)
 ```
 </span>
 
@@ -673,15 +683,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let searchQuery1 = SearchQuery()
-searchQuery1.searchOn("name",query: "John")
-cs.searchQuery?.and(query2)
-```
-</span>
-
 ###Not
 
 To NOT a search query you can use the <span class="tut-snippet">not</span> function.
@@ -716,6 +717,15 @@ searchQuery1.searchOn("name", "John",null,null,null,null);
 //
 //your main searchQuery
 searchQuery.not(searchQuery1);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="not">
+```
+let searchQuery1 = SearchQuery()
+searchQuery1.searchOn("name",query: "John")
+cs.searchQuery?.not(query2)
 ```
 </span>
 
@@ -786,15 +796,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let searchQuery1 = SearchQuery()
-searchQuery1.searchOn("name",query: "John")
-cs.searchQuery?.not(query2)
-```
-</span>
-
 #Basic Search Filters
 
 ###Equal To
@@ -819,6 +820,13 @@ cs.searchFilter.equalTo("name","John");
 <span class="java-lines" data-query="equal">
 ```
 searchFilter.equalTo("name","John");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="equal">
+```
+cs.searchFilter?.equalTo("name", data: "John")
 ```
 </span>
 
@@ -859,13 +867,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.equalTo("name", data: "John")
-```
-</span>
-
 ###Not Equal To
 
 To have a notEqualTo constraint over a search filter you can use the <span class="tut-snippet">notEqualTo</span> function.
@@ -888,6 +889,13 @@ cs.searchFilter.notEqualTo("name","John");
 <span class="java-lines" data-query="notequal">
 ```
 searchFilter.notEqualTo("name","John");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="notequal">
+```
+cs.searchFilter?.notEqualTo("name", data: "John")
 ```
 </span>
 
@@ -928,13 +936,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.notEqualTo("name", data: "John")
-```
-</span>
-
 ###Greater Than
 
 To have a greaterThan constraint over a search filter you can use the <span class="tut-snippet">greaterThan</span> function.
@@ -957,6 +958,13 @@ cs.searchFilter.greaterThan("age",10);
 <span class="java-lines" data-query="greaterthan">
 ```
 searchFilter.greaterThan("age",10);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="greaterthan">
+```
+cs.searchFilter?.greaterThan("age", data: 10)
 ```
 </span>
 
@@ -999,13 +1007,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.greaterThan("age", data: 10)
-```
-</span>
-
 ###Less than
 
 To have a lessThan constraint over a search filter you can use the <span class="tut-snippet">lessThan</span> function.
@@ -1028,6 +1029,13 @@ cs.searchFilter.lessThan("age",10);
 <span class="java-lines" data-query="lessthan">
 ```
 searchFilter.lessThan("age",10);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="lessthan">
+```
+cs.searchFilter?.lessThan("age", data: 10)
 ```
 </span>
 
@@ -1070,13 +1078,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.lessThan("age", data: 10)
-```
-</span>
-
 ###Greater Than Or Equal To
 
 
@@ -1100,6 +1101,13 @@ cs.searchFilter.greaterThanEqualTo("age",10);
 <span class="java-lines" data-query="greaterequal">
 ```
 searchFilter.greaterThanEqualTo("age",10);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="greaterequal">
+```
+cs.searchFilter?.greaterThanEqualTo("age", data: 10)
 ```
 </span>
 
@@ -1142,13 +1150,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.greaterThanEqualTo("age", data: 10)
-```
-</span>
-
 ###Less Than Or Equal To
 
 
@@ -1172,6 +1173,13 @@ cs.searchFilter.lessThanEqualTo("age",10);
 <span class="java-lines" data-query="lessequal">
 ```
 searchFilter.lessThanEqualTo("age",10);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="lessequal">
+```
+cs.searchFilter?.lessThanEqualTo("age", data: 10)
 ```
 </span>
 
@@ -1214,13 +1222,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.lessThanEqualTo("age", data: 10)
-```
-</span>
-
 ###Exists
 
 To have a constraint over a search filter where a column cannot be null. You can use the <span class="tut-snippet">exists</span> function.
@@ -1243,6 +1244,13 @@ cs.searchFilter.exists("name");
 <span class="java-lines" data-query="exists">
 ```
 searchFilter.exists("name");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="exists">
+```
+cs.searchFilter?.exists("name")
 ```
 </span>
 
@@ -1283,13 +1291,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.exists("name")
-```
-</span>
-
 ###Does not exists
 
 To have a constraint over a search filter where a column is null. You can use the <span class="tut-snippet">doesNotExists</span> function.
@@ -1312,6 +1313,13 @@ cs.searchFilter.doesNotExists("name");
 <span class="java-lines" data-query="notexists">
 ```
 searchFilter.doesNotExists("name");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="notexists">
+```
+cs.searchFilter?.doesNotExists("name")
 ```
 </span>
 
@@ -1352,13 +1360,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-cs.searchFilter?.doesNotExists("name")
-```
-</span>
-
 ###Or
 
 To OR a search filter you can use the <span class="tut-snippet">or</span> function.
@@ -1393,6 +1394,15 @@ searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
 searchFilter.or(searchFilter1);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="filteror">
+```
+let filter1 = SearchFilter()
+filter1.equalTo("name", data: "John")
+cs.searchFilter?.or(filter1)
 ```
 </span>
 
@@ -1438,15 +1448,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let filter1 = SearchFilter()
-filter1.equalTo("name", data: "John")
-cs.searchFilter?.or(filter1)
-```
-</span>
-
 ###And
 
 To AND a search filter you can use the <span class="tut-snippet">and</span> function.
@@ -1481,6 +1482,15 @@ searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
 cs.searchFilter.and(searchFilter1);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="filterand">
+```
+let filter1 = SearchFilter()
+filter1.equalTo("name", data: "John")
+cs.searchFilter?.and(filter1)
 ```
 </span>
 
@@ -1526,15 +1536,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let filter1 = SearchFilter()
-filter1.equalTo("name", data: "John")
-cs.searchFilter?.and(filter1)
-```
-</span>
-
 ###Not
 
 To NOT a search filter you can use the <span class="tut-snippet">not</span> function.
@@ -1569,6 +1570,15 @@ searchFilter1.equalTo("name", "John");
 //
 //your main searchQuery
 searchFilter.not(searchFilter1);
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="filternot">
+```
+let filter1 = SearchFilter()
+filter1.equalTo("name", data: "John")
+cs.searchFilter?.not(filter1)
 ```
 </span>
 
@@ -1611,15 +1621,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let filter1 = SearchFilter()
-filter1.equalTo("name", data: "John")
-cs.searchFilter?.not(filter1)
 ```
 </span>
 
@@ -1688,6 +1689,22 @@ cs.search(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="orderby">
+```
+let cs = CloudSearch(tableName: "TableName")
+cs.orderByAsc("age")
+cs.orderByDesc("age")
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // failure
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="orderby">
 ```
@@ -1719,22 +1736,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 0,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let cs = CloudSearch(tableName: "TableName")
-cs.orderByAsc("age")
-cs.orderByDesc("age")
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // failure
-  }
-})
 ```
 </span>
 
@@ -1803,6 +1804,22 @@ cs.search(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="limitskip">
+```
+let cs = CloudSearch(tableName: "TableName")
+cs.setLimit(10)
+cs.setSkip(1)
+try! cs.search({ response in
+  if response.success {
+    // success
+  }else{
+    // failure
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="limitskip">
 ```
@@ -1830,21 +1847,5 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "skip": 10,
   "collectionName": ${table_name}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let cs = CloudSearch(tableName: "TableName")
-cs.setLimit(10)
-cs.setSkip(1)
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // failure
-  }
-})
 ```
 </span>

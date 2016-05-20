@@ -49,6 +49,19 @@ CloudNotification.on("ChannelName",new CloudNotificationCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="on">
+```
+CloudNotification.on("sample",  
+  handler: { data, ack in
+			// this is the handler that is called whenever a data is emmitted to the app's specified channel(here 'sample' is the channel name)
+  },
+  callback: { error in
+		// this is the callback after the handler has been registered for listening to the channel			
+  })
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="on">
 ```
@@ -63,19 +76,6 @@ void action(Object result){
 <span class="curl-lines" data-query="on">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudNotification.on("sample",  
-  handler: { data, ack in
-			// this is the handler that is called whenever a data is emmitted to the app's specified channel(here 'sample' is the channel name)
-  },
-  callback: { error in
-		// this is the callback after the handler has been registered for listening to the channel			
-  })
 ```
 </span>
 
@@ -104,6 +104,14 @@ CloudNotification.publish("ChannelName","data");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="publish">
+```
+// throws error if AppID/AppKey is not initialized
+try! CloudNotification.publish("sample", data: data)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="publish">
 ```
@@ -115,14 +123,6 @@ CB.CloudNotification.Publsh("sample", "data");
 <span class="curl-lines" data-query="publish">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// throws error if AppID/AppKey is not initialized
-try! CloudNotification.publish("sample", data: data)
 ```
 </span>
 
@@ -151,6 +151,15 @@ CloudNotification.off("ChannelName");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="off">
+```
+CloudNotification.off("sample", callback: {error in
+	// callback
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="off">
 ```
@@ -165,14 +174,6 @@ CB.CloudNotification.Off("sample");
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudNotification.off("sample", callback: {error in
-	// callback
-})
-```
-</span>
 #####What's next?
 
 In the [next section](?lang=en&category=realtime&subcategory=cloudobjectnotifications) we will basically fire event notifications when the CloudObject is created, updated or deleted. We can also have queries over notifications which will help you add extra level of flexibility to your code.

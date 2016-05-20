@@ -42,6 +42,19 @@ public void done(CloudObject x, CloudException t) {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+CloudNotification.on("sample",  
+  handler: { data, ack in
+			// this is the handler that is called whenever a data is emmitted to the app's specified channel(here 'sample' is the channel name)
+  },
+  callback: { error in
+		// this is the callback after the handler has been registered for listening to the channel			
+  })
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -56,20 +69,6 @@ void action(Object result){
 <span class="curl-lines" data-query="create">
 ```
 //
-```
-</span>
-
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudNotification.on("sample",  
-  handler: { data, ack in
-			// this is the handler that is called whenever a data is emmitted to the app's specified channel(here 'sample' is the channel name)
-  },
-  callback: { error in
-		// this is the callback after the handler has been registered for listening to the channel			
-  })
 ```
 </span>
 
@@ -108,6 +107,20 @@ public void done(CloudObject x, CloudException t) {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="createupdate">
+```
+CloudObject.on("Student", eventType: ["created","updated"],
+		handler: { response in
+			// handler for data received on 'sample'
+			// response is an array of CloudObject			
+		},
+		callback: { error in
+			// callback from registering the handler			
+    })
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="createupdate">
 ```
@@ -128,19 +141,6 @@ void action(Object result){
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudObject.on("Student", eventType: ["created","updated"],
-		handler: { response in
-			// handler for data received on 'sample'
-			// response is an array of CloudObject			
-		},
-		callback: { error in
-			// callback from registering the handler			
-    })
-```
-</span>
 >Info: CloudObject Notifications are only fired when that particular client has a read access to that object. Please read a section on [ACL](?lang=en&category=security&subcategory=acl) for more information.
 
 
@@ -193,6 +193,22 @@ public void done(CloudObject x, CloudException t) {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="query">
+```
+let query = CloudQuery(tableName: "Student")
+try! query.equalTo("age", obj: 10)
+//
+CloudObject.on("Student", eventType: "created", query: query, handler: { res in
+			if res != nil {
+				let age = res![0].get("age")    
+			}
+    }, callback: { err in
+			// callback after registering the handler
+		})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="query">
 ```
@@ -210,22 +226,6 @@ void action(Object result){
 <span class="curl-lines" data-query="query">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.equalTo("age", obj: 10)
-
-CloudObject.on("Student", eventType: "created", query: query, handler: { res in
-			if res != nil {
-				let age = res![0].get("age")    
-			}
-    }, callback: { err in
-			// callback after registering the handler
-		})
 ```
 </span>
 
@@ -256,6 +256,15 @@ CloudObject.off("Student", "created");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="off">
+```
+CloudObject.off("Student", eventType: ["created","updated"], callback: { error in
+			// callback
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="off">
 ```
@@ -267,15 +276,6 @@ CB.CloudObject.Off("Student");
 <span class="curl-lines" data-query="off">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudObject.off("Student", eventType: ["created","updated"], callback: { error in
-			// callback
-})
 ```
 </span>
 

@@ -56,6 +56,18 @@ cache.create(new CloudCacheCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+// Throws an error when cacheName is invalid
+let cache = try! CloudCache(cacheName: "newCache")
+// Throws an error when AppID/AppKey is nil
+try! cache.create({ response in
+    response.log()    
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -70,18 +82,6 @@ var response = await cache.CreateAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/create'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// Throws an error when cacheName is invalid
-let cache = try! CloudCache(cacheName: "newCache")
-// Throws an error when AppID/AppKey is nil
-try! cache.create({ response in
-    response.log()    
-})
 ```
 </span>
 
@@ -138,6 +138,21 @@ public void done(Object x, CloudException e) throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="put">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")
+  let obj = ["name":"Randhir", "marks": 34]
+  try cache.set("sample", value: obj, callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="put">
 ```
@@ -157,21 +172,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/htm
   "item": ${data_to_cache},
   "key": ${master_key}}
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/${data_key}}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")
-  let obj = ["name":"Randhir", "marks": 34]
-  try cache.set("sample", value: obj, callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -225,6 +225,20 @@ public void done(Object o, CloudException t)
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="get">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.get("sample", callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="get">
 ```
@@ -238,20 +252,6 @@ response = await cache.GetAsync("sample");
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/${data_key}/item'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.get("sample", callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -300,6 +300,20 @@ cache.deleteItem("test1", new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="delete">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.deleteItem("sample", callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="delete">
 ```
@@ -317,19 +331,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.deleteItem("sample", callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
 
 #Get all items
 
@@ -381,6 +382,20 @@ cache.getAllItems(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getall">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getAllItems(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getall">
 ```
@@ -394,20 +409,6 @@ var response = await cache.GetAllAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": "${master_key}"
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/items'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.getAllItems(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -460,6 +461,20 @@ cache.getItemsCount(new CloudIntegerCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getitemscount">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getItemsCount(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getitemscount">
 ```
@@ -473,20 +488,6 @@ int count = await cache.GetItemsCountAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": "${master_key}"
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}/items/count'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.getItemsCount(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -541,6 +542,20 @@ cache.getInfo(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getinfo">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.getInfo(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getinfo">
 ```
@@ -554,20 +569,6 @@ await cache.GetInfoAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.getInfo(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -621,6 +622,20 @@ cache.clear(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="clear">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.clear(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="clear">
 ```
@@ -638,19 +653,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.clear(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
 #Delete Cache
 
 To delete an instance of the cache, you need to call the delete method of the <span class="tut-snippet">CB.CloudCache</span> instance with no parameters.
@@ -700,6 +702,20 @@ cache.delete(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deletecache">
+```
+do {
+  let cache = try CloudCache(cacheName: "newCache")  
+  try cache.delete(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deletecache">
 ```
@@ -714,20 +730,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key": ${master_key},
   "method":"DELETE"
 }' 'http://api.cloudboost.io/cache/${app_id}/${cache_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.delete(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -781,6 +783,19 @@ CloudCache.getAllCache(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getallappcache">
+```
+do {  
+  CloudCache.getAllCache(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getallappcache">
 ```
@@ -794,19 +809,6 @@ List<CB.CloudCache> list = await CB.CloudCache.GetAllAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/cache/${app_id}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {  
-  CloudCache.getAllCache(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -858,6 +860,19 @@ CloudCache.deleteAll(new ObjectCallback() {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deleteallappcache">
+```
+do {  
+  CloudCache.deleteAll(callback: { response in
+    response.log()
+  }
+}catch{
+  print("AppID/AppKey not set")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deleteallappcache">
 ```
@@ -872,19 +887,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "key": ${master_key},
   "method":"DELETE"
 }' 'http://api.cloudboost.io/cache/${app_id}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {  
-  CloudCache.deleteAll(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
 ```
 </span>
 
@@ -916,6 +918,14 @@ String cacheName = cache.getCacheName();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="name">
+```
+let cache = try! CloudCache(cacheName: "newCache")
+let name = cache.getCacheName()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="name">
 ```
@@ -928,14 +938,6 @@ var cacheName = cache.Name;
 <span class="curl-lines" data-query="name">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let cache = try! CloudCache(cacheName: "newCache")
-let name = cache.getCacheName()
 ```
 </span>
 
@@ -969,6 +971,14 @@ int size = cache.getSize();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="size">
+```
+let cache = try! CloudCache(cacheName: "newCache")
+let size = cache.getCacheSize()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="size">
 ```
@@ -981,13 +991,5 @@ var cacheSize = cache.Size;
 <span class="curl-lines" data-query="size">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let cache = try! CloudCache(cacheName: "newCache")
-let size = cache.getCacheSize()
 ```
 </span>

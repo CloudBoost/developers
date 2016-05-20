@@ -27,6 +27,13 @@ CloudObject obj = new CloudObject("TableName");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let obj = CloudObject(tableName: "TableName")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -40,12 +47,7 @@ var obj = new CB.CloudObject("TableName");
 //
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let obj = CloudObject(tableName: "TableName")
-```
-</span>
+
 To set data into the objects, You can use the <span class="tut-snippet">set</span> function / method of CloudObject class.
 
 ==JavaScript==
@@ -69,6 +71,13 @@ obj.set('ColumnName',data);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="set">
+```
+obj.set("ColumnName", value: data)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="set">
 ```
@@ -82,12 +91,7 @@ obj.Set("ColumnName",data);
 //set object
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.set("ColumnName", value: data)
-```
-</span>
+
 To know more about what data types CloudBoost supports. Please check this [Data Types](#Data-types) section.
 
 To save your CloudObject, you can call the save function/method and it will save the object to the CloudTable.
@@ -136,6 +140,17 @@ obj.save(new CloudObjectCallback(){
 			//cloudObject
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="save">
+```
+let obj = CloudObject(tableName: "TableName")
+obj.set("ColumnName", value: data)
+obj.save({ response in
+  response.log()
+})
 ```
 </span>
 
@@ -189,16 +204,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let obj = CloudObject(tableName: "TableName")
-obj.set("ColumnName", value: data)
-obj.save({ response in
-  response.log()
-})
-```
-</span>
 #Data-types
 
 CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports.
@@ -264,6 +269,14 @@ System.out.print(obj.getId());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewid">
+```
+//Id is null when you create the object but gets assigned to an Object as soon as you save it.
+obj.getId()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewid">
 ```
@@ -279,13 +292,6 @@ obj.ID
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it.
-obj.getId()
-```
-</span>
 * **CreatedAt** : [DateTime] A DateTime stamp of when the Object is created. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -309,6 +315,13 @@ obj.getCreatedAt();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewcreateat">
+```
+obj.getCreatedAt()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewcreateat">
 ```
@@ -322,12 +335,7 @@ obj.CreatedAt
 //
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.getCreatedAt()
-```
-</span>
+
 * **UpdatedAt** : [DateTime] A DateTime stamp of when the Object is updated. This property is automatically assigned by CloudBoost.  
 
 ==JavaScript==
@@ -351,6 +359,13 @@ obj.getUpdatedAt();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewupdateat">
+```
+obj.getUpdatedAt()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewupateat">
 ```
@@ -362,12 +377,6 @@ obj.UpdatedAt
 <span class="curl-lines" data-query="viewupdateat">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.getUpdatedAt()
 ```
 </span>
 
@@ -394,6 +403,13 @@ obj.getExpires();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewexpires">
+```
+obj.getExpires()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewexpires">
 ```
@@ -405,12 +421,6 @@ obj.Expires;
 <span class="curl-lines" data-query="viewexpires">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.getExpires()
 ```
 </span>
 
@@ -437,6 +447,13 @@ obj.getACL();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewacl">
+```
+obj.getAcl()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewacl">
 ```
@@ -448,12 +465,6 @@ obj.ACL;
 <span class="curl-lines" data-query="viewacl">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.getAcl()
 ```
 </span>
 
@@ -507,6 +518,20 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="update">
+```
+obj.set("dob", value: "yesterday")
+obj.save({ resp in
+   if(resp.success){
+       // successfully saved, 'obj' now contains the newly saved data with ID
+   }else{
+      // failed
+   }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="update">
 ```
@@ -555,19 +580,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.set("dob", value: "yesterday")
-obj.save({ resp in
-   if(resp.success){
-       // successfully saved, 'obj' now contains the newly saved data with ID
-   }else{
-      // failed
-   }
-})
-```
-</span>
+
 #Fetching Objects
 
 If you have an old or a stale copy of CloudObject and you want to refresh / fetch the updated one from the server then you can use the fetch method / function of CloudObject.
@@ -613,6 +626,20 @@ obj.fetch(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="fetch">
+```
+obj.set("dob", value: "yesterday")
+obj.save({ resp in
+   if(resp.success){
+       // successfully saved, 'obj' now contains the newly saved data with ID
+   }else{
+      // failed
+   }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="fetch">
 ```
@@ -640,19 +667,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.set("dob", value: "yesterday")
-obj.save({ resp in
-   if(resp.success){
-       // successfully saved, 'obj' now contains the newly saved data with ID
-   }else{
-      // failed
-   }
-})
-```
-</span>
 #Deleting Objects
 
 If you want to delete an object form the database then you need to call the delete function / method of CloudObject.
@@ -695,6 +709,20 @@ obj.delete(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="delete">
+```
+obj.delete({ resp in
+   // obj must have an ID
+   if(resp.success){
+       // successfully deleted
+   }else{
+      // failed
+   }
+})
 ```
 </span>
 
@@ -743,19 +771,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
     },
     "method": "DELETE",
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-obj.delete({ resp in
-   // obj must have an ID
-   if(resp.success){
-       // successfully deleted
-   }else{
-      // failed
-   }
-})
 ```
 </span>
 

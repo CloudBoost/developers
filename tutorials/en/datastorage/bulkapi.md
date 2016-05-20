@@ -59,6 +59,22 @@ public void done(CloudObject[] x,CloudException t)throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="bulksave">
+```
+let obj1 = CloudObject(tableName: "Student")
+obj1.setString("name", value: "Randhir")
+//
+let obj2 = CloudObject(tableName: "Student")
+obj2.setString("name", value: "Omar")
+//
+CloudObject.saveAll([obj1, obj2], callback: { response in
+    response.log()
+})
+```
+</span>
+
+
 ==.NET==
 <span class="dotnet-lines" data-query="bulksave">
 ```
@@ -150,22 +166,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let obj1 = CloudObject(tableName: "Student")
-obj1.setString("name", value: "Randhir")
-
-let obj2 = CloudObject(tableName: "Student")
-obj2.setString("name", value: "Omar")
-
-CloudObject.saveAll([obj1, obj2], callback: { response in
-    response.log()
-})
-
-```
-</span>
-
 #Deleting Multiple CloudObjects
 
 To delete multiple objects pass an array of CloudObjects to the bulk delete function. For example:
@@ -207,6 +207,16 @@ public void done(CloudObject[] x,CloudException t) throws CloudException {
 		//x has the array of saved CloudObjects.
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="bulkdelete">
+```
+// obj1 and obj2 must contain their ObjectID before deleting
+CloudObject.deleteAll([obj1, obj2], callback: { response in
+    response.log()
+})
 ```
 </span>
 
@@ -291,13 +301,4 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// obj1 and obj2 must contain their ObjectID before deleting
-CloudObject.deleteAll([obj1, obj2], callback: { response in
-    response.log()
-})
 
-```
-</span>

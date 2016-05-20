@@ -52,6 +52,19 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="saving">
+```
+// throws error if latitude and longitude are not valid values
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let locationTest = CloudObject(tableName: "LocationTest")
+locationTest.set("location", value: point)
+locationTest.save({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="saving">
 ```
@@ -111,18 +124,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// throws error if latitude and longitude are not valid values
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let locationTest = CloudObject(tableName: "LocationTest")
-locationTest.set("location", value: point)
-locationTest.save({ response in
-    response.log()
-})
-```
-</span>
+
 #Calculating Distance
 
 ###In Kilometres
@@ -156,6 +158,15 @@ Double distance = loc1.distanceInKMs(loc2);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="calc-kilo">
+```
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+point.distanceInKMs(point2)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="calc-kilo">
 ```
@@ -171,14 +182,7 @@ double distance = loc1.DistanceInKMs(loc2);
 //
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-point.distanceInKMs(point2)
-```
-</span>
+
 ###In Miles
 
 To calculate the distance in Miles's
@@ -210,6 +214,15 @@ Double distance = loc1.distanceInMiles(loc2);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="calc-miles">
+```
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+point.distanceInMiles(point2)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="calc-miles">
 ```
@@ -225,14 +238,7 @@ double distance = loc1.DistanceInMiles(loc2);
 //
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-point.distanceInMiles(point2)
-```
-</span>
+
 ###In Radians
 
 To calculate the distance in Radians
@@ -264,6 +270,15 @@ Double distance = loc1.distanceInRadians(loc2);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="calc-radians">
+```
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
+let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+point.distanceInRadius(point2)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="calc-radians">
 ```
@@ -277,14 +292,6 @@ double distance = loc1.DistanceInRadians(loc2);
 <span class="curl-lines" data-query="calc-radians">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-point.distanceInRadius(point2)
 ```
 </span>
 
@@ -347,6 +354,18 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="query-near">
+```
+let query = CloudQuery(tableName: "LocationTest")
+let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
+query.near("location", geoPoint: point, maxDistance: 400000, minDistance: 0)
+try! query.find({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="query-near">
 ```
@@ -375,17 +394,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     },
     "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "LocationTest")
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-query.near("location", geoPoint: point, maxDistance: 400000, minDistance: 0)
-try! query.find({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -451,6 +459,21 @@ query.find(new CloudObjectArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="query-geo">
+```
+let query = CloudQuery(tableName: "LocationTest")
+let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
+let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
+let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
+query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
+try! query.find({ response in
+    response.log()
+    // received points that fall within the polygon formed by the given points
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="query-geo">
 ```
@@ -481,19 +504,5 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     },
     "skip": 0
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}/find'
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "LocationTest")
-let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
-let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
-let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
-query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
-try! query.find({ response in
-    response.log()
-    // received points that fall within the polygon formed by the given points
-})
 ```
 </span>

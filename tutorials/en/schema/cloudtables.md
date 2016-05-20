@@ -27,6 +27,13 @@ CloudTable table = new CloudTable("TableName");
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let table = CloudTable(tableName: "TableName")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="create">
 ```
@@ -38,13 +45,6 @@ var table = new CB.CloudTable("TableName");
 <span class="curl-lines" data-query="create">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let table = CloudTable(tableName: "TableName")
 ```
 </span>
 
@@ -93,6 +93,18 @@ table.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="savecol">
+```
+let table = CloudTable(tableName: "Student")
+let column = Column(name: "name", dataType: CloudBoostDataType.Text)
+table.addColumn(column)
+table.save({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -193,18 +205,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let table = CloudTable(tableName: "Student")
-let column = Column(name: "name", dataType: CloudBoostDataType.Text)
-table.addColumn(column)
-table.save({ response in
-    response.log()
-})
-```
-</span>
-
 #Default Columns
 
 Every CloudTable when created has default columns attached to it. Here is a list of all the default columns attached to CloudTable when you initialize them. **All of the default columns are not editable or deleteable.**
@@ -254,6 +254,16 @@ column.setDataType(DataType.Text);
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="createcol">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Text, required: true, unique: false)
+// unique, required can also be set using the following functions
+column.setRequired(true)
+column.setUnique(true)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="createcol">
 ```
@@ -268,16 +278,6 @@ column.dataType = 'Text';
 <span class="curl-lines" data-query="createcol">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Text, required: true, unique: false)
-// unique, required can also be set using the following functions
-column.setRequired(true)
-column.setUnique(true)
 ```
 </span>
 
@@ -323,6 +323,18 @@ table.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="addcoltable">
+```
+let table = CloudTable(tableName: "Student")
+let column = Column(name: "name", dataType: CloudBoostDataType.Text)
+table.addColumn(column)
+table.save({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -423,18 +435,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let table = CloudTable(tableName: "Student")
-let column = Column(name: "name", dataType: CloudBoostDataType.Text)
-table.addColumn(column)
-table.save({ response in
-    response.log()
-})
-```
-</span>
-
 #Data-types
 
 CloudBoost has data-types to support various forms of data. All the way from Text, URL, Emails, Objects, Files and a whole lot more. Here is a list of data-types CloudBoost supports.
@@ -495,6 +495,16 @@ column.listDataType = 'Text';
 Column column = new Column("Name");
 column.setDataType(DataType.List);
 column.setRelatedToType("text");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="listcol">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Number)
+// data type can be changed using the following functions
+column.setDataType(CloudBoostDataType.List)
+column.setRelatedToType(CloudBoostDataType.Text)
 ```
 </span>
 
@@ -595,16 +605,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Number)
-// data type can be changed using the following functions
-column.setDataType(CloudBoostDataType.List)
-column.setRelatedToType(CloudBoostDataType.Text)
-```
-</span>
-
 #Adding Relational Columns
 
 There are two types of DataTypes which are considered when you're relating tables.
@@ -638,6 +638,14 @@ column.relatedTo = 'TableName';
 Column column = new Column("Name");
 column.setDataType(DataType.Relation);
 column.setRelatedTo("TableName");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="relcol">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
+age.setRelatedTo("TableName")
 ```
 </span>
 
@@ -737,14 +745,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
-age.setRelatedTo("TableName")
-```
-</span>
-
 If you want to add a list relational column, then:
 
 ==JavaScript==
@@ -771,6 +771,14 @@ column.relatedTo = 'TableName';
 Column column = new Column("Name");
 column.setDataType(DataType.List);
 column.setRelatedTo("TableName");
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="listrelcol">
+```
+let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
+age.setRelatedTo("TableName")
 ```
 </span>
 
@@ -870,14 +878,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
-age.setRelatedTo("TableName")
-```
-</span>
-
 #Getting Columns
 
 To get columns from a CloudTable, You can,
@@ -940,6 +940,13 @@ Column column = table.getColumn("name"); //Column Object
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getcolsalt">
+```
+let column = table.getColumn("name")
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getcolsalt">
 ```
@@ -951,13 +958,6 @@ CB.Column column = table.GetColumn("name"); //Column Object
 <span class="curl-lines" data-query="getcolsalt">
 ```
 //
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let column = table.getColumn("name")
 ```
 </span>
 
@@ -1008,6 +1008,15 @@ table.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="editcol">
+```
+let column = table.getColumn("name") // returns an optional value, check nullability
+column?.setRequired(true)
+table.updateColumn(column!) // returns false if the given column does not exist
 ```
 </span>
 
@@ -1135,15 +1144,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let column = table.getColumn("name") // returns an optional value, check nullability
-column?.setRequired(true)
-table.updateColumn(column!) // returns false if the given column does not exist
-```
-</span>
-
 >Info: You cannot edit the ColumnName and DataType after its saved. You can only change <span class="tut-snippet">required</span> and <span class="tut-snippet">unique</span> properties of a column.
 
 #Deleting Columns
@@ -1187,6 +1187,16 @@ table.save(new CloudObjectCallback(){
 		}
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="delcol">
+```
+table.deleteColumn("ColumnName")
+table.save({ response in
+    response.log()
+})
 ```
 </span>
 
@@ -1312,16 +1322,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-table.deleteColumn("ColumnName")
-table.save({ response in
-    response.log()
-})
-```
-</span>
-
 #Deleting Table
 
 To delete tables from a CloudApp, you can,
@@ -1363,6 +1363,21 @@ table.delete(new CloudTableCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deltable">
+```
+do {
+  try table.delete() { response in
+    if response.success {
+      // deleted successfully
+    }
+  }
+} catch {
+  // AppID/AppKey nil
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deltable">
 ```
@@ -1378,21 +1393,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
   "name":${table_name},
   "method":"DELETE"
 }' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-do {
-  try table.delete() { response in
-    if response.success {
-      // deleted successfully
-    }
-  }
-} catch {
-  // AppID/AppKey nil
-}
 ```
 </span>
 
@@ -1439,6 +1439,15 @@ CloudTable.getAll(new CloudTableArrayCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getalltabs">
+```
+CloudTable.getAll() { response in
+  // response.object contains an array of tables
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getalltabs">
 ```
@@ -1452,15 +1461,6 @@ await CB.CloudTable.GetAllAsync();
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/app/${app_id}/_getAll'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudTable.getAll() { response in
-  // response.object contains an array of tables
-}
 ```
 </span>
 
@@ -1505,6 +1505,17 @@ CloudTable.get("TableName", new CloudTableCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="gettabname">
+```
+CloudTable.get("table") { response, table in
+    if table != nil {
+      // table retrieved
+    }
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="gettabname">
 ```
@@ -1518,16 +1529,5 @@ await CB.CloudTable.GetAsync("name");
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "key": ${master_key}
 }' 'http://api.cloudboost.io/app/${app_id}/${table_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudTable.get("table") { response, table in
-    if table != nil {
-      // table retrieved
-    }
-}
 ```
 </span>

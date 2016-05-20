@@ -66,6 +66,18 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="read">
+```
+// objects are defined with an initial ACL
+let obj = CloudObject(tableName: "Student")
+// you can assign your own ACL in the following way
+let acl = ACL()
+acl.setUserReadAccess(user.id, value: true)
+obj.setACL(acl)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="read">
 ```
@@ -116,19 +128,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setUserReadAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
 
 In this case, only that particular user will be able to read that object from the database.
 
@@ -189,6 +188,18 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="write">
+```
+// objects are defined with an initial ACL
+let obj = CloudObject(tableName: "Student")
+// you can assign your own ACL in the following way
+let acl = ACL()
+acl.setUserWriteAccess(user.id, value: true)
+obj.setACL(acl)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="write">
 ```
@@ -240,17 +251,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setUserWriteAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
 In this case, Only that particular user will be able to write that object to the database.
 
 #Role Permissions
@@ -311,6 +311,18 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="roleread">
+```
+// objects are defined with an initial ACL
+let obj = CloudObject(tableName: "Student")
+// you can assign your own ACL in the following way
+let acl = ACL()
+acl.setRoleReadAccess(user.id, value: true)
+obj.setACL(acl)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="roleread">
 ```
@@ -359,18 +371,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
     },
     "_isModified": true}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setRoleReadAccess(user.id, value: true)
-obj.setACL(acl)
 ```
 </span>
 
@@ -432,6 +432,18 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="rolewrite">
+```
+// objects are defined with an initial ACL
+let obj = CloudObject(tableName: "Student")
+// you can assign your own ACL in the following way
+let acl = ACL()
+acl.setRoleWriteAccess(user.id, value: true)
+obj.setACL(acl)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="rolewrite">
 ```
@@ -480,18 +492,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
     },
     "_isModified": true}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setRoleWriteAccess(user.id, value: true)
-obj.setACL(acl)
 ```
 </span>
 
@@ -555,6 +555,18 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="publicread">
+```
+// objects are defined with an initial ACL
+let obj = CloudObject(tableName: "Student")
+// you can assign your own ACL in the following way
+let acl = ACL()
+acl.setPublicReadAccess(user.id, value: true)
+obj.setACL(acl)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="publicread">
 ```
@@ -603,18 +615,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
     },
     "_isModified": true}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setPublicReadAccess(user.id, value: true)
-obj.setACL(acl)
 ```
 </span>
 
@@ -676,6 +676,18 @@ obj.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="publciwrite">
+```
+// objects are defined with an initial ACL
+let obj = CloudObject(tableName: "Student")
+// you can assign your own ACL in the following way
+let acl = ACL()
+acl.setPublicWriteAccess(user.id, value: true)
+obj.setACL(acl)
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="publicwrite">
 ```
@@ -724,17 +736,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
     },
     "_isModified": true}
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setPublicWriteAccess(user.id, value: true)
-obj.setACL(acl)
 ```
 </span>
 

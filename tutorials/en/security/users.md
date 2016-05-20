@@ -54,6 +54,23 @@ obj.signUp(new CloudUserCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="signup">
+```
+let user = CloudUser(username: "username", password: "password")
+user.setEmail("email@domain.com")
+do{
+    try user.signup({ response in
+      if response.success {
+        // user signed up
+      }
+    })
+} catch {
+    print("Could not catch!")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="signup">
 ```
@@ -109,23 +126,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     "_isModified": true
   }
 }' 'http://api.cloudboost.io/user/${app_id}/signup'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let user = CloudUser(username: "username", password: "password")
-user.setEmail("email@domain.com")
-do{
-    try user.signup({ response in
-      if response.success {
-        // user signed up
-      }
-    })
-} catch {
-    print("Could not catch!")
-}
 ```
 </span>
 
@@ -197,6 +197,13 @@ System.out.print(user.getPassword());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewpass">
+```
+user.getUsername()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewpass">
 ```
@@ -208,12 +215,6 @@ user.Password
 <span class="curl-lines" data-query="viewpass">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-user.getUsername()
 ```
 </span>
 
@@ -240,6 +241,13 @@ System.out.print(user.getEmail());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewemail">
+```
+user.getEmail()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewemail">
 ```
@@ -253,12 +261,7 @@ user.Email
 //
 ```
 </span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-user.getEmail()
-```
-</span>
+
 #Log in
 
 To login a CloudUser you can set the username and password and call the login function / method.
@@ -316,6 +319,23 @@ user.logIn(new CloudUserCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="login">
+```
+let user = CloudUser(username: "username", password: "password")
+user.setEmail("email@domain.com")
+do{
+    try user.login({ response in
+      if response.success {
+        // user signed up
+      }
+    })
+} catch {
+    print("Could not catch!")
+}
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="login">
 ```
@@ -368,23 +388,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     "_isModified": true
   }
 }' 'http://api.cloudboost.io/user/${app_id}/login'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let user = CloudUser(username: "username", password: "password")
-user.setEmail("email@domain.com")
-do{
-    try user.login({ response in
-      if response.success {
-        // user signed up
-      }
-    })
-} catch {
-    print("Could not catch!")
-}
 ```
 </span>
 

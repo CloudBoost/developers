@@ -48,6 +48,17 @@ public void done(CloudFile x, CloudException e) throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="setfile">
+```
+// yourData is an NSData object
+let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
+file.save({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="setfile">
 ```
@@ -101,16 +112,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
     "contentType": "application/octet-stream"
   }
 }' 'https://api.cloudboost.io/file/${app_id}'
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// yourData is an NSData object
-let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
-file.save({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -222,6 +223,21 @@ public void done(CloudObject x,CloudException t)throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="savefile">
+```
+// yourData is an NSData object
+let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
+file.save({ response in
+    let obj = CloudObject(tableName: "Student")
+    obj.set("file", value: file)
+    obj.save({ response in
+        response.log()
+    })
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="savefile">
 ```
@@ -301,21 +317,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 }' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
 ```
 </span>
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// yourData is an NSData object
-let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
-file.save({ response in
-    let obj = CloudObject(tableName: "Student")
-    obj.set("file", value: file)
-    obj.save({ response in
-        response.log()
-    })
-})
-```
-</span>
+
 <span class="tut-imp">Important:</span> res Object after saving has the CloudFile Object but without Url, though it has the Id. To get the complete FileObject with Url do a fetch over it.
 
 #Default Properties
@@ -348,6 +350,13 @@ System.out.print(file.getId());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewid">
+```
+print(file.getId())
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewid">
 ```
@@ -360,12 +369,6 @@ file.ID
 <span class="curl-lines" data-query="viewid">
 ```
 //Id is null when you create the file but gets assigned to an file as soon as you save it.
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-print(file.getId())
 ```
 </span>
 
@@ -395,6 +398,13 @@ System.out.print(file.getFileUrl());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewurl">
+```
+print(file.getFileUrl())
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewurl">
 ```
@@ -407,12 +417,6 @@ file.Url;
 <span class="curl-lines" data-query="viewurl">
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-print(file.getFileUrl())
 ```
 </span>
 
@@ -442,6 +446,13 @@ System.out.print(file.getFileName());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewname">
+```
+print(file.setFileName("Sample"))
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewname">
 ```
@@ -453,12 +464,6 @@ file.Name
 <span class="curl-lines" data-query="viewname">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-print(file.setFileName("Sample"))
 ```
 </span>
 
@@ -522,6 +527,13 @@ file.getACL();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewacl">
+```
+file.getACL()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewacl">
 ```
@@ -533,12 +545,6 @@ file.ACL;
 <span class="curl-lines" data-query="viewacl">
 ```
 //
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-file.getACL()
 ```
 </span>
 
@@ -587,6 +593,16 @@ public void done(String x,CloudException t) throws CloudException {
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="deletefile">
+```
+// throws if fileObj is not saved
+try! fileObj.delete({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="deletefile">
 ```
@@ -601,15 +617,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: text/htm
   "key": ${app_key},
   "method": "DELETE"
 }' 'http://api.cloudboost.io/file/${app_id}/${file_id}'
-```
-</span>
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// throws if fileObj is not saved
-try! fileObj.delete({ response in
-    response.log()
-})
 ```
 </span>
 
@@ -660,6 +667,18 @@ query.find(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="includefile">
+```
+let query = CloudQuery(tableName: "Student")
+query.include("file")
+// throws if the app is not initialized with AppID and AppKey
+try! query.find({response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="includefile">
 ```
@@ -686,18 +705,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "sdk": "java",
   "skip": 0
 }' 'http://api.cloudboost.io/file/${app_id}/_File/find'
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let query = CloudQuery(tableName: "Student")
-query.include("file")
-// throws if the app is not initialized with AppID and AppKey
-try! query.find({response in
-    response.log()
-})
 ```
 </span>
 
@@ -778,6 +785,22 @@ public void done(Object x, CloudException t)
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="fetchfile">
+```
+CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
+    if response.success {
+        // getting the data
+        if let data = response.object as? NSData {
+            // parsing into string (if the original data was string as well)
+            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
+            print(content)
+        }
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="fetchfilecontent">
 ```
@@ -806,18 +829,4 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
-    if response.success {
-        // getting the data
-        if let data = response.object as? NSData {
-            // parsing into string (if the original data was string as well)
-            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
-            print(content)
-        }
-    }
-})
-```
-</span>
+
