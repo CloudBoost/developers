@@ -160,6 +160,13 @@ System.out.print(user.getUsername());
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewusername">
+```
+print(user.getUsername())
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewusername">
 ```
@@ -200,7 +207,7 @@ System.out.print(user.getPassword());
 ==Swift==
 <span class="ios-lines" data-query="viewpass">
 ```
-user.getUsername()
+user.getPassword()
 ```
 </span>
 
@@ -414,6 +421,14 @@ CloudUser.getCurrentUser();
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="viewcurrent">
+```
+// returns a CloudUser object
+let user = CloudUser.getCurrentUser()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="viewcurrent">
 ```
@@ -540,6 +555,17 @@ CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="logout">
+```
+try! user.logout({ response in
+  if response.success {
+    // successfully logged out
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="logout">
 ```
@@ -631,6 +657,17 @@ CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="chagepassword">
+```
+user.changePassword("abcdef", newPassword: "qwerty", callback: { response in
+  if response.success {
+    // successfully changed password
+  }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="chagepassword">
 ```
@@ -695,6 +732,17 @@ CloudUser.resetPassword("email",new CloudStringCallback(){
 			//e
 	}
 });
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="resetpassword">
+```
+CloudUser.resetPassword("randhirsingh051@gmail.com", callback: { response in
+  if response.success {
+    // reset password email sent
+  }
+})
 ```
 </span>
 
