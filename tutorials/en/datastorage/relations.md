@@ -487,6 +487,26 @@ studentCourses.save(new CloudObjectCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="relation">
+```
+// create the course object
+let course = CloudObject(tableName: "Course")
+course.set("name", value: "Swift")
+// create the student object
+let student = CloudObject(tableName: "Student")
+student.set("name", value: "John Smith")
+// assign student and course to studentCourses
+let studentCourses = CloudObject(tableName: "StudentCourses")
+studentCourses.set("student", value: student)
+studentCourses.set("course", value: course)
+//save
+student.save({ resp in
+    resp.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="relation">
 ```

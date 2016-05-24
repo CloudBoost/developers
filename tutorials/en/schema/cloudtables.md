@@ -903,6 +903,14 @@ Column[] columns = table.getColumns(); //array of Column Objects
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="getcols">
+```
+// returns an array of Column objects
+let columns = table.getColumns()
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="getcols">
 ```

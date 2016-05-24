@@ -164,6 +164,20 @@ file.save(new CloudStringCallback(){
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="setblob">
+```
+// start with converting your data into NSData
+let strData = "This is the content of by document blob"
+// using UTF8 conversion
+let data = strData.dataUsingEncoding(NSUTF8StringEncoding)
+let file = CloudFile(name: "fileName", data: data, contentType: "text/html")
+file.save({ response in
+    response.log()
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="setblob">
 ```
@@ -449,7 +463,7 @@ System.out.print(file.getFileName());
 ==Swift==
 <span class="ios-lines" data-query="viewname">
 ```
-print(file.setFileName("Sample"))
+print(file.getFileName())
 ```
 </span>
 
@@ -487,6 +501,14 @@ file.expires;
 <span class="java-lines" data-query="viewexpires">
 ```
 file.getExpires();
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="viewexpires">
+```
+// returns a NSDate object
+print(file.getExpires())
 ```
 </span>
 
@@ -743,6 +765,18 @@ public void done(CloudFile[] x, CloudException t)
 ```
 </span>
 
+==Swift==
+<span class="ios-lines" data-query="fetchfile">
+```
+let file = CloudFile(id: "stored-file-id")
+file.fetch({ res in
+    if res.success {
+       print(file.getFileName())
+    }
+})
+```
+</span>
+
 ==.NET==
 <span class="dotnet-lines" data-query="fetchfile">
 ```
@@ -786,7 +820,7 @@ public void done(Object x, CloudException t)
 </span>
 
 ==Swift==
-<span class="ios-lines" data-query="fetchfile">
+<span class="ios-lines" data-query="fetchfilecontent">
 ```
 CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
     if response.success {
@@ -828,5 +862,3 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'http://api.cloudboost.io/file/${app_id}/_File/find'
 ```
 </span>
-
-
