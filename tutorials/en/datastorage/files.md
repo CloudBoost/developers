@@ -165,7 +165,7 @@ file.save(new CloudStringCallback(){
 </span>
 
 ==Swift==
-<span class="ios-lines" data-query="setfile">
+<span class="ios-lines" data-query="setblob">
 ```
 // start with converting your data into NSData
 let strData = "This is the content of by document blob"
@@ -820,7 +820,7 @@ public void done(Object x, CloudException t)
 </span>
 
 ==Swift==
-<span class="ios-lines" data-query="fetchfile">
+<span class="ios-lines" data-query="fetchfilecontent">
 ```
 CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
     if response.success {
