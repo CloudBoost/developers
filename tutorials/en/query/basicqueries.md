@@ -1286,17 +1286,43 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+###OR Query
 
-If you want to **OR** a query, you can:
+You can perform **OR** query among 2 query objects by passing as two params or pass Array of query objects as one param. 
+
+Params
+
+* Query1/ Array of Queries
+* Query2
+
+>Info: In case of Array of queries, pass it as one param.
 
 ==JavaScript==
 <span class="js-lines" data-query="or">
 ```
+//Two Query Objects
 var query1 = new CB.CloudQuery("Student");
 query1.equalTo('name', 'John');
 var query2 = new CB.CloudQuery("Student");
 query2.greaterThan('age', 10);
 var query = CB.CloudQuery.or(query1,query2); //OR it.
+query.find({
+  success: function(list){
+    //list is an array of CloudObjects
+  },
+  error: function(error) {
+    //Error in retrieving the data.
+  }
+});
+//
+//Array of Query Objects
+var query1 = new CB.CloudQuery("Student");
+query1.equalTo('name', 'John');
+var query2 = new CB.CloudQuery("Student");
+query2.greaterThan('age', 10);
+var query3 = new CB.CloudQuery("Student");
+query3.equalTo('lastname', "Snow");
+var query = CB.CloudQuery.or([query1,query2,query3]); //OR it.
 query.find({
   success: function(list){
     //list is an array of CloudObjects
