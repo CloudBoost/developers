@@ -1,28 +1,18 @@
 #####In this section
 
-In this section you'll learn about how to search your data and CloudObjects in CloudBoost. You will also learn few important search queries like SearchOn, Phrase and much more.
+In this section you'll learn about how to search your data and CloudObjects in CloudBoost. You will also learn few important full text search fucntionality with CloudQueries
 
-
-The general pattern is to create a [CB.CloudQuery](https://tutorials.cloudboost.io/en/query/basicqueries), put conditions on it, and then retrieve an Array of matching CB.CloudObject using find.
-
+CloudBoost Search API works with [CB.CloudQuery](https://tutorials.cloudboost.io/en/query/basicqueries).
 
 # Search
-You can make the search query using <span class="tut-snippet">query.search()</span> function. Parameters
+You can make the search query using <span class="tut-snippet">query.search()</span> function. Here are the parameters : 
 
-* search string
-* language(optional) 
-* caseSensitive(optional)
-* diacriticSensitive(optioal)
+* Search (Type : String, Required). This is the text you want to search for. 
+* Language (Type : String, Optional). Default is English.  
+* CaseSensitive (Type : Boolean, Optional). Default is false (which means e is same as E)
+* DiacriticSensitive (Type : Boolean, Optional). Default is false (which means e is same as é)
 
-Let us assume we saved some data before making search
-
-<span class="tut-snippet">var obj = new CB.CloudObject('Table');</span></br>
-<span class="tut-snippet">obj.set('ColumnName', 'Joe owns a dog');</span></br>
-<span class="tut-snippet">obj.set('ColumnName', 'Dogs eat cats');</span></br>
-<span class="tut-snippet">obj.save();</span>
-</br>
-</br>
-####Simple Search
+####Basic Search
 ==JavaScript==
 <span class="js-lines" data-query="simplesearch">
 ```
@@ -54,9 +44,8 @@ query.find({
 </span>
 
 
-# Phrasal search
-You can search for phrases like “tree flowers honeybees” using text indexes. By default, the phrase search makes an OR search on all the specified keywords i.e. it will look for CloudObjects which contains either the keywords 
-tree OR flowers OR honeybees”.
+# Search with Phrases
+You can search for phrases like “tree flowers honeybees” using text indexes. By default, the phrase search makes an OR search on all the specified keywords i.e. it will look for CloudObjects which contains either the words - "tree OR flowers OR honeybees”.
 
 ==JavaScript==
 <span class="js-lines" data-query="phrasalsearch">
@@ -123,7 +112,7 @@ query.find({
 </span>
 
 
-# Negation search
+# Negation Search
 Prefixing a search keyword with – (minus sign) excludes all the CloudObjects that contain the negated term. 
 For example, searching for any CloudObjects which contains the keyword 'tree' but does not contain 'birds'.
 
@@ -131,7 +120,7 @@ For example, searching for any CloudObjects which contains the keyword 'tree' bu
 <span class="js-lines" data-query="negatesearch">
 ```
 var query = new CB.CloudQuery('Table');                                    
-query.search("tree -flowers");
+query.search("tree -birds");
 query.find({
     success : function(list){ 
       // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
@@ -146,7 +135,7 @@ query.find({
 <span class="nodejs-lines" data-query="negatesearch">
 ```
 var query = new CB.CloudQuery('Table');                                    
-query.search("tree -flowers");
+query.search("tree -birds");
 query.find({
     success : function(list){ 
       // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
@@ -158,7 +147,7 @@ query.find({
 </span>
 
 
-# Case sensitive Search
+# Case-sensitive Search
 A boolean flag to enable or disable case sensitive search. To enable case sensitive, pass true as a third parameter
 
 ==JavaScript==
@@ -193,7 +182,7 @@ query.find({
 
 
 # Diacritic Sensitive
-A boolean flag to enable or disable diacritic sensitive search for diacritics like "é, É". 
+If you enable discritic search then "é" will not be equal to "e". 
 To enable diacritic sensitive, pass true as a fourth parameter
 
 ==JavaScript==
@@ -227,9 +216,8 @@ query.find({
 </span>
 
 
-# Language Stop words 
-Pass language code param to filter the stope words. Search determines the list of stop words for the specified language.
-For example, "a", "an" etc are the stop words for english and "antes", "algunas" etc stop words for spanish.
+# Language
+If the text is in a different language, then you can pass in a language param as a second argument. Search determines the list of stop words for the specified language. For example, "a", "an" etc are the stop words for english and "antes", "algunas" etc stop words for Spanish.
 
 ####Language codes
 
