@@ -2,1850 +2,285 @@
 
 In this section you'll learn about how to search your data and CloudObjects in CloudBoost. You will also learn few important search queries like SearchOn, Phrase and much more.
 
-In some cases, you need a powerful way to search data and have search boxes in your apps and when the query is executed CloudBoost will return only relevant results from the database. CB.CloudSearch offers different ways to search the data you need.
 
-The general pattern is to create a CB.CloudSearch object, attach it with CB.SearchQuery and a CB.SearchFilter, write conditions on it, and then retrieve an Array of matching CB.CloudObject using search function / method.
+The general pattern is to create a [CB.CloudQuery](https://tutorials.cloudboost.io/en/query/basicqueries), put conditions on it, and then retrieve an Array of matching CB.CloudObject using find.
 
-#Basic Search
 
-Here is an example of a very basic search in CloudBoost
+# Search
+You can make the search query using <span class="tut-snippet">query.search()</span> function. Parameters
 
-###Step 1
+* search string
+* language(optional) 
+* caseSensitive(optional)
+* diacriticSensitive(optioal)
 
-Create a CloudSearch Object.
+Let us assume we saved some data before making search
+
+<span class="tut-snippet">var obj = new CB.CloudObject('Table');</span></br>
+<span class="tut-snippet">obj.set('ColumnName', 'Joe owns a dog');</span></br>
+<span class="tut-snippet">obj.set('ColumnName', 'Dogs eat cats');</span></br>
+<span class="tut-snippet">obj.save();</span>
+</br>
+</br>
+####Simple Search
+==JavaScript==
+<span class="js-lines" data-query="simplesearch">
+```
+var query = new CB.CloudQuery('Table');                                    
+query.search("dog");
+query.find({
+    success : function(list){ 
+      // returns two CloudObjects of fields having string 'dog'      
+    }, error : function(error){
+     //Error                         
+    }
+}); 
+```
+</span>
+
+==Nodejs==
+<span class="nodejs-lines" data-query="simplesearch">
+```
+var query = new CB.CloudQuery('Table');                                    
+query.search("dog");
+query.find({
+    success : function(list){ 
+      // returns two CloudObjects of fields having string 'dog'     
+    }, error : function(error){
+     //Error                         
+    }
+}); 
+```
+</span>
+
+
+# Phrasal search
+You can search for phrases like “tree flowers honeybees” using text indexes. By default, the phrase search makes an OR search on all the specified keywords i.e. it will look for CloudObjects which contains either the keywords 
+tree OR flowers OR honeybees”.
 
 ==JavaScript==
-<span class="js-lines" data-query="create">
+<span class="js-lines" data-query="phrasalsearch">
 ```
-var cs = new CB.CloudSearch("Student");
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="create">
-```
-var cs = new CB.CloudSearch("Student");
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudSearch cs = new CloudSearch("Student");
+var query = new CB.CloudQuery('Table');                                    
+query.search("tree flowers honeybees");
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having keywords either of  tree OR flowers OR honeybees keywords     
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="create">
+==Nodejs==
+<span class="nodejs-lines" data-query="phrasalsearch">
 ```
-let cs = CloudSearch(tableName: "TableName")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var cs = new CB.CloudSearch("Student");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="create">
-```
-//
+var query = new CB.CloudQuery('Table');                                    
+query.search("tree flowers honeybees");
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having keywords either of tree OR flowers OR honeybees keywords     
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-###Step 2
 
-Attach SearchQuery to CloudSearch Object and write your query in searchOn function / method.
+# Exact Phrase search
+In case you would like to perform an exact phrase search, you can do so by specifying double quotes in the search text.
 
 ==JavaScript==
-<span class="js-lines" data-query="attach">
+<span class="js-lines" data-query="andsearch">
 ```
-cs.searchQuery = new CB.SearchQuery();
-cs.searchQuery.searchOn('name','John');
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="attach">
-```
-cs.searchQuery = new CB.SearchQuery();
-cs.searchQuery.searchOn('name','John');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="attach">
-```
-SearchQuery searchQuery = new SearchQuery();
-searchQuery.searchOn("name","John",null,null,null,null);
+var query = new CB.CloudQuery('Table');                                    
+query.search("\"tree flowers\"");
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having exact phrase "tree flowers"    
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="attach">
+==Nodejs==
+<span class="nodejs-lines" data-query="andsearch">
 ```
-let searchQuery = SearchQuery()
-searchQuery.searchOn("name",query: "John")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="attach">
-```
-var searchQuery = new CB.SearchQuery();
-searchQuery.SearchOn("name","John",null,null,null,null);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="attach">
-```
-//
+var query = new CB.CloudQuery('Table');                                    
+query.search("\"tree flowers\"");
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having exact phrase "tree flowers"    
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-###Step 3
 
-Search.
+# Negation search
+Prefixing a search keyword with – (minus sign) excludes all the CloudObjects that contain the negated term. 
+For example, searching for any CloudObjects which contains the keyword 'tree' but does not contain 'birds'.
 
 ==JavaScript==
-<span class="js-lines" data-query="search">
+<span class="js-lines" data-query="negatesearch">
 ```
-cs.search({
-  success: function(list) {
-    //list is an array of relevant CloudObjects
-  },
-  error: function(error) {
-    //error
-  }
-});
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="search">
-```
-cs.search({
-  success: function(list) {
-    //list is an array of relevant CloudObjects
-  },
-  error: function(error) {
-    //error
-  }
-});
+var query = new CB.CloudQuery('Table');                                    
+query.search("tree -flowers");
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="search">
+==Nodejs==
+<span class="nodejs-lines" data-query="negatesearch">
 ```
-cs.search(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException e)	throws CloudException {
-		if( e != null){
-		}
-		if(x!=null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="search">
-```
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // fail
-  }
-})
+var query = new CB.CloudQuery('Table');                                    
+query.search("tree -flowers");
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-==.NET==
-<span class="dotnet-lines" data-query="search">
+
+# Case sensitive Search
+A boolean flag to enable or disable case sensitive search. To enable case sensitive, pass true as a third parameter
+
+==JavaScript==
+<span class="js-lines" data-query="casesearch">
 ```
-List<CB.CloudObject> list = await cs.Search();
+var query = new CB.CloudQuery('Table');                                    
+query.search("Dogs",null,true);
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having case senstive string "Dogs"
+    }, error : function(error){
+     //Error                         
+    }
+}); 
 ```
 </span>
 
-==cURL==
-<span class="curl-lines" data-query="search">
+==Nodejs==
+<span class="nodejs-lines" data-query="casesearch">
 ```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {
-        "bool": {
-          "must_not": [],
-          "should": [{
-            "match": {
-              "name": {
-                "query": "[\"egima\",\"bengi\"]"
-              }
-            }
-          }],
-          "must": []
-        }
-      },
-      "filter": {        
+var query = new CB.CloudQuery('Table');                                    
+query.search("Dogs",null,true);
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having case senstive string "Dogs"
+    }, error : function(error){
+     //Error                         
+    }
+}); 
+```
+</span>
+
+
+# Diacritic Sensitive
+A boolean flag to enable or disable diacritic sensitive search for diacritics like "é, É". 
+To enable diacritic sensitive, pass true as a fourth parameter
+
+==JavaScript==
+<span class="js-lines" data-query="diacriticsearch">
+```
+var query = new CB.CloudQuery('Table');                                    
+query.search("élephant",null,null,true);
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having diacritics senstive string "élephant"
+    }, error : function(error){
+     //Error                         
+    }
+}); 
+```
+</span>
+
+==Nodejs==
+<span class="nodejs-lines" data-query="diacriticsearch">
+```
+var query = new CB.CloudQuery('Table');                                    
+query.search("élephant",null,null,true);
+query.find({
+    success : function(list){ 
+      // returns CloudObjects of fields having diacritics senstive string "élephant"
+    }, error : function(error){
+     //Error                         
+    }
+}); 
+```
+</span>
+
+
+# Language Stop words 
+Pass language code param to filter the stope words. Search determines the list of stop words for the specified language.
+For example, "a", "an" etc are the stop words for english and "antes", "algunas" etc stop words for spanish.
+
+####Language codes
+
+danish `da`       
+dutch `nl`       
+english `en`       
+finnish `fi`       
+french `fr`       
+german `de`      
+hungarian `hu`       
+italian `it`       
+norwegian `nb`       
+portuguese `pt`       
+romanian `ro`       
+russian `ru`       
+spanish `es`       
+swedish `sv`       
+turkish `tr`       
+arabic `ara`    
+dari `prs`    
+persian `pes`    
+urdu `urd`
+
+
+
+==JavaScript==
+<span class="js-lines" data-query="langsearch">
+```
+  var query = new CB.CloudQuery('Table');                                    
+  query.search("algunas","es");
+  query.find({
+      success : function(list){ 
+        // returns empty array because it exluded the spanish stop word "algunas"     
+      }, error : function(error){
+        //Error                         
       }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+  }); 
 ```
 </span>
 
-#Search Query and Search Filters
-
-There are two queries in CloudSearch, One is **SearchQuery** and the other is **SearchFilter**. When you run the CloudSearch query, Your data is filtered first by using the FilteredQuery and then, the filtered data is then searched using the SearchQuery and the results are then returned.
-
-<img src="https://blog.cloudboost.io/content/images/2015/09/Capture.PNG" alt="CloudBoost Search Pipeline" class="full-length-img">
-
-To create a new SearchQuery and SearchFilter you can :
-
-==JavaScript==
-<span class="js-lines" data-query="newquery">
+==Nodejs==
+<span class="nodejs-lines" data-query="langsearch">
 ```
-var cs = new CB.CloudSearch('TableName');
-//
-//create a search filter
-cs.searchFilter = new CB.SearchFilter();
-//
-//create a search query
-cs.searchQuery = new CB.SearchQuery();
-//
-cs.search({
-  success: function(list) {
-    //list is an array of relevant CloudObjects
-  },
-  error: function(error) {
-    //error
-  }
-});
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="newquery">
-```
-var cs = new CB.CloudSearch('TableName');
-//
-//create a search filter
-cs.searchFilter = new CB.SearchFilter();
-//
-//create a search query
-cs.searchQuery = new CB.SearchQuery();
-//
-cs.search({
-  success: function(list) {
-    //list is an array of relevant CloudObjects
-  },
-  error: function(error) {
-    //error
-  }
-});
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="newquery">
-```
-//create a search filter
-SearchFilter searchFilter = new SearchFilter();
-//
-//create a search query
-SearchQuery searchQuery = new SearchQuery();
-//construct your CloudSearch object
-CloudSearch cs = new CloudSearch("TableName",searchQuery,searchFilter);
-//
-cs.search(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException t)	throws CloudException {
-		if( t != null){
-		}
-		if(x!=null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="newquery">
-```
-// create a CloudSearch object
-let cs = CloudSearch(tableName: "TableName")
-// set the search query
-cs.searchQuery = SearchQuery()
-// set search filter
-cs.searchFilter = SearchFilter()
-//
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // fail
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="newquery">
-```
-var cs = new CB.CloudSearch("TableName");
-cs.searchQuery = new CB.SearchQuery();
-cs.searchFilter = new CB.SearchFilter();
-List<CB.CloudObject> list = await cs.Search();
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="newquery">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {        
+  var query = new CB.CloudQuery('Table');                                    
+  query.search("algunas","es");
+  query.find({
+      success : function(list){ 
+        // returns empty array because it exluded the spanish stop word "algunas"     
+      }, error : function(error){
+        //Error                         
       }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-#Basic Search Query
-
-###Search On
-
-To search on any or a set of columns, you can use SearchOn
-
-==JavaScript==
-<span class="js-lines" data-query="searchon">
-```
-cs.searchQuery.searchOn('name','John');
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="searchon">
-```
-cs.searchQuery.searchOn('name','John');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="searchon">
-```
-searchQuery.searchOn("name","John");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="searchon">
-```
-cs.searchQuery.searchOn("name",query: "John")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="searchon">
-```
-cs.searchQuery.SearchOn("name","John");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="searchon">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {
-        "bool": {
-          "must_not": [],
-          "should": [{
-            "match": {
-              "name": {
-                "query": "[\"egima\",\"bengi\"]"
-              }
-            }
-          }],
-          "must": []
-        }
-      },
-      "filter": {        
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-
-</span>
-
-###Phrase
-
-To search on any set of words that are close to each other like for example (John Smith). You can use phrase.
-
-==JavaScript==
-<span class="js-lines" data-query="phrase">
-```
-cs.searchQuery.phrase('name','John Smith');
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="phrase">
-```
-cs.searchQuery.phrase('name','John Smith');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="phrase">
-```
-searchQuery.phrase("name","John Smith");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="phrase">
-```
-cs.searchQuery?.phrase("name", query: "John")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="pharse">
-```
-cs.searchQuery.Phrase("name","John");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="phrase">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {
-        "bool": {
-          "must_not": [],
-          "should": [{
-            "match": {
-              "name": {
-                "query": "egima",
-                "slop": null,
-                "type": "phrase"
-              }
-            }
-          }],
-          "must": []
-        }
-      },
-      "filter": {        
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Or
-
-To OR a search query you can use the <span class="tut-snippet">or</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="or">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.searchOn('name', 'John');
-//
-//your main searchQuery
-cs.searchQuery.or(searchQuery1);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="or">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.searchOn('name', 'John');
-//
-//your main searchQuery
-cs.searchQuery.or(searchQuery1);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="or">
-```
-SearchQuery searchQuery1 = new SearchQuery();
-searchQuery1.searchOn("name", "John",null,null,null,null);
-//
-//OR with your main searchQuery
-searchQuery.or(searchQuery1);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="or">
-```
-let searchQuery1 = SearchQuery()
-searchQuery1.searchOn("name",query: "John")
-cs.searchQuery?.or(query2)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="or">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.SearchOn("name","John", null, null, null, null);
-cs.searchQuery.Or(searchQuery1);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="or">
-```
-//search for Students either called Adam or smith
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-        "bool": {
-          "must_not": [],
-          "should": [],
-          "must": [{
-            "term": {
-              "name": "Adam"
-            }
-          },
-          {
-            "term": {
-              "name": "smith"
-            }
-          }]
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###And
-
-To AND a search query you can use the <span class="tut-snippet">and</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="and">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.searchOn('name', 'John');
-//
-//your main searchQuery
-cs.searchQuery.and(searchQuery1);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="and">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.searchOn('name', 'John');
-//
-//your main searchQuery
-cs.searchQuery.and(searchQuery1);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="and">
-```
-SearchQuery searchQuery1 = new SearchQuery();
-searchQuery1.searchOn("name", "John",null,null,null,null);
-//
-//AND with your main searchQuery
-searchQuery.and(searchQuery1);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="and">
-```
-let searchQuery1 = SearchQuery()
-searchQuery1.searchOn("name",query: "John")
-cs.searchQuery?.and(query2)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="and">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.SearchOn("name","John", null, null, null, null);
-cs.searchQuery.And(searchQuery1);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="and">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {
-        "bool": {
-          "must_not": [],
-          "should": [{
-            "match": {
-              "age": {
-                "query": "10"
-              }
-            }
-          }],
-          "must": [{
-            "must_not": [],
-            "match": {
-              "name": {
-                "query": "John"
-              }
-            },
-            "bool": {
-              "must_not": [],
-              "should": [{
-                "match": {
-                  "name": {
-                    "query": "John"
-                  }
-                }
-              }],
-              "must": []
-            },
-            "should": [{
-              "match": {
-                "name": {
-                  "query": "John"
-                }
-              }
-            }],
-            "must": []
-          }]
-        }
-      },
-      "filter": {
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Not
-
-To NOT a search query you can use the <span class="tut-snippet">not</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="not">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.searchOn('name', 'John');
-//
-//your main searchQuery
-cs.searchQuery.not(searchQuery1);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="not">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.searchOn('name', 'John');
-//
-//your main searchQuery
-cs.searchQuery.not(searchQuery1);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="not">
-```
-SearchQuery searchQuery1 = new SearchQuery();
-searchQuery1.searchOn("name", "John",null,null,null,null);
-//
-//your main searchQuery
-searchQuery.not(searchQuery1);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="not">
-```
-let searchQuery1 = SearchQuery()
-searchQuery1.searchOn("name",query: "John")
-cs.searchQuery?.not(query2)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="not">
-```
-var searchQuery1 = new CB.SearchQuery();
-searchQuery1.SearchOn("name","John", null, null, null, null);
-cs.searchQuery.not(searchQuery1);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="not">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {
-        "bool": {
-          "must_not": [{
-            "must_not": [],
-            "match": {
-              "name": {
-                "query": "John"
-              }
-            },
-            "bool": {
-              "must_not": [],
-              "should": [{
-                "match": {
-                  "name": {
-                    "query": "John"
-                  }
-                }
-              }],
-              "must": []
-            },
-            "should": [{
-              "match": {
-                "name": {
-                  "query": "John"
-                }
-              }
-            }],
-            "must": []
-          }],
-          "should": [{
-            "match": {
-              "age": {
-                "query": "10"
-              }
-            }
-          }],
-          "must": []
-        }
-      },
-      "filter": {
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-#Basic Search Filters
-
-###Equal To
-
-To have an equalTo constraint over a search filter you can use the <span class="tut-snippet">equalTo</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="equal">
-```
-cs.searchFilter.equalTo("name","John");
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="equal">
-```
-cs.searchFilter.equalTo("name","John");
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="equal">
-```
-searchFilter.equalTo("name","John");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="equal">
-```
-cs.searchFilter?.equalTo("name", data: "John")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="equal">
-```
-searchFilter.EqualTo("name","John");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="equal">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {
-      },
-      "filter": {
-        "bool": {
-          "must_not": [],
-          "should": [],
-          "must": [{
-            "term": {
-              "name": "John"
-            }
-          }]
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Not Equal To
-
-To have a notEqualTo constraint over a search filter you can use the <span class="tut-snippet">notEqualTo</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="notequal">
-```
-cs.searchFilter.notEqualTo("name","John");
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="notequal">
-```
-cs.searchFilter.notEqualTo("name","John");
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="notequal">
-```
-searchFilter.notEqualTo("name","John");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="notequal">
-```
-cs.searchFilter?.notEqualTo("name", data: "John")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="notequal">
-```
-searchFilter.NotEqualTo("name","John");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="notequal">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-        "bool": {
-          "must_not": [{
-            "term": {
-              "name": "bengi"
-            }
-          }],
-          "should": [],
-          "must": []
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Greater Than
-
-To have a greaterThan constraint over a search filter you can use the <span class="tut-snippet">greaterThan</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="greaterthan">
-```
-cs.searchFilter.greaterThan("age",10);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="greaterthan">
-```
-cs.searchFilter.greaterThan("age",10);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="greaterthan">
-```
-searchFilter.greaterThan("age",10);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="greaterthan">
-```
-cs.searchFilter?.greaterThan("age", data: 10)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="greaterthan">
-```
-searchFilter.GreaterThan("age", 10);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="greaterthan">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-        "bool": {
-          "must_not": [],
-          "should": [],
-          "must": [{
-            "range": {
-              "age": {
-                "gt": 10
-              }
-            }
-          }]
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Less than
-
-To have a lessThan constraint over a search filter you can use the <span class="tut-snippet">lessThan</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="lessthan">
-```
-cs.searchFilter.lessThan("age",10);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="lessthan">
-```
-cs.searchFilter.lessThan("age",10);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="lessthan">
-```
-searchFilter.lessThan("age",10);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="lessthan">
-```
-cs.searchFilter?.lessThan("age", data: 10)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="lessthan">
-```
-searchFilter.LessThan("age", 10);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="lessthan">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-        "bool": {
-          "must_not": [],
-          "should": [],
-          "must": [{
-            "range": {
-              "age": {
-                "lt": 10
-              }
-            }
-          }]
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Greater Than Or Equal To
-
-
-To have a greaterThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">greaterThanEqualTo</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="greaterequal">
-```
-cs.searchFilter.greaterThanEqualTo("age",10);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="greaterequal">
-```
-cs.searchFilter.greaterThanEqualTo("age",10);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="greaterequal">
-```
-searchFilter.greaterThanEqualTo("age",10);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="greaterequal">
-```
-cs.searchFilter?.greaterThanEqualTo("age", data: 10)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="greaterequal">
-```
-searchFilter.GreaterThanEqualTo("age", 10);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="greaterequal">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-        "bool": {
-          "must_not": [],
-          "should": [],
-          "must": [{
-            "range": {
-              "age": {
-                "gte": 10
-              }
-            }
-          }]
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Less Than Or Equal To
-
-
-To have a lessThanEqualTo constraint over a search filter you can use the <span class="tut-snippet">lessThanEqualTo</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="lessequal">
-```
-cs.searchFilter.lessThanEqualTo("age",10);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="lessequal">
-```
-cs.searchFilter.lessThanEqualTo("age",10);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="lessequal">
-```
-searchFilter.lessThanEqualTo("age",10);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="lessequal">
-```
-cs.searchFilter?.lessThanEqualTo("age", data: 10)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="lessequal">
-```
-searchFilter.LessThanEqual("age", 10);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="lessequal">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-        "bool": {
-          "must_not": [],
-          "should": [],
-          "must": [{
-            "range": {
-              "age": {
-                "lte": 10
-              }
-            }
-          }]
-        }
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Exists
-
-To have a constraint over a search filter where a column cannot be null. You can use the <span class="tut-snippet">exists</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="exists">
-```
-cs.searchFilter.exists("name");
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="exists">
-```
-cs.searchFilter.exists("name");
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="exists">
-```
-searchFilter.exists("name");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="exists">
-```
-cs.searchFilter?.exists("name")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="exists">
-```
-searchFilter.Exists("name");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="exists">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-    "query": {
-  "filtered": {
-    "query": {      
-    },
-    "filter": {
-      "bool": {
-        "must_not": [],
-        "should": [],
-        "must": [{
-          "exists": {
-            "field": "name"
-          }
-        }]
-      }
-    }
-  }
-},
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Does not exists
-
-To have a constraint over a search filter where a column is null. You can use the <span class="tut-snippet">doesNotExists</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="notexists">
-```
-cs.searchFilter.doesNotExists("name");
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="notexists">
-```
-cs.searchFilter.doesNotExists("name");
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="notexists">
-```
-searchFilter.doesNotExists("name");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="notexists">
-```
-cs.searchFilter?.doesNotExists("name")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="notexists">
-```
-searchFilter.DoesNotExists("name");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="notexists">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-    "query": {
-  "filtered": {
-    "query": {      
-    },
-    "filter": {
-      "bool": {
-        "must_not": [],
-        "should": [],
-        "must": [{
-            "missing": {
-              "field": "name"
-            }
-          }]
-      }
-    }
-  }
-},
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Or
-
-To OR a search filter you can use the <span class="tut-snippet">or</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="filteror">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.equalTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.or(searchFilter1);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="filteror">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.equalTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.or(searchFilter1);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="filteror">
-```
-SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo("name", "John");
-//
-//your main searchQuery
-searchFilter.or(searchFilter1);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="filteror">
-```
-let filter1 = SearchFilter()
-filter1.equalTo("name", data: "John")
-cs.searchFilter?.or(filter1)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="filteror">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.EqualTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.Or(searchFilter1);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="filteror">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-    "query": {
-  "filtered": {
-    "query": {      
-    },
-    "filter": {
-      "bool": {
-        "must_not": [],
-        "should": [{            
-          }],
-          "must": [{
-            "term": {
-              "name": "John"
-            }
-          }]
-        }
-    }
-  }
-},
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###And
-
-To AND a search filter you can use the <span class="tut-snippet">and</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="filterand">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.equalTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.and(searchFilter1);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="filterand">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.equalTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.and(searchFilter1);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="filterand">
-```
-SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo("name", "John");
-//
-//your main searchQuery
-cs.searchFilter.and(searchFilter1);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="filterand">
-```
-let filter1 = SearchFilter()
-filter1.equalTo("name", data: "John")
-cs.searchFilter?.and(filter1)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="filterand">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.EqualTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.And(searchFilter1);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="filterand">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-    "query": {
-  "filtered": {
-    "query": {      
-    },
-    "filter": {
-      "bool": {
-        "must_not": [],
-        "should": [{            
-          }],
-          "must": [{
-            "term": {
-              "name": "John"
-            }
-          }]
-        }
-    }
-  }
-},
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-###Not
-
-To NOT a search filter you can use the <span class="tut-snippet">not</span> function.
-
-==JavaScript==
-<span class="js-lines" data-query="filternot">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.equalTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.not(searchFilter1);
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="filternot">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.equalTo('name', 'John');
-//
-//your main searchQuery
-cs.searchFilter.not(searchFilter1);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="filternot">
-```
-SearchFilter searchFilter1 = new SearchFilter();
-searchFilter1.equalTo("name", "John");
-//
-//your main searchQuery
-searchFilter.not(searchFilter1);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="filternot">
-```
-let filter1 = SearchFilter()
-filter1.equalTo("name", data: "John")
-cs.searchFilter?.not(filter1)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="filternot">
-```
-var searchFilter1 = new CB.SearchFilter();
-searchFilter1.EqualTo("name", "John");
-//
-//your main searchQuery
-cs.searchFilter.Not(searchFilter1);
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="filternot">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [],
-    "query": {
-  "filtered": {
-    "query": {      
-    },
-    "filter": {
-      "bool": {
-        "must_not": [],
-        "should": [{            
-          }],
-          "must": [{
-            "term": {
-              "name": "John"
-            }
-          }]
-        }
-    }
-  }
-},
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-#Order By
-
-You can also OrderBy the results by :
-
-==JavaScript==
-<span class="js-lines" data-query="orderby">
-```
-var cs = new CB.CloudSearch("Student");
-//
-cs.orderByAsc('age');
-// OR
-cs.orderByDesc('age');
-//
-cs.search({
-  success: function(list){
-    //list is an array of CloudObjects
-  },
-  error: function(err) {
-    //Error in retrieving the data.
-  }
-});
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="orderby">
-```
-var cs = new CB.CloudSearch("Student");
-//
-cs.orderByAsc('age');
-// OR
-cs.orderByDesc('age');
-//
-cs.search({
-  success: function(list){
-    //list is an array of CloudObjects
-  },
-  error: function(err) {
-    //Error in retrieving the data.
-  }
-});
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="orderby">
-```
-CloudSearch cs = new CloudSearch("Student",null,null);
-//
-cs.orderByAsc("age");
-// OR
-cs.orderByDesc("age");
-//
-cs.search(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException t)	throws CloudException {
-		if( t != null){
-		}
-		if(x.length <0){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="orderby">
-```
-let cs = CloudSearch(tableName: "TableName")
-cs.orderByAsc("age")
-cs.orderByDesc("age")
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // failure
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="orderby">
-```
-var cs = new CB.CloudSearch("Student");
-cs.OrderByAsc("age");
-cs.OrderByDesc("age");
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="orderby">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 10,
-  "sort": [{
-    "name": {
-      "order": "asc"
-    }
-  }],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-      }
-    }
-  },
-  "skip": 0,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
-```
-</span>
-
-#Limit and Skip
-
-You can also limit and skip the results by :
-
-==JavaScript==
-<span class="js-lines" data-query="limitskip">
-```
-var cs = new CB.CloudSearch("Student");
-//
-cs.limit(10);
-// OR
-cs.skip(5);
-//
-cs.search({
-  success: function(list){
-    //list is an array of CloudObjects
-  },
-  error: function(err) {
-    //Error in retrieving the data.
-  }
-});
-```
-</span>
-
-==NodeJS==
-<span class="nodejs-lines" data-query="limitskip">
-```
-var cs = new CB.CloudSearch("Student");
-//
-cs.limit(10);
-// OR
-cs.skip(5);
-//
-cs.search({
-  success: function(list){
-    //list is an array of CloudObjects
-  },
-  error: function(err) {
-    //Error in retrieving the data.
-  }
-});
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="limitskip">
-```
-CloudSearch cs = new CloudSearch("Student",null,null);
-//
-cs.limit(10);
-// OR
-cs.skip(5);
-//
-cs.search(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException t)	throws CloudException {
-		if( t != null){
-		}
-		if(x!=null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="limitskip">
-```
-let cs = CloudSearch(tableName: "TableName")
-cs.setLimit(10)
-cs.setSkip(1)
-try! cs.search({ response in
-  if response.success {
-    // success
-  }else{
-    // failure
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="limitskip">
-```
-var cs = new CB.CloudSearch("Student");
-cs.Limit = 10;
-cs.Skip = 5;
-```
-</span>
-
-==cURL==
-<span class="curl-lines" data-query="limitskip">
-```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-  "key": ${client_key},
-  "limit": 5,
-  "sort": [],
-  "query": {
-    "filtered": {
-      "query": {        
-      },
-      "filter": {
-      }
-    }
-  },
-  "skip": 10,
-  "collectionName": ${table_name}
-}' 'http://api.cloudboost.io/data/${app_id}/${table_name}/search'
+  }); 
 ```
 </span>
