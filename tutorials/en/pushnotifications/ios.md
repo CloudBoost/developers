@@ -8,6 +8,9 @@ From the certificate, [acquire a .p12](https://www.mobiloud.com/help/knowledge-b
 
 Also ensure that you have uploaded the .p12 file on your **CloudApp** settings from the CloudBoost dashboard. You particularly do this by opening your app in the dashboard and going to settings:
 <p>&nbsp;</p>
+
+#Add Settings
+Go to the App Settings page in [CloudBoost Dashboard](https://dashboard.cloudboost.io) and add the push notificaiton credentials to enable pushes in your app.
 <img class="full-length-img" alt="APNS Credentials" src="https://blog.cloudboost.io/content/images/2016/04/appSettings-1.jpg">
 <p>&nbsp;</p>
 
