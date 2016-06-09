@@ -1533,9 +1533,9 @@ Limit returns only the specified number of objects from the database. Skip in tu
 <span class="js-lines" data-query="limitskip">
 ```
 //limit
-query.limit(10);
+query.setLimit(10);
 //skip
-query.skip(10);
+query.setSkip(10);
 ```
 </span>
 
@@ -1543,9 +1543,9 @@ query.skip(10);
 <span class="nodejs-lines" data-query="limitskip">
 ```
 //limit
-query.limit(10);
+query.setLimit(10);
 //skip
-query.skip(10);
+query.setSkip(10);
 ```
 </span>
 
