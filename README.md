@@ -1,6 +1,6 @@
 # Tutorial
 
-[![Join the chat at https://gitter.im/cloudboost/help](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cloudboost/help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](http://cbjenkins.cloudapp.net:8080/buildStatus/icon?job=CbTutorial)](http://cbjenkins.cloudapp.net:8080/job/CbTutorial/)
+[![Build Status](https://travis-ci.org/CloudBoost/tutorial.svg?branch=master)](https://travis-ci.org/CloudBoost/tutorial)
 
 
 Tutorials for CloudBoost is hosted at [https://tutorials.cloudboost.io](https://tutorials.cloudboost.io)
