@@ -166,7 +166,7 @@ obj.set('ColumnName', data);
 obj.save({
     success : function(obj){
         //obj saved.
-    },error : fucntion(error){
+    },error : function(error){
         //error
     }
 });
