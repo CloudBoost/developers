@@ -8,7 +8,7 @@ If you haven't signed up for [CloudBoost](https://www.cloudboost.io) yet, this i
 
 <img class="center-img" alt="Create a new app" src="https://blog.cloudboost.io/content/images/2016/03/app.png">
 
-![Your App Created](https://blog.cloudboost.io/content/images/2016/03/sampleapp.png)
+![Your App Created](https://www.dropbox.com/s/kc6mu0eeuu9uuvh/sampleapp.png?raw=1)
 
 After you enter `App Name`, your new `CloudApp` is created. Next step : Create a new table to store your data.
 
@@ -16,9 +16,9 @@ After you enter `App Name`, your new `CloudApp` is created. Next step : Create a
 
 To create a new table click on <span class="tut-snippet">Manage App</span>. Now you'll be redirected to tables screen. Click on <span class="tut-snippet">Add new table</span>.
 
-![Manage App Button](https://blog.cloudboost.io/content/images/2016/03/tables.png)
+![Manage App Button](https://www.dropbox.com/s/no2gls6fjfd0r82/tables.png?raw=1)
 
-![Add New Table](https://blog.cloudboost.io/content/images/2015/09/Capture-2.PNG)
+![Add New Table](https://www.dropbox.com/s/haw8zhuhido1bu5/Capture-2.PNG?raw=1)
 
 ><span class="tut-info">Info</span> User, Role and Device tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them. We'll talk more about User,Role and Device tables later in the documentation. Basically, User and Roles are used to build Authentication and Devices are used for Push Notifications.
 
@@ -94,9 +94,9 @@ Once you have imported CloudBoost SDK to your project. You need to initialize yo
 
 To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
 
-![App Keys](https://blog.cloudboost.io/content/images/2016/03/appkeys.png)
+![App Keys](https://www.dropbox.com/s/z257vq0ioby6w73/appkeys.png?raw=1)
 
-![App ID, Master Key and Client Key](https://blog.cloudboost.io/content/images/2015/09/Capture-1.PNG)
+![App ID, Master Key and Client Key](https://www.dropbox.com/s/59ypn35kiemi8zu/Capture-1.PNG?raw=1)
 
 You will see two **keys** : **Master Key** and **Client Key**
 
