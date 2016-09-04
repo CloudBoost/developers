@@ -13,7 +13,7 @@ We will look at each of these types of relations and how to model them.
 Before we begin, let's have a look at this ER Diagram below.
 
 
-<img src="https://www.dropbox.com/s/i935cl4yi3ibxdf/StudentManagementSystem.PNG?raw=0" class="full-length-img" alt="One-to-One">
+<img src="https://www.dropbox.com/s/i935cl4yi3ibxdf/StudentManagementSystem.PNG?raw=1" class="full-length-img" alt="One-to-One">
 
 * Here Student and Address tables share one-to-one relation since student can ONLY have one address.  An address column from the Student table is <span class="tut-snippet">related</span> to Address Table.
 
