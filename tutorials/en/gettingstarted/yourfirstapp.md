@@ -6,7 +6,7 @@ In this section you'll learn how to create your new App (we call it [CloudApp]( 
 
 If you haven't signed up for [CloudBoost](https://www.cloudboost.io) yet, this is the right time for you to create your new account and get started. CloudBoost gives you a ton of free tier (check [Pricing](https://www.cloudboost.io/pricing)) so you can build your apps and launch it for free. Once you have signed up, you will then be able to create a new app by entering <span class="tut-snippet">App Name</span>.
 
-<img class="center-img" alt="Create a new app" src="https://blog.cloudboost.io/content/images/2016/03/app.png">
+<img class="center-img" alt="Create a new app" src="https://www.dropbox.com/s/paaqr85uma81d9i/app.png?raw=1">
 
 ![Your App Created](https://www.dropbox.com/s/kc6mu0eeuu9uuvh/sampleapp.png?raw=1)
 
@@ -31,7 +31,7 @@ After you create a new table. Click on it which will take you to a Data Browser 
 
 To create a new columns click on <span class="tut-snippet">+</span> button and then enter your column name with the data type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you don’t want <span class="tut-snippet">null</span> values to be saved in that column.
 
-<img class="full-length-img" alt="Your New Table" src="https://blog.cloudboost.io/content/images/2016/03/datab.png">
+<img class="full-length-img" alt="Your New Table" src="https://www.dropbox.com/s/tevwbxccjdohs70/datab.png?raw=1">
 
 ><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should be unique.
 
