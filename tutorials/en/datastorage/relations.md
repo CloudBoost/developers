@@ -210,6 +210,149 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 
 >Info: For one-to-one relations, you need to set <span class="tut-snippet">unique</span> constraint on a column when you're designing your table.
 
+To add an **existing object** to a relation : 
+
+==JavaScript==
+<span class="js-lines" data-query="oneone">
+```
+//create the address object.
+var address = new CB.CloudObject('Address',"id"); // Pass second param the ID of the object you want to relate. 
+//create the student object and set address object inside it.
+var student = new CB.CloudObject('Student');
+student.set('name', 'John Smith');
+student.set('address', address);
+//save
+student.save({
+    success : function(student){
+        //saved successfully.
+    }, error : function(error){
+        //error
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="oneone">
+```
+//create the address object.
+var address = new CB.CloudObject('Address',"id"); // Pass second param the ID of the object you want to relate. 
+//create the student object and set address object inside it.
+var student = new CB.CloudObject('Student');
+student.set('name', 'John Smith');
+student.set('address', address);
+//save
+student.save({
+    success : function(student){
+        //saved successfully.
+    }, error : function(error){
+        //error
+    }
+});
+```
+</span>
+
+==Java==
+<span class="java-lines" data-query="oneone">
+```
+//create the address object.
+CloudObject address = new CloudObject("Address", "id");
+//create the student object and set address object inside it.  
+CloudObject student = new CloudObject("Student");
+student.set("name", "John Smith");
+student.set("address", address);
+//save
+student.save(new CloudObjectCallback(){
+	@Override
+	public void done(CloudObject x, CloudException t) {
+		if(x != null){
+		}
+		if(t != null){
+			//Failed to save data
+		}
+	}
+});
+```
+</span>
+
+==Swift==
+<span class="ios-lines" data-query="create">
+```
+let student = CloudObject(tableName: "Student")
+let address = CloudObject(tableName: "Address", id:"id")
+student.set("address", value: address)
+student.save({ resp in
+    resp.log()
+})
+```
+</span>
+
+==.NET==
+<span class="dotnet-lines" data-query="oneone">
+```
+//create the address object.
+var address = new CB.CloudObject("Address","id");
+//create the student object and set address object inside it.
+var student = new CB.CloudObject("Student");
+student.Set("name", "John Smith");
+student.Set("address", address);
+//save
+await student.SaveAsync();
+```
+</span>
+
+==cURL==
+<span class="curl-lines" data-query="oneone">
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "key": ${client_key},
+    "document": {
+        "_type": "custom",
+        "expires": null,
+        "address": {
+            "_type": "custom", //change this to "user", "role", "device" if its a "User", "Role", "Device" table respectively. 
+            "_id": "ID"
+            "_modifiedColumns": [],
+            "_tableName": "table",
+            "_isModified": false
+        },
+        "name": "John Smith",
+        "_modifiedColumns": ["createdAt",
+        "updatedAt",
+        "ACL",
+        "expires",
+        "name",
+        "address"],
+        "_tableName": "Student",
+        "ACL": {
+            "write": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            },
+            "read": {
+                "allow": {
+                    "role": [],
+                    "user": ["all"]
+                },
+                "deny": {
+                    "role": [],
+                    "user": []
+                }
+            }
+        },
+        "_isModified": true
+    }
+}' 'http://api.cloudboost.io/data/${app_id}/${table_name}'
+```
+</span>
+
+
 #One to many
 
 This is exactly the same as One-to-one but with one simple difference. You **don’t** need to set <span class="tut-snippet">unique</span> property on a column and doing this would allow a CloudObject to be related to any number of Objects.
