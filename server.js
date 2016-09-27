@@ -1,5 +1,6 @@
 
 global.isStaging = false;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 if (!process.env.PORT) {
     global.isDevelopment = true;
 } else {
