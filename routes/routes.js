@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
     Q.all(promises).then(function(list){ 
 
         res.render('index',{
-                   language: 'en', 
+                   language: language, 
                    category: categoryName,
                 subCategory: subCategoryName,
              tutorialTopics: list[1],
@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
 
 router.get('/en/:category/:subcategory', function(req, res) {    
 
-    var language=req.params.language;
+    var language='en';
     var categoryName=req.params.category;
     var subCategoryName=req.params.subcategory;
 
@@ -47,7 +47,7 @@ router.get('/en/:category/:subcategory', function(req, res) {
     Q.all(promises).then(function(list){ 
 
         res.render('index',{
-                   language: 'en', 
+                   language: language, 
                    category: categoryName,
                 subCategory: subCategoryName,
              tutorialTopics: list[1],
