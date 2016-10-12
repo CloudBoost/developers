@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 
 });
 
-router.get('/:language/:category/:subcategory', function(req, res) {    
+router.get('/en/:category/:subcategory', function(req, res) {    
 
     var language=req.params.language;
     var categoryName=req.params.category;
