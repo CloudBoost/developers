@@ -8,7 +8,7 @@ Note that **CloudBoost** uses
 
 * [Google Cloud Messaging](https://developers.google.com/cloud-messaging) for Android Notifications.
 * [Windows app store](https://developer.microsoft.com/en-us/windows) for Windows Notifications.
-* iOS Notifications (Coming soon)
+* [Apple developers](https://developer.apple.com/) for iOS Notifications.
 
 #Add Settings
 Go to the App Settings page in [CloudBoost Dashboard](https://dashboard.cloudboost.io) and add the push notificaiton credentials to enable pushes in your app.
