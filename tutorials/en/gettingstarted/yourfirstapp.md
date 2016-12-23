@@ -42,7 +42,7 @@ After you create a new column. You can begin integrating CloudBoost with your ap
 Before you initialize your app, you need to import or link the CloudBoost SDK in your project.
 
 ==JavaScript==
-<span class="nodejs-lines" data-query="link">
+<span class="js-lines" data-query="link">
 ```
 // browser include
 <script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
