@@ -46,12 +46,9 @@ Before you initialize your app, you need to import or link the CloudBoost SDK in
 ```
 // browser include
 <script src="https://cloudboost.io/js-sdk/cloudboost.js"/>
-
-//or
-
+//OR
 //module bundlers import (ES6/ES7 , TypeScript(typings included))
 import * as CB from 'cloudboost'
-
 ```
 </span>
 
