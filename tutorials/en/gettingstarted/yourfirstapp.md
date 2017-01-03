@@ -272,7 +272,7 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-If you want to learn more about CloudObjects and Data Storage, Click [here](?lang=en&category=datastorage&subcategory=objects).
+If you want to learn more about CloudObjects and Data Storage, Click [here](/en/datastorage/objects).
 
 #Querying data
 
@@ -369,4 +369,4 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-If you want to learn more about Queries, Check out the query section [here](?lang=en&category=query&subcategory=basicqueries).
+If you want to learn more about Queries, Check out the query section [here](/en/query/basicqueries).
