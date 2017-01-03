@@ -4,12 +4,6 @@ node_modules/
 node_modules/*
 /node_modules/
 encrypt.tar
-cert.pem
-key.pem
-config/cert.crt
-config/key.key
-config/cert.pem
-config/key.pem
 credentials.tar
 keys.js
 smtp.json
