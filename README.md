@@ -11,7 +11,7 @@ Apart from Markdown [Guide for markdown](https://guides.github.com/features/mast
 
 
 ## Menu Headings
-Menu headings should with start with #(h1 tag), **without full stop(.)** at the end.
+Menu headings should start with #(h1 tag), **without full stop(.)** at the end.
 
 ## Info
 Info quotes should enclosed in span tags with class="tut-info".</br>

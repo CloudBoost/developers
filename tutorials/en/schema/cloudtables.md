@@ -231,6 +231,7 @@ var column = new CB.Column('Name');
 column.required = true;
 column.unique = false;
 column.dataType = 'Text';
+column.defaultValue = 'Some Default Value';
 ```
 </span>
 
@@ -241,6 +242,7 @@ var column = new CB.Column('Name');
 column.required = true;
 column.unique = false;
 column.dataType = 'Text';
+column.defaultValue = 'Some Default Value';
 ```
 </span>
 
@@ -290,7 +292,8 @@ var table = new CB.CloudTable('Student');
 table.addColumn(column1);
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, 
+	error : fucntion(error){
     }
 })
 ```
@@ -303,7 +306,8 @@ var table = new CB.CloudTable('Student');
 table.addColumn(column1);
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    },
+	error : fucntion(error){
     }
 });
 ```
