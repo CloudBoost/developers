@@ -127,7 +127,9 @@ var documentFile = new Blob([
   ], {
   type : 'text/plain'
 });
+var name = "photo.jpg";
 var file = new CB.CloudFile(documentFile);
+cloudFile.set('name',name);
 file.save({
   success: function(file) {
       console.log(file.URL);

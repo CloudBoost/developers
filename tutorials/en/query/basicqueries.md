@@ -1288,7 +1288,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 ###OR Query
 
-You can perform **OR** query among 2 query objects by passing as two params or pass Array of query objects as one param. 
+You can perform **OR** query among 2 query objects by passing as two params or pass Array of query objects as one param.
 
 Params
 
@@ -1528,6 +1528,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 #Limit & Skip
 
 Limit returns only the specified number of objects from the database. Skip in turn skips the specified number of objects from the database and returns the rest of the objects.
+
+**Important :** Default limit is set to 10.
+
 
 ==JavaScript==
 <span class="js-lines" data-query="limitskip">
@@ -2062,6 +2065,9 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 #Count
 
 Counts the number of object that satisfies the query.
+
+**Important :** Default limit is set to 10.
+
 
 ==JavaScript==
 <span class="js-lines" data-query="count">
