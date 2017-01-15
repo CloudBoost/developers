@@ -1817,7 +1817,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 #Find, Find one, Find by ID
 
-Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only returns 10 documents by default. You can change this limit by using the limit function of the CloudQuery.
+Find returns all the objects that are matched by the query. It returns an array of CloudObjects / CloudUser / CloudRole, and only **returns 10 documents by default.** You can change this limit by using the limit function of the CloudQuery.
 
 ==JavaScript==
 <span class="js-lines" data-query="query">
