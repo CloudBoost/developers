@@ -2066,8 +2066,6 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 Counts the number of object that satisfies the query.
 
-**Important :** Default limit is set to 10.
-
 
 ==JavaScript==
 <span class="js-lines" data-query="count">
