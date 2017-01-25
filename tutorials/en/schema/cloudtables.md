@@ -58,7 +58,7 @@ var column = new CB.Column('Name', 'Text');
 table.addColumn(column);
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -72,7 +72,7 @@ var column = new CB.Column('Name', 'Text');
 table.addColumn(column);
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -221,7 +221,7 @@ Every CloudTable when created has default columns attached to it. Here is a list
 
 #Adding new columns
 
-Before you add columns to the CloudTable you need to instantiate new column objects from Column class.
+Before you add columns to the CloudTable you need to instantiate a new column objects from Column class.
 
 
 ==JavaScript==
@@ -289,11 +289,11 @@ You need to add the new column object to the CloudTable object.
 <span class="js-lines" data-query="addcoltable">
 ```
 var table = new CB.CloudTable('Student');
-table.addColumn(column1);
+table.addColumn(column);
 table.save({
     success : function(table){
     }, 
-	error : fucntion(error){
+	error : function(error){
     }
 })
 ```
@@ -303,11 +303,11 @@ table.save({
 <span class="nodejs-lines" data-query="addcoltable">
 ```
 var table = new CB.CloudTable('Student');
-table.addColumn(column1);
+table.addColumn(column);
 table.save({
     success : function(table){
     },
-	error : fucntion(error){
+	error : function(error){
     }
 });
 ```
@@ -317,7 +317,7 @@ table.save({
 <span class="java-lines" data-query="addcoltable">
 ```
 CloudTable table = new CloudTable("Student")
-table.addColumn(column1);
+table.addColumn(column);
 table.save(new CloudObjectCallback(){
 	@Override
 	public void done(CloudObject x, CloudException t) {
@@ -985,7 +985,7 @@ column.required = true;
 table.updateColumn(column);
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -999,7 +999,7 @@ column.required = true;
 table.updateColumn(column);
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1168,7 +1168,7 @@ To delete columns from a CloudTable, you can,
 table.deleteColumn('ColumnName');
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1180,7 +1180,7 @@ table.save({
 table.deleteColumn('ColumnName');
 table.save({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1343,7 +1343,7 @@ To delete tables from a CloudApp, you can,
 ```
 table.delete({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1354,7 +1354,7 @@ table.delete({
 ```
 table.delete({
     success : function(table){
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1418,7 +1418,7 @@ To get all the tables from a CloudApp, You can,
 CB.CloudTable.getAll({
     success : function(tables){
         //tables is an array of CB.CloudTable
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1430,7 +1430,7 @@ CB.CloudTable.getAll({
 CB.CloudTable.getAll({
     success : function(tables){
         //tables is an array of CB.CloudTable
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1484,7 +1484,7 @@ To get a particular table from a CloudApp, You can,
 CB.CloudTable.get('TableName', {
     success : function(tables){
         //tables is an array of CB.CloudTable
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
@@ -1496,7 +1496,7 @@ CB.CloudTable.get('TableName', {
 CB.CloudTable.get('TableName', {
     success : function(tables){
         //tables is an array of CB.CloudTable
-    }, error : fucntion(error){
+    }, error : function(error){
     }
 });
 ```
