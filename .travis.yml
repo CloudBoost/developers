@@ -13,7 +13,12 @@ before_install:
 - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 - chmod +x ./kubectl
 - sudo mv ./kubectl /usr/local/bin/kubectl
-- kubectl
+- git clone https://github.com/CloudBoost/kube-cred.git
+- cd kube-cred
+- openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC
+- mv config ~/.kube/
+- kubectl config view
+- sleep 200s
 install:
 - npm install
 after_success:
