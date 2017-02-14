@@ -44,7 +44,7 @@ after_deploy:
   openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC;
   mkdir ~/.kube;
   mv config ~/.kube/;
-  kubectl get pods;
+  kubectl rolling-update cloudboost-tutorial --image=cloudboost/tutorial:latest --image-pull-policy=Always;
   fi
 branches:
   except:
