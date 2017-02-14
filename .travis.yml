@@ -16,6 +16,7 @@ before_install:
 - git clone https://github.com/CloudBoost/kube-cred.git
 - cd kube-cred
 - openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC
+- mkdir ~/.kube
 - mv config ~/.kube/
 - kubectl config view
 - sleep 200s
