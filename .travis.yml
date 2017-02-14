@@ -13,13 +13,6 @@ before_install:
 - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 - chmod +x ./kubectl
 - sudo mv ./kubectl /usr/local/bin/kubectl
-- git clone https://github.com/CloudBoost/kube-cred.git
-- cd kube-cred
-- openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC
-- mkdir ~/.kube
-- mv config ~/.kube/
-- kubectl config view
-- sleep 200s
 install:
 - npm install
 after_success:
@@ -32,7 +25,6 @@ before_deploy:
   - export GIT_TAG=2.0.$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
   - git push -q https://$GITLOGIN@github.com/CloudBoost/tutorial --tags
-  - ls -R
 deploy:
   provider: releases
   api_key: $GH_TOKEN
@@ -47,6 +39,12 @@ after_deploy:
   docker login --username $DOCKERUSERNAME --password $DOCKERPASSWORD --email $DOCKEREMAIL;
   docker push cloudboost/tutorial:2.0.$TRAVIS_BUILD_NUMBER;
   docker push cloudboost/tutorial:latest;
+  git clone https://github.com/CloudBoost/kube-cred.git;
+  cd kube-cred;
+  openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC;
+  mkdir ~/.kube;
+  mv config ~/.kube/;
+  kubectl get pods;
   fi
 branches:
   except:
