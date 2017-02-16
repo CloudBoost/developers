@@ -45,6 +45,7 @@ after_deploy:
   mkdir ~/.kube;
   mv config ~/.kube/;
   kubectl rolling-update cloudboost-tutorial --image=cloudboost/tutorial:latest --image-pull-policy=Always;
+  curl -X DELETE "https://api.cloudflare.com/client/v4/zones/""$cloudflare_zone""/purge_cache" -H "X-Auth-Email:hello@cloudboost.io" -H "X-Auth-Key:""$cloud_flare_key" -H "Content-Type:application/json" --data "{'purge_everything':true}";
   fi
 branches:
   except:
