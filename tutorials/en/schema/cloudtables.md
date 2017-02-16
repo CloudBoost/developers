@@ -205,6 +205,8 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
+>Info: You need to initialize your app using your Master Key and not your Client Key to use the CloudTable object.
+
 #Default Columns
 
 Every CloudTable when created has default columns attached to it. Here is a list of all the default columns attached to CloudTable when you initialize them. **All of the default columns are not editable or deleteable.**
