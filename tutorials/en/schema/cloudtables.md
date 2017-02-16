@@ -4,7 +4,7 @@ In this section you'll learn how to create a Table (we call it [CloudTable]( htt
 
 #Saving a new table
 
-If you haven't created a new app and a table yet. Please take a look into [Getting Started](?lang=en&category=gettingstarted&subcategory=yourfirstapp) section. To create a new table you need to initialize a new variable with the type CloudTable.
+If you haven't created a new app and a table yet. Please take a look into [Getting Started](/en/gettingstarted/yourfirstapp) section. To create a new table you need to initialize a new variable with the type CloudTable.
 
 ==JavaScript==
 <span class="js-lines" data-query="create">
