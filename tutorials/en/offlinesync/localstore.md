@@ -1,13 +1,15 @@
 #####In this section
 
-In this section you'll learn about using offline feature of  [CloudBoost]( https://cloudboost.io/). You will also learn how to save an instance of [CloudObject]( https://docs.cloudboost.io/#CloudObject) and query the local store  and much more.
+In this section you'll learn about using offline features of[CloudBoost]( https://cloudboost.io/). You will also learn how to save an instance of [CloudObject]( https://docs.cloudboost.io/#CloudObject) and query it from your local store and much more.
 
-In many cases, you need a powerful tool to save and query data in your database when your app is not connected to the internet.
-[CB.CloudObject ](https://docs.cloudboost.io/#CloudObject) and [CB.CloudQuery ](https://docs.cloudboost.io/#CloudQuery) offers different ways to save and retrieve a list of objects you need in offline mode.
+[CloudObject](https://docs.cloudboost.io/#CloudObject) is a powerful class which has functions to save data in your local store when your app is not connected to the internet.
+[CloudObject](https://docs.cloudboost.io/#CloudObject) and [CB.CloudQuery ](https://docs.cloudboost.io/#CloudQuery) offers different ways to save and retrieve a list of objects you need when your app is in offline mode.
 
-#[CloudObject ](https://docs.cloudboost.io/#CloudObject)
+#Save
 
 ###Save object when app becomes online.
+
+Saving a CloudObject eventually will save an object automatically when your app is connected to the internet.
 
 ==JavaScript==
 <span class="js-lines" data-query="saveEventually">
@@ -16,7 +18,7 @@ var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.saveEventually({
     success : function(obj){
-        console.log(obj);//It returns an array of objects that will be saved during CB.CloudObjct.sync().
+        console.log(obj); 
     },error : function(error){
         //error.  
     }
@@ -31,7 +33,7 @@ var obj = new CB.CloudObject('TableName');
 obj.set('ColumnName', data);
 obj.saveEventually({
     success : function(obj){
-        console.log(obj);//It returns an array of objects that will be saved during CB.CloudObjct.sync().
+        console.log(obj); 
     },error : function(error){
         //error.  
     }
@@ -39,18 +41,19 @@ obj.saveEventually({
 ```
 </span>
 
-**Note :** obj.saveEventually() also pins the object to the local store
+**Note :** obj.saveEventually() also pins the object to the local store.
 
-###Pin object to the local store
+###Pin an Object to the local store
+
+Pinning an object will save an object in your local store which you can query when your app is offline. 
 
 ==JavaScript==
 <span class="js-lines" data-query="pin">
 ```
-var obj = new CB.CloudObject('TableName');
-obj.set('ColumnName', data);
+//obj is an instance of CloudObject, CloudUser, or CloudRole.
 CB.CloudObject.pin(obj,{
     success : function(obj){
-        console.log(obj);//It returns an array of objects that are stored in local store of the current table.
+        console.log(obj);
     },error : function(error){
         //error.  
     }
@@ -61,11 +64,10 @@ CB.CloudObject.pin(obj,{
 ==NodeJS==
 <span class="nodejs-lines" data-query="pin">
 ```
-var obj = new CB.CloudObject('TableName');
-obj.set('ColumnName', data);
+//obj is an instance of CloudObject, CloudUser, or CloudRole.
 CB.CloudObject.pin(obj,{
     success : function(obj){
-          console.log(obj);//It returns an array of objects that are stored in local store of the current table.
+        console.log(obj);
     },error : function(error){
         //error.  
     }
@@ -75,18 +77,15 @@ CB.CloudObject.pin(obj,{
 
 ###Pin multiple objects to the local store
 
+Pinning multiple objects will save them in your local store which you can query when your app is offline. 
+
 ==JavaScript==
 <span class="js-lines" data-query="pinall">
 ```
-var obj1 = new CB.CloudObject('Table1');
-obj1.set('ColumnName', data);
-var obj2 = new CB.CloudObject('Table2');
-obj2.set('ColumnName', data);
-var obj3 = new CB.CloudObject('Table3');
-obj3.set('ColumnName', data);
+//obj1, obj2 and obj3 are instances of CloudObject, CloudUser, or CloudRole class. 
 CB.CloudObject.pin([obj1,obj2,obj3],{
-    success : function(obj){
-        console.log(obj);//It returns an array of objects for Table1,Table2,Table3 tables that are stored in local store
+    success : function(list){
+        console.log(list);
     },error : function(error){
         //error  
     }
@@ -97,30 +96,10 @@ CB.CloudObject.pin([obj1,obj2,obj3],{
 ==NodeJS==
 <span class="nodejs-lines" data-query="pinall">
 ```
-var obj1 = new CB.CloudObject('Table1');
-obj1.set('ColumnName', data);
-var obj2 = new CB.CloudObject('Table2');
-obj2.set('ColumnName', data);
-var obj3 = new CB.CloudObject('Table3');
-obj3.set('ColumnName', data);
+//obj1, obj2 and obj3 are instances of CloudObject, CloudUser, or CloudRole class. 
 CB.CloudObject.pin([obj1,obj2,obj3],{
-    success : function(obj){
-        console.log(obj);//It returns an array of objects for Table1,Table2,Table3 tables that are stored in local store
-    },error : function(error){
-        //error.  
-    }
-});
-```
-</span>
-
-###Get objects of particular table from the local store
-
-==JavaScript==
-<span class="js-lines" data-query="fetchFromLocalStore">
-```
-CB.CloudObject.fetchFromLocalStore('TableName',{
-    success : function(obj){
-        console.log(obj);
+    success : function(list){
+        console.log(list);
     },error : function(error){
         //error  
     }
@@ -128,27 +107,18 @@ CB.CloudObject.fetchFromLocalStore('TableName',{
 ```
 </span>
 
-==NodeJS==
-<span class="nodejs-lines" data-query="fetchFromLocalStore">
-```
-CB.CloudObject.fetchFromLocalStore('TableName',{
-    success : function(obj){
-        console.log(obj);
-    },error : function(error){
-        //error.  
-    }
-});
-```
-</span>
 
-###Remove objects of particular table from the local store
+###Remove object from the local store
+
+Unpin removes a saved object from your local store. 
 
 ==JavaScript==
 <span class="js-lines" data-query="unPin">
 ```
-CB.CloudObject.unPin('TableName',{
-    success : function(){
-        console.log('Done');
+//obj is an instance of CloudObject, CloudUser, or CloudRole.
+CB.CloudObject.unPin(obj,{
+    success : function(obj){
+        console.log(obj);
     },error : function(error){
         //error  
     }
@@ -159,24 +129,28 @@ CB.CloudObject.unPin('TableName',{
 ==NodeJS==
 <span class="nodejs-lines" data-query="unPin">
 ```
-CB.CloudObject.unPin('TableName',{
-    success : function(){
-        console.log('Done');
+//obj is an instance of CloudObject, CloudUser, or CloudRole.
+CB.CloudObject.unPin(obj,{
+    success : function(obj){
+        console.log(obj);
     },error : function(error){
-        //error.  
+        //error  
     }
 });
 ```
 </span>
 
-###Remove objects of all the tables from the local store
+###Remove multiple object from the local store
+
+Unpin also removes multiple saved objects from your local store. 
 
 ==JavaScript==
-<span class="js-lines" data-query="unPinAll">
+<span class="js-lines" data-query="unPin">
 ```
-CB.CloudObject.unPinAll({
-    success : function(){
-        console.log('Done');
+//obj1,obj2,obj3 is an instance of CloudObject, CloudUser, or CloudRole.
+CB.CloudObject.unPin([obj1,obj2,obj3],{
+    success : function(list){
+        console.log(list);
     },error : function(error){
         //error  
     }
@@ -185,19 +159,23 @@ CB.CloudObject.unPinAll({
 </span>
 
 ==NodeJS==
-<span class="nodejs-lines" data-query="unPinAll">
+<span class="nodejs-lines" data-query="unPin">
 ```
-CB.CloudObject.unPinAll({
-    success : function(){
-        console.log('Done');
+//obj1, obj2, obj3 is an instance of CloudObject, CloudUser, or CloudRole.
+CB.CloudObject.unPin([obj1,obj2,obj3],{
+    success : function(list){
+        console.log(list);
     },error : function(error){
-        //error.  
+        //error  
     }
 });
 ```
 </span>
 
+
 ###Clear local store
+
+Clear everything from local store
 
 ==JavaScript==
 <span class="js-lines" data-query="clearLocalStore">
@@ -225,9 +203,9 @@ CB.CloudObject.clearLocalStore({
 ```
 </span>
 
-**Note :** CB.CloudObject.unPinAll() doesn't clear the objects which will be saved using CB.CloudObject.sync() unlike CB.CloudObject.clearLocalStore()
-
 ###Save local objects to server.
+
+Save local changes on objects to the server. 
 
 ==JavaScript==
 <span class="js-lines" data-query="sync">
@@ -255,9 +233,9 @@ CB.CloudObject.sync({
 ```
 </span>
 
-#[CloudQuery ](https://docs.cloudboost.io/#CloudQuery)
+#Query
 
-###Query over objects stored in local stored
+###Query objects stored in local store
 
 ==JavaScript==
 <span class="js-lines" data-query="findFromLocalStore">
