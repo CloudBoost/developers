@@ -2062,6 +2062,35 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
+#Delete
+
+Delete all the objects that satisfies the query.
+
+
+==JavaScript==
+<span class="js-lines" data-query="delete">
+```
+query.delete({
+  success : function(obj){
+    }, error : function(error){
+      //error
+    }
+});
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="delete">
+```
+query.delete({
+  success : function(obj){
+    }, error : function(error){
+      //error
+    }
+});
+```
+</span>
+
 #Count
 
 Counts the number of object that satisfies the query.

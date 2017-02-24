@@ -7,7 +7,7 @@ In this section you'll learn about using offline features of [CloudBoost]( https
 
 #Save Eventually
 
-When your app is offline save eventually will add your object to the save queue locally and will wait until your app is connected to the server. As soon as your app connects to the internet, your object will be saved. 
+When your app is offline save eventually will add your object to the save queue locally and will wait until your app is connected to the server. As soon as your app connects to the internet, your object will be saved.
 
 ==JavaScript==
 <span class="js-lines" data-query="saveEventually">
@@ -138,7 +138,7 @@ CB.CloudObject.pin([obj1,obj2,obj3],{
 </span>
 
 
-#Unpin an object. 
+#Unpin an object.
 
 Unpin removes a pinned object from your local store.
 
@@ -265,7 +265,7 @@ CB.CloudObject.sync({
 
 #Query Objects
 
-You can query local pinned objects on your local store by using `findFromLocalStore` function of the `CloudQuery` class. 
+You can query local pinned objects on your local store by using `findFromLocalStore` function of the `CloudQuery` class.
 
 ==JavaScript==
 <span class="js-lines" data-query="findFromLocalStore">
@@ -298,5 +298,112 @@ query.findFromLocalStore({
     //Error in retrieving the data.
   }
 });
+```
+</span>
+
+
+#Connection methods
+
+###`_isConnected`
+
+You can check whether your app is connected to the internet or not.
+
+==JavaScript==
+<span class="js-lines" data-query="isConnected">
+```
+if(CB.CloudApp._isConnected)
+{
+  console.log('Hurray! I am feeling connected.');
+}
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="isConnected">
+```
+if(CB.CloudApp._isConnected)
+{
+  console.log('Hurray! I am feeling connected.');
+}
+```
+</span>
+
+###connect()
+
+You can manually connect your app to the internet.
+
+==JavaScript==
+<span class="js-lines" data-query="connect">
+```
+CB.CloudApp.connect();
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="connect">
+```
+CB.CloudApp.connect();
+```
+</span>
+
+###disconnect()
+
+You can manually disconnect your app to the internet.
+
+==JavaScript==
+<span class="js-lines" data-query="disconnect">
+```
+CB.CloudApp.disconnect();
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="disconnect">
+```
+CB.CloudApp.disconnect();
+```
+</span>
+
+###onConnect()
+
+You can pass a function which fires when your app is connected to the internet.
+
+==JavaScript==
+<span class="js-lines" data-query="onConnect">
+```
+CB.CloudApp.onConnect(function(){
+  console.log('App connected.');
+  });
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="onConnect">
+```
+CB.CloudApp.onConnect(function(){
+  console.log('App connected.');
+  });
+```
+</span>
+
+###onDisconnect()
+
+You can pass a function which fires when your app is disconnected from the internet.
+
+==JavaScript==
+<span class="js-lines" data-query="onDisconnect">
+```
+CB.CloudApp.onDisconnect(function(){
+  console.log('App disconnected.');
+  });
+```
+</span>
+
+==NodeJS==
+<span class="nodejs-lines" data-query="onDisconnect">
+```
+CB.CloudApp.onDisconnect(function(){
+  console.log('App disconnected.');
+  });
 ```
 </span>
