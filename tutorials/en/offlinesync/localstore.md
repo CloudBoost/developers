@@ -1,15 +1,13 @@
 #####In this section
 
-In this section you'll learn about using offline features of[CloudBoost]( https://cloudboost.io/). You will also learn how to save an instance of [CloudObject]( https://docs.cloudboost.io/#CloudObject) and query it from your local store and much more.
+In this section you'll learn about using offline features of [CloudBoost]( https://cloudboost.io/). You will also learn how to save an instance of [CloudObject]( https://docs.cloudboost.io/#CloudObject) and query it from your local store and a lot more.
 
 [CloudObject](https://docs.cloudboost.io/#CloudObject) is a powerful class which has functions to save data in your local store when your app is not connected to the internet.
 [CloudObject](https://docs.cloudboost.io/#CloudObject) and [CB.CloudQuery ](https://docs.cloudboost.io/#CloudQuery) offers different ways to save and retrieve a list of objects you need when your app is in offline mode.
 
-#Save
+#Save Eventually
 
-###Save object when app becomes online.
-
-Saving a CloudObject eventually will save an object automatically when your app is connected to the internet.
+When your app is offline save eventually will add your object to the save queue locally and will wait until your app is connected to the server. As soon as your app connects to the internet, your object will be saved. 
 
 ==JavaScript==
 <span class="js-lines" data-query="saveEventually">
@@ -43,9 +41,9 @@ obj.saveEventually({
 
 **Note :** obj.saveEventually() also pins the object to the local store.
 
-###Disable sync for an object.
+#Disable Sync
 
-Disabling the sync would not save the object when your app is connected to the internet.
+Disabling the sync would dequeue the object from saving. If you've queued the object with save eventually and want to undo or dequeue it. You can use disable sync.
 
 ==JavaScript==
 <span class="js-lines" data-query="disableSync">
@@ -75,7 +73,7 @@ obj.disableSync({
 ```
 </span>
 
-###Pin an Object to the local store
+#Pin an Object
 
 Pinning an object will save an object in your local store which you can query when your app is offline.
 
@@ -107,7 +105,7 @@ obj.pin({
 ```
 </span>
 
-###Pin multiple objects to the local store
+#Pin multiple objects
 
 Pinning multiple objects will save them in your local store which you can query when your app is offline.
 
@@ -140,9 +138,9 @@ CB.CloudObject.pin([obj1,obj2,obj3],{
 </span>
 
 
-###Remove object from the local store
+#Unpin an object. 
 
-Unpin removes a saved object from your local store.
+Unpin removes a pinned object from your local store.
 
 ==JavaScript==
 <span class="js-lines" data-query="unPin">
@@ -172,9 +170,9 @@ obj.unPin({
 ```
 </span>
 
-###Remove multiple object from the local store
+#Unpin multiple objects
 
-Unpin also removes multiple saved objects from your local store.
+Unpin also take in an array of objects which removes them from your local store.
 
 ==JavaScript==
 <span class="js-lines" data-query="unPinAll">
@@ -205,9 +203,9 @@ CB.CloudObject.unPin([obj1,obj2,obj3],{
 </span>
 
 
-###Clear local store
+#Clear local store
 
-Clear everything from local store
+Clear everything from your apps local store.
 
 ==JavaScript==
 <span class="js-lines" data-query="clearLocalStore">
@@ -235,9 +233,9 @@ CB.CloudObject.clearLocalStore({
 ```
 </span>
 
-###Save local objects to server.
+#Sync Manually.
 
-Save local changes on objects to the server.
+When your app is connected to the internet. Your data will be syned automatically. If you want to do a manual sync, you can do so by calling a `sync` function on `CloudObject`
 
 ==JavaScript==
 <span class="js-lines" data-query="sync">
@@ -265,9 +263,9 @@ CB.CloudObject.sync({
 ```
 </span>
 
-#Query
+#Query Objects
 
-###Query objects stored in local store
+You can query local pinned objects on your local store by using `findFromLocalStore` function of the `CloudQuery` class. 
 
 ==JavaScript==
 <span class="js-lines" data-query="findFromLocalStore">
