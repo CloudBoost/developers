@@ -302,16 +302,16 @@ query.findFromLocalStore({
 </span>
 
 
-#Connection methods
+#App Connection
 
-###`_isConnected`
+###`isConnected`
 
 You can check whether your app is connected to the internet or not.
 
 ==JavaScript==
 <span class="js-lines" data-query="isConnected">
 ```
-if(CB.CloudApp._isConnected)
+if(CB.CloudApp.isConnected)
 {
   console.log('Hurray! I am feeling connected.');
 }
@@ -321,7 +321,7 @@ if(CB.CloudApp._isConnected)
 ==NodeJS==
 <span class="nodejs-lines" data-query="isConnected">
 ```
-if(CB.CloudApp._isConnected)
+if(CB.CloudApp.isConnected)
 {
   console.log('Hurray! I am feeling connected.');
 }
@@ -330,19 +330,33 @@ if(CB.CloudApp._isConnected)
 
 ###connect()
 
-You can manually connect your app to the internet.
+You can manually connect your app with the server. 
 
 ==JavaScript==
 <span class="js-lines" data-query="connect">
 ```
-CB.CloudApp.connect();
+CB.CloudApp.connect({
+  success: function(){
+    //App is connected. 
+  },
+  error: function(error) {
+    //App cannot be connected. 
+  }
+});
 ```
 </span>
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="connect">
 ```
-CB.CloudApp.connect();
+CB.CloudApp.connect({
+  success: function(){
+    //App is connected. 
+  },
+  error: function(error) {
+    //App cannot be connected. 
+  }
+});
 ```
 </span>
 
@@ -353,27 +367,41 @@ You can manually disconnect your app to the internet.
 ==JavaScript==
 <span class="js-lines" data-query="disconnect">
 ```
-CB.CloudApp.disconnect();
+CB.CloudApp.disconnect({
+  success: function(){
+    //App is connected. 
+  },
+  error: function(error) {
+    //App cannot be connected. 
+  }
+});
 ```
 </span>
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="disconnect">
 ```
-CB.CloudApp.disconnect();
+CB.CloudApp.disconnect({
+  success: function(){
+    //App is connected. 
+  },
+  error: function(error) {
+    //App cannot be connected. 
+  }
+});
 ```
 </span>
 
 ###onConnect()
 
-You can pass a function which fires when your app is connected to the internet.
+You can pass a callback which fires when your app is connected to the internet.
 
 ==JavaScript==
 <span class="js-lines" data-query="onConnect">
 ```
 CB.CloudApp.onConnect(function(){
   console.log('App connected.');
-  });
+});
 ```
 </span>
 
@@ -382,20 +410,20 @@ CB.CloudApp.onConnect(function(){
 ```
 CB.CloudApp.onConnect(function(){
   console.log('App connected.');
-  });
+});
 ```
 </span>
 
 ###onDisconnect()
 
-You can pass a function which fires when your app is disconnected from the internet.
+You can pass a callback which fires when your app is disconnected from the internet.
 
 ==JavaScript==
 <span class="js-lines" data-query="onDisconnect">
 ```
 CB.CloudApp.onDisconnect(function(){
   console.log('App disconnected.');
-  });
+});
 ```
 </span>
 
@@ -404,6 +432,6 @@ CB.CloudApp.onDisconnect(function(){
 ```
 CB.CloudApp.onDisconnect(function(){
   console.log('App disconnected.');
-  });
+});
 ```
 </span>
