@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
     },function(error){
 
       console.log(error);
-      // render404(res);
+      render404(res);
     });  
 
   });
@@ -61,6 +61,10 @@ router.get('/en/:category/:subcategory', function(req, res) {
     render404(res);
   });  
 
+});
+
+router.get('*',function(req,res){
+  render404(res);
 });
 
 module.exports = router;
