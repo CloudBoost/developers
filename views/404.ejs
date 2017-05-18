@@ -14,7 +14,16 @@
     <% include ./partials/commonHeadLinks %>
 
     <!--IMPORTANT:Bind Tuturial data from server to javascript variables-->
-    
+    <style type="text/css">
+    .jumbotron a:hover
+    {
+      text-decoration: underline;
+    }
+    a i
+    {
+      margin-left: 8px;
+    }
+    </style>
 
 </head>
 
@@ -33,36 +42,21 @@
 
         </div>      
     </div>       
-    <div style="position:relative;top:90px;">
+    <div style="position:relative;top:150px;">
         <div class="container">
           <!-- Jumbotron -->
           <div class="jumbotron">
-          <h1><i class="fa fa-frown-o red"></i> Page not found!</h1>
+          <h1>404</h1>
+
             <p class="lead">Sorry but the page you were looking for could not be found.</p>
-            <p><a onclick=javascript:checkSite(); class="btn btn-default btn-lg" style="background:#2f4050;"><span style="">Take Me To The Homepage</span></a>
-                <script type="text/javascript">
-                    function checkSite(){
-                      var currentSite = window.location.hostname;
-                      window.location = "http://" + currentSite;
-                  }
-              </script>
+            <div class="row">&nbsp;</div>
+            <p><a href="https://tutorials.cloudboost.io" class="btn btn-default btn-lg" style="background:#2f4050;"><span style="">Back to the Homepage<i class="fa fa-angle-right"></i></span></a>
+            <a href="mailto:support@cloudboost.io" class="btn btn-default btn-lg" style="background:#2f4050;"><span style="">Report a Problem<i class="fa fa-angle-right"></i></span></a>
+                
           </p>
       </div>
   </div>
-  <div class="container" style="color:#FFF;">
-  <div class="body-content">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>What happened?</h2>
-        <p style="font-size: 16px;">A 404 error status implies that the file or page that you're looking for could not be found.</p>
-      </div>
-      <div class="col-md-6">
-        <h2>What can I do?</h2>
-        <p style="font-size: 16px;">You can return to our home page or drop us a line if you can't find what you're looking for.</p>
-     </div>
-    </div>
-  </div>
-</div>
+  
  
 </div>
 <!--Scripts-->
