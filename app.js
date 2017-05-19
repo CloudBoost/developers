@@ -26,6 +26,6 @@ module.exports = function(){
 	//Routers
 	var routes = require('./routes/routes');
 	app.use('/', routes);
-
+	
 	return app;
 }

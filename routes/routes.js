@@ -20,43 +20,46 @@ router.get('/', function(req, res) {
 
     Q.all(promises).then(function(list){ 
 
-        res.render('index',{
-                   language: language, 
-                   category: categoryName,
-                subCategory: subCategoryName,
-             tutorialTopics: list[1],
-            tutorialDetails: list[0]
-        });
+      res.render('index',{
+       language: language, 
+       category: categoryName,
+       subCategory: subCategoryName,
+       tutorialTopics: list[1],
+       tutorialDetails: list[0]
+     });
     },function(error){
-        console.log(error);
-        return res.status(500).send(error); 
+
+      console.log(error);
+      // render404(res);
     });  
 
-});
+  });
 
 router.get('/en/:category/:subcategory', function(req, res) {    
 
-    var language='en';
-    var categoryName=req.params.category;
-    var subCategoryName=req.params.subcategory;
+  var language='en';
+  var categoryName=req.params.category;
+  var subCategoryName=req.params.subcategory;
 
-    var promises=[];
-    promises.push(getTutorialDetails(language,categoryName,subCategoryName));
-    promises.push(getTutorialTopics());
+  var promises=[];
+  promises.push(getTutorialDetails(language,categoryName,subCategoryName));
+  promises.push(getTutorialTopics());
 
-    Q.all(promises).then(function(list){ 
+  Q.all(promises).then(function(list){ 
 
-        res.render('index',{
-                   language: language, 
-                   category: categoryName,
-                subCategory: subCategoryName,
-             tutorialTopics: list[1],
-            tutorialDetails: list[0]
-        });
-    },function(error){
-        console.log(error);
-        return res.status(500).send(error);  
-    });  
+    res.render('index',{
+     language: language, 
+     category: categoryName,
+     subCategory: subCategoryName,
+     tutorialTopics: list[1],
+     tutorialDetails: list[0]
+   });
+  },function(error){
+
+    console.log(error);
+
+    render404(res);
+  });  
 
 });
 
@@ -65,23 +68,24 @@ module.exports = router;
 /*********************************Private Functions**********************************/
 //getTutorials
 function getTutorialTopics(){
-    var deferred = Q.defer();
+  var deferred = Q.defer();
 
-    var url=global.keys.frontendServerUrl+"/tutorial";
+  var url=global.keys.frontendServerUrl+"/tutorial";
 
-    request({
-      url: url,   
-      method: 'GET'
-    }, function(error, response, body){
-      if(error || response.statusCode==400 || response.statusCode==500) {
-       deferred.reject(error);       
-      } else {
-        var info = JSON.parse(body);
-        deferred.resolve(info);       
-      }
-    });
+  request({
+    url: url,   
+    method: 'GET'
+  }, function(error, response, body){
+    if(error || response.statusCode==400 || response.statusCode==500) {
+     deferred.reject(error);       
+   } else {    
+    var info = JSON.parse(body);
+    
+    deferred.resolve(info);       
+  }
+});
 
-    return deferred.promise;
+  return deferred.promise;
 }
 
 //getTutorials
@@ -102,4 +106,7 @@ function getTutorialDetails(language,categoryName,subCategoryName){
   return deferred.promise;
 }
 
-
+function render404(res) {
+  
+  res.status(404).render('404');
+}
