@@ -112,5 +112,5 @@ function getTutorialDetails(language,categoryName,subCategoryName){
 
 function render404(res) {
   
-  res.status(404).render('404');
+  res.status(200).render('404');
 }
