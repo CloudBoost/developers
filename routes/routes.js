@@ -37,37 +37,48 @@ router.get('/', function(req, res) {
 
 router.get('/en/:category/:subcategory', function(req, res) {    
 
-  var language='en';
-  var categoryName=req.params.category;
-  var subCategoryName=req.params.subcategory;
+    var language='en';
+    var categoryName=req.params.category;
+    var subCategoryName=req.params.subcategory;
 
-  var promises=[];
-  promises.push(getTutorialDetails(language,categoryName,subCategoryName));
-  promises.push(getTutorialTopics());
+    var promises=[];
+    promises.push(getTutorialDetails(language,categoryName,subCategoryName));
+    promises.push(getTutorialTopics());
 
-  Q.all(promises).then(function(list){ 
+    Q.all(promises).then(function(list){ 
 
-    res.render('index',{
-     language: language, 
-     category: categoryName,
-     subCategory: subCategoryName,
-     tutorialTopics: list[1],
-     tutorialDetails: list[0]
-   });
-  },function(error){
-
-    console.log(error);
-
-    render404(res);
-  });  
+        res.render('index',{
+                   language: language, 
+                   category: categoryName,
+                subCategory: subCategoryName,
+             tutorialTopics: list[1],
+            tutorialDetails: list[0]
+                });
+    },function(error){
+        console.log(error);
+        return res.status(500).send(error);  
+    });  
 
 });
 
 router.get('*',function(req,res){
-  render404(res);
-});
 
-module.exports = router;
+
+    var promises=[];
+    promises.push(getTutorialTopics());
+
+    Q.all(promises).then(function(list){ 
+
+        res.render('404',{
+                   tutorialTopics: list[1],
+            tutorialDetails: list[0]
+                });
+    },function(error){
+        console.log(error);
+        return res.status(500).send(error);  
+    });
+
+});
 
 /*********************************Private Functions**********************************/
 //getTutorials

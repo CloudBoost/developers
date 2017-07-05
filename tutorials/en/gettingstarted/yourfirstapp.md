@@ -20,7 +20,7 @@ To create a new table click on <span class="tut-snippet">Manage App</span>. Now 
 
 ![Add New Table](https://www.dropbox.com/s/haw8zhuhido1bu5/Capture-2.PNG?raw=1)
 
-><span class="tut-info">Info</span> User, Role and Device tables are added by default to every app in CloudBoost. These tables are cannot be deleted. It's okay not to use these tables if you don’t need them. We'll talk more about User,Role and Device tables later in the documentation. Basically, User and Roles are used to build Authentication and Devices are used for Push Notifications.
+><span class="tut-info">Info</span> User, Role and Device tables are added by default to every app in CloudBoost. These tables cannot be deleted. It's okay not to use these tables if you don’t need them. We'll talk more about User,Role and Device tables later in the documentation. Basically, User and Roles are used to build Authentication and Devices are used for Push Notifications.
 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> Table name cannot start with a number and cannot contain any special characters. Table name should be **unique**.
