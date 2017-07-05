@@ -52,11 +52,30 @@ router.get('/en/:category/:subcategory', function(req, res) {
                 subCategory: subCategoryName,
              tutorialTopics: list[1],
             tutorialDetails: list[0]
-        });
+                });
     },function(error){
         console.log(error);
         return res.status(500).send(error);  
     });  
+
+});
+
+router.get('*',function(req,res){
+
+
+    var promises=[];
+    promises.push(getTutorialTopics());
+
+    Q.all(promises).then(function(list){ 
+
+        res.render('404',{
+                   tutorialTopics: list[1],
+            tutorialDetails: list[0]
+                });
+    },function(error){
+        console.log(error);
+        return res.status(500).send(error);  
+    });
 
 });
 
