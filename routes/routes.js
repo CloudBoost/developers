@@ -80,6 +80,8 @@ router.get('*',function(req,res){
 
 });
 
+module.exports = router
+
 /*********************************Private Functions**********************************/
 //getTutorials
 function getTutorialTopics(){
