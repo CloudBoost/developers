@@ -30,40 +30,55 @@ router.get('/', function(req, res) {
     },function(error){
 
       console.log(error);
-      // render404(res);
+      render404(res);
     });  
 
   });
 
 router.get('/en/:category/:subcategory', function(req, res) {    
 
-  var language='en';
-  var categoryName=req.params.category;
-  var subCategoryName=req.params.subcategory;
+    var language='en';
+    var categoryName=req.params.category;
+    var subCategoryName=req.params.subcategory;
 
-  var promises=[];
-  promises.push(getTutorialDetails(language,categoryName,subCategoryName));
-  promises.push(getTutorialTopics());
+    var promises=[];
+    promises.push(getTutorialDetails(language,categoryName,subCategoryName));
+    promises.push(getTutorialTopics());
 
-  Q.all(promises).then(function(list){ 
+    Q.all(promises).then(function(list){ 
 
-    res.render('index',{
-     language: language, 
-     category: categoryName,
-     subCategory: subCategoryName,
-     tutorialTopics: list[1],
-     tutorialDetails: list[0]
-   });
-  },function(error){
-
-    console.log(error);
-
-    render404(res);
-  });  
+        res.render('index',{
+                   language: language, 
+                   category: categoryName,
+                subCategory: subCategoryName,
+             tutorialTopics: list[1],
+            tutorialDetails: list[0]
+                });
+    },function(error){
+        console.log(error);
+        return res.status(500).send(error);  
+    });  
 
 });
 
-module.exports = router;
+router.get('*',function(req,res){
+
+
+    var promises=[];
+    promises.push(getTutorialTopics());
+
+    Q.all(promises).then(function(list){ 
+
+        res.render('404',{
+                   tutorialTopics: list[1],
+            tutorialDetails: list[0]
+                });
+    },function(error){
+        console.log(error);
+        return res.status(500).send(error);  
+    });
+
+});
 
 /*********************************Private Functions**********************************/
 //getTutorials
@@ -108,5 +123,5 @@ function getTutorialDetails(language,categoryName,subCategoryName){
 
 function render404(res) {
   
-  res.status(404).render('404');
+  res.status(200).render('404');
 }
