@@ -21,9 +21,12 @@ function buildTutorial(markup){
     var ps=$(".real-content").find("p"); 
     pCss(ps);
 
-    var h1s=$(".real-content").find("h1"); 
+    var h1s=$(".real-content").find("h1");
     h1Css(h1s); 
 
+    // var h3s=$(".real-content").find("h3");    
+    // h1Css(h3s); 
+    
     var imgs=$(".real-content").find("img"); 
     imgCss(imgs);
 
@@ -103,7 +106,7 @@ function pCss(ps){
 }
 
 function h1Css(h1s){
-    
+    console.log(h1s)
     for(var i=0;i<h1s.length;++i){
         $(h1s[i]).css({
             'font-weight':'bold'

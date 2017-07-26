@@ -12,7 +12,7 @@ var thisURL = '';
 
 if(__isDevelopment){
 	serverURL="http://localhost:3000";	
-	serverURL="https://service.cloudboost.io";	
+	// serverURL="https://service.cloudboost.io";	
 	dashboardURL = "http://localhost:1440";
 	signUpURL="http://localhost:1440/accounts/#/signup";
 	loginURL="http://localhost:1440/accounts";
@@ -24,3 +24,4 @@ if(__isDevelopment){
 	loginURL="https://dashboard.cloudboost.io/accounts";
 	thisURL="https://tutorials.cloudboost.io";
 }
+console.log(serverURL, dashboardURL)
