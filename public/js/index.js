@@ -101,7 +101,7 @@ function activateSection(top){
         if (distance < 30 && distance > -30 && currentStepHash != hash) {
             $("li.step-active").removeClass("step-active");
         $(".steps-category-wrapper").find("a[href=#"+hash+"]").parent().addClass("step-active");
-
+            console.log(currentStepHash, hash)
             currentStepHash = hash;
         }
     });
