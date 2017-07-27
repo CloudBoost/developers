@@ -17,7 +17,6 @@
            
         <ul class="nav tut-main-topics-menu just-navmenu" id="side-menu">
             <% tutorialTopics.forEach(function(eachTut) {
-
                 if (nospacelowcase(eachTut.name)==category) { %>
                     <li class="active">
                 <% }else{ %>
@@ -32,8 +31,7 @@
                     <ul class="nav nav-second-level">
 
                         <% eachTut.tutorials.forEach(function(eachSub) { 
-
-                            if (nospacelowcase(eachSub.name)==subCategory) { %>
+                            if (nospacelowcase(eachSub.name)==nospacelowcase(subCategory)) { %>
                                 <li class="change-topic active">
                             <% }else{ %>
                                 <li class="change-topic">
