@@ -12,7 +12,7 @@ To integrate slack notifications with your application, navigate to <a href="htt
 <img class="settings_img" alt="Your App" src="http://i.imgur.com/PlVMCfC.png">
  After getting redirected to tables screen, follow these steps,
 
-1. Click on the **Settings** icon on left side of the page, you'll be redirected to the settings page of your application.
+1. Click on the **Settings** on left side navigation of the page, you'll be redirected to the settings page of your application.
 <img class="settings_img" alt="Settings Page" src="http://i.imgur.com/yhc0yi5.png">
 
 2. Then, navigate to the **Integrations Tab** using the tab bar on the top of the page.
@@ -22,4 +22,4 @@ To integrate slack notifications with your application, navigate to <a href="htt
 as a result following section will appear,
 <img class="settings_img" alt="Notifications Button" src="http://i.imgur.com/CksS7mJ.png">
 
-4. Now, enter the **_Webhook URL_** for your team, and turn on the switched corresponding to which you want to get notified and click on save button to start your notifications.
+4. Now, enter the **_Webhook URL_** for your team, and turn on the switch corresponding to the event for which you want to get notified and click on save button to start your notifications.
