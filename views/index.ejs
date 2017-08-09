@@ -24,6 +24,7 @@
             var language =<%- JSON.stringify(language) %>; 
             var categoryName =<%- JSON.stringify(category) %>;
             var subCategoryName =<%- JSON.stringify(subCategory) %>;
+            console.log(subCategoryName)
             var tutMarkup =<%- JSON.stringify(tutorialDetails) %>;
         </script>
 
@@ -66,9 +67,10 @@
                                             <div class="col-sm-9 col-md-9 col-lg-9">
                                                 <% tutorialTopics.forEach(function(eachTut) { 
                                             eachTut.tutorials.forEach(function(eachSub) { 
+                                                     console.log(subCategory, eachSub.name)
                                                 if (nospacelowcase(eachSub.name)==nospacelowcase(subCategory)) { 
                                                      %>
-                                                    <p class="cat-desc" style="">
+                                                    <p class="cat-desc">
                                                         <%= eachTut.name %>
                                                     </p>
                                                     <h1 class="cat-name">
