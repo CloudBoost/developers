@@ -29,9 +29,9 @@ Now, copy your application Id & Master Key to your clipboard.
 5. Now choose the action which you want to perform from available options, whether add, update, delete etc and click on next to continue.
 <img class="settings_img" alt="Actions" src="http://i.imgur.com/GtIpBCC.png">
 
-6. Now to connect your **CloudBoost Application** with **Zapier** click on **Connect an Account** and provide your app credentials(master-key and appId) into the fields provided in the pop-up window and click on **Save+Continue** to proceed further.
+6. Now to connect your **CloudBoost Application** with **Zapier** click on **Connect an Account**. Then, name the connection of Zapier with your CloudBoost Account and provide the credentials which you use to login on CloudBoost along with your app credentials(master-key and appId) into the fields provided in the pop-up window and click on **Save+Continue** to proceed further.
 <img class="settings_img" alt="Connect Account" src="http://i.imgur.com/nuOaNJs.png">
-<img class="settings_img" alt="Connect Account" src="http://i.imgur.com/jqneIJj.jpg">
+<img class="settings_img" alt="Connect Account" src="http://i.imgur.com/TagHNtU.jpg">
 
 7. After that fill in the required fields as prompted according to your actions and also maps the fields from your **Trigger App** to the fields in your **Action App**. (Note: All the fields displayed should contain some values according to their type, otherwise the corresponding action won't trigger)
 <img class="settings_img" alt="Fields" src="http://i.imgur.com/RBNEVlU.png">
