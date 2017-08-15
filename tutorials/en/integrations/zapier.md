@@ -6,13 +6,13 @@ In this section, you'll learn how to integrate various plugins using Zapier with
 
 >If you haven't signed up for [CloudBoost](https://www.cloudboost.io) yet, this is the right time for you to create your new account and get started. CloudBoost gives you a ton of free tier (check [Pricing](https://www.cloudboost.io/pricing)) so you can build your apps and launch it for free.
 
-# Application Credentials
+<!--# Application Credentials
 
 To integrate Zapier with your application, you first need to have master key & application Id of your application, to grab your respective credentials, navigate to <a href="https://dashboard.cloudboost.io">Dashboard</a>, click on <span class="tut-snippet">Manage Keys Icon</span>
 <img class="settings_img" alt="CB Dashboard" src="http://i.imgur.com/AC9M7dG.png">
 as a result following window will appear,
 <img class="settings_img" alt="Your App Credentials" src="http://i.imgur.com/PIBU1O0.png">
-Now, copy your application Id & Master Key to your clipboard.
+Now, copy your application Id & Master Key to your clipboard.-->
 
 
 # Integrate Zapier
@@ -29,11 +29,11 @@ Now, copy your application Id & Master Key to your clipboard.
 5. Now choose the action which you want to perform from available options, whether add, update, delete etc and click on next to continue.
 <img class="settings_img" alt="Actions" src="http://i.imgur.com/GtIpBCC.png">
 
-6. Now to connect your **CloudBoost Application** with **Zapier** click on **Connect an Account**. Then, name the connection of Zapier with your CloudBoost Account and provide the credentials which you use to login on CloudBoost along with your app credentials(master-key and appId) into the fields provided in the pop-up window and click on **Save+Continue** to proceed further.
+6. Now to connect your **CloudBoost Application** with **Zapier** click on **Connect an Account**. Then, name the connection of Zapier with your CloudBoost Account and provide the credentials which you use to login on CloudBoost.
 <img class="settings_img" alt="Connect Account" src="http://i.imgur.com/nuOaNJs.png">
-<img class="settings_img" alt="Connect Account" src="http://i.imgur.com/TagHNtU.jpg">
+<img class="settings_img" alt="Connect Account" src="http://i.imgur.com/WToxx7a.png">
 
-7. After that fill in the required fields as prompted according to your actions and also maps the fields from your **Trigger App** to the fields in your **Action App**. (Note: All the fields displayed should contain some values according to their type, otherwise the corresponding action won't trigger)
+7. After that select the application that you want to integrate with Zapier & fill in the required fields as prompted according to your actions and also maps the fields from your **Trigger App** to the fields in your **Action App**. (Note: All the fields displayed should contain some values according to their type, otherwise the corresponding action won't trigger)
 <img class="settings_img" alt="Fields" src="http://i.imgur.com/RBNEVlU.png">
 
 8. Then click on next to continue & test this action out using zapier built-in test functionality to view the result of your respective action.
