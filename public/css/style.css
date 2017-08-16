@@ -4531,3 +4531,7 @@ body.skin-3 {
     height: 415px;
 }
 
+.addToSlack > .flex-general-row-wrapper-center img{
+    margin-top: 0px !important;
+    margin-right: 550px;
+}
