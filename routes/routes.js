@@ -69,7 +69,10 @@ router.get('*', function (req, res) {
 
   Q.all(promises).then(function (list) {
 
-    res.render('404', {
+    res.render('index', {
+      language: language,
+      category: categoryName,
+      subCategory: subCategoryName,
       tutorialTopics: list[1],
       tutorialDetails: list[0]
     });
@@ -98,7 +101,6 @@ function getTutorialTopics() {
     } else {
       try {
         var info = JSON.parse(body);
-
         deferred.resolve(info);
       } catch (e) {
         deferred.reject(e);
