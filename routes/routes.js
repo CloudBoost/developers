@@ -28,8 +28,9 @@ router.get('/', function (req, res) {
       tutorialDetails: list[0]
     });
   }, function (error) {
+
     console.log(error);
-    return res.status(500).send(error);
+    render404(res);
   });
 
 });
@@ -60,7 +61,29 @@ router.get('/en/:category/:subcategory', function (req, res) {
 
 });
 
-module.exports = router;
+router.get('*', function (req, res) {
+
+
+  var promises = [];
+  promises.push(getTutorialTopics());
+
+  Q.all(promises).then(function (list) {
+
+    res.render('index', {
+      language: language,
+      category: categoryName,
+      subCategory: subCategoryName,
+      tutorialTopics: list[1],
+      tutorialDetails: list[0]
+    });
+  }, function (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  });
+
+});
+
+module.exports = router
 
 /*********************************Private Functions**********************************/
 //getTutorials
@@ -107,4 +130,7 @@ function getTutorialDetails(language, categoryName, subCategoryName) {
   return deferred.promise;
 }
 
+function render404(res) {
 
+  res.status(200).render('404');
+}
