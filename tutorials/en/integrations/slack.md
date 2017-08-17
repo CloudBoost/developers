@@ -9,7 +9,7 @@ In this section, you'll learn how to sent Notifications to your team on Slack fr
 >### Add CloudBoost to your Slack App Directory
 >If you haven't already added the CloudBoost App into your Slack App Directory, you can do so by clicking on following button
 
-><a class="addToSlack" href="https://slack.com/oauth/authorize?&client_id=3133949145.212145423984&scope=incoming-webhook"><img class="slackImg" alt="" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x" /></a>
+><a class="addToSlack" href="https://slack.com/oauth/authorize?&client_id=3133949145.212145423984&scope=incoming-webhook"><img class="slackImg" alt="" height="40" width="139" style="margin-right: 550px;" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x" /></a>
 
 # Integrate Slack 
 
