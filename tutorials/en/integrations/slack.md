@@ -6,11 +6,6 @@ In this section, you'll learn how to sent Notifications to your team on Slack fr
 
 >If you haven't signed up for [CloudBoost](https://www.cloudboost.io) yet, this is the right time for you to create your new account and get started. CloudBoost gives you a ton of free tier (check [Pricing](https://www.cloudboost.io/pricing)) so you can build your apps and launch it for free.
 
->### Add CloudBoost to your Slack App Directory
->If you haven't already added the CloudBoost App into your Slack App Directory, you can do so by clicking on following button
-
-><a class="addToSlack" href="https://slack.com/oauth/authorize?&client_id=3133949145.212145423984&scope=incoming-webhook"><img class="slackImg" alt="" height="40" width="139" style="margin-right: 550px;" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x" /></a>
-
 # Integrate Slack 
 
 To integrate slack notifications with your application, navigate to <a href="https://dashboard.cloudboost.io">Dashboard</a>, click on <span class="tut-snippet">Manage App</span>.
@@ -27,4 +22,6 @@ To integrate slack notifications with your application, navigate to <a href="htt
 as a result following section will appear,
 <img class="settings_img" alt="Notifications Button" src="http://i.imgur.com/CksS7mJ.png">
 
-4. Now, enter the **_Webhook URL_** for your team, and turn on the switch corresponding to the event for which you want to get notified and click on save button to start your notifications.
+4. Now, generate a **_Webhook URL_** for your team by using following button <a class="addToSlack" href="https://slack.com/oauth/authorize?&client_id=3133949145.212145423984&scope=incoming-webhook"><img class="slackImg" alt="" height="40" width="139" style="margin-right: 590px;" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x" /></a>
+
+5. After generating one, enter your created **_Webhook URL_** into the field provided and turn on the switch corresponding to the event for which you want to get notified and click on save button to start your notifications.
