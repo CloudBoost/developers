@@ -1,6 +1,6 @@
 #####In this section
 
-In this section, you'll learn how to add the CloudBoost SDK to your project and how to:
+In this section, you will learn how to add the CloudBoost SDK to your project and how to:
 
 * Create a new app ([CloudApp](https://docs.cloudboost.io/#CloudApp))
 * Create a new table ([CloudTable](https://docs.cloudboost.io/#CloudTable))
