@@ -9,7 +9,7 @@ In this section, you will learn how to add the CloudBoost SDK to your project an
 
 #Create your first App
 
-If you haven't already done so, create a [CloudBoost](https://www.cloudboost.io) account. CloudBoost gives you a ton of [free tier features](https://www.cloudboost.io/pricing), so you can build and launch apps for free.
+If you have not already done so, create a [CloudBoost](https://www.cloudboost.io) account. CloudBoost gives you a ton of [free tier features](https://www.cloudboost.io/pricing), so you can build and launch apps for free.
 
 After signing up, create a new app by entering an <span class="tut-snippet">App Name</span>.
 
