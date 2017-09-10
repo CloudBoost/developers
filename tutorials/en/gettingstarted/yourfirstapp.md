@@ -5,7 +5,7 @@ In this section, you will learn how to add the CloudBoost SDK to your project an
 * Create a new app ([CloudApp](https://docs.cloudboost.io/#CloudApp))
 * Create a new table ([CloudTable](https://docs.cloudboost.io/#CloudTable))
 * Save simple objects ([CloudObjects](https://docs.cloudboost.io/#CloudObject)) in tables
-* Query tables with ([CloudQueries](https://docs.cloudboost.io/#CloudQuery))
+* Query tables with [CloudQueries](https://docs.cloudboost.io/#CloudQuery)
 
 #Create your first App
 
