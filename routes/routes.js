@@ -25,7 +25,8 @@ router.get('/', function (req, res) {
       category: categoryName,
       subCategory: subCategoryName,
       tutorialTopics: list[1],
-      tutorialDetails: list[0]
+      tutorialDetails: list[0],
+      TUTORIALS_BASE_URL:global.TUTORIALS_BASE_URL
     });
   }, function (error) {
 
@@ -52,7 +53,8 @@ router.get('/en/:category/:subcategory', function (req, res) {
       category: categoryName,
       subCategory: subCategoryName,
       tutorialTopics: list[1],
-      tutorialDetails: list[0]
+      tutorialDetails: list[0],
+      TUTORIALS_BASE_URL:global.TUTORIALS_BASE_URL
     });
   }, function (error) {
     console.log(error);
@@ -74,7 +76,8 @@ router.get('*', function (req, res) {
       category: categoryName,
       subCategory: subCategoryName,
       tutorialTopics: list[1],
-      tutorialDetails: list[0]
+      tutorialDetails: list[0],
+      TUTORIALS_BASE_URL:global.TUTORIALS_BASE_URL
     });
   }, function (error) {
     console.log(error);

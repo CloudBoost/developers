@@ -37,7 +37,7 @@
                                 <li class="change-topic">
                             <% } %>
                           
-                                <a  class="category-select-menubtn" href="/<%= eachSub.tutorialLink.lang %>/<%= eachSub.tutorialLink.category %>/<%= eachSub.tutorialLink.subcategory %>" data-subcat="<%= eachSub.tutorialLink.subcategory %>">
+                                <a  class="category-select-menubtn" href="<%= TUTORIALS_BASE_URL %><%= eachSub.tutorialLink.lang %>/<%= eachSub.tutorialLink.category %>/<%= eachSub.tutorialLink.subcategory %>" data-subcat="<%= eachSub.tutorialLink.subcategory %>">
                                  <%= eachSub.name %>
                                 </a>
                             </li>
