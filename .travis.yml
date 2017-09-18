@@ -28,7 +28,7 @@ after_success:
     docker push cloudboost/tutorial:staging;
     git clone https://github.com/CloudBoost/kube-cred.git;
     cd kube-cred;
-    openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC;
+    openssl enc -in config_staging.enc -out config -d -aes256 -k $KUBE_ENC;
     mkdir ~/.kube;
     mv config ~/.kube/;
     kubectl rolling-update cloudboost-tutorial-staging --image=cloudboost/tutorial:staging --image-pull-policy=Always;
