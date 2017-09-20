@@ -6,7 +6,7 @@
                 <div class="dropdown profile-element">
 
                     <span class="flex-general-row-wrapper-center">
-                        <img alt="image" style="width: 60%; border-radius: 50%;" class="animated slideInLeft menu-img" src="/img/CbLogoIcon.png"/>
+                        <img alt="image" style="width: 60%; border-radius: 50%;" class="animated slideInLeft menu-img" src="public/img/CbLogoIcon.png"/>
                         <!--<i class="fa fa-book fa-2x" style="color:white;"></i>-->
                     </span>
 
@@ -37,7 +37,7 @@
                                 <li class="change-topic">
                             <% } %>
                           
-                                <a  class="category-select-menubtn" href="/<%= eachSub.tutorialLink.lang %>/<%= eachSub.tutorialLink.category %>/<%= eachSub.tutorialLink.subcategory %>" data-subcat="<%= eachSub.tutorialLink.subcategory %>">
+                                <a  class="category-select-menubtn" href="<%= TUTORIALS_BASE_URL %><%= eachSub.tutorialLink.lang %>/<%= eachSub.tutorialLink.category %>/<%= eachSub.tutorialLink.subcategory %>" data-subcat="<%= eachSub.tutorialLink.subcategory %>">
                                  <%= eachSub.name %>
                                 </a>
                             </li>

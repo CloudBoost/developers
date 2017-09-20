@@ -1,3 +1,5 @@
+global.__isHosted = process.env["CLOUDBOOST_HOSTED"] || false
+global.TUTORIALS_BASE_URL = __isHosted ? '/tutorials/' : '/'
 
 global.isStaging = false;
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
