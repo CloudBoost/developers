@@ -17,7 +17,7 @@ if(__isDevelopment){
 	loginURL="http://localhost:1440/accounts";
 	thisURL="http://localhost:1446";
 }else{
-	serverURL="https://cloudboost.io/engine/";	
+	serverURL="https://cloudboost.io/api/";	
 	dashboardURL = "https://cloudboost.io/dashboard/";
 	signUpURL="https://cloudboost.io/accounts/signup";	
 	loginURL="https://cloudboost.io/accounts/";
