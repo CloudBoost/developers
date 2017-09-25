@@ -21,5 +21,5 @@ if(__isDevelopment){
 	dashboardURL = "https://cloudboost.io/dashboard/";
 	signUpURL="https://cloudboost.io/accounts/signup";	
 	loginURL="https://cloudboost.io/accounts/";
-	thisURL="https://cloudboost.io/tutorials/";
+	thisURL="https://tutorials.cloudboost.io/";
 }
