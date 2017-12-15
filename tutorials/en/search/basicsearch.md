@@ -171,7 +171,7 @@ var query = new CB.CloudQuery('Table');
 query.search("tree -birds");
 query.find({
     success : function(list){
-      // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+      // returns CloudObjects of fields having keyword "tree"  but not "birds"  
     }, error : function(error){
      //Error                         
     }
@@ -186,7 +186,7 @@ var query = new CB.CloudQuery('Table');
 query.search("tree -birds");
 query.find({
     success : function(list){
-      // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+      // returns CloudObjects of fields having keyword "tree"  but not "birds"  
     }, error : function(error){
      //Error                         
     }
@@ -202,7 +202,7 @@ query.search("tree -birds")
 query.find({ resp in
     if let results = resp.object as? [CloudObject] {
         print(results)
-        // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+        // returns CloudObjects of fields having keyword "tree"  but not "birds"  
     }else{
         resp.log()
     }
