@@ -120,7 +120,7 @@ var query = new CB.CloudQuery('Table');
 query.search("tree -birds");
 query.find({
     success : function(list){
-      // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+      // returns CloudObjects of fields having keyword "tree"  but not "birds"  
     }, error : function(error){
      //Error                         
     }
@@ -135,13 +135,14 @@ var query = new CB.CloudQuery('Table');
 query.search("tree -birds");
 query.find({
     success : function(list){
-      // returns CloudObjects of fields having keyword "tree"  but not "flowers"  
+      // returns CloudObjects of fields having keyword "tree"  but not "birds"  
     }, error : function(error){
      //Error                         
     }
 });
 ```
 </span>
+
 
 # Case-sensitive Search
 A boolean flag to enable or disable case sensitive search. To enable case sensitive, pass true as a third parameter
