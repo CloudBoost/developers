@@ -32,44 +32,6 @@ if (fileUploadControl.files.length > 0) {
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="setfile">
-```
-CloudFile file = new CloudFile("abc.txt", "Hello World", "txt");
-file.save(new CloudStringCallback(){
-@Override
-public void done(CloudFile x, CloudException e) throws CloudException {
-	if(e != null)
-		//error
-	if(x!=null)		
-		System.out.println(x);
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="setfile">
-```
-// yourData is an NSData object
-let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
-file.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="setfile">
-```
-byte[] data = System.Text.Encoding.UTF8.GetBytes(".net cloudfile testing!");
-string name = "sample.txt";
-string type = "txt";
-var file = new CB.CloudFile(data, name, type);
-var rsponse = await file.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="setfile">
 ```
@@ -142,51 +104,6 @@ file.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="setblob">
-```
-Blob blob;//create blob in any of numerous ways
-CloudFile file = new CloudFile(blob);
-file.save(new CloudStringCallback(){
-	@Override
-	public void done(CloudFile x, CloudException e) throws CloudException {
-		if(e != null)
-			//error
-		if(x!=null)
-			System.out.println(x);
-		}
-	},
-	new FileUploadProgress(){
-	@Override
-	public void setProgress(int percent){
-		//percentage
-		}
-	}
-);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="setblob">
-```
-// start with converting your data into NSData
-let strData = "This is the content of by document blob"
-// using UTF8 conversion
-let data = strData.dataUsingEncoding(NSUTF8StringEncoding)
-let file = CloudFile(name: "fileName", data: data, contentType: "text/html")
-file.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="setblob">
-```
-//
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="setblob">
 ```
@@ -218,46 +135,6 @@ obj.save({
     	//upload progress.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="savefile">
-```
-CloudObject obj=new CloudObject('Custom');
-CloudFile file = new CloudFile(documentFile);
-obj.set('file',file);
-obj.save(obj,new CloudObjectCallback() {
-@Override
-public void done(CloudObject x,CloudException t)throws CloudException {
-	if(t!=null)
-		// if there is an error
-	else if(x!=null)
-		//x has File Object
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="savefile">
-```
-// yourData is an NSData object
-let file = CloudFile(name: "aTag", data: yourData, contentType: "text/html")
-file.save({ response in
-    let obj = CloudObject(tableName: "Student")
-    obj.set("file", value: file)
-    obj.save({ response in
-        response.log()
-    })
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="savefile">
-```
-//
 ```
 </span>
 
@@ -358,29 +235,6 @@ console.log(file.id);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewid">
-```
-//Id is null when you create the file but gets assigned to an file as soon as you save it.
-System.out.print(file.getId());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewid">
-```
-print(file.getId())
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewid">
-```
-//Id is null when you create the file but gets assigned to an file as soon as you save it.
-file.ID
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewid">
 ```
@@ -403,29 +257,6 @@ console.log(file.url);
 ```
 //Url is null when you create the file but gets assigned to an file as soon as you save it.
 console.log(file.url);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="viewurl">
-```
-//Url is null when you create the file but gets assigned to an file as soon as you save it.
-System.out.print(file.getFileUrl());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewurl">
-```
-print(file.getFileUrl())
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewurl">
-```
-//Url is null when you create the file but gets assigned to an file as soon as you save it.
-file.Url;
 ```
 </span>
 
@@ -454,28 +285,6 @@ console.log(file.name);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewname">
-```
-file.setFileName("name","abc.txt");
-System.out.print(file.getFileName());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewname">
-```
-print(file.getFileName())
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewname">
-```
-file.Name
-```
-</span>
-
 ==curl==
 <span class="curl-lines" data-query="viewname">
 ```
@@ -499,28 +308,6 @@ file.expires;
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewexpires">
-```
-file.getExpires();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewexpires">
-```
-// returns a NSDate object
-print(file.getExpires())
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewexpires">
-```
-file.Expires;
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewexpires">
 ```
@@ -539,27 +326,6 @@ file.ACL;
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="viewacl">
-```
-file.ACL;
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="viewacl">
-```
-file.getACL();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewacl">
-```
-file.getACL()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewacl">
 ```
 file.ACL;
 ```
@@ -599,38 +365,6 @@ file.delete({
       //error in deleting File
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="deletefile">
-```
-file.delete(new CloudStringCallback() {
-@Override
-public void done(String x,CloudException t) throws CloudException {
-	if(t!=null)
-		// if there is an error
-	else if(x!=null)
-		//x is File URL
-	}									
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="deletefile">
-```
-// throws if fileObj is not saved
-try! fileObj.delete({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="deletefile">
-```
-await file.DeleteAsync();
 ```
 </span>
 
@@ -676,42 +410,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="includefile">
-```
-CloudQuery query = new CloudQuery("Custom");
-query.include("file"); //this will include the file in CloudObjects
-query.find(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject obj, CloudException t)throws CloudException {
-		if(t != null)								
-			//obj contains file object.
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="includefile">
-```
-let query = CloudQuery(tableName: "Student")
-query.include("file")
-// throws if the app is not initialized with AppID and AppKey
-try! query.find({response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="includefile">
-```
-var query = new CB.CloudQuery("Custom");
-query.Include("file"); //this will include the file in CloudObjects
-var result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="includefile">
 ```
@@ -749,42 +447,6 @@ file.fetch({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="fetchfile">
-```
-x1.fetch(new CloudFileArrayCallback() {
-@Override
-public void done(CloudFile[] x, CloudException t)
-    throws CloudException {
-	    if (t != null) {
-	    	//exception
-	    }
-	    if(x!=null){
-	    	//file
-	    }
-    }
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="fetchfile">
-```
-let file = CloudFile(id: "stored-file-id")
-file.fetch({ res in
-    if res.success {
-       print(file.getFileName())
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="fetchfile">
-```
-await file.FetchAsync();
-```
-</span>
 
 #Fetch file contents
 
@@ -800,47 +462,6 @@ file.getFileContent({
       //error in getting File Contents
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="fetchfilecontent">
-```
-file.getFileContent(new ObjectCallback() {
-@Override
-public void done(Object x, CloudException t)
-  throws CloudException {
-    if (t != null) {
-    	//exception
-    }
-    if(x!=null){
-    	//file
-    }
-  }
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="fetchfilecontent">
-```
-CloudFile.getFileFromUrl(NSURL(string: url)!, callback: { response in
-    if response.success {
-        // getting the data
-        if let data = response.object as? NSData {
-            // parsing into string (if the original data was string as well)
-            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
-            print(content)
-        }
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="fetchfilecontent">
-```
-var result = await file.GetFileContentAsync();
 ```
 </span>
 

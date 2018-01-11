@@ -62,31 +62,6 @@ var CB = require('cloudboost');
 ```
 </span>
 
-<!-- ==Java==
-<span class="java-lines" data-query="link">
-```
-//Install CloudBoost from Maven :
-//http://mvnrepository.com/artifact/io.cloudboost
-import io.cloudboost.*;
-```
-</span> -->
-
-<!-- ==iOS==
-<span class="ios-lines" data-query="link">
-```
-// install pod, "pod CloudBoost"
-import CloudBoost
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="link">
-```
-//Nuget Package Manager
-Install-Package cloudboost
-```
-</span> -->
-
 ==cURL==
 <span class="curl-lines" data-query="link">
 ```

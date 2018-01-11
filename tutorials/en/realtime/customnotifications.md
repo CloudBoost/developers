@@ -40,38 +40,6 @@ CB.CloudNotification.on('ChannelName',function(data){
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="on">
-```
-CloudNotification.on("ChannelName",new CloudNotificationCallback(){
-		//data can be anything you publish to a channel. Can be a string, number, object etc.
-}});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="on">
-```
-CloudNotification.on("sample",  
-  handler: { data, ack in
-			// this is the handler that is called whenever a data is emmitted to the app's specified channel(here 'sample' is the channel name)
-  },
-  callback: { error in
-		// this is the callback after the handler has been registered for listening to the channel			
-  })
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="on">
-```
-CB.CloudNotification.On("sample", new Callback(action));
-void action(Object result){
-    //function to fire
-}
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="on">
 ```
@@ -97,28 +65,6 @@ CB.CloudNotification.publish('ChannelName','data');
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="publish">
-```
-CloudNotification.publish("ChannelName","data");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="publish">
-```
-// throws error if AppID/AppKey is not initialized
-try! CloudNotification.publish("sample", data: data)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="publish">
-```
-CB.CloudNotification.Publsh("sample", "data");
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="publish">
 ```
@@ -141,29 +87,6 @@ CB.CloudNotification.off('ChannelName');
 <span class="nodejs-lines" data-query="off">
 ```
 CB.CloudNotification.off('ChannelName');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="off">
-```
-CloudNotification.off("ChannelName");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="off">
-```
-CloudNotification.off("sample", callback: {error in
-	// callback
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="off">
-```
-CB.CloudNotification.Off("sample");
 ```
 </span>
 

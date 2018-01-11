@@ -40,44 +40,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="basic">
-```
-CloudQuery query = new CloudQuery("Student");
-query.equalTo("name","John");
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException t) {
-		if(x != null)
-			//x is an array of CloudObjects
-		if(t != null)
-			//process error
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="basic">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.equalTo("name", obj: "John")
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="basic">
-```
-var query = new CB.CloudQuery("Student");
-query.EqualTo("name","John");
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="basic">
 ```
@@ -127,44 +89,6 @@ query.find({
   error: function(error) {
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="notequal">
-```
-CloudQuery query = new CloudQuery("Student");
-query.notEqualTo("name","John");
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(x != null)
-			//x  is an array of CloudObjects
-		if(t != null)
-			//process the exception
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="notequal">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.notEqualTo("name", obj: "John")
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="notequal">
-```
-var query = new CB.CloudQuery("Student");
-query.NotEqualTo("name","John");
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -222,44 +146,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="greaterthan">
-```
-CloudQuery query = new CloudQuery("Student");
-query.greaterThan("age",15);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="greaterthan">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.greaterThan("age", obj: 15)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="greaterthan">
-```
-var query = new CB.CloudQuery("Student");
-query.GreaterThan("age", 25);
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="greaterthan">
 ```
@@ -311,44 +197,6 @@ query.find({
   error: function(error) {
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="lessthan">
-```
-CloudQuery query = new CloudQuery("Student");
-query.lessThan("age",15);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-			//error
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="lessthan">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.lessThan("age", obj: 15)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="lessthan">
-```
-var query = new CB.CloudQuery("Student");
-query.LessThan("age", 15);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -406,44 +254,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="greaterequal">
-```
-CloudQuery query = new CloudQuery("Student");
-query.greaterThanEqualTo("age",15);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-			//error
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="greaterequal">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.greaterThanEqualTo("age", obj: 15)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="greaterequal">
-```
-var query = new CB.CloudQuery("Student");
-query.GreaterThanEqualTo("age", 15);
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="greaterequal">
 ```
@@ -495,44 +305,6 @@ query.find({
   error: function(error) {
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="lessequal">
-```
-CloudQuery query = new CloudQuery("Student");
-query.lessThanEqualTo("age",15);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="lessequal">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.lessThanEqualTo("age", obj: 15)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="lessequal">
-```
-var query = new CB.CloudQuery("Student");
-query.LessThanEqualTo("age", 15);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -589,44 +361,6 @@ query.find({
   error: function(error) {
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="startwith">
-```
-CloudQuery query = new CloudQuery("Student");
-query.startsWith("name","J");
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//		
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="startwith">
-```
-let query = CloudQuery(tableName: "Student")
-query.startsWith("name", str: "Jo")
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="startswith">
-```
-var query = new CB.CloudQuery("Student");
-query.StartsWith("name","J");
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -696,45 +430,6 @@ query.find({
   error: function(error) {
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="Substring">
-```
-//
-CloudQuery query=new CloudQuery("data");
-query.subString("name", "on");
-//OR also works with an array.
-query.subString("name",new String[]{"on","in"});
-query.find(new CloudObjectArrayCallback() {
-	@Override
-	public void done(CloudObject[] x, CloudException t) throws CloudException {				
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="Substring">
-```
-let query = CloudQuery(tableName: "Student")
-query.substring("name", subStr: "oh")
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="Substring">
-```
-var query = new CB.CloudQuery("Student");
-var value = new ArrayList();
-value.Add("on");
-query.SubString("name", value);
-List<CB.CloudObject> list = await query.FindAsync();
 ```
 </span>
 
@@ -821,41 +516,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="regex">
-```
-//
-CloudQuery query=new CloudQuery("data");
-query.regex("name", "^/*.on*./");
-query.find(new CloudObjectArrayCallback() {
-	@Override
-	public void done(CloudObject[] x, CloudException t) throws CloudException {				
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="regex">
-```
-let query = CloudQuery(tableName: "Student")
-query.regex("name", exp: "^/*.on*./")
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="regex">
-```
-var query = new CB.CloudQuery("Student");
-query.RegEx("name", "^/*.on*./");
-List<CB.CloudObject> list = await query.FindAsync();
-```
-</span>
-
 ==curl==
 <span class="curl-lines" data-query="regex">
 ```
@@ -915,48 +575,6 @@ query.find({
     //Error in retrieving the data.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="containedin">
-```
-CloudQuery query = new CloudQuery("Student");
-//find Students who are in JavaScript OR C# course
-query.containedIn("courses", new String[]{"JavaScript", "C#"});
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//		
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="containedin">
-```
-let query = CloudQuery(tableName: "Student")
-query.containedIn("courses", obj: ["math","science"])
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="containedIn">
-```
-var query = new CB.CloudQuery("Student");
-var list = new ArrayList();
-list.Add("JavaScript");
-list.Add("C#");
-query.ContainedIn("courses", list);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -1020,48 +638,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="notcontained">
-```
-CloudQuery query = new CloudQuery("Student");
-//find Students who are in NOT in JavaScript AND C# course
-query.notContainedIn("courses", new String[]{"JavaScript", "C#"});
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//		
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="notcontained">
-```
-let query = CloudQuery(tableName: "Student")
-query.notContainedIn("courses", obj: ["math","science"])
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="notcontained">
-```
-var query = new CB.CloudQuery("Student");
-var list = new ArrayList();
-list.Add("JavaScript");
-list.Add("C#");
-query.NotContainedIn("courses", list);
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="notcontained">
 ```
@@ -1117,48 +693,6 @@ query.find({
     //Error in retrieving the data.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="containsall">
-```
-CloudQuery query = new CloudQuery("Student");
-//find Students who are in JavaScript AND C# course
-query.containsAll("courses", new String[]{"JavaScript", "C#"});
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//		
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="containsall">
-```
-let query = CloudQuery(tableName: "Student")
-query.containsAll("courses", obj: ["math","science"])
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="containsall">
-```
-var query = new CB.CloudQuery("Student");
-var list = new ArrayList();
-list.Add("JavaScript");
-list.Add("C#");
-query.ContainsAll("courses", list);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -1219,47 +753,6 @@ query.find({
     //Error in retrieving the data.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="and">
-```
-CloudQuery query = new CloudQuery("Student");
-query.equalTo("name", "John");
-query.greaterThan("age", 10);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="and">
-```
-let query = CloudQuery(tableName: "Student")
-query.equalTo("name", obj: "John")
-query.greaterThan("age", obj: 10)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="and">
-```
-var query = new CB.CloudQuery("Student");
-query.EqualTo("name", "John");
-query.GreaterThan("age", 10);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -1353,56 +846,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="or">
-```
-CloudQuery query1 = new CloudQuery("Student");
-query1.equalTo("name", "John");
-CloudQuery query2 = new CloudQuery("Student");
-query2.greaterThan("age", 10);
-CloudQuery query = CB.CloudQuery.or(query1,query2); //OR it.
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(list != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="or">
-```
-let query1 = CloudQuery(tableName: "Student")
-try! query1.equalTo("name", obj: "John")
-//
-let query2 = CloudQuery(tableName: "Student")
-try! query2.lessThan("marks", obj: 70)
-//
-let query = CloudQuery(tableName: "Student")
-try! query.or(query1, object2: query2)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="or">
-```
-var query1 = new CB.CloudQuery("Student");
-query1.EqualTo('name', 'John');
-var query2 = new CB.CloudQuery("Student");
-query2.GreaterThan('age', 10);
-var query = CB.CloudQuery.Or(query1,query2);
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="or">
 ```
@@ -1455,36 +898,6 @@ query.orderByDesc('name');
 query.orderByAsc('name');
 //You can also order by Desending
 query.orderByDesc('name');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="orderby">
-```
-//order by Ascending
-query.orderByAsc("name");
-//You can also order by Desending
-query.orderByDesc("name");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="orderby">
-```
-//sort by Ascending
-query.sortAscendingBy("name")
-//You can also sort by Desending
-query.sortDescendingBy("name")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="orderby">
-```
-//order by Ascending
-query.OrderByAsc("name");
-//You can also order by Desending
-query.OrderByDesc("name");
 ```
 </span>
 
@@ -1549,36 +962,6 @@ query.setSkip(10);
 query.setLimit(10);
 //skip
 query.setSkip(10);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="limitskip">
-```
-//limit
-query.limit(10);
-//skip
-query.skip(10);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="limitskip">
-```
-//limit
-query.setLimit(10)
-//skip
-query.setSkip(10)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="limitskip">
-```
-//limit
-query.Limit =10;
-//skip
-query.Skip = 10;
 ```
 </span>
 
@@ -1656,47 +1039,6 @@ query.paginate(2,10,{
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="paginate">
-```
-//paginate
-query.paginate(1, null, new PaginatorCallback() {
-	@Override
-	public void done(CloudObject[] objects, Integer count, Integer totalPages,
-		CloudException t) throws CloudException {
-			if(t!=null)
-      //
-			else
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="paginate">
-```
-let query1 = CloudQuery(tableName: "QueryPaginate")
-let pageNum = 2
-let totalItemsInPage = 10
-query1.paginate(pageNum, _totalItemsInPage: totalItemsInPage, callback: {
-    object, count, totalPages in
-    if object != nil && object?.count > totalItemsInPage {
-        print("received number of items are greater than the required value")
-    }else if Int(ceil(Double(count!)/Double(totalItemsInPage))) != totalPages {
-        print("totalpages is not recieved as expected")                        
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="paginate">
-```
-Dictinary<string, Object> result = query.Paginate(2, 10);
-//result contains three keys [objectLists, count, totalPages]
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="paginate">
 ```
@@ -1738,36 +1080,6 @@ query.doNotSelectColumn('age');
 query.selectColumn('name');
 //do not select
 query.doNotSelectColumn('age');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="selectcol">
-```
-//select
-query.selectColumn("name");
-//do not select
-query.doNotSelectColumn("age");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="selectcol">
-```
-//select
-query.selectColumn("name")
-//do not select
-query.doNotSelectColumn("age")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="selectcol">
-```
-//select
-query.SelectColumn("name");
-//do not select
-query.DoNotSelectColumn("age");
 ```
 </span>
 
@@ -1845,41 +1157,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="query">
-```
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t) {
-		if(x != null)
-			//list is an array of CloudObjects
-		if(t != null)
-		//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="query">
-```
-try! query.find({ response in
-    if response.success {
-      // successful search
-    }else{
-      // check what is wrong
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="query">
-```
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==curl==
 <span class="curl-lines" data-query="query">
 ```
@@ -1923,40 +1200,6 @@ query.findOne({
       //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="findone">
-```
-query.findOne(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null)
-			//x is a CloudObject
-		if(t != null)
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="findone">
-```
-try! query.findOne({ response in
-    if response.success {
-      // successful search
-    }else{
-      // check what is wrong
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="findone">
-```
-CB.CloudObject result = await query.FindOne();
 ```
 </span>
 
@@ -2005,41 +1248,6 @@ query.findById('id', {
       //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="findid">
-```
-query.findById("id", new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject obj, CloudException t) {
-		if(x != null)
-			 //obj is CloudObject
-		if(t != null)
-		//		
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="findid">
-```
-try! query.findById("id", callback: { response in
-    if response.success {
-      // successful search
-    }else{
-      // check what is wrong
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="findid">
-```
-CB.CloudObject result = await query.GET("id");
 ```
 </span>
 
@@ -2120,37 +1328,6 @@ query.count({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="count">
-```
-query.count(new CloudIntegerCallback(){
-@Override
-public void done(int x, CloudException t) {
-	if(x != null)
-	//			
-	if(t != null)
-	//			
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="count">
-```
-query.count({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="count">
-```
-int result = await query.Count();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="count">
 ```
@@ -2199,37 +1376,6 @@ query.distinct('age',{
       //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="distinct">
-```
-query.distinct("age",new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t)throws CloudException {
-		if(t != null)
-		//			
-		if(list!=null)
-		//				
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="distinct">
-```
-query.distinct("age", callback: { response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="distinct">
-```
-List<CB.CloudObject> result = await query.Distict("columnName");
 ```
 </span>
 
@@ -2298,42 +1444,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="simplejoin">
-```
-CloudQuery query = new CloudQuery("Student");
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t)throws CloudException {
-		if(t != null)
-		//				
-		if(list.length > 0)
-		//					
-	}			
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="simplejoin">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.find({ res in
-    if let list = res.object as? [NSMutableDictionary] {
-        let  obj = list[0]
-        let name = obj.get("name")
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="simplejoin">
-```
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="simplejoin">
 ```
@@ -2392,50 +1502,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="include">
-```
-CloudQuery query = new CloudQuery("Student");
-query.include("course");
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t)throws CloudException {
-		if(t != null)
-		//			
-		if(list.length > 0){
-			CloudObject obj=list[0];
-			JSONObject course=obj.get('course');
-			String courseName=course.get('name');// you will get the related object and all the data
-		}				
-	}			
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="include">
-```
-let query = CloudQuery(tableName: "Student")
-query.include("course")
-try! query.find({ res in
-    if let list = res.object as? [NSMutableDictionary] {
-        let  obj = list[0]
-        if let course = obj.get("course") as? NSMutableDictionary {
-            let courseName = courses.get("name")
-        }
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="include">
-```
-query.Include("course");
-List<CB.CloudObject> result = await query.Find();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="include">
 ```
@@ -2471,28 +1537,6 @@ query.include('course.teacher');
 <span class="nodejs-lines" data-query="multijoin">
 ```
 query.include('course.teacher');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="multijoin">
-```
-query.include("course.teacher");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="multijoin">
-```
-query.include("course.teacher")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="multijoin">
-```
-query.Include("course.teacher");
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -2551,52 +1595,6 @@ query.find({
       //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="near">
-```
-CloudGeoPoint loc = new CloudGeoPoint(17.7,80.3);
-CloudQuery query = new CloudQuery("Custom");
-//third parameter is the radius to check in meters.
-query.near("location", loc, 100000);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t)throws CloudException {
-		if(t != null)
-		//				
-		if(list.length > 0)
-		//					
-	}			
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="near">
-```
-let geoPoint = try! CloudGeoPoint(latitude: 17, longitude: 80)
-let query = CloudQuery(tableName: "Student")
-query.near("location", geoPoint: geoPoint, maxDistance: 10000, minDistance: 10)
-try! query.find({ res in
-    if let list = res.object as? [NSMutableDictionary] {
-        if list.count > 0 {
-          // near point exists                  
-        }
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="near">
-```
-var loc = new CB.CloudGeoPoint(17.7,80.3);
-var query = new CB.CloudQuery("Custom");
-//third parameter is the radius to check in meters.
-query.Near("location", loc, 100000);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 
@@ -2662,59 +1660,6 @@ query.find({
       //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="geowithin">
-```
-CloudGeoPoint loc1 = new CloudGeoPoint(18.4,78.9);
-CloudGeoPoint loc2 = new CloudGeoPoint(17.4,78.4);
-CloudGeoPoint loc3 = new CloudGeoPoint(17.7,80.4);
-//
-CloudQuery query = new CloudQuery('Sample');
-//
-query.geoWithin("location", [loc1, loc2, loc3]);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] list, CloudException t)throws CloudException {
-		if(t != null)
-		//			
-		if(list.length > 0)
-		// list is an array of CloudObjects.
-	}						
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="geowithin">
-```
-let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
-let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
-let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
-let query = CloudQuery(tableName: "Custom")
-query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
-try! query.find({ response in
-  if let list = res.object as? [NSMutableDictionary] {
-      if list.count > 0 {
-        // near point exists                  
-      }
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="geowithin">
-```
-var loc1 = new CloudGeoPoint(18.4,78.9);
-var loc2 = new CloudGeoPoint(17.4,78.4);
-var loc3 = new CloudGeoPoint(17.7,80.4);
-var query = new CB.CloudQuery("Custom");
-//third parameter is the radius to check in meters.
-query.Near("location", loc, 100000);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 

@@ -20,27 +20,6 @@ var obj = new CB.CloudObject('TableName');
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudObject obj = new CloudObject("TableName");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let obj = CloudObject(tableName: "TableName")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var obj = new CB.CloudObject("TableName");
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="create">
 ```
@@ -61,27 +40,6 @@ obj.set('ColumnName',data);
 <span class="nodejs-lines" data-query="set">
 ```
 obj.set('ColumnName',data);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="set">
-```
-obj.set('ColumnName',data);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="set">
-```
-obj.set("ColumnName", value: data)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="set">
-```
-obj.Set("ColumnName",data);
 ```
 </span>
 
@@ -123,43 +81,6 @@ obj.save({
         //object failed to save.  
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="save">
-```
-CloudObject obj = new CloudObject('TableName');
-obj.set('ColumnName', data);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException e){
-		if(e != null)
-			//error
-		if(x!=null)
-			//cloudObject
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="save">
-```
-let obj = CloudObject(tableName: "TableName")
-obj.set("ColumnName", value: data)
-obj.save({ response in
-  response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="save">
-```
-var obj = new CB.CloudObject("TableName");
-obj.Set("ColumnName", data);
-await obj.SaveAsync();
 ```
 </span>
 
@@ -261,30 +182,6 @@ console.log(obj.id);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewid">
-```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it.
-System.out.print(obj.getId());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewid">
-```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it.
-obj.getId()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewid">
-```
-//Id is null when you create the object but gets assigned to an Object as soon as you save it.
-obj.ID
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewid">
 ```
@@ -305,27 +202,6 @@ obj.createdAt;
 <span class="nodejs-lines" data-query="viewcreateat">
 ```
 obj.createdAt;
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="viewcreateat">
-```
-obj.getCreatedAt();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewcreateat">
-```
-obj.getCreatedAt()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewcreateat">
-```
-obj.CreatedAt
 ```
 </span>
 
@@ -352,27 +228,6 @@ obj.updatedAt;
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewupdateat">
-```
-obj.getUpdatedAt();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewupdateat">
-```
-obj.getUpdatedAt()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewupateat">
-```
-obj.UpdatedAt
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewupdateat">
 ```
@@ -396,27 +251,6 @@ obj.expires;
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewexpires">
-```
-obj.getExpires();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewexpires">
-```
-obj.getExpires()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewexpires">
-```
-obj.Expires;
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewexpires">
 ```
@@ -435,27 +269,6 @@ obj.ACL;
 
 ==NodeJS==
 <span class="nodejs-lines" data-query="viewacl">
-```
-obj.ACL;
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="viewacl">
-```
-obj.getACL();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewacl">
-```
-obj.getAcl()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewacl">
 ```
 obj.ACL;
 ```
@@ -497,46 +310,6 @@ obj.save({
         //object failed to save.  
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="update">
-```
-obj.set("ColumnName", newData);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-			//
-		}
-		if(t != null){
-			//"Failed to save data"
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="update">
-```
-obj.set("dob", value: "yesterday")
-obj.save({ resp in
-   if(resp.success){
-       // successfully saved, 'obj' now contains the newly saved data with ID
-   }else{
-      // failed
-   }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="update">
-```
-obj.Set("ColumnName", newData);
-await obj.SaveAsync();
 ```
 </span>
 
@@ -609,44 +382,6 @@ obj.fetch({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="fetch">
-```
-obj.fetch(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-			//
-		}
-		if(t != null){
-			//"Failed to fetch data"
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="fetch">
-```
-obj.set("dob", value: "yesterday")
-obj.save({ resp in
-   if(resp.success){
-       // successfully saved, 'obj' now contains the newly saved data with ID
-   }else{
-      // failed
-   }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="fetch">
-```
-await obj.FetchAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="fetch">
 ```
@@ -692,44 +427,6 @@ obj.delete({
     },error : function(error){
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="delete">
-```
-obj.delete(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-			//
-		}
-		if(t != null){
-			//
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="delete">
-```
-obj.delete({ resp in
-   // obj must have an ID
-   if(resp.success){
-       // successfully deleted
-   }else{
-      // failed
-   }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="delete">
-```
-await obj.DeleteAsync();
 ```
 </span>
 
