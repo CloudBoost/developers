@@ -35,53 +35,6 @@ user.signUp({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="signup">
-```
-CloudUser obj = new CloudUser();
-obj.setUserName(username);
-obj.setPassword(passwd);
-obj.setEmail("hello@abc.com");
-obj.signUp(new CloudUserCallback(){
-	@Override
-	public void done(CloudUser object, CloudException e)	throws CloudException {
-		if(e != null){
-		}
-		if(object != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="signup">
-```
-let user = CloudUser(username: "username", password: "password")
-user.setEmail("email@domain.com")
-do{
-    try user.signup({ response in
-      if response.success {
-        // user signed up
-      }
-    })
-} catch {
-    print("Could not catch!")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="signup">
-```
-var user = new CB.CloudUser();
-user.Set("username", "my_username");
-user.Set("password", "my_solid_password");
-user.Set("email", "email@sample.com");
-await user.SignUp();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="signup">
 ```
@@ -153,27 +106,6 @@ console.log(user.username);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewusername">
-```
-System.out.print(user.getUsername());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewusername">
-```
-print(user.getUsername())
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewusername">
-```
-user.Username;
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewusername">
 ```
@@ -197,27 +129,6 @@ console.log(user.password);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewpass">
-```
-System.out.print(user.getPassword());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewpass">
-```
-user.getPassword()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewpass">
-```
-user.Password
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewpass">
 ```
@@ -238,27 +149,6 @@ console.log(user.email);
 <span class="nodejs-lines" data-query="viewemail">
 ```
 console.log(user.email);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="viewemail">
-```
-System.out.print(user.getEmail());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewemail">
-```
-user.getEmail()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewemail">
-```
-user.Email
 ```
 </span>
 
@@ -304,52 +194,6 @@ user.logIn({
     //Error.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="login">
-```
-CloudUser user = new CloudUser();
-user.setUserName(username);
-user.setPassword(passwd);
-user.logIn(new CloudUserCallback(){
-	@Override
-	public void done(CloudUser object, CloudException e)throws CloudException {
-		if(e != null){
-		}				
-		if(object != null){
-		//			
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="login">
-```
-let user = CloudUser(username: "username", password: "password")
-user.setEmail("email@domain.com")
-do{
-    try user.login({ response in
-      if response.success {
-        // user signed up
-      }
-    })
-} catch {
-    print("Could not catch!")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="login">
-```
-var user = new CB.CloudUser();
-user.Set("username", "my_username");
-user.Set("password", "my_solid_password");
-await user.LogIn();
 ```
 </span>
 
@@ -411,28 +255,6 @@ CB.CloudUser.current
 <span class="nodejs-lines" data-query="viewcurrent">
 ```
 CB.CloudUser.current
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="viewcurrent">
-```
-CloudUser.getCurrentUser();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewcurrent">
-```
-// returns a CloudUser object
-let user = CloudUser.getCurrentUser()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewcurrent">
-```
-CB.CloudUser.Current
 ```
 </span>
 
@@ -543,36 +365,6 @@ CB.CloudUser.current.logOut({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="logout">
-```
-CloudUser.getcurrentUser().logOut(new CloudUserCallback(){
-	@Override
-	public void done(CloudUser x, CloudException t)	throws CloudException {
-	//					
-	}		
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="logout">
-```
-try! user.logout({ response in
-  if response.success {
-    // successfully logged out
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="logout">
-```
-CB.CloudUSer.Current.Logout
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="logout">
 ```
@@ -641,40 +433,6 @@ CB.CloudUser.current.changePassword('oldPassword','newPassword',{
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="chagepassword">
-```
-CloudUser.getCurrentUser().changePassword("oldPassword","newPassword",
-	new CloudUserCallback(){
-	@Override
-	public void done(CloudUser user,CloudException e){
-		if(user!=null)
-			//user
-		if(e!=null)
-			//e
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="chagepassword">
-```
-user.changePassword("abcdef", newPassword: "qwerty", callback: { response in
-  if response.success {
-    // successfully changed password
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="chagepassword">
-```
-await CloudUser.Current.ChangePassword("oldPassword","newPassword");
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="chagepassword">
 ```
@@ -717,43 +475,6 @@ CB.CloudUser.resetPassword('email',{
     //error.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="resetpassword">
-```
-CloudUser.resetPassword("email",new CloudStringCallback(){
-	@Override
-	public void done(String msg,CloudException e){
-		if(msg!=null)
-			//reset password email sent
-		if(e!=null)
-			//e
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="resetpassword">
-```
-CloudUser.resetPassword("randhirsingh051@gmail.com", callback: { response in
-  if response.success {
-    // reset password email sent
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="resetpassword">
-```
-var err = await CloudUser.CurrentUser.ResetPassword("email");
-if(err == null)
-{
-    //password changed
-}
 ```
 </span>
 

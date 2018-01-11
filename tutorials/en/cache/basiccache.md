@@ -39,43 +39,6 @@ var cache = new CB.CloudCache('CacheName');
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudCache cache = new CloudCache("CacheName");
-cache.create(new CloudCacheCallback() {
- @Override
- public void done(CloudCache x, CloudException t) throws CloudException {
-	if(t!=null)
-		//
-	else if(x!=null){
-		//
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-// Throws an error when cacheName is invalid
-let cache = try! CloudCache(cacheName: "newCache")
-// Throws an error when AppID/AppKey is nil
-try! cache.create({ response in
-    response.log()    
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var cache = new CB.CloudCache("CacheName");
-var response = await cache.CreateAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="create">
 ```
@@ -121,50 +84,6 @@ cache.set('sample',item, {
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="put">
-```
-CloudCache cache = new CloudCache("student");
-cache.set("test1", "sample", new ObjectCallback() {
-@Override
-public void done(Object x, CloudException e) throws CloudException {
-	if (e != null)
-	//
-	else {
-	//
-	}
-}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="put">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")
-  let obj = ["name":"Randhir", "marks": 34]
-  try cache.set("sample", value: obj, callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="put">
-```
-var cache = new CB.CloudCache("CacheName");
-var list = new Dictionary<string, Object>();
-list.Add("name", "John Doe");
-list.Add("sex", "MALE");
-list.Add("age", 24);
-var result = await cache.SetAsync("sample", data);
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="put">
 ```
@@ -207,45 +126,6 @@ cache.get('sample',{
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="get">
-```
-CloudCache cache = new CloudCache("student");
-cache.get("test1", new ObjectCallback() {
-@Override
-public void done(Object o, CloudException t)
-	throws CloudException {
-	if (t != null)
-		//
-	else {
-		//
-	}
-}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="get">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.get("sample", callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="get">
-```
-response = await cache.GetAsync("sample");
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="get">
 ```
@@ -282,42 +162,6 @@ cache.deleteItem('sample',{
         console.log(error);
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="delete">
-```
-cache.deleteItem("test1", new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t)
-		throws CloudException {
-		if (t != null)
-			//
-		else
-		   //
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="delete">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.deleteItem("sample", callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="delete">
-```
-await cache.DeleteItemAsync("sample");
 ```
 </span>
 
@@ -366,43 +210,6 @@ cache.getAll({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getall">
-```
-cache.getAllItems(new ObjectCallback() {
-	@Override
-	public void done(Object o,	CloudException t)throws CloudException {
-		if (t != null)
-			//
-		else {
-			//items is an array of all the items stored in that cache instance..
-			}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getall">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.getAllItems(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getall">
-```
-var response = await cache.GetAllAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getall">
 ```
@@ -443,42 +250,6 @@ cache.getItemsCount({
         console.log(error);
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="getitemscount">
-```
-cache.getItemsCount(new CloudIntegerCallback() {
-	@Override
-	public void done(Integer x, CloudException t) throws CloudException {
-		if(t!=null)
-			//
-		if(x!=null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getitemscount">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.getItemsCount(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getitemscount">
-```
-int count = await cache.GetItemsCountAsync();
 ```
 </span>
 
@@ -527,42 +298,6 @@ cache.getInfo({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getinfo">
-```
-cache.getInfo(new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t) throws CloudException {
-		if(x!=null)
-			//
-		if(t!=null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getinfo">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.getInfo(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getinfo">
-```
-await cache.GetInfoAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getinfo">
 ```
@@ -607,42 +342,6 @@ cache.clear({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="clear">
-```
-cache.clear(new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t) throws CloudException {
-		if(t!=null)
-			//
-		if(x!=null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="clear">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.clear(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="clear">
-```
-await cache.ClearAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="clear">
 ```
@@ -684,42 +383,6 @@ cache.delete({
         console.log(error);
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="deletecache">
-```
-cache.delete(new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t) throws CloudException {
-		if(x!=null)
-			//
-		if(t!=null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="deletecache">
-```
-do {
-  let cache = try CloudCache(cacheName: "newCache")  
-  try cache.delete(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="deletecache">
-```
-await cache.DeleteAsync();
 ```
 </span>
 
@@ -768,41 +431,6 @@ CB.CloudCache.getAll({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getallappcache">
-```
-CloudCache.getAllCache(new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t) throws CloudException {
-	if (t != null)
-		//
-	if(x!=null)
-		//array
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getallappcache">
-```
-do {  
-  CloudCache.getAllCache(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getallappcache">
-```
-List<CB.CloudCache> list = await CB.CloudCache.GetAllAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getallappcache">
 ```
@@ -845,41 +473,6 @@ CB.CloudCache.deleteAll({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="deleteallappcache">
-```
-CloudCache.deleteAll(new ObjectCallback() {
-	@Override
-	public void done(Object x, CloudException t) throws CloudException {
-		if(x!=null)
-			//
-		if(t!=null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="deleteallappcache">
-```
-do {  
-  CloudCache.deleteAll(callback: { response in
-    response.log()
-  }
-}catch{
-  print("AppID/AppKey not set")
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="deleteallappcache">
-```
-List<CB.CloudCache> list = await CB.CloudCache.DeleteAllAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="deleteallappcache">
 ```
@@ -910,30 +503,6 @@ var cacheName = cache.name;
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="name">
-```
-CloudCache cache = new CloudCache('sample');
-String cacheName = cache.getCacheName();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="name">
-```
-let cache = try! CloudCache(cacheName: "newCache")
-let name = cache.getCacheName()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="name">
-```
-var cache = new CB.CloudCache("sample");
-var cacheName = cache.Name;
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="name">
 ```
@@ -960,30 +529,6 @@ var cacheSize = cache.size;
 ```
 var cache = new CB.CloudCache('sample');
 var cacheSize = cache.size;
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="size">
-```
-CloudCache cache = new CloudCache('sample');
-int size = cache.getSize();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="size">
-```
-let cache = try! CloudCache(cacheName: "newCache")
-let size = cache.getCacheSize()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="size">
-```
-var cache = new CB.CloudCache("sample");
-var cacheSize = cache.Size;
 ```
 </span>
 

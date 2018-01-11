@@ -50,40 +50,6 @@ role.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudRole role = new CloudRole("Student");
-role.save(new CloudRoleCallback(){
-  @Override
-  public void done(CloudRole roleObj, CloudException e)throws CloudException {
-    if(e != null){
-    }
-    if(roleObj == null){
-    }
-  }
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let role = CloudRole(roleName: "Student")
-role.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var role = new CB.CloudRole("Student");
-await role.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="create">
 ```
@@ -151,27 +117,6 @@ console.log(role.name);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="viewname">
-```
-System.out.print(role.getName());
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="viewname">
-```
-role.getName()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="viewname">
-```
-role.Name
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="viewname">
 ```
@@ -210,37 +155,6 @@ user.addToRole(role, {
     //Error occured in adding to role.
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="add">
-```
-//user is an instance of CloudUser and role is an instance of CloudRole
-user.addToRole(null, new CloudUserCallback() {
-	@Override
-	public void done(CloudUser user, CloudException e) throws CloudException {
-	//				
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="add">
-```
-user.addToRole(role, callback: { response in
-  if response.success {
-    // user added to role
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="add">
-```
-await user.AddToRole(role);
 ```
 </span>
 
@@ -336,27 +250,6 @@ var isInRole = user.isInRole(role);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="check">
-```
-boolean isInRole = user.isInRole(role);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="check">
-```
-let isInRole = user.isInRole(role)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="check">
-```
-var isInRole = user.IsInRole(role);
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="check">
 ```
@@ -381,29 +274,6 @@ var roles = user.get('roles');
 ```
 //roles is an array of CloudRole
 var roles = user.get('roles');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="get">
-```
-String[] roles=user.getRoles();
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="get">
-```
-//roles is an array of CloudRole
-let roles = user.getRoles();
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="get">
-```
-//roles is an array of CloudRole
-List<CB.CloudRole> roles = user.Get("roles");
 ```
 </span>
 
@@ -443,37 +313,6 @@ user.removeFromRole(role, {
     //erorr if something goes wrong
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="remove">
-```
-user.removeFromRole(null, new CloudUserCallback() {     
-  @Override
-  public void done(CloudUser user, CloudException e) throws CloudException {      
-    //    
-  }
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="remove">
-```
-user.removeFromRole(role, callback: { response in
-    if response.success {
-      // user removed from role
-    }
-}
-```
-</span>
-
-==.NET==
-<span class="nodejs-lines" data-query="remove">
-```
-//role is a CB.CloudRole object type
-await user.RemoveFromRole(role);
 ```
 </span>
 

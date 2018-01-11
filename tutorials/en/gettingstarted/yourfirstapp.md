@@ -62,31 +62,6 @@ var CB = require('cloudboost');
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="link">
-```
-//Install CloudBoost from Maven :
-//http://mvnrepository.com/artifact/io.cloudboost
-import io.cloudboost.*;
-```
-</span>
-
-==iOS==
-<span class="ios-lines" data-query="link">
-```
-// install pod, "pod CloudBoost"
-import CloudBoost
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="link">
-```
-//Nuget Package Manager
-Install-Package cloudboost
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="link">
 ```
@@ -125,27 +100,6 @@ CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
 <span class="nodejs-lines" data-query="init">
 ```
 CB.CloudApp.init('YOUR APP ID', 'YOUR APP KEY');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="init">
-```
-CloudApp.init("YOUR APP ID", "YOUR APP KEY");
-```
-</span>
-
-==iOS==
-<span class="ios-lines" data-query="init">
-```
-let app = CloudApp.init(appID: "YOUR APP ID", appKey: "YOUR APP KEY")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="init">
-```
-CB.CloudApp.Init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
 
@@ -189,45 +143,6 @@ obj.save({
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="save">
-```
-CloudObject obj = new CloudObject("TableName");
-obj.set("ColumnName", data);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==iOS==
-<span class="ios-lines" data-query="save">
-```
-let obj = CloudObject(tableName: "TableName")
-obj.set("ColumnName", value: data)
-obj.save({ resp in
-    if(resp.success){
-      // successfully saved
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="save">
-```
-var obj = new CB.CloudObject("TableName");
-obj.Set("ColumnName", data);
-CB.CloudObject savedObj = await obj.SaveAsync();
 ```
 </span>
 
@@ -308,46 +223,6 @@ query.find({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="query">
-```
-CloudQuery query = new CloudQuery("TableName");
-query.equalTo("ColumnName", data);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException t) {
-		if(x != null){
-			//objects
-		}
-		if(t != null){
-			//any errors
-		}
-	}
-});
-```
-</span>
-
-==iOS==
-<span class="ios-lines" data-query="query">
-```
-let query = CloudQuery(tableName: "TableName")
-// throws error if the "obj: data" passed is not an acceptable value
-try! query.equalTo("ColumnName", obj: data)
-//
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="query">
-```
-var query = new CB.CloudQuery("TableName");
-query.EqualTo("ColumnName", data);
-List<CB.CloudObject> list = await query.Find();
-```
-</span>
 
 ==cURL==
 <span class="curl-lines" data-query="query">
