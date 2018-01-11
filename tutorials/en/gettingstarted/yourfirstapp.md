@@ -1,45 +1,55 @@
 #####In this section
 
-In this section you'll learn how to create your new App (we call it [CloudApp]( https://docs.cloudboost.io/#CloudApp)) and create your first Table ([CloudTable]( https://docs.cloudboost.io/#CloudTable)).  You'll learn to add CloudBoost SDK to your project, save simple objects ([CloudObjects]( https://docs.cloudboost.io/#CloudObject)) in the table and query it with a simple query ([CloudQuery]( https://docs.cloudboost.io/#CloudQuery)).
+In this section, you will learn how to add the CloudBoost SDK to your project and how to:
+
+* Create a new app ([CloudApp](https://docs.cloudboost.io/#CloudApp))
+* Create a new table ([CloudTable](https://docs.cloudboost.io/#CloudTable))
+* Save simple objects ([CloudObjects](https://docs.cloudboost.io/#CloudObject)) in tables
+* Query tables with [CloudQueries](https://docs.cloudboost.io/#CloudQuery)
 
 #Create your first App
 
-If you haven't signed up for [CloudBoost](https://www.cloudboost.io) yet, this is the right time for you to create your new account and get started. CloudBoost gives you a ton of free tier (check [Pricing](https://www.cloudboost.io/pricing)) so you can build your apps and launch it for free. Once you have signed up, you will then be able to create a new app by entering <span class="tut-snippet">App Name</span>.
+If you have not already done so, create a [CloudBoost](https://www.cloudboost.io) account. CloudBoost gives you a ton of [free tier features](https://www.cloudboost.io/pricing), so you can build and launch apps for free.
 
-<img class="center-img" alt="Create a new app" src="https://www.dropbox.com/s/paaqr85uma81d9i/app.png?raw=1">
+After signing up, create a new app by entering an <span class="tut-snippet">App Name</span>.
 
-![Your App Created](https://www.dropbox.com/s/kc6mu0eeuu9uuvh/sampleapp.png?raw=1)
+![Creating a new app](https://www.dropbox.com/s/paaqr85uma81d9i/app.png?raw=1)
 
-After you enter `App Name`, your new `CloudApp` is created. Next step : Create a new table to store your data.
+![Your created app](https://www.dropbox.com/s/kc6mu0eeuu9uuvh/sampleapp.png?raw=1)
 
 #Creating a new table
 
-To create a new table click on <span class="tut-snippet">Manage App</span>. Now you'll be redirected to tables screen. Click on <span class="tut-snippet">Add new table</span>.
+Click on <span class="tut-snippet">Manage App</span>. You will be redirected to the Tables screen. Click on <span class="tut-snippet">Add new table</span>.
 
-![Manage App Button](https://www.dropbox.com/s/no2gls6fjfd0r82/tables.png?raw=1)
+![Manage App button](https://www.dropbox.com/s/no2gls6fjfd0r82/tables.png?raw=1)
 
-![Add New Table](https://www.dropbox.com/s/haw8zhuhido1bu5/Capture-2.PNG?raw=1)
+![Add New Table button](https://www.dropbox.com/s/haw8zhuhido1bu5/Capture-2.PNG?raw=1)
 
-><span class="tut-info">Info</span> User, Role and Device tables are added by default to every app in CloudBoost. These tables cannot be deleted. It's okay not to use these tables if you don’t need them. We'll talk more about User,Role and Device tables later in the documentation. Basically, User and Roles are used to build Authentication and Devices are used for Push Notifications.
+><span class="tut-info">Info</span> User, Role and Device tables are added by default to every CloudApp. These tables cannot be deleted and can be used later to add Push Notification features.
 
 <p>&nbsp;</p>
-><span class="tut-info">Info</span> Table name cannot start with a number and cannot contain any special characters. Table name should be **unique**.
+><span class="tut-info">Info</span> Table names cannot start with a number, cannot contain any special characters, and must be **unique**.
 
-After you create a new table. Click on it which will take you to a Data Browser screen where you can create new columns.
+After creating a table, click on it. This will take you to the Data Browser screen where you can create new columns for the table.
 
 #Create Columns
 
-To create a new columns click on <span class="tut-snippet">+</span> button and then enter your column name with the data type. Also select <span class="tut-snippet">unique</span> if the data in the column is supposed to be unique for every object that is saved, and select <span class="tut-snippet">required</span> if you don’t want <span class="tut-snippet">null</span> values to be saved in that column.
+Click on the <span class="tut-snippet">+</span> button. Enter the new column's name and select its data type. Optionally:
+
+* Select <span class="tut-snippet">unique</span> to prevent more than one object from having the same value for this column in the table.
+* Select <span class="tut-snippet">required</span> to require the column to have a value before an object can be saved in the table. This prevents the value <span class="tut-snippet">null</span> being saved.
 
 <img class="full-length-img" alt="Your New Table" src="https://www.dropbox.com/s/tevwbxccjdohs70/datab.png?raw=1">
 
-><span class="tut-imp">Important:</span> Column names cannot start with a number and cannot contain any special characters. Column name should be unique.
+><span class="tut-imp">Important:</span>Column names cannot start with a number, cannot contain any special characters, and must be unique.
 
-After you create a new column. You can begin integrating CloudBoost with your app. In this example, we created a column called <span class="tut-snippet">name</span> which is of type <span class="tut-snippet">text</span>. (To check other out CloudBoost Data Types, Click [here]( ?lang=en&category=datastorage&subcategory=objects#Data-types).)
+After creating a column, you can begin integrating CloudBoost with your app. This example created a column called <span class="tut-snippet">name</span> of type <span class="tut-snippet">text</span>.
+
+Click [here]( ?lang=en&category=datastorage&subcategory=objects#Data-types) for info on other table data types.
 
 #Initialize your app
 
-Before you initialize your app, you need to import or link the CloudBoost SDK in your project.
+Before initializing your app, the CloudBoost SDK must be imported into or linked to the project.
 
 ==JavaScript==
 <span class="js-lines" data-query="link">
@@ -94,25 +104,25 @@ Install-Package cloudboost
 ```
 </span>
 
-Once you have imported CloudBoost SDK to your project. You need to initialize your new CloudApp.
+After integrating the CloudBoost SDK, the CloudApp must be initialized.
 
-To initialize your new CloudApp, You need to go back to your CloudBoost App Page, and then click on *App Keys*
+On the CloudBoost App page, click on *App Keys*.
 
 ![App Keys](https://www.dropbox.com/s/z257vq0ioby6w73/appkeys.png?raw=1)
 
 ![App ID, Master Key and Client Key](https://www.dropbox.com/s/59ypn35kiemi8zu/Capture-1.PNG?raw=1)
 
-You will see two **keys** : **Master Key** and **Client Key**
+You will see two **keys**.
 
-><span class="tut-info">Info</span> **Master Key** : Master key is the most important key and it is essential that you keep it **private** all the times. Master key will help you ignore all the security rules which CloudBoost sets for you by default. Please see Security for more information. Master Key will also help you to dynamically Create, Edit, Delete Tables and Columns from the SDK. We recommend you to **Never expose your master key in any of your clients, but ONLY use master key only on your server**
+##Master Key
 
-<p>&nbsp;</p>
-><span class="tut-info">Info</span> **Client Key** : Client key is the public key and can be used in your apps. Client key can be exposed to your apps, but you need to make sure you set the CloudBoost Security parameters. Check the section on Security to read about this more.  Client Key will respect all the Security Rules.
+This key is the most important key. It is essential that it always be kept **private** from clients. Store it only on the server. This key will help you ignore all the security rules which CloudBoost sets for you by default (see the Security section for more information). This key is used to programmatically create, modify, and delete tables and columns using the SDK.
 
-><span class="tut-imp">Important:</span> Never expose your master key in your apps. Master key can only be used on the server.
+##Client key
 
-Now you know your App ID and Keys, You can now proceed to initialize your App.
+This key is the public key. It can be used in your client apps. However, the CloudBoost Security parameters must be set (see the Security section for more information). This key will respect the Security Rules.
 
+With the keys, use the SDK to initialize your app:
 
 ==JavaScript==
 <span class="js-lines" data-query="init">
@@ -156,11 +166,11 @@ CB.CloudApp.Init('YOUR APP ID', 'YOUR APP KEY');
 ```
 </span>
 
-After your app is initialized. You can write code to save and query data.
+After your app is initialized, you can write code to save and query data.
 
 #Saving data
 
-To save new records (we call it objects, more specifically CloudObjects) in your tables. You first need to create a new <span class="tut-snippet">CloudObject</span>, add data to it and call save.
+Create a new <span class="tut-snippet">CloudObject</span> for the table. Use the `set` method to add data to it. Call the appropriate save method for the platform to save the object.
 
 ==JavaScript==
 <span class="js-lines" data-query="save">
@@ -272,11 +282,11 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 </span>
 
-If you want to learn more about CloudObjects and Data Storage, Click [here](/en/datastorage/objects).
+Click [here](/en/datastorage/objects) to learn more about CloudObjects.
 
 #Querying data
 
-To query records from your table. You first need to create a <span class="tut-snippet">CloudQuery</span> object, set your query and then call <span class="tut-snippet">find</span>.
+Create a <span class="tut-snippet">CloudQuery</span> object. Set your query with the appropriate platform methods. Then, call the <span class="tut-snippet">find</span> method.
 
 ==JavaScript==
 <span class="js-lines" data-query="query">
@@ -369,4 +379,4 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 </span>
 
-If you want to learn more about Queries, Check out the query section [here](/en/query/basicqueries).
+Click [here](/en/query/basicqueries) to learn more about CloudQueries.
