@@ -36,45 +36,6 @@ obj.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="saving">
-```
-CloudGeoPoint location = new CloudGeoPoint(80.3,17.7);
-CloudObject obj = new CloudObject("Student");
-obj.set("location",location);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException e)throws CloudException {
-		if(e != null)
-			//error							
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="saving">
-```
-// throws error if latitude and longitude are not valid values
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let locationTest = CloudObject(tableName: "LocationTest")
-locationTest.set("location", value: point)
-locationTest.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="saving">
-```
-var location = new CB.CloudGeoPoint(80.3,17.7);
-var obj = new CB.CloudObject("Student");
-obj.Set("location", location);
-await obj.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="saving">
 ```
@@ -149,33 +110,6 @@ var distance = loc1.distanceInKMs(loc2);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="calc-kilo">
-```
-CloudGeoPoint loc1 = new CloudGeoPoint(80.3,17.7);
-CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
-Double distance = loc1.distanceInKMs(loc2);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="calc-kilo">
-```
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-point.distanceInKMs(point2)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="calc-kilo">
-```
-var loc1 = new CB.CloudGeoPoint(80.3,17.7);
-var loc2 = new CB.CloudGeoPoint(70.3,10.7);
-double distance = loc1.DistanceInKMs(loc2);
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="calc-kilo">
 ```
@@ -205,33 +139,6 @@ var distance = loc1.distanceInMiles(loc2);
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="calc-miles">
-```
-CloudGeoPoint loc1 = new CloudGeoPoint(80.3,17.7);
-CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
-Double distance = loc1.distanceInMiles(loc2);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="calc-miles">
-```
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-point.distanceInMiles(point2)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="calc-miles">
-```
-var loc1 = new CB.CloudGeoPoint(80.3,17.7);
-var loc2 = new CB.CloudGeoPoint(70.3,10.7);
-double distance = loc1.DistanceInMiles(loc2);
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="calc-miles">
 ```
@@ -258,33 +165,6 @@ var distance = loc1.distanceInRadians(loc2);
 var loc1 = new CB.CloudGeoPoint(80.3,17.7);
 var loc2 = new CB.CloudGeoPoint(70.3,10.7);
 var distance = loc1.distanceInRadians(loc2);
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="calc-radians">
-```
-CloudGeoPoint loc1 = new CloudGeoPoint(80.3,17.7);
-CloudGeoPoint loc2 = new CloudGeoPoint(70.3,10.7);
-Double distance = loc1.distanceInRadians(loc2);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="calc-radians">
-```
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.9)
-let point2 = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-point.distanceInRadius(point2)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="calc-radians">
-```
-var loc1 = new CB.CloudGeoPoint(80.3,17.7);
-var loc2 = new CB.CloudGeoPoint(70.3,10.7);
-double distance = loc1.DistanceInRadians(loc2);
 ```
 </span>
 
@@ -332,48 +212,6 @@ query.find({
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="query-near">
-```
-CloudGeoPoint loc = new CloudGeoPoint(80.3,17.7);
-CloudQuery query = new CloudQuery("Custom");
-//third parameter is the radius to check in meters.
-query.near("location", loc, 100000,50000);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException e)throws CloudException {
-		if(e != null)
-		//						
-		if(x!=null)
-		//x is a list of CloudObjects							
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="query-near">
-```
-let query = CloudQuery(tableName: "LocationTest")
-let point = try! CloudGeoPoint(latitude: 17.7, longitude: 18.3)
-query.near("location", geoPoint: point, maxDistance: 400000, minDistance: 0)
-try! query.find({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="query-near">
-```
-var loc = new CB.CloudGeoPoint(80.3,17.7);
-var query = new CB.CloudQuery("Custom");
-//third parameter is the radius to check in meters.
-query.Near("location", loc, 100000);
-List<CB.CloudObject> list = await query.Find();
 ```
 </span>
 
@@ -436,54 +274,6 @@ query.find({
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="query-geo">
-```
-CloudGeoPoint loc1 = new CloudGeoPoint(78.9,18.4);
-CloudGeoPoint loc2 = new CloudGeoPoint(78.4,17.4);
-CloudGeoPoint loc3 = new CloudGeoPoint(80.4,17.7);
-CloudQuery query = new CloudQuery("Sample");
-query.geoWithin("location", [loc1, loc2, loc3]);
-query.find(new CloudObjectArrayCallback(){
-	@Override
-	public void done(CloudObject[] x, CloudException e)throws CloudException {
-		if(e != null)
-			//error				
-		if(x!=null)
-			//x is a list of CloudObjects
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="query-geo">
-```
-let query = CloudQuery(tableName: "LocationTest")
-let loc1 = try! CloudGeoPoint(latitude: 18.4, longitude: 78.9)
-let loc2 = try! CloudGeoPoint(latitude: 17.4, longitude: 78.4)
-let loc3 = try! CloudGeoPoint(latitude: 17.7, longitude: 80.4)
-query.geoWithin("location", geoPoints: [loc1,loc2,loc3])
-try! query.find({ response in
-    response.log()
-    // received points that fall within the polygon formed by the given points
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="query-geo">
-```
-var loc1 = new CB.CloudGeoPoint(78.9,18.4);
-var loc2 = new CB.CloudGeoPoint(78.4,17.4);
-var loc3 = new CB.CloudGeoPoint(80.4,17.7);
-var query = new CB.CloudQuery("Sample");
-var list = new ArrayList();
-query.GeoWithin("location", list);
-List<CB.CloudObject> result = await query.Find();
 ```
 </span>
 

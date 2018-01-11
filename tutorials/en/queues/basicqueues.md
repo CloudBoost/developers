@@ -34,44 +34,6 @@ queue.create({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudQueue queue = new CloudQueue("QueueName");
-	queue.create(new CloudQueueCallback() {
-		@Override
-		public void done(CloudQueue q, CloudException e) {
-			if(e!=null){
-				//
-			}
-			else{
-				//
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let queue = CloudQueue(queueName: queueName, queueType: nil)
-try! queue.create({ response in
-    if response.success {
-      // queue created
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var queue = new CB.CloudQueue("QueueName");
-await queue.CreateAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="create">
 ```
@@ -143,42 +105,6 @@ queue.addMessage('sample', {
         console.log(error);
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="addmessagequeue">
-```
-CloudQueue queue = new CloudQueue("QueueName");
-	queue.addMessage("sample", new CloudQueueMessageCallback() {
-		@Override
-		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null)
-				//
-			else
-				//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="addmessagequeue">
-```
-let queue = CloudQueue(queueName: queueName, queueType: nil)
-queue.addMessage("Randhir", callback: { response in
-    if response.success {
-      // message added
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="addmessagequeue">
-```
-var queue = new CB.CloudQueue("QueueName");
-await queue.AddMessageAsync("sample");
 ```
 </span>
 
@@ -290,40 +216,6 @@ queue.getMessage ({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getmessagequeues">
-```
-que.getMessage(1, new CloudQueueMessageCallback() {
-	@Override
-	public void done(QueueMessage[] msgs, CloudException e) {
-		if (e != null)
-			//
-		if (msgs != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getmessagequeues">
-```
-let numberOfMessages = 1
-queue.getMessage(numberOfMessages, callback: { response in
-    if response.success {
-      // message added
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getmessagequeues">
-```
-await queue.GetMessageAsync(1);
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getmessagequeues">
 ```
@@ -365,40 +257,6 @@ queue.peekMessage({
         console.log(error);
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="peekmessagequeues">
-```
-que.peekMessage(1, new CloudQueueMessageCallback() {
-	@Override
-	public void done(QueueMessage[] msgs, CloudException e) {
-		if (e != null)
-			//
-		if (msgs != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="peekmessagequeues">
-```
-let numberOfMessages = 1
-queue.peekMessage(numberOfMessages, callback: { response in
-    if response.success {
-      // message added
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="peekmessagequeues">
-```
-await queue.PeekMessageAsync(1);
 ```
 </span>
 
@@ -444,39 +302,6 @@ queue.getMessageById(messageId, {
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getmessageid">
-```
-que.getMessageById("id", new CloudQueueMessageCallback() {
-	@Override
-	public void done(QueueMessage msg, CloudException e) {
-		if (e != null)
-			//
-		if (msg != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getmessageid">
-```
-queue.getMessageById("id", callback: { response in
-    if response.success {
-      // message added
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getmessageid">
-```
-await queue.GetMessageByIdAsync("id");
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getmessageid">
 ```
@@ -513,39 +338,6 @@ queue.getAllMessages({
         //error.
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="getallmessages">
-```
-que.getAllMessages(new CloudQueueArrayCallback() {
-	@Override
-	public void done(QueueMessage[] msgs, CloudException e) {
-		if (e != null)
-			//
-		if (msgs != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getallmessages">
-```
-queue.getAllMessages({ response in
-    if response.success {
-      // message added
-    }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getalltmessages">
-```
-await queue.GetAllMessagesAsync();
 ```
 </span>
 
@@ -588,39 +380,6 @@ queue.get({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="queueinfo">
-```
-queue.get(new CloudQueueCallback() {
-	@Override
-	public void done(CloudQueue q, CloudException e) {
-		if (e != null)
-			//
-		if (q != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="queueinfo">
-```
-CloudQueue.get(queueName,callback: { response in
-  if response.success {
-    response.log()
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="queueinfo">
-```
-await queue.GetAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="queueinfo">
 ```
@@ -657,39 +416,6 @@ CB.CloudQueue.getAll({
         //error.
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="getallqueues">
-```
-CloudQueue.getAll(new CloudQueueArrayCallback() {
-	@Override
-	public void done(CloudQueue[] q, CloudException e) {
-		if (e != null)
-			//
-		if (q != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getallqueues">
-```
-CloudQueue.getAll({ response in
-  if response.success {
-    response.log()
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getallqueus">
-```
-await queue.GetAllAsync();
 ```
 </span>
 
@@ -732,39 +458,6 @@ queue.deleteMessage(messageId, {
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="deletemessage">
-```
-que.deleteMessage(id, new CloudQueueMessageCallback() {
-	@Override
-	public void done(QueueMessage[] msgs, CloudException e) {
-		if(e!=null)
-			//
-		if(msgs!=null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="deletemessage">
-```
-queue.deleteMessage("id", callback: { response in
-  if response.success {
-    response.log()
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="deletemessage">
-```
-await queue.DeleteMessageAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="deletemessage">
 ```
@@ -802,39 +495,6 @@ queue.delete({
         //error.
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="deletequeue">
-```
-queue.deleteQueue(queueName, new CloudQueueCallback() {
-	@Override
-	public void done(CloudQueue q, CloudException e) {
-		if (e != null)
-			//
-		if (q != null)
-			//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="deletequeue">
-```
-queue.delete({ response in
-  if response.success {
-    response.log()
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="deletequeue">
-```
-await queue.DeleteQueueAsync();
 ```
 </span>
 
@@ -916,48 +576,6 @@ queue.addMessage(queueMessage, {
         //error.
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="timeout">
-```
-QueueMessage msg = new QueueMessage();
-msg.setMessage("sample");
-msg.setTimeout(3);
-QueueMessage[] msgs={msg};
-	queue.addMessage(msgs, new CloudQueueMessageCallback() {
-		@Override
-		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null)
-				//
-			if(msgs!=null)
-				//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="timeout">
-```
-queue.delete({ response in
-  if response.success {
-    response.log()
-  }
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="timeout">
-```
-var msg = new QueueMessage();
-msg.SetMessage("sample");
-msg.SetTimeout(3);
-var list = new ArrayList();
-list.Add(msg);
-await queue.AddMessageAsync(list);
 ```
 </span>
 
@@ -1070,49 +688,6 @@ queue.addMessage(queueMessage, {
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="delays">
-```
-QueueMessage msg = new QueueMessage();
-msg.setMessage("sample");
-msg.setDelay(3000);
-QueueMessage[] msgs={msg};
-	queue.addMessage(msgs, new CloudQueueMessageCallback() {
-		@Override
-		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null)
-				//
-			if(msgs!=null)
-				//msgs
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="delays">
-```
-let msg = QueueMessage()
-msg.setMessage("Sample")
-msg.setDelay(1000)
-queue.addMessage(msg, callback: { response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="delays">
-```
-var msg = new QueueMessage();
-msg.SetMessage("sample");
-msg.SetDelay(3000);
-var list = new ArrayList();
-list.Add(msg);
-await queue.AddMessageAsync(list);
 ```
 </span>
 
@@ -1235,51 +810,6 @@ queue.addMessage(queueMessage, {
         //error.
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="expire">
-```
-QueueMessage msg = new QueueMessage();
-msg.setMessage("sample");
-msg.setExpires("2017-03-02T09:11:15.621Z");
-QueueMessage[] msgs={msg};
-	queue.addMessage(msgs, new CloudQueueMessageCallback() {
-		@Override
-		public void done(QueueMessage[] msgs, CloudException e) {
-			if (e != null)
-				//
-			if(msgs!=null)
-				//
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="expire">
-```
-let msg = QueueMessage()
-msg.setMessage("Sample")
-let today = NSDate()
-let tomorrow = today.dateByAddingTimeInterval(NSTimeInterval.abs(86400))
-msg.setExpires(tomorrow)
-queue.addMessage(msg, callback: { response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="expire">
-```
-var msg = new QueueMessage();
-msg.SetMessage("sample");
-msg.SetExpires("2017-03-02T09:11:15.621Z);
-var list = new ArrayList();
-list.Add(msg);
-await queue.AddMessageAsync(list);
 ```
 </span>
 

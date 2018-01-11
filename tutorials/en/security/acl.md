@@ -48,46 +48,6 @@ obj.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="read">
-```
-CloudObject obj = new CloudObject("Student");
-obj.ACL = new ACL();
-obj.ACL.setUserReadAccess(user.id,true);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="read">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setUserReadAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="read">
-```
-var obj = new CB.CloudObject("Student");
-obj.acl = new ACL();
-obj.acl.SetUserReadAccess(user.id, true);
-await obj.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="read">
 ```
@@ -167,46 +127,6 @@ obj.save({
     //Error occured while saving the object
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="write">
-```
-CloudObject obj = new CloudObject("Student");
-obj.ACL = new ACL();
-obj.ACL.setUserWriteAccess(user.id,true);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="write">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setUserWriteAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="write">
-```
-var obj = new CB.CloudObject("Student");
-obj.acl = new ACL();
-obj.acl.SetUserWriteAccess(user.id, true);
-await obj.SaveAsync();
 ```
 </span>
 
@@ -293,46 +213,6 @@ obj.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="roleread">
-```
-CloudObject obj = new CloudObject("Student");
-obj.ACL = new ACL();
-obj.ACL.setRoleReadAccess(user.id,true);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="roleread">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setRoleReadAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="roleread">
-```
-var obj = new CB.CloudObject("Student");
-obj.acl = new ACL();
-obj.acl.SetRoleReadAccess(user.id, true);
-await obj.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="roleread">
 ```
@@ -411,46 +291,6 @@ obj.save({
     //Error occured while saving the object
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="rolewrite">
-```
-CloudObject obj = new CloudObject("Student");
-obj.ACL = new ACL();
-obj.ACL.setRoleWriteAccess(role.id,true);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="rolewrite">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setRoleWriteAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="rolewrite">
-```
-var obj = new CB.CloudObject("Student");
-obj.acl = new ACL();
-obj.acl.SetRoleWriteAccess(role.id, true);
-await obj.SaveAsync();
 ```
 </span>
 
@@ -537,46 +377,6 @@ obj.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="publicread">
-```
-CloudObject obj = new CloudObject("Student");
-obj.ACL = new ACL();
-obj.ACL.setPublicReadAccess(true);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="publicread">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setPublicReadAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="publicread">
-```
-var obj = new CB.CloudObject("Student");
-obj.acl = new ACL();
-obj.acl.SetPublicReadAccess(true);
-await obj.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="publicread">
 ```
@@ -655,46 +455,6 @@ obj.save({
     //Error occured while saving the object
   }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="publicwrite">
-```
-CloudObject obj = new CloudObject("Student");
-obj.ACL = new ACL();
-obj.ACL.setPublicWriteAccess(true);
-obj.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="publciwrite">
-```
-// objects are defined with an initial ACL
-let obj = CloudObject(tableName: "Student")
-// you can assign your own ACL in the following way
-let acl = ACL()
-acl.setPublicWriteAccess(user.id, value: true)
-obj.setACL(acl)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="publicwrite">
-```
-var obj = new CB.CloudObject("Student");
-obj.acl = new ACL();
-obj.acl.SetPublicWriteAccess( true);
-await obj.SaveAsync();
 ```
 </span>
 

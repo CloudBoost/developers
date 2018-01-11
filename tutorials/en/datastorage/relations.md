@@ -74,60 +74,6 @@ student.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="oneone">
-```
-//create the address object.
-CloudObject address = new CloudObject("Address");
-address.set("StreetName","Manhattan");
-address.set("Country","United States");
-//create the student object and set address object inside it.  
-CloudObject student = new CloudObject("Student");
-student.set("name", "John Smith");
-student.set("address", address);
-//save
-student.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-			//Failed to save data
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let student = CloudObject(tableName: "Student")
-let address = CloudObject(tableName: "Address")
-address.set("country", value: "India")
-student.set("address", value: address)
-student.save({ resp in
-    resp.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="oneone">
-```
-//create the address object.
-var address = new CB.CloudObject("Address");
-address.Set("StreetName","Manhattan");
-address.Set("Country","United States");
-//create the student object and set address object inside it.
-var student = new CB.CloudObject("Student");
-student.Set("name", "John Smith");
-student.Set("address", address);
-//save
-await student.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="oneone">
 ```
@@ -252,55 +198,6 @@ student.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="oneone">
-```
-//create the address object.
-CloudObject address = new CloudObject("Address", "id");
-//create the student object and set address object inside it.  
-CloudObject student = new CloudObject("Student");
-student.set("name", "John Smith");
-student.set("address", address);
-//save
-student.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-			//Failed to save data
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let student = CloudObject(tableName: "Student")
-let address = CloudObject(tableName: "Address", id:"id")
-student.set("address", value: address)
-student.save({ resp in
-    resp.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="oneone">
-```
-//create the address object.
-var address = new CB.CloudObject("Address","id");
-//create the student object and set address object inside it.
-var student = new CB.CloudObject("Student");
-student.Set("name", "John Smith");
-student.Set("address", address);
-//save
-await student.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="oneone">
 ```
@@ -400,59 +297,6 @@ student.save({
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="onemany">
-```
-//create the address object.
-CloudObject address = new CloudObject("Address");
-address.set("StreetName","Manhattan");
-address.set("Country","United States");
-//create the student object and set address object inside it.
-CloudObject student = new CloudObject("Student");
-student.set("name", "ohn Smith");
-student.set("address", address);
-//save
-student.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="onemany">
-```
-let student = CloudObject(tableName: "Student")
-let address = CloudObject(tableName: "Address")
-address.set("country", value: "India")
-student.set("address", value: address)
-student.save({ resp in
-    resp.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="onemany">
-```
-//create the address object.
-var address = new CB.CloudObject("Address");
-address.Set("StreetName","Manhattan");
-address.Set("Country","United States");
-//create the student object and set address object inside it.
-var student = new CB.CloudObject("Student");
-student.Set("name", "John Smith");
-student.Set("address", address);
-//save
-await student.SaveAsync();
 ```
 </span>
 
@@ -601,70 +445,6 @@ studentCourses.save({
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="relation">
-```
-//create the course object.
-CloudObject course = new CloudObject("Course");
-course.set("name","Java");
-//create the student object
-CloudObject student = new CloudObject("Student");
-student.set("name", "John Smith");
-//assign student and course to studentCourses
-CloudObject studentCourses = new CloudObject("StudentCourses");
-studentCourses.set("student", student);
-studentCourses.set("course",course);
-//save
-studentCourses.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="relation">
-```
-// create the course object
-let course = CloudObject(tableName: "Course")
-course.set("name", value: "Swift")
-// create the student object
-let student = CloudObject(tableName: "Student")
-student.set("name", value: "John Smith")
-// assign student and course to studentCourses
-let studentCourses = CloudObject(tableName: "StudentCourses")
-studentCourses.set("student", value: student)
-studentCourses.set("course", value: course)
-//save
-student.save({ resp in
-    resp.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="relation">
-```
-//create the course object.
-var course = new CB.CloudObject("Course");
-course.Set("name","JavaScript");
-//create the student object
-var student = new CB.CloudObject("Student");
-student.Set("name", "John Smith");
-//assign student and course to studentCourses
-var studentCourses = new CB.CloudObject("StudentCourses");
-studentCourses.Set("student", student);
-studentCourses.Set("course",course);
-//save
-await studentCourses.SaveAsync();
 ```
 </span>
 
@@ -831,67 +611,6 @@ course.save({
         //error
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="list">
-```
-//create the student object
-CloudObject student1 = new CloudObject("Student");
-student1.set("name", "John Smith");
-CloudObject student2 = new CloudObject("Student");
-student2.set("name", "Jack Danielle");
-CloudObject course = new CloudObject("Course");
-course.set("Name", "Java");
-course.set("Students",new CloudObject[]{student1,student2});
-//save
-course.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="list">
-```
-//create the student object
-let student1 = CloudObject(tableName: "Student")
-student1.set("name", value: "John Smith")
-let student2 = CloudObject(tableName: "Student")
-student2.set("name", value: "Jack")
-let course = CloudObject(tableName: "Course")
-course.set("Name", value: "Java:)
-course.set("Students",value: [student1,student2])
-//save
-course.save({ response in
-  response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="list">
-```
-//create the student object
-var student1 = new CB.CloudObject("Student");
-student1.Set("name", "John Smith");
-var student2 = new CB.CloudObject("Student");
-student2.set("name", "Jack Danielle");
-var course = new CB.CloudObject('Course');
-course.set("Name", "Java");
-var list = new ArrayList();
-list.Add(student1);
-list.Add(student2);
-course.Set("Students",list);
-//save
-await course.SaveAsync();
 ```
 </span>
 

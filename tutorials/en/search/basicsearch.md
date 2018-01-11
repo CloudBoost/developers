@@ -43,23 +43,6 @@ query.find({
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="simplesearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("dog")
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        //returns CloudObjects of fields having string 'dog'
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
-```
-</span>
-
 # Search with Phrases
 You can search for phrases like “tree flowers honeybees” using text indexes. By default, the phrase search makes an OR search on all the specified keywords i.e. it will look for CloudObjects which contains either the words - "tree OR flowers OR honeybees”.
 
@@ -93,23 +76,6 @@ query.find({
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="phrasalsearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("tree flowers honeybee")
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        // returns CloudObjects of fields having keywords either of  tree OR flowers OR honeybees keywords
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
-```
-</span>
-
 # Exact Phrase search
 In case you would like to perform an exact phrase search, you can do so by specifying double quotes in the search text.
 
@@ -140,23 +106,6 @@ query.find({
      //Error                         
     }
 });
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="andsearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("\"tree flowers\"")
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        // returns CloudObjects of fields having exact phrase "tree flowers"
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
 ```
 </span>
 
@@ -194,22 +143,6 @@ query.find({
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="negatesearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("tree -birds")
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        // returns CloudObjects of fields having keyword "tree"  but not "birds"  
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
-```
-</span>
 
 # Case-sensitive Search
 A boolean flag to enable or disable case sensitive search. To enable case sensitive, pass true as a third parameter
@@ -244,23 +177,6 @@ query.find({
 ```
 </span>
 
-==Swift==
-<span class="ios-lines" data-query="casesearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("Dogs", caseSensitive: true)
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        // returns CloudObjects of fields having case senstive string "Dogs"
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
-```
-</span>
-
 # Diacritic Sensitive
 If you enable discritic search then "é" will not be equal to "e".
 To enable diacritic sensitive, pass true as a fourth parameter
@@ -292,23 +208,6 @@ query.find({
      //Error                         
     }
 });
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="diacriticsearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("élephant", diacriticSensitive: true)
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        // returns CloudObjects of fields having diacritics senstive string "élephant"
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
 ```
 </span>
 
@@ -366,22 +265,5 @@ urdu `urd`
         //Error                         
       }
   });
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="langsearch">
-```
-let query = CloudQuery(tableName: "Table")
-query.search("algunas", language: "es")
-query.find({ resp in
-    if let results = resp.object as? [CloudObject] {
-        print(results)
-        // returns empty array because it exluded the spanish stop word "algunas"     
-    }else{
-        resp.log()
-    }
-    exp.fulfill()
-})
 ```
 </span>

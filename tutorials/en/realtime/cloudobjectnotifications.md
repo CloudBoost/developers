@@ -27,44 +27,6 @@ CB.CloudObject.on('TableName', 'created', function(obj){
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudObject.on("TableName", "created", new CloudObjectCallback(){
-@Override
-public void done(CloudObject x, CloudException t) {
-	if(x != null){
-	}
-	if(t != null){
-	}
-}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-CloudNotification.on("sample",  
-  handler: { data, ack in
-			// this is the handler that is called whenever a data is emmitted to the app's specified channel(here 'sample' is the channel name)
-  },
-  callback: { error in
-		// this is the callback after the handler has been registered for listening to the channel			
-  })
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-CB.CloudNotification.On("sample", new Callback(action));
-void action(Object result){
-    Assert.IsTrue(true);
-}
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="create">
 ```
@@ -89,48 +51,6 @@ CB.CloudObject.on('TableName', ['created','updated'], function(obj){
 ```
 CB.CloudObject.on('TableName', ['created','updated'], function(obj){
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="createupdate">
-```
-CloudObject.on("TableName", new String[]{"created","updated"}, new CloudObjectCallback(){
-@Override
-public void done(CloudObject x, CloudException t) {
-	if(x != null){
-	}
-	if(t != null){
-	}
-}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="createupdate">
-```
-CloudObject.on("Student", eventType: ["created","updated"],
-		handler: { response in
-			// handler for data received on 'sample'
-			// response is an array of CloudObject			
-		},
-		callback: { error in
-			// callback from registering the handler			
-    })
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="createupdate">
-```
-var list = new ArrayList();
-list.Add("created");
-list.Add("updated")
-CB.CloudObject.On("Student", list, new Callback(action));
-void action(Object result){
-    //function to fire
-}
 ```
 </span>
 
@@ -174,54 +94,6 @@ CB.CloudObject.on('Student', 'created', query, function(obj){
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="query">
-```
-CloudQuery query = new CloudQuery("Student");
-query.equalTo("age",10);
-//
-CloudObject.on("Student", "created", query, new CloudObjectCallback(){
-@Override
-public void done(CloudObject x, CloudException t) {
-	if(x != null){
-	  //
-	}
-	if(t != null){
-	}
-}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="query">
-```
-let query = CloudQuery(tableName: "Student")
-try! query.equalTo("age", obj: 10)
-//
-CloudObject.on("Student", eventType: "created", query: query, handler: { res in
-			if res != nil {
-				let age = res![0].get("age")    
-			}
-    }, callback: { err in
-			// callback after registering the handler
-		})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="query">
-```
-var query = new CB.CloudQuery("Student");
-query.EqualTo('age',10);  
-var list = new ArrayList();
-CB.CloudObject.On("Student", "created", new Callback(action));
-void action(Object result){
-    //function to fire
-}
-```
-</span>
-
 ==curl==
 <span class="curl-lines" data-query="query">
 ```
@@ -246,29 +118,6 @@ CB.CloudObject.off('Student', 'created');
 <span class="nodejs-lines" data-query="off">
 ```
 CB.CloudObject.off('Student', 'created');
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="off">
-```
-CloudObject.off("Student", "created");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="off">
-```
-CloudObject.off("Student", eventType: ["created","updated"], callback: { error in
-			// callback
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="off">
-```
-CB.CloudObject.Off("Student");
 ```
 </span>
 

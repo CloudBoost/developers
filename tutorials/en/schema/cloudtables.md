@@ -20,27 +20,6 @@ var table = new CB.CloudTable('TableName');
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="create">
-```
-CloudTable table = new CloudTable("TableName");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="create">
-```
-let table = CloudTable(tableName: "TableName")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="create">
-```
-var table = new CB.CloudTable("TableName");
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="create">
 ```
@@ -75,46 +54,6 @@ table.save({
     }, error : function(error){
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="savecol">
-```
-CloudTable table = new CloudTable("Student");
-Column column = new Column("Name", "Text");
-table.addColumn(column);
-table.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="savecol">
-```
-let table = CloudTable(tableName: "Student")
-let column = Column(name: "name", dataType: CloudBoostDataType.Text)
-table.addColumn(column)
-table.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="savecol">
-```
-var table = new CB.CloudTable("Student");
-var column = new CB.Column("Name", "Text");
-table.AddColumn(column);
-await table.SaveAsync();
 ```
 </span>
 
@@ -248,36 +187,6 @@ column.defaultValue = 'Some Default Value';
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="createcol">
-```
-Column column = new Column("Name");
-column.setRequired(true);
-column.setUnique(false);
-column.setDataType(DataType.Text);
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="createcol">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Text, required: true, unique: false)
-// unique, required can also be set using the following functions
-column.setRequired(true)
-column.setUnique(true)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="createcol">
-```
-var column = new CB.Column('Name');
-column.required = true;
-column.unique = false;
-column.dataType = 'Text';
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="createcol">
 ```
@@ -312,45 +221,6 @@ table.save({
 	error : function(error){
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="addcoltable">
-```
-CloudTable table = new CloudTable("Student")
-table.addColumn(column);
-table.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="addcoltable">
-```
-let table = CloudTable(tableName: "Student")
-let column = Column(name: "name", dataType: CloudBoostDataType.Text)
-table.addColumn(column)
-table.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="addcoltable">
-```
-var table = new CB.CloudTable("Student");
-var column = new CB.Column("Name", "Text");
-table.AddColumn(column);
-await table.SaveAsync();
 ```
 </span>
 
@@ -495,34 +365,6 @@ column.listDataType = 'Text';
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="listcol">
-```
-Column column = new Column("Name");
-column.setDataType(DataType.List);
-column.setRelatedToType("text");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="listcol">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Number)
-// data type can be changed using the following functions
-column.setDataType(CloudBoostDataType.List)
-column.setRelatedToType(CloudBoostDataType.Text)
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="listcol">
-```
-var column = new CB.Column("Name");
-column.dataType = 'List';
-column.listDataType = 'Text';
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="listcol">
 ```
@@ -638,32 +480,6 @@ column.relatedTo = 'TableName';
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="relcol">
-```
-Column column = new Column("Name");
-column.setDataType(DataType.Relation);
-column.setRelatedTo("TableName");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="relcol">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
-age.setRelatedTo("TableName")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="relcol">
-```
-var column = new CB.Column("Name");
-column.dataType = 'Reation';
-column.relatedTo = 'TableName';
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="relcol">
 ```
@@ -766,32 +582,6 @@ column.relatedTo = 'TableName';
 <span class="nodejs-lines" data-query="listrelcol">
 ```
 var column = new CB.Column('Name');
-column.dataType = 'List';
-column.relatedTo = 'TableName';
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="listrelcol">
-```
-Column column = new Column("Name");
-column.setDataType(DataType.List);
-column.setRelatedTo("TableName");
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="listrelcol">
-```
-let column = Column(name: "name", dataType: CloudBoostDataType.Relation)
-age.setRelatedTo("TableName")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="listrelcol">
-```
-var column = new CB.Column("Name");
 column.dataType = 'List';
 column.relatedTo = 'TableName';
 ```
@@ -902,28 +692,6 @@ var columns = table.columns; //array of CB.Column Objects
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getcols">
-```
-Column[] columns = table.getColumns(); //array of Column Objects
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getcols">
-```
-// returns an array of Column objects
-let columns = table.getColumns()
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getcols">
-```
-var columns = table.Columns; //array of CB.Column Objects
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getcols">
 ```
@@ -944,27 +712,6 @@ var column = table.getColumn('name'); //CB.Column Object
 <span class="nodejs-lines" data-query="getcolsalt">
 ```
 var column = table.getColumn('name'); //CB.Column Object
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="getcolsalt">
-```
-Column column = table.getColumn("name"); //Column Object
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getcolsalt">
-```
-let column = table.getColumn("name")
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getcolsalt">
-```
-CB.Column column = table.GetColumn("name"); //Column Object
 ```
 </span>
 
@@ -1004,43 +751,6 @@ table.save({
     }, error : function(error){
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="editcol">
-```
-Column column = table.getColumn("Name");
-column.setRequired(true);
-table.updateColumn(column);
-table.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="editcol">
-```
-let column = table.getColumn("name") // returns an optional value, check nullability
-column?.setRequired(true)
-table.updateColumn(column!) // returns false if the given column does not exist
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="editcol">
-```
-CB.Column column = table.GetColumn("name"); //Column Object
-column.required = true;
-table.UpdateColumn(column);
-await table.SaveAsync();
 ```
 </span>
 
@@ -1188,40 +898,6 @@ table.save({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="delcol">
-```
-table.deleteColumn("ColumnName");
-table.save(new CloudObjectCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="delcol">
-```
-table.deleteColumn("ColumnName")
-table.save({ response in
-    response.log()
-})
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="delcol">
-```
-table.DeleteColumn("name");
-await table.SaveAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="delcol">
 ```
@@ -1362,43 +1038,6 @@ table.delete({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="deltable">
-```
-table.delete(new CloudTableCallback(){
-	@Override
-	public void done(CloudTable x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="deltable">
-```
-do {
-  try table.delete() { response in
-    if response.success {
-      // deleted successfully
-    }
-  }
-} catch {
-  // AppID/AppKey nil
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="deltable">
-```
-await table.DeleteAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="deltable">
 ```
@@ -1438,37 +1077,6 @@ CB.CloudTable.getAll({
 ```
 </span>
 
-==Java==
-<span class="java-lines" data-query="getalltabs">
-```
-CloudTable.getAll(new CloudTableArrayCallback(){
-	@Override
-	public void done(CloudTable[] x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="getalltabs">
-```
-CloudTable.getAll() { response in
-  // response.object contains an array of tables
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="getalltabs">
-```
-await CB.CloudTable.GetAllAsync();
-```
-</span>
-
 ==cURL==
 <span class="curl-lines" data-query="getalltabs">
 ```
@@ -1501,39 +1109,6 @@ CB.CloudTable.get('TableName', {
     }, error : function(error){
     }
 });
-```
-</span>
-
-==Java==
-<span class="java-lines" data-query="gettabname">
-```
-CloudTable.get("TableName", new CloudTableCallback(){
-	@Override
-	public void done(CloudObject x, CloudException t) {
-		if(x != null){
-		}
-		if(t != null){
-		}
-	}
-});
-```
-</span>
-
-==Swift==
-<span class="ios-lines" data-query="gettabname">
-```
-CloudTable.get("table") { response, table in
-    if table != nil {
-      // table retrieved
-    }
-}
-```
-</span>
-
-==.NET==
-<span class="dotnet-lines" data-query="gettabname">
-```
-await CB.CloudTable.GetAsync("name");
 ```
 </span>
 
