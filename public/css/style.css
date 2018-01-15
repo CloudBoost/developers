@@ -2348,6 +2348,7 @@ a.forum-item-title:hover {
     margin-left: -2px;
   }
 }
+
 @media only screen and (max-width: 1170px) {
   .center-orientation.dark-timeline .vertical-timeline-content:before {
     border-color: transparent #f5f5f5 transparent transparent;

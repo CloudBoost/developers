@@ -16,37 +16,217 @@
         </ul> 
            
         <ul class="nav tut-main-topics-menu just-navmenu" id="side-menu">
-            <% tutorialTopics.forEach(function(eachTut) {
-                if (nospacelowcase(eachTut.name)==category) { %>
-                    <li class="active">
-                <% }else{ %>
-                    <li>
-                <% } %>
-               
-                    <a href="index-2.html">
-                        <i class="fa <%= eachTut.icon %>"></i> 
-                        <span class="nav-label"><%= eachTut.name %></span> 
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
+            <li class="active">
+                <a href="index-2.html">
+                    <i class="fa fa-cloud "></i> 
+                    <span class="nav-label">Getting Started</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic active"> 
+                        <a  class="category-select-menubtn" href="#" data-subcat="">
+                         <span class="nav-label">Your First App</span>
+                        </a>
+                    </li>   
 
-                        <% eachTut.tutorials.forEach(function(eachSub) { 
-                            if (nospacelowcase(eachSub.name)==nospacelowcase(subCategory)) { %>
-                                <li class="change-topic active">
-                            <% }else{ %>
-                                <li class="change-topic">
-                            <% } %>
-                          
-                                <a  class="category-select-menubtn" href="<%= TUTORIALS_BASE_URL %><%= eachSub.tutorialLink.lang %>/<%= eachSub.tutorialLink.category %>/<%= eachSub.tutorialLink.subcategory %>" data-subcat="<%= eachSub.tutorialLink.subcategory %>">
-                                 <%= eachSub.name %>
-                                </a>
-                            </li>
-                        <% }); %>    
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-database"></i> 
+                    <span class="nav-label">Objects and Files</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/datastorage/objects" data-subcat="">
+                         <span class="nav-label">Objects</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/datastorage/relations" data-subcat="">
+                         <span class="nav-label">Relations</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/datastorage/geopoint" data-subcat="">
+                         <span class="nav-label">Geo Point</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/datastorage/files" data-subcat="">
+                         <span class="nav-label">Files</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/datastorage/bulkapi" data-subcat="">
+                         <span class="nav-label">Bulk API</span>
+                        </a>
+                    </li>   
 
-                    </ul>
-                </li> 
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-code"></i> 
+                    <span class="nav-label">Query</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/query/basicqueries" data-subcat="">
+                         <span class="nav-label">Basic Queries</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> 
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-comment"></i> 
+                    <span class="nav-label">Real Time</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/realtime/customnotifications" data-subcat="">
+                         <span class="nav-label">Custom Notifications</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/realtime/cloudobjectnotifications" data-subcat="">
+                         <span class="nav-label">CloudObject Notifications</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-search"></i> 
+                    <span class="nav-label">Search</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/search/basicsearch" data-subcat="">
+                         <span class="nav-label">Basic Search</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-users"></i> 
+                    <span class="nav-label">Users and Roles</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/security/acl" data-subcat="">
+                         <span class="nav-label">ACL</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/security/roles" data-subcat="">
+                         <span class="nav-label">Roles</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/security/users" data-subcat="">
+                         <span class="nav-label">Users</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-bell"></i> 
+                    <span class="nav-label">Push Notifications</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/pushnotifications/javascript" data-subcat="">
+                         <span class="nav-label">Web / JavaScript</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-refresh"></i> 
+                    <span class="nav-label">Offline Sync</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/offlinesync/localstore" data-subcat="">
+                         <span class="nav-label">Local Store</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-table"></i> 
+                    <span class="nav-label">Tables</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/schema/cloudtables" data-subcat="">
+                         <span class="nav-label">Cloud Tables</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-exchange"></i> 
+                    <span class="nav-label">Queues</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/queues/basicqueues" data-subcat="">
+                         <span class="nav-label">Basic Queues</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-bolt"></i> 
+                    <span class="nav-label">Cache</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/cache/basiccache" data-subcat="">
+                         <span class="nav-label">Basic Cache</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="index-2.html">
+                    <i class="fa fa-cloud"></i> 
+                    <span class="nav-label">Integration</span> 
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/integrations/slack" data-subcat="">
+                         <span class="nav-label">Slack</span>
+                        </a>
+                    </li>
+                    <li class="change-topic"> 
+                        <a  class="category-select-menubtn" href="/en/integrations/zapier" data-subcat="">
+                         <span class="nav-label">Zapier</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>                  
 
-            <% }); %>
           
             <!--<li>
                 <a href="index-2.html">
