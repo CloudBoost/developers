@@ -2364,14 +2364,15 @@ a.forum-item-title:hover {
 
 
 @media only screen and (max-width: 770px) {
-    .main-tut-wrapper { width: 100% !important; margin-top: 100px !important}
-    .real-content{width: 100% !important}
+    .main-tut-wrapper { width: 100% !important;}
+    .real-content{width: 100% !important;}
     .navbar-top-links{display:none !important;}
     .navbar-header{display:none !important;}
     .steps-category-wrapper{display: none !important}
     .toggle{display:block !important;}
     .sidebar-collapse{display: none !important;}
     .category-wrapper{height: 100% !important}
+    .navbar.navbar-static-top{margin: 0px !important; padding: 0px !important; border-bottom: 0px !important}
     .mobile-new-nav{
       width: 100% !important;
       background: #2f4050 !important;
@@ -2437,6 +2438,11 @@ a.forum-item-title:hover {
       color:#03C !important;
       cursor:pointer !important
     }
+}
+
+@media only screen and (max-width: 990px) {
+  .steps-category-wrapper{display: none !important}
+
 }
 
 
