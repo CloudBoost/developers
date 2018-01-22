@@ -2364,15 +2364,12 @@ a.forum-item-title:hover {
 
 
 @media only screen and (max-width: 770px) {
-    /*.navbar-default{width: 30% !important; float: left !important;}
-    .navbar{width: 30% !important; float: left !important;}
-    #page-wrapper {width: 100% !important; margin-top: 50px !important;}*/
     .main-tut-wrapper { width: 100% !important; margin-top: 100px !important}
     .real-content{width: 100% !important}
-    .navbar-top-links{width: 300px !important; float: left !important;}
+    .navbar-top-links{display:none !important;}
     .navbar-header{display:none !important;}
+    .steps-category-wrapper{display: none !important}
     .toggle{display:block !important;}
-    /*.navbar-default .navbar-static-side .main-navigation{display: none !important}*/
     .sidebar-collapse{display: none !important;}
     .category-wrapper{height: 100% !important}
     .mobile-new-nav{
@@ -2387,7 +2384,6 @@ a.forum-item-title:hover {
       list-style: none !important;
       display: block !important;
       padding: 10px !important;
-      /*text-align: left !important;*/
       border-bottom: 1px solid #fff !important;
     }
 
@@ -2411,16 +2407,14 @@ a.forum-item-title:hover {
     box-sizing: border-box !important;
     color: #fff !important;
     font-size: 20px !important;
-   /* display: block !important;*/
-    /*padding-left: 185px !important;*/
   }
 
-    .mobile-new-subnav1 .mobile-new-subnav2 .mobile-new-subnav3 .mobile-new-subnav4 .mobile-new-subnav5
-    .mobile-new-subnav6 .mobile-new-subnav7 .mobile-new-subnav8 .mobile-new-subnav9 .mobile-new-subnav10
-    .mobile-new-subnav11 .mobile-new-subnav12{
+    .mobile-new-subnav1 .mobile-new-subnav2 .mobile-new-subnav3 .mobile-new-subnav4 
+    .mobile-new-subnav5 .mobile-new-subnav6 .mobile-new-subnav7 .mobile-new-subnav8 
+    .mobile-new-subnav9 .mobile-new-subnav10 .mobile-new-subnav11 .mobile-new-subnav12
+    {
       width: 100% !important;
       background: #2f4050 !important;
-      /*margin: 0 auto !important;*/
       padding: 0 !important;
 
       
@@ -2430,7 +2424,6 @@ a.forum-item-title:hover {
       list-style: none !important;
       display: block !important;
       padding: 5px !important;
-      /*text-align: center !important;*/
       
     }
 
