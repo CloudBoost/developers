@@ -2348,6 +2348,105 @@ a.forum-item-title:hover {
     margin-left: -2px;
   }
 }
+
+.toggle {
+  width: 100% !important;
+  padding: 10px 20px !important;
+  background: #2f4050 !important;
+  text-align: right !important;
+  box-sizing: border-box !important;
+  color: #fff !important;
+  font-size: 30px !important;
+}
+
+
+
+
+
+@media only screen and (max-width: 770px) {
+    .main-tut-wrapper { width: 100% !important;}
+    .real-content{width: 100% !important;}
+    .navbar-top-links{display:none !important;}
+    .navbar-header{display:none !important;}
+    .steps-category-wrapper{display: none !important}
+    .toggle{display:block !important;}
+    .sidebar-collapse{display: none !important;}
+    .category-wrapper{height: 100% !important}
+    .navbar.navbar-static-top{margin: 0px !important; padding: 0px !important; border-bottom: 0px !important}
+    .mobile-new-nav{
+      width: 100% !important;
+      background: #2f4050 !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      display:none !important;
+    }
+
+    .mobile-new-list{
+      list-style: none !important;
+      display: block !important;
+      padding: 10px !important;
+      border-bottom: 1px solid #fff !important;
+    }
+
+    .mobile-new-list:hover{
+      color: white !important;
+    }
+
+    .mobile-list-a{
+      color: #fff !important;
+      text-decoration: none !important;
+      
+    }
+
+    .activated{
+      display: block !important;
+    }
+
+    .toggle-2 {
+    
+    text-align: right !important;
+    box-sizing: border-box !important;
+    color: #fff !important;
+    font-size: 20px !important;
+  }
+
+    .mobile-new-subnav1 .mobile-new-subnav2 .mobile-new-subnav3 .mobile-new-subnav4 
+    .mobile-new-subnav5 .mobile-new-subnav6 .mobile-new-subnav7 .mobile-new-subnav8 
+    .mobile-new-subnav9 .mobile-new-subnav10 .mobile-new-subnav11 .mobile-new-subnav12
+    {
+      width: 100% !important;
+      background: #2f4050 !important;
+      padding: 0 !important;
+
+      
+    }
+
+    .mobile-new-sublist{
+      list-style: none !important;
+      display: block !important;
+      padding: 5px !important;
+      
+    }
+
+    .mobile-sublist-a{
+      color: #fff !important;
+      text-decoration: none !important; 
+    }
+
+    .mobile-new-sublist .mobile-sublist-a:hover{
+      background-color:#39f !important;
+      color:#03C !important;
+      cursor:pointer !important
+    }
+}
+
+@media only screen and (max-width: 990px) {
+  .steps-category-wrapper{display: none !important}
+
+}
+
+
+
 @media only screen and (max-width: 1170px) {
   .center-orientation.dark-timeline .vertical-timeline-content:before {
     border-color: transparent #f5f5f5 transparent transparent;
