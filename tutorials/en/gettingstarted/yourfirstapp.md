@@ -25,7 +25,7 @@ Click on <span class="tut-snippet">Manage App</span>. You will be redirected to 
 
 ![Add New Table button](https://www.dropbox.com/s/haw8zhuhido1bu5/Capture-2.PNG?raw=1)
 
-><span class="tut-info">Info</span> User, Role and Device tables are added by default to every CloudApp. These tables cannot be deleted and can be used later to add Push Notification features.
+><span class="tut-info">Info</span> User, Role and Device tables are added by default to every CloudApp.
 
 <p>&nbsp;</p>
 ><span class="tut-info">Info</span> Table names cannot start with a number, cannot contain any special characters, and must be **unique**.
