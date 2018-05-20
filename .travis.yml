@@ -22,7 +22,7 @@ after_success:
     docker build -t cloudboost/tutorial:latest .;
   fi
 # Docker Deploy for staging builds
-- if [ "$TRAVIS_BRANCH" == "staging" ]; then
+- if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker build -t cloudboost/tutorial:staging .;
     docker login --username $DOCKERUSERNAME --password $DOCKERPASSWORD --email $DOCKEREMAIL;
     docker push cloudboost/tutorial:staging;
@@ -31,7 +31,8 @@ after_success:
     openssl enc -in config_staging.enc -out config -d -aes256 -k $KUBE_ENC;
     mkdir ~/.kube;
     mv config ~/.kube/;
-    kubectl rolling-update cloudboost-tutorial-staging --image=cloudboost/tutorial:staging --image-pull-policy=Always;
+    kubectl config use-context cb-stagingmgmt;
+    kubectl rolling-update cloudboost-tutorial-staging --image=cloudboost/tutorial:2.0.$TRAVIS_BUILD_NUMBER --image-pull-policy=Always;
     curl -X DELETE "https://api.cloudflare.com/client/v4/zones/""$cloudflare_zone""/purge_cache" -H "X-Auth-Email:hello@cloudboost.io" -H "X-Auth-Key:""$cloud_flare_key" -H "Content-Type:application/json" --data "{'purge_everything':true}";
   fi
 before_deploy:
@@ -50,7 +51,7 @@ deploy:
     branch: master
 after_deploy:
 # Docker Deploy.
-- if [ "$TRAVIS_BRANCH" == "master" ]; then
+- if [ "$TRAVIS_BRANCH" == "release" ]; then
   docker login --username $DOCKERUSERNAME --password $DOCKERPASSWORD --email $DOCKEREMAIL;
   docker push cloudboost/tutorial:2.0.$TRAVIS_BUILD_NUMBER;
   docker push cloudboost/tutorial:latest;
@@ -59,7 +60,8 @@ after_deploy:
   openssl enc -in config.enc -out config -d -aes256 -k $KUBE_ENC;
   mkdir ~/.kube;
   mv config ~/.kube/;
-  kubectl rolling-update cloudboost-tutorial --image=cloudboost/tutorial:latest --image-pull-policy=Always;
+  kubectl config use-context cb-productionmgmt;
+  kubectl rolling-update cloudboost-tutorial --image=cloudboost/tutorial:2.0.$TRAVIS_BUILD_NUMBER --image-pull-policy=Always;
   curl -X DELETE "https://api.cloudflare.com/client/v4/zones/""$cloudflare_zone""/purge_cache" -H "X-Auth-Email:hello@cloudboost.io" -H "X-Auth-Key:""$cloud_flare_key" -H "Content-Type:application/json" --data "{'purge_everything':true}";
   fi
 branches:
